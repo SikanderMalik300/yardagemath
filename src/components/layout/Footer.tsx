@@ -41,9 +41,9 @@ export function Footer() {
 
           {categoryList.map((cat) => (
             <div key={cat.slug}>
-              <h2 style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
+              <div style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
                 {cat.title}
-              </h2>
+              </div>
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
                 {calculatorsInCategory(cat.slug).map((c) => (
                   <li key={c.slug}>
@@ -55,9 +55,9 @@ export function Footer() {
           ))}
 
           <div>
-            <h2 style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
+            <div style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
               Site
-            </h2>
+            </div>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
               {SITE_LINKS.map((l) => (
                 <li key={l.href}>
@@ -68,9 +68,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
+            <div style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.625rem" }}>
               Legal
-            </h2>
+            </div>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
               {LEGAL.map((l) => (
                 <li key={l.href}>
