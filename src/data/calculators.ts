@@ -138,7 +138,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Cubic Yard Calculator – Gravel, Soil, Mulch & Concrete",
     metaDescription:
-      "Free cubic yard calculator. Enter length, width and depth in feet or inches to get cubic yards, cubic feet, tons and bags for gravel, soil, mulch or concrete.",
+      "Free cubic yard calculator. Enter length, width and depth to get cubic yards, cubic feet, tons and bags for gravel, soil, mulch or concrete.",
     h1: "Cubic Yard Calculator",
     primaryKeyword: "cubic yard calculator",
     secondaryKeywords: [
@@ -242,7 +242,7 @@ export const calculators: Calculator[] = [
     category: "concrete",
     title: "Concrete Block Calculator – CMU & Cinder Blocks Needed",
     metaDescription:
-      "Find how many concrete blocks (CMU or cinder blocks) you need for a wall. Enter length and height, subtract doors and windows, and get blocks, mortar bags and cost.",
+      "Find how many concrete blocks (CMU or cinder) you need for a wall. Enter length and height, subtract openings, and get blocks, mortar bags and cost.",
     h1: "Concrete Block Calculator (CMU / Cinder Block)",
     primaryKeyword: "concrete block calculator",
     secondaryKeywords: [
@@ -346,7 +346,7 @@ export const calculators: Calculator[] = [
     category: "concrete",
     title: "Concrete Slab Cost Calculator – 2026 Price per Sq Ft",
     metaDescription:
-      "Estimate concrete slab cost by size and thickness. Get cubic yards, bags or ready-mix, and total price with optional labor, rebar and base gravel. Updated for 2026.",
+      "Estimate concrete slab cost by size and thickness. Get cubic yards, bags or ready-mix, and total price with labor, rebar and base. 2026 prices.",
     h1: "Concrete Slab Cost Calculator",
     primaryKeyword: "concrete slab cost calculator",
     secondaryKeywords: [
@@ -617,7 +617,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Square Yard Calculator – Feet & Inches to Square Yards",
     metaDescription:
-      "Convert room or area dimensions to square yards for carpet, turf, sod or concrete. Add multiple rooms, include waste, and estimate total cost per square yard.",
+      "Convert room or area dimensions to square yards for carpet, turf or sod. Add multiple rooms, include waste, and estimate cost per square yard.",
     h1: "Square Yard Calculator",
     primaryKeyword: "square yard calculator",
     secondaryKeywords: ["yard measurement", "square feet to square yards"],
@@ -697,7 +697,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Landscape Material Calculator – Mulch, Rock, Soil & Sand",
     metaDescription:
-      "One calculator for all landscaping materials: mulch, river rock, topsoil, sand, decomposed granite, compost and gravel. Get yards, tons and bags for your project.",
+      "One calculator for all landscaping materials: mulch, river rock, topsoil, sand, decomposed granite, compost and gravel. Get yards, tons and bags.",
     h1: "Landscape Material Calculator",
     primaryKeyword: "landscape material calculator",
     secondaryKeywords: [
@@ -1064,7 +1064,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Gutter Slope Calculator – Pitch, Drop & Downspouts",
     metaDescription:
-      "Find the right gutter slope and total drop for any run length. Get start and end heights, mid-run splits for long gutters, and how many downspouts you need.",
+      "Find the right gutter slope and total drop for any run length. Get start and end heights, mid-run splits for long gutters, and downspout counts.",
     h1: "Gutter Slope Calculator",
     primaryKeyword: "gutter slope calculator",
     secondaryKeywords: ["gutter fall calculator", "gutter pitch"],
@@ -1149,7 +1149,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Rip Rap Calculator – Tons & Cubic Yards of Riprap",
     metaDescription:
-      "Estimate riprap for shorelines, ditches and erosion control. Enter length, width and thickness to get cubic yards and tons, with stone class and thickness guide.",
+      "Estimate riprap for shorelines, ditches and erosion control. Enter length, width and thickness to get cubic yards and tons, with a stone-class guide.",
     h1: "Rip Rap Calculator",
     primaryKeyword: "rip rap calculator",
     secondaryKeywords: ["riprap calculator", "riprap tons"],

@@ -9,6 +9,7 @@ export const metadata = buildMetadata({
   title: cal.title,
   description: cal.metaDescription,
   path: `/${cal.slug}/`,
+  absoluteTitle: true,
 });
 
 export default function Page() {

@@ -15,7 +15,7 @@ import { fmtDate } from "@/lib/format";
 export const metadata = buildMetadata({
   title: "YardageMath – Free Construction & Yard Calculators",
   description:
-    "Free, accurate calculators for concrete, blocks, gravel, topsoil, mulch, gutters and lawn care. Get cubic yards, tons, bags and costs in seconds, with the math shown.",
+    "Free calculators for concrete, blocks, gravel, topsoil, mulch, gutters and lawn care. Get cubic yards, tons, bags and costs fast, with the math shown.",
   path: "/",
   absoluteTitle: true,
 });

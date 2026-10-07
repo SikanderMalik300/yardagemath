@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | YardageMath",
   },
   description:
-    "Free, accurate calculators for concrete, blocks, gravel, topsoil, mulch, gutters and lawn care. Get cubic yards, tons, bags and costs in seconds, with the math shown.",
+    "Free calculators for concrete, blocks, gravel, topsoil, mulch, gutters and lawn care. Get cubic yards, tons, bags and costs fast, with the math shown.",
   applicationName: SITE.name,
   authors: [{ name: SITE.founder }],
   creator: SITE.founder,

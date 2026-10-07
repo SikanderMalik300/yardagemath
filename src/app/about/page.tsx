@@ -7,7 +7,7 @@ import { SITE } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "YardageMath is a set of free, carefully checked construction and yard calculators built and maintained by Neo. Learn why it exists and how the tools are made.",
+    "Free, carefully checked construction and yard calculators — why the site exists, how the tools are made, and how to send corrections.",
   path: "/about/",
 });
 

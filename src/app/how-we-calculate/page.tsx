@@ -20,7 +20,7 @@ import {
 export const metadata = buildMetadata({
   title: "How We Calculate",
   description:
-    "The formulas, densities, bag yields, coverage figures and slope rules behind every YardageMath calculator — each with its source and the date it was checked.",
+    "The formulas, densities, bag yields, coverage and slope rules behind every YardageMath calculator — each with its source and the date checked.",
   path: "/how-we-calculate/",
 });
 
