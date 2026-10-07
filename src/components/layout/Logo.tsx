@@ -1,16 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 
-/** Text wordmark — no AI sparkle / robot / gradient (design.md §5). */
-export function Logo({ className = "" }: { className?: string }) {
+/** Brand wordmark — the provided YardageMath logo (design.md §5). */
+export function Logo({ height = 32 }: { height?: number }) {
+  // logo-with-text.png is 858 × 202 (ratio ≈ 4.25).
+  const width = Math.round((858 / 202) * height);
   return (
-    <Link
-      href="/"
-      className={`inline-flex items-baseline font-bold tracking-tight ${className}`}
-      aria-label="YardageMath home"
-      style={{ fontSize: "1.25rem", color: "var(--text-primary)", textDecoration: "none" }}
-    >
-      <span>Yardage</span>
-      <span style={{ color: "var(--brand)" }}>Math</span>
+    <Link href="/" aria-label="YardageMath home" style={{ display: "inline-flex", alignItems: "center" }}>
+      <Image
+        src="/logo-with-text.png"
+        alt="YardageMath"
+        width={width}
+        height={height}
+        priority
+        style={{ height, width: "auto" }}
+      />
     </Link>
   );
 }
