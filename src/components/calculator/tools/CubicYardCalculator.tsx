@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { computeCubicYard, type CubicYardMaterial } from "@/lib/formulas/cubicYard";
+import { materialSlug } from "@/lib/constants";
 import { round } from "@/lib/formulas/units";
 import { fmtNumber } from "@/lib/format";
 import { CalculatorShell } from "../CalculatorShell";
@@ -73,9 +74,11 @@ export function CubicYardCalculator() {
           <Field label="Material" htmlFor="material" hint="Choose a material to also estimate weight in tons.">
             <Select
               id="material"
-              value={material}
-              onChange={(v) => setMaterial(v as CubicYardMaterial)}
-              options={MATERIALS}
+              value={materialSlug(material)}
+              onChange={(slug) =>
+                setMaterial(MATERIALS.find((m) => materialSlug(m.value) === slug)?.value ?? "none")
+              }
+              options={MATERIALS.map((m) => ({ value: materialSlug(m.value), label: m.label }))}
             />
           </Field>
         </div>

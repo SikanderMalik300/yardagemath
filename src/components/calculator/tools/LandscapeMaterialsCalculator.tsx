@@ -7,6 +7,7 @@ import {
   type LandscapeMaterialKey,
 } from "@/lib/formulas/landscapeMaterials";
 import { round } from "@/lib/formulas/units";
+import { materialSlug } from "@/lib/constants";
 import { fmtNumber } from "@/lib/format";
 import { CalculatorShell } from "../CalculatorShell";
 import { Field, Select, GroupLabel } from "../Fields";
@@ -36,16 +37,19 @@ const INITIAL: VolumeState = {
 };
 
 const MATERIAL_OPTIONS = Object.entries(LANDSCAPE_MATERIALS).map(([value, m]) => ({
-  value,
+  value: materialSlug(value),
   label: m.label,
 }));
+const KEY_BY_SLUG: Record<string, LandscapeMaterialKey> = Object.fromEntries(
+  Object.keys(LANDSCAPE_MATERIALS).map((k) => [materialSlug(k), k as LandscapeMaterialKey])
+);
 
 export function LandscapeMaterialsCalculator() {
   const { state, set, setUnit, reset, dims } = useVolumeInputs(INITIAL);
   const [material, setMaterial] = useState<LandscapeMaterialKey>("mulch");
 
-  function changeMaterial(key: string) {
-    const k = key as LandscapeMaterialKey;
+  function changeMaterial(slug: string) {
+    const k = KEY_BY_SLUG[slug];
     setMaterial(k);
     set("depthIn", String(LANDSCAPE_MATERIALS[k].defaultDepthIn));
   }
@@ -72,7 +76,7 @@ export function LandscapeMaterialsCalculator() {
         <div>
           <GroupLabel>Material</GroupLabel>
           <Field label="Material" htmlFor="material" hint="The default depth updates to suit each material.">
-            <Select id="material" value={material} onChange={changeMaterial} options={MATERIAL_OPTIONS} />
+            <Select id="material" value={materialSlug(material)} onChange={changeMaterial} options={MATERIAL_OPTIONS} />
           </Field>
           <GroupLabel>Area &amp; depth</GroupLabel>
           <ShapeDimensionFields state={state} set={set} setUnit={setUnit} />

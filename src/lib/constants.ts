@@ -40,6 +40,11 @@ export const DENSITY_TONS_PER_CUYD = {
 
 export type MaterialKey = keyof typeof DENSITY_TONS_PER_CUYD;
 
+/** Kebab-case slug for a material key, so internal code names never appear in the DOM. */
+export function materialSlug(key: string): string {
+  return key.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
 /** Human-readable labels for materials (never show internal code names to users). */
 export const MATERIAL_LABELS: Record<MaterialKey, string> = {
   gravel: "Gravel",
