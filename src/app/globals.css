@@ -1,0 +1,531 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   Design tokens — from design.md §2 (colors), §3 (type), §4 (layout/spacing)
+   ========================================================================= */
+:root {
+  --background: #f7f8f6;
+  --surface: #ffffff;
+  --surface-muted: #f1f3f1;
+  --surface-emphasis: #e9efeb;
+
+  --text-primary: #17201b;
+  --text-secondary: #53605a;
+  --text-muted: #748078;
+  --text-inverse: #ffffff;
+
+  --border: #dfe5e1;
+  --border-strong: #c8d1cb;
+
+  --brand: #236b4b;
+  --brand-hover: #1b583d;
+  --brand-soft: #e7f1eb;
+
+  --success: #28734c;
+  --warning: #94641d;
+  --warning-soft: #fff6df;
+  --error: #b33b36;
+  --error-soft: #fff0ef;
+
+  --focus-ring: #4c9c77;
+  --shadow-soft: 0 1px 2px rgba(23, 32, 27, 0.05);
+  --shadow-card: 0 4px 14px rgba(23, 32, 27, 0.06);
+
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* Layout widths */
+  --content-max-width: 1180px;
+  --reading-max-width: 760px;
+  --calculator-max-width: 1080px;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    color: var(--text-primary);
+    background: var(--background);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--text-primary);
+    line-height: 1.2;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  a {
+    color: var(--brand);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Tabular numbers everywhere numbers matter */
+  input[type="text"],
+  input[inputmode="decimal"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* =========================================================================
+   Reusable component classes (design.md)
+   ========================================================================= */
+@layer components {
+  .container-content {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+
+  .numeric {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* --- Calculator shell (§7) --- */
+  .calculator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .calculator-layout {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .calculator-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .calculator-card {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+    }
+  }
+
+  /* --- Inputs (§7) --- */
+  .input,
+  .select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      background-color 150ms ease;
+  }
+
+  .input:hover,
+  .select:hover {
+    border-color: #9eaca3;
+  }
+
+  .input:focus,
+  .select:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(35, 107, 75, 0.15);
+  }
+
+  .input[aria-invalid="true"] {
+    border-color: var(--error);
+  }
+
+  .field-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.375rem;
+  }
+
+  .field-hint {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .field-error {
+    font-size: var(--text-sm);
+    color: var(--error);
+    margin-top: 0.25rem;
+  }
+
+  /* --- Buttons (§9) --- */
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--brand);
+    border-radius: var(--radius-sm);
+    background: var(--brand);
+    color: var(--text-inverse);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .button-primary:hover {
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
+    text-decoration: none;
+  }
+
+  .button-primary:active {
+    transform: translateY(1px);
+  }
+
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .button-secondary:hover {
+    background: var(--surface-muted);
+    border-color: #9eaca3;
+    text-decoration: none;
+  }
+
+  /* --- Results panel (§8) --- */
+  .primary-result {
+    background: var(--brand-soft);
+    border: 1px solid #cfe1d6;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .primary-result__label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .primary-result__value {
+    margin-top: 0.25rem;
+    color: var(--text-primary);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .secondary-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .secondary-result {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    padding: 0.75rem 0.875rem;
+  }
+
+  .secondary-result__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .secondary-result__value {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+  }
+
+  /* --- Quick answer (§11) --- */
+  .quick-answer {
+    border-left: 3px solid var(--brand);
+    border-radius: var(--radius-sm);
+    background: var(--brand-soft);
+    padding: 1rem 1.125rem;
+    color: var(--text-primary);
+  }
+
+  /* --- Tables (§11) --- */
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  .table-wrapper table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+  }
+
+  .table-wrapper th,
+  .table-wrapper td {
+    padding: 0.75rem 0.875rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .table-wrapper th {
+    background: var(--surface-muted);
+    color: var(--text-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .table-wrapper td {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .table-wrapper td.num,
+  .table-wrapper th.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .table-wrapper tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Tool card (§10) --- */
+  .tool-card {
+    display: flex;
+    min-height: 142px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    color: inherit;
+    transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      transform 150ms ease;
+  }
+
+  .tool-card:hover {
+    border-color: #aebdb3;
+    box-shadow: var(--shadow-card);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* --- Notices (§12) --- */
+  .notice {
+    border-radius: var(--radius-sm);
+    padding: 0.875rem 1rem;
+    font-size: var(--text-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+  }
+
+  .notice-warning {
+    border-color: #e6d6a8;
+    background: var(--warning-soft);
+    color: var(--warning);
+  }
+
+  /* --- Prose for article content (§11) --- */
+  .prose {
+    max-width: var(--reading-max-width);
+  }
+
+  .prose h2 {
+    font-size: var(--text-2xl);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose h3 {
+    font-size: var(--text-xl);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .prose ul,
+  .prose ol {
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  .prose li {
+    margin-bottom: 0.375rem;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .prose h2 {
+      font-size: var(--text-xl);
+    }
+  }
+}
+
+/* =========================================================================
+   Responsive type (design.md §3) + mobile H1/H2 sizes
+   ========================================================================= */
+.page-h1 {
+  font-size: 2rem; /* 32px desktop */
+}
+
+@media (max-width: 640px) {
+  .page-h1 {
+    font-size: 1.75rem; /* 28px mobile */
+  }
+}
+
+/* =========================================================================
+   Motion (§14)
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Formula + diagram two-column on wider screens */
+@media (min-width: 900px) {
+  .formula-grid {
+    grid-template-columns: minmax(0, 1fr) 320px !important;
+  }
+}
+
+/* Skip link — visible only on focus */
+.skip-link:focus {
+  left: 1rem !important;
+  top: 1rem !important;
+  z-index: 100;
+  background: var(--surface);
+  color: var(--brand);
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-sm);
+}
+
+/* Open <details> chevron rotation for FAQ / Show the math */
+details[open] > summary span[aria-hidden="true"] {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+/* Native <details> disclosure chevron */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}

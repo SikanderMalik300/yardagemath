@@ -1,0 +1,23 @@
+# YardageMath
+
+> Free, accurate construction and yard calculators with the math shown. US units, client-side, no sign-up. Built and maintained by Neo.
+
+## Calculators
+
+- [Cubic Yard Calculator](https://yardagemath.com/cubic-yard-calculator/): Area and depth to cubic yards, tons and bags for gravel, soil, mulch or concrete.
+- [Concrete Block Calculator](https://yardagemath.com/concrete-block-calculator/): How many CMU or cinder blocks a wall needs, plus mortar and cost.
+- [Concrete Slab Cost Calculator](https://yardagemath.com/concrete-slab-cost-calculator/): Slab cubic yards, bags vs ready-mix, and total cost per square foot (2026 prices).
+- [Topsoil Calculator](https://yardagemath.com/topsoil-calculator/): Topsoil cubic yards, tons and bags for lawns and beds.
+- [Pea Gravel Calculator](https://yardagemath.com/pea-gravel-calculator/): Pea gravel cubic yards, tons and 0.5 cu ft bags by area and depth.
+- [Square Yard Calculator](https://yardagemath.com/square-yard-calculator/): Convert feet and multiple rooms to square yards, with waste and cost.
+- [Landscape Material Calculator](https://yardagemath.com/landscape-materials-calculator/): Yards, tons and bags for mulch, rock, soil, sand, decomposed granite and more.
+- [Lawn Mowing Cost Calculator](https://yardagemath.com/lawn-mowing-cost-calculator/): What a cut should cost (homeowner) or what to charge (pro), per cut and per season.
+- [Block Wall Calculator](https://yardagemath.com/block-wall-calculator/): Courses, blocks, cap blocks, mortar, grout, rebar and total material cost.
+- [Acres per Hour Calculator](https://yardagemath.com/acres-per-hour-calculator/): Acres per hour from working width, speed and field efficiency, and time to finish.
+- [Gutter Slope Calculator](https://yardagemath.com/gutter-slope-calculator/): Gutter drop, pitch and downspout count for any run length.
+- [Rip Rap Calculator](https://yardagemath.com/rip-rap-calculator/): Riprap cubic yards and tons by area and layer thickness, with stone classes.
+
+## About
+
+- [How We Calculate](https://yardagemath.com/how-we-calculate/): Every formula, density, bag yield and slope rule with its source and date checked.
+- [About](https://yardagemath.com/about/): Who builds and maintains the site.

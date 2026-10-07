@@ -1,0 +1,12 @@
+# Cloudflare Pages security & hygiene headers (build-spec A3).
+# Add a Content-Security-Policy here once the ad scripts are known.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: SAMEORIGIN
+
+# Long cache for hashed static assets
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
