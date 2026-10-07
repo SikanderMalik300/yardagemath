@@ -9,6 +9,8 @@ import { AdSlot } from "@/components/layout/AdSlot";
 import { FaqSection } from "./Faq";
 import { RefTableView } from "./RefTableView";
 import { Diagram } from "@/components/diagrams/Diagram";
+import { ToolSources } from "@/components/SourcesList";
+import { sourcesForTool } from "@/lib/sources";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   breadcrumbJsonLd,
@@ -145,6 +147,9 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
 
       {/* 10. Related calculators */}
       <RelatedTools cal={cal} />
+
+      {/* Sources (citations for this tool's figures) */}
+      <ToolSources sources={sourcesForTool(cal.slug)} />
 
       {/* 11. Author & update box */}
       <AuthorBox sources={cal.sources} lastUpdated={cal.lastUpdated} />

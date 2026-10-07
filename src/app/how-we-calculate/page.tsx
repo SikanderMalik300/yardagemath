@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
+import { SourcesList } from "@/components/SourcesList";
+import { SOURCES, type SourceKey } from "@/lib/sources";
 import {
   DENSITY_TONS_PER_CUYD,
   BAG_SIZE_CUFT,
@@ -21,7 +23,42 @@ export const metadata = buildMetadata({
   path: "/how-we-calculate/",
 });
 
-const CHECKED = "October 7, 2026";
+const CHECKED = "October 8, 2026";
+
+/** Inline "Sources: …" line linking the cited references for a section. */
+function Cite({ keys }: { keys: SourceKey[] }) {
+  return (
+    <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginTop: "-0.5rem" }}>
+      Sources:{" "}
+      {keys.map((k, i) => (
+        <span key={k}>
+          {i > 0 && "; "}
+          <a href={SOURCES[k].url} target="_blank" rel="noopener" style={{ textDecoration: "underline" }}>
+            {SOURCES[k].publisher}
+          </a>
+        </span>
+      ))}{" "}
+      — accessed {CHECKED}.
+    </p>
+  );
+}
+
+const ALL_SOURCE_KEYS: SourceKey[] = [
+  "quikreteConcrete",
+  "quikreteMortar",
+  "ncmaTek",
+  "asabeD497",
+  "isuFieldCapacity",
+  "fhwaHec11",
+  "nchrp568",
+  "inchGravel",
+  "inchSand",
+  "cuydWeightChart",
+  "pnnlGutters",
+  "englertGutters",
+  "slabCost2026",
+  "lawnCost2026",
+];
 
 function SimpleTable({ head, rows }: { head: string[]; rows: (string | number)[][] }) {
   return (
@@ -80,6 +117,7 @@ export default function HowWeCalculatePage() {
         head={["Material", "Tons / cu yd"]}
         rows={Object.entries(DENSITY_TONS_PER_CUYD).map(([k, v]) => [k, v])}
       />
+      <Cite keys={["inchGravel", "inchSand", "cuydWeightChart"]} />
 
       <h2>Bag sizes (cubic feet per bag)</h2>
       <SimpleTable
@@ -103,6 +141,7 @@ export default function HowWeCalculatePage() {
           ["40 lb", CONCRETE_BAG_YIELD_CUFT.lb40, Math.ceil(27 / CONCRETE_BAG_YIELD_CUFT.lb40)],
         ]}
       />
+      <Cite keys={["quikreteConcrete"]} />
 
       <h2>Concrete block (CMU)</h2>
       <ul>
@@ -115,6 +154,7 @@ export default function HowWeCalculatePage() {
           {GROUT_CUFT_PER_SQFT.in8}, 12″ = {GROUT_CUFT_PER_SQFT.in12} cu ft
         </li>
       </ul>
+      <Cite keys={["ncmaTek", "quikreteMortar"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
@@ -126,10 +166,12 @@ export default function HowWeCalculatePage() {
         head={["Equipment", "Efficiency"]}
         rows={FIELD_EFFICIENCY_PRESETS.map((p) => [p.label, `${Math.round(p.eff * 100)}%`])}
       />
+      <Cite keys={["asabeD497", "isuFieldCapacity"]} />
 
       <h2>Gutter slope</h2>
       <p>Drop (in) = (run length ÷ 10) × slope per 10 ft. Presets (verify with manufacturer guides):</p>
       <SimpleTable head={["Preset", "Inches per 10 ft"]} rows={GUTTER_SLOPE_PRESETS.map((p) => [p.label, p.inchPer10ft])} />
+      <Cite keys={["pnnlGutters", "englertGutters"]} />
 
       <h2>Riprap stone classes</h2>
       <p>Representative gradations and layer thicknesses — verify against your state DOT tables.</p>
@@ -137,6 +179,7 @@ export default function HowWeCalculatePage() {
         head={["Class", "D50 size", "Layer thickness"]}
         rows={RIPRAP_CLASSES.map((c) => [c.label, c.d50In, `${c.thicknessIn}"`])}
       />
+      <Cite keys={["fhwaHec11", "nchrp568"]} />
 
       <h2>Rounding &amp; waste</h2>
       <p>
@@ -150,9 +193,15 @@ export default function HowWeCalculatePage() {
       <h2>Prices</h2>
       <p>
         All prices are editable 2026 national-average <em>estimates</em> for planning, not quotes.
-        They are flagged for verification in our code and should be confirmed with a local supplier.
-        See the <Link href="/disclaimer/">disclaimer</Link>.
+        The default ready-mix price (~$160/cu yd) and lawn-mowing tiers sit within the ranges in the
+        2026 cost guides below; confirm with a local supplier. See the{" "}
+        <Link href="/disclaimer/">disclaimer</Link>.
       </p>
+      <Cite keys={["slabCost2026", "lawnCost2026"]} />
+
+      <h2>References</h2>
+      <p>Every figure above links to the source it was checked against. Full list:</p>
+      <SourcesList sources={ALL_SOURCE_KEYS.map((k) => SOURCES[k])} />
     </ContentPage>
   );
 }
