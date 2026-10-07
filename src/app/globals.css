@@ -13,7 +13,9 @@
 
   --text-primary: #17201b;
   --text-secondary: #53605a;
-  --text-muted: #748078;
+  /* Darkened from the design draft's #748078 to meet WCAG AA (4.5:1) for small text
+     on white and on the footer tint (audit P1 #6). */
+  --text-muted: #5c6862;
   --text-inverse: #ffffff;
 
   --border: #dfe5e1;
@@ -98,9 +100,11 @@
     text-wrap: balance;
   }
 
+  /* In-text links are underlined by default so they don't rely on color alone
+     (WCAG, audit P1 #6). Navigation, cards and buttons opt out explicitly. */
   a {
     color: var(--brand);
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   a:hover {
@@ -231,6 +235,7 @@
     color: var(--text-inverse);
     font-size: 0.9375rem;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
     transition:
       background-color 150ms ease,
@@ -261,6 +266,7 @@
     color: var(--text-primary);
     font-size: 0.9375rem;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
     transition:
       background-color 150ms ease,
@@ -388,10 +394,17 @@
     background: var(--surface);
     box-shadow: var(--shadow-soft);
     color: inherit;
+    text-decoration: none;
     transition:
       border-color 150ms ease,
       box-shadow 150ms ease,
       transform 150ms ease;
+  }
+
+  .tool-card,
+  .tool-card:hover,
+  .tool-card * {
+    text-decoration: none;
   }
 
   .tool-card:hover {

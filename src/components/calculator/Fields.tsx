@@ -40,6 +40,8 @@ export function NumberInput({
   step = "any",
   suffix,
   ariaInvalid,
+  ariaLabel,
+  enterKeyHint,
   placeholder,
 }: {
   id: string;
@@ -49,6 +51,8 @@ export function NumberInput({
   step?: number | "any";
   suffix?: string;
   ariaInvalid?: boolean;
+  ariaLabel?: string;
+  enterKeyHint?: "next" | "done" | "go";
   placeholder?: string;
 }) {
   const input = (
@@ -57,10 +61,12 @@ export function NumberInput({
       className="input"
       type="text"
       inputMode="decimal"
+      enterKeyHint={enterKeyHint}
       value={value}
       min={min}
       step={step}
       placeholder={placeholder}
+      aria-label={ariaLabel}
       aria-invalid={ariaInvalid || undefined}
       onChange={(e) => onChange(e.target.value.replace(/[^0-9.]/g, ""))}
     />
@@ -113,10 +119,23 @@ export function FeetInches({
       </label>
       <div style={{ display: "flex", gap: "0.5rem" }}>
         <div style={{ flex: 2 }}>
-          <NumberInput id={`${idBase}-ft`} value={feet} onChange={onFeet} suffix="ft" ariaInvalid={Boolean(error)} />
+          <NumberInput
+            id={`${idBase}-ft`}
+            value={feet}
+            onChange={onFeet}
+            suffix="ft"
+            ariaLabel={`${label}, feet`}
+            ariaInvalid={Boolean(error)}
+          />
         </div>
         <div style={{ flex: 1 }}>
-          <NumberInput id={`${idBase}-in`} value={inches} onChange={onInches} suffix="in" />
+          <NumberInput
+            id={`${idBase}-in`}
+            value={inches}
+            onChange={onInches}
+            suffix="in"
+            ariaLabel={`${label}, inches`}
+          />
         </div>
       </div>
       {error && (
@@ -133,14 +152,22 @@ export function Select({
   value,
   onChange,
   options,
+  ariaLabel,
 }: {
   id: string;
   value: string;
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
+  ariaLabel?: string;
 }) {
   return (
-    <select id={id} className="select" value={value} onChange={(e) => onChange(e.target.value)}>
+    <select
+      id={id}
+      className="select"
+      value={value}
+      aria-label={ariaLabel}
+      onChange={(e) => onChange(e.target.value)}
+    >
       {options.map((o) => (
         <option key={o.value} value={o.value}>
           {o.label}

@@ -56,7 +56,7 @@ export function AcresPerHourCalculator() {
                 <NumberInput id="width" value={width} onChange={setWidth} />
               </div>
               <div style={{ flex: 1 }}>
-                <Select id="wunit" value={widthUnit} onChange={(v) => setWidthUnit(v as WidthUnit)} options={[{ value: "in", label: "in" }, { value: "ft", label: "ft" }]} />
+                <Select id="wunit" ariaLabel="Working width unit" value={widthUnit} onChange={(v) => setWidthUnit(v as WidthUnit)} options={[{ value: "in", label: "in" }, { value: "ft", label: "ft" }]} />
               </div>
             </div>
           </Field>
@@ -81,7 +81,7 @@ export function AcresPerHourCalculator() {
                 <NumberInput id="area" value={area} onChange={setArea} />
               </div>
               <div style={{ flex: 1 }}>
-                <Select id="aunit" value={areaUnit} onChange={(v) => setAreaUnit(v as AreaUnit)} options={[{ value: "acres", label: "acres" }, { value: "sqft", label: "sq ft" }]} />
+                <Select id="aunit" ariaLabel="Total area unit" value={areaUnit} onChange={(v) => setAreaUnit(v as AreaUnit)} options={[{ value: "acres", label: "acres" }, { value: "sqft", label: "sq ft" }]} />
               </div>
             </div>
           </Field>

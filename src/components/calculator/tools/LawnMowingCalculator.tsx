@@ -145,6 +145,7 @@ export function LawnMowingCalculator() {
                     <div style={{ flex: 1 }}>
                       <Select
                         id="hunit"
+                        ariaLabel="Lawn size unit"
                         value={hUnit}
                         onChange={(v) => setHUnit(v as AreaUnit)}
                         options={[
@@ -204,7 +205,7 @@ export function LawnMowingCalculator() {
                       <NumberInput id="parea" value={pArea} onChange={setPArea} />
                     </div>
                     <div style={{ flex: 1 }}>
-                      <Select id="punit" value={pUnit} onChange={(v) => setPUnit(v as AreaUnit)} options={[{ value: "acres", label: "acres" }, { value: "sqft", label: "sq ft" }]} />
+                      <Select id="punit" ariaLabel="Lawn size unit" value={pUnit} onChange={(v) => setPUnit(v as AreaUnit)} options={[{ value: "acres", label: "acres" }, { value: "sqft", label: "sq ft" }]} />
                     </div>
                   </div>
                 </Field>
