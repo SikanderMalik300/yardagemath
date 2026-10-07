@@ -55,7 +55,9 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: SITE.name,
     url: BASE,
-    logo: absUrl("/icon.png"),
+    // Google prefers a square logo; versioned filename for cache-busting (audit P1 #4/#5).
+    // No trailing slash — this is a file, not a route.
+    logo: `${BASE}/brand/icon-512-v2.png`,
     email: SITE.email,
     founder: { "@type": "Person", name: SITE.founder },
   };
