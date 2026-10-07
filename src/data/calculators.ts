@@ -949,7 +949,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "Do I need a footing for a block wall?",
-        a: "Yes. Block walls sit on a poured concrete footing, typically about twice the wall's width and below the local frost line. Verify the size and depth with your building department before you dig.",
+        a: "Yes. Block walls sit on a poured concrete footing, typically about twice the wall's width and below the local frost line. Confirm the size and depth with your building department before you dig.",
       },
       {
         q: "How tall can a block wall be without rebar?",

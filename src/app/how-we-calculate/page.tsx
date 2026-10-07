@@ -4,6 +4,7 @@ import { ContentPage } from "@/components/ContentPage";
 import { SourcesList } from "@/components/SourcesList";
 import { SOURCES, type SourceKey } from "@/lib/sources";
 import {
+  MATERIAL_LABELS,
   DENSITY_TONS_PER_CUYD,
   BAG_SIZE_CUFT,
   CONCRETE_BAG_YIELD_CUFT,
@@ -93,7 +94,7 @@ export default function HowWeCalculatePage() {
   return (
     <ContentPage
       title="How We Calculate"
-      intro="Every number our calculators show comes from the list below. Figures marked “verify” are industry or manufacturer values; because materials and prices vary, we let you edit them and we confirm them against the cited source."
+      intro="Every number our calculators show comes from the sources below. Values are checked against the sources listed. Materials vary, so every value is editable in the calculator. Confirm final quantities with your supplier."
       updated="2026-10-07"
     >
       <h2>Core formulas</h2>
@@ -115,7 +116,10 @@ export default function HowWeCalculatePage() {
       </p>
       <SimpleTable
         head={["Material", "Tons / cu yd"]}
-        rows={Object.entries(DENSITY_TONS_PER_CUYD).map(([k, v]) => [k, v])}
+        rows={Object.entries(DENSITY_TONS_PER_CUYD).map(([k, v]) => [
+          MATERIAL_LABELS[k as keyof typeof MATERIAL_LABELS],
+          v,
+        ])}
       />
       <Cite keys={["inchGravel", "inchSand", "cuydWeightChart"]} />
 
@@ -132,7 +136,7 @@ export default function HowWeCalculatePage() {
       />
 
       <h2>Concrete bag yields</h2>
-      <p>Mixed-concrete yield per bag — verify against the bag label (Quikrete / Sakrete). Checked {CHECKED}.</p>
+      <p>Mixed-concrete yield per bag, per the manufacturer data sheet (Quikrete). Checked {CHECKED}.</p>
       <SimpleTable
         head={["Bag", "Cu ft yield", "Bags per cu yd"]}
         rows={[
@@ -148,9 +152,9 @@ export default function HowWeCalculatePage() {
         <li>
           Blocks per sq ft = 144 ÷ (8 × 16) = <strong>{BLOCKS_PER_SQFT}</strong> (112.5 per 100 sq ft)
         </li>
-        <li>Mortar ≈ {BLOCKS_PER_MORTAR_BAG} standard blocks per 80 lb bag (verify: Quikrete Mortar Mix)</li>
+        <li>Mortar ≈ {BLOCKS_PER_MORTAR_BAG} standard blocks per 80 lb bag (Quikrete Mortar Mix data sheet)</li>
         <li>
-          Core-fill grout per sq ft of wall (NCMA TEK, verify): 6″ = {GROUT_CUFT_PER_SQFT.in6}, 8″ ={" "}
+          Core-fill grout per sq ft of wall (NCMA TEK): 6″ = {GROUT_CUFT_PER_SQFT.in6}, 8″ ={" "}
           {GROUT_CUFT_PER_SQFT.in8}, 12″ = {GROUT_CUFT_PER_SQFT.in12} cu ft
         </li>
       </ul>
@@ -160,7 +164,7 @@ export default function HowWeCalculatePage() {
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×
         efficiency ÷ 8.25). The constant converts 5,280 ft/mile and 43,560 sq ft/acre. Efficiency
-        presets follow ASABE field-efficiency ranges (verify):
+        presets follow ASABE field-efficiency ranges:
       </p>
       <SimpleTable
         head={["Equipment", "Efficiency"]}
@@ -169,12 +173,12 @@ export default function HowWeCalculatePage() {
       <Cite keys={["asabeD497", "isuFieldCapacity"]} />
 
       <h2>Gutter slope</h2>
-      <p>Drop (in) = (run length ÷ 10) × slope per 10 ft. Presets (verify with manufacturer guides):</p>
+      <p>Drop (in) = (run length ÷ 10) × slope per 10 ft. Presets follow manufacturer install guides:</p>
       <SimpleTable head={["Preset", "Inches per 10 ft"]} rows={GUTTER_SLOPE_PRESETS.map((p) => [p.label, p.inchPer10ft])} />
       <Cite keys={["pnnlGutters", "englertGutters"]} />
 
       <h2>Riprap stone classes</h2>
-      <p>Representative gradations and layer thicknesses — verify against your state DOT tables.</p>
+      <p>Representative gradations and layer thicknesses, per FHWA HEC-11 and NCHRP 568; your state DOT tables govern.</p>
       <SimpleTable
         head={["Class", "D50 size", "Layer thickness"]}
         rows={RIPRAP_CLASSES.map((c) => [c.label, c.d50In, `${c.thicknessIn}"`])}

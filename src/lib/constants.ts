@@ -40,6 +40,20 @@ export const DENSITY_TONS_PER_CUYD = {
 
 export type MaterialKey = keyof typeof DENSITY_TONS_PER_CUYD;
 
+/** Human-readable labels for materials (never show internal code names to users). */
+export const MATERIAL_LABELS: Record<MaterialKey, string> = {
+  gravel: "Gravel",
+  crushedStone: "Crushed stone",
+  sand: "Sand",
+  topsoil: "Topsoil",
+  mulch: "Mulch",
+  concreteWet: "Concrete (wet)",
+  riverRock: "River rock",
+  decomposedGranite: "Decomposed granite",
+  compost: "Compost",
+  ripRap: "Riprap",
+};
+
 /** Density sources for the How We Calculate page. */
 export const DENSITY_SOURCES: Record<string, { source: string; sourceUrl: string }> = {
   general: {
