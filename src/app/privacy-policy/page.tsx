@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <ContentPage title="Privacy Policy" updated="2026-10-07">
+    <ContentPage title="Privacy Policy" updated="2026-10-08">
       <p>
         This Privacy Policy explains what information {SITE.name} (&ldquo;we&rdquo;,
         &ldquo;us&rdquo;) collects when you visit {SITE.domain}, and how we use it. We aim to
@@ -22,14 +22,17 @@ export default function PrivacyPage() {
       <h2>What we collect</h2>
       <ul>
         <li>
-          <strong>Analytics.</strong> We use privacy-respecting analytics to understand which
-          calculators are used and how pages perform. This may include your approximate region,
-          device type, referring page and the pages you view. Where Google Analytics 4 is used,
-          IP addresses are anonymized.
+          <strong>Analytics (Cloudflare Web Analytics).</strong> We use{" "}
+          <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a>,
+          which is privacy-first and cookieless. It does not use client-side state such as cookies
+          or localStorage to track you, and it reports aggregated data only — page views, approximate
+          region, referrer and device type. It does not fingerprint individuals.
         </li>
         <li>
-          <strong>Contact form.</strong> If you message us, we receive the name, email and message
-          you submit, so we can reply. Form delivery is handled by a third-party form provider.
+          <strong>Contact form (Web3Forms).</strong> If you message us, the name, email and message
+          you submit are processed by{" "}
+          <a href="https://web3forms.com/" target="_blank" rel="noopener">Web3Forms</a> to deliver
+          your message to us by email. We use it only to read and reply to your message.
         </li>
         <li>
           <strong>Calculator inputs stay in your browser.</strong> The calculations run entirely on
@@ -40,8 +43,10 @@ export default function PrivacyPage() {
 
       <h2>Cookies and similar technologies</h2>
       <p>
-        We use only the cookies needed for analytics and, in future, advertising. You can block or
-        delete cookies in your browser settings.
+        Our current analytics (Cloudflare Web Analytics) is cookieless. The only cookies that may be
+        set are those required by advertising once it is enabled (see below). You can block or delete
+        cookies in your browser settings. If we add a cookie-based analytics provider in future, we
+        will update this policy first.
       </p>
 
       <h2>Advertising</h2>
