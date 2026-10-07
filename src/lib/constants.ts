@@ -226,6 +226,6 @@ export const SITE = {
   domain: "yardagemath.com",
   url: "https://yardagemath.com",
   email: "hello@yardagemath.com",
-  founder: "Neo",
+  founder: "Sikander Mushtaq",
   twitter: "@yardagemath",
 } as const;

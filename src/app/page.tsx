@@ -107,8 +107,8 @@ export default function HomePage() {
           <div>
             <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>Kept up to date</h3>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
-              Each page shows when it was last reviewed. Built and maintained by Neo —{" "}
-              <Link href="/about/">about the site</Link>.
+              Each page shows when it was last reviewed. Built and maintained by{" "}
+              <Link href="/about/">Sikander Mushtaq</Link>.
             </p>
           </div>
         </div>

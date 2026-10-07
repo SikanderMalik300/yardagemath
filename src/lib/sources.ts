@@ -120,6 +120,13 @@ export const SOURCES = {
     url: "https://www.inchcalculator.com/square-footage-calculator/",
     checked: CHECKED,
   },
+  inchCarpet: {
+    id: "inchCarpet",
+    title: "Carpet Calculator — measuring carpet in square yards (1 sq yd = 9 sq ft)",
+    publisher: "Inch Calculator",
+    url: "https://www.inchcalculator.com/carpet-calculator/",
+    checked: CHECKED,
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -131,7 +138,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "concrete-slab-cost-calculator": ["quikreteConcrete", "slabCost2026"],
   "topsoil-calculator": ["cuydWeightChart", "inchSand"],
   "pea-gravel-calculator": ["inchGravel", "cuydWeightChart"],
-  "square-yard-calculator": ["inchSquare"],
+  "square-yard-calculator": ["inchSquare", "inchCarpet"],
   "landscape-materials-calculator": ["inchGravel", "cuydWeightChart"],
   "lawn-mowing-cost-calculator": ["lawnCost2026", "asabeD497"],
   "block-wall-calculator": ["ncmaTek", "quikreteMortar"],

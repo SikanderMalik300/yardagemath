@@ -15,6 +15,10 @@
 /brand/*
   Cache-Control: public, max-age=31536000, immutable
 
+# OG images (real PNGs); refresh daily since the filename isn't content-hashed
+/og/*
+  Cache-Control: public, max-age=86400
+
 # Keep the *.pages.dev preview copy out of search indexes (only the apex domain should rank)
 https://yardagemath.pages.dev/*
   X-Robots-Tag: noindex

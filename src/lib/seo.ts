@@ -23,6 +23,11 @@ interface PageMetaInput {
 export function buildMetadata(input: PageMetaInput): Metadata {
   const url = absUrl(input.path);
   const title = input.absoluteTitle ? { absolute: input.title } : input.title;
+  // Real .png files under /og/<slug>.png so the response is Content-Type: image/png.
+  // (Static-export routes have no extension and serve as octet-stream, which some
+  // platforms reject.) (audit fix)
+  const slug = input.path.replace(/^\/+|\/+$/g, "") || "home";
+  const ogImage = `${BASE}/og/${slug}.png`;
   return {
     title,
     description: input.description,
@@ -37,12 +42,13 @@ export function buildMetadata(input: PageMetaInput): Metadata {
       siteName: SITE.name,
       type: "website",
       locale: "en_US",
-      // og:image is supplied by the app/opengraph-image.tsx file convention.
+      images: [{ url: ogImage, width: 1200, height: 630, type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",
       title: input.title,
       description: input.description,
+      images: [ogImage],
     },
   };
 }
@@ -59,7 +65,12 @@ export function organizationJsonLd() {
     // No trailing slash — this is a file, not a route.
     logo: `${BASE}/brand/icon-512-v2.png`,
     email: SITE.email,
-    founder: { "@type": "Person", name: SITE.founder },
+    founder: {
+      "@type": "Person",
+      name: SITE.founder,
+      url: absUrl("/about/"),
+      email: SITE.email,
+    },
   };
 }
 
@@ -154,6 +165,8 @@ export function aboutPageJsonLd() {
     mainEntity: {
       "@type": "Person",
       name: SITE.founder,
+      url: absUrl("/about/"),
+      email: SITE.email,
       description: `Founder of ${SITE.name}.`,
     },
   };
