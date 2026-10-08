@@ -1138,7 +1138,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Courses, blocks, cap, mortar, grout, rebar and total cost.",
     shortAnswer:
-      "A 30 ft × 4 ft block wall takes 6 courses and about 142 standard blocks with 5% waste, plus roughly 11 bags of mortar. This calculator adds cap blocks, core-fill grout, rebar and total material cost. Enter your wall below.",
+      "A 30 ft × 4 ft block wall takes 6 courses and about 142 standard blocks with 5% waste, plus roughly 11 bags of mortar. This calculator also works out cap blocks, core-fill grout, rebar and your total material cost. Enter your wall below.",
     howTo: [
       "Enter the wall length and height.",
       "Choose the block width (6, 8 or 12 inches).",
@@ -1197,39 +1197,39 @@ export const calculators: Calculator[] = [
       footnote: "Caps at one per 16 inches of length. Add grout and rebar if the wall is reinforced.",
     },
     tips: [
-      "A block wall needs a proper concrete footing below the frost line — budget for it separately.",
-      "Reinforced walls need vertical rebar in grouted cores at the spacing your local code requires.",
-      "Cap blocks finish the top course and shed water; add one per 16 inches of wall length.",
-      "Buy a spare bag of mortar and a few extra blocks — running short mid-course is costly.",
+      "A block wall needs a proper concrete footing below the frost line. Budget for it separately.",
+      "Reinforced walls need vertical rebar in grouted cores, spaced the way your local code requires.",
+      "Cap blocks finish the top course and shed water. Plan on one for every 16 inches of wall length.",
+      "Buy a spare bag of mortar and a few extra blocks. Running out halfway through a course costs you time and money.",
     ],
     faqs: [
       {
         q: "How much does a block wall cost per square foot?",
-        a: "Material for a basic unreinforced CMU wall often runs $6–$12 per square foot of wall face; installed with footing, grout, rebar and labor it is typically $15–$30+ per square foot. Reinforcement and finishes push it higher.",
+        a: "Materials for a basic, unreinforced CMU wall often run $6–$12 per square foot of wall face. Built by a pro with footing, grout, rebar and labor, it's typically $15–$30 or more per square foot. Reinforcement and fancy finishes push it higher.",
       },
       {
         q: "Do I need a footing for a block wall?",
-        a: "Yes. Block walls sit on a poured concrete footing, typically about twice the wall's width and below the local frost line. Confirm the size and depth with your building department before you dig.",
+        a: "Yes. Block walls sit on a poured concrete footing, usually about twice as wide as the wall and below your local frost line. Check the size and depth with your building department before you start digging.",
       },
       {
         q: "How tall can a block wall be without rebar?",
-        a: "It depends entirely on local code, wall thickness and whether it is freestanding or retaining. Many jurisdictions require reinforcement above a few feet. Do not guess — check your local code and permit requirements.",
+        a: "That depends on your local code, how thick the wall is, and whether it stands alone or holds back soil. Many places require reinforcement once a wall goes above a few feet. Don't guess on this one. Check your local code and permit rules.",
       },
       {
         q: "How much grout fills block cores?",
-        a: "Fully grouting an 8-inch wall takes roughly 0.26 cubic feet of grout per square foot of wall. Filling every other core uses about half that. Six- and twelve-inch blocks differ; use the calculator's values.",
+        a: "Filling every core in an 8-inch wall takes roughly 0.26 cubic feet of grout per square foot of wall. Filling every other core uses about half that. Six- and twelve-inch blocks are different, so use the calculator's numbers for those.",
       },
       {
         q: "How many courses are in a 4-foot wall?",
-        a: "Six courses. Each standard block course is 8 inches tall including the mortar joint, so 48 inches ÷ 8 = 6 courses.",
+        a: "Six. Each course of standard block is 8 inches tall including the mortar joint, so 48 inches ÷ 8 = 6 courses.",
       },
       {
         q: "How many blocks do I need for a 50-foot wall?",
-        a: "A 50 ft wall at 4 feet tall is 200 sq ft, about 225 blocks before waste or 237 with 5% (200 × 1.125 × 1.05). At 3 feet tall it is about 178 blocks. Add cap blocks at one per 16 inches of length.",
+        a: "A 50-foot wall that's 4 feet tall covers 200 sq ft. That's about 225 blocks before waste, or 237 with 5% extra (200 × 1.125 × 1.05). At 3 feet tall, it's about 178 blocks. Add cap blocks at one per 16 inches of length.",
       },
       {
         q: "How much does it cost to build a 50-foot block wall?",
-        a: "Materials for a 50 ft × 4 ft unreinforced wall often run $1,200–$2,400 (blocks, mortar, caps). Installed with footing, grout, rebar and labor, expect roughly $6,000–$12,000 depending on height, reinforcement and your area.",
+        a: "For a 50 ft × 4 ft unreinforced wall, materials (blocks, mortar and caps) often run $1,200–$2,400. Built by a pro with footing, grout, rebar and labor, expect roughly $6,000–$12,000, depending on height, reinforcement and where you live.",
       },
     ],
     sources: ["NCMA TEK grout-quantity tables", "Quikrete mortar coverage"],
@@ -1240,7 +1240,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Block wall calculator diagram showing courses, cap blocks and rebar",
   },
 
