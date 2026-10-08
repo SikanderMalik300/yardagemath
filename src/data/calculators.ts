@@ -1024,7 +1024,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "What a cut should cost, or what to charge as a pro.",
     shortAnswer:
-      "A typical US lawn mowing visit runs about $40–$55 for a quarter-acre lot and $90 or more for a full acre in 2026. Homeowners can estimate a fair price by lawn size; pros can price a job from mower width, speed and hourly rate. Both tabs are below.",
+      "In 2026, a typical lawn mowing visit in the US costs about $40–$55 for a quarter-acre lot and $90 or more for a full acre. Homeowners can check a fair price by lawn size, and pros can price a job from mower width, speed and hourly rate. Both tabs are below.",
     howTo: [
       'Homeowners: pick the "What should I pay?" tab and enter your lawn size and mowing frequency.',
       "Add extras like edging, trimming or bagging.",
@@ -1079,44 +1079,44 @@ export const calculators: Calculator[] = [
       footnote: "Mowing time only, before trimming and travel, at 1.36 acres per hour.",
     },
     tips: [
-      "Weekly mowing usually costs less per visit than one-off cuts because the grass is easier to manage.",
-      "Pros: factor in drive time and fuel — a cheap small lawn far away can lose money.",
-      "Price overgrown or first-of-season cuts higher; they take far longer.",
-      "A clear estimate lists mowing, edging, trimming and cleanup separately so customers know what they are paying for.",
+      "Weekly mowing usually costs less per visit than one-off cuts, because short grass is quicker to cut.",
+      "Pros: count your drive time and fuel. A small lawn that's far away can lose you money.",
+      "Charge more for overgrown or first-of-the-season cuts. They take a lot longer.",
+      "A clear estimate lists mowing, edging, trimming and cleanup separately, so customers know exactly what they're paying for.",
     ],
     faqs: [
       {
         q: "How much should I charge to mow an acre?",
-        a: "Most pros charge about $50–$90 to mow an acre of open, level lawn, more for obstacles or slopes. Base it on your time: an acre takes roughly 0.5–1 hour depending on mower width and speed, times your hourly rate plus overhead.",
+        a: "Most pros charge about $50–$90 for an acre of open, flat lawn, and more if there are slopes or lots of obstacles. Base it on your time. An acre takes roughly 0.5–1 hour depending on your mower, so multiply that by your hourly rate and add overhead.",
       },
       {
         q: "How do I calculate lawn mowing prices?",
-        a: "Estimate the mowing time from your acres per hour, add trimming and travel time, multiply by your hourly rate, then add overhead for fuel and wear. The pro tab above does this automatically.",
+        a: "Work out the mowing time from your acres per hour, then add time for trimming and driving. Multiply by your hourly rate and add a bit for fuel and wear on the equipment. The pro tab above does the math for you.",
       },
       {
         q: "How long does it take to mow an acre?",
-        a: "With a 21-inch push mower, about 1.5–2 hours. With a 42–60 inch riding or zero-turn mower, roughly 30–60 minutes. Speed and obstacles make a big difference.",
+        a: "With a 21-inch push mower, about 1.5–2 hours. With a 42–60 inch riding or zero-turn mower, roughly 30–60 minutes. Your speed and the number of obstacles make a big difference.",
       },
       {
         q: "How much does weekly lawn mowing cost?",
-        a: "Weekly service for an average suburban lot commonly runs $40–$60 per visit in 2026. Larger lots cost more. Many companies offer a small discount versus bi-weekly because regular cuts are quicker.",
+        a: "For an average suburban lot, weekly service usually runs $40–$60 per visit in 2026. Bigger lots cost more. Many companies charge a little less for weekly than for every-other-week service, since regular cuts go faster.",
       },
       {
         q: "What should a lawn care estimate include?",
-        a: "A good estimate lists the services (mowing, edging, string trimming, blowing off hard surfaces), the price per visit, the frequency, and any extras like bagging or seasonal cleanups. Get it in writing.",
+        a: "A good estimate lists each service (mowing, edging, string trimming and blowing off hard surfaces), the price per visit and how often they'll come. It should also mention extras like bagging or seasonal cleanups. Always get it in writing.",
       },
       {
         q: "How much should I charge to mow a half-acre lawn?",
-        a: "Most pros charge about $55–$75 to mow a half-acre of open lawn in 2026. Price it from your time: a half-acre takes roughly 20–35 minutes of mowing with a 42–48 inch deck, plus trimming and travel, times your hourly rate and overhead.",
+        a: "Most pros charge about $55–$75 for a half-acre of open lawn in 2026. To price it from your time: a half-acre takes roughly 20–35 minutes of mowing with a 42–48 inch deck. Add trimming and travel, then multiply by your hourly rate and overhead.",
       },
       {
         q: "How do you price lawn mowing per 1,000 square feet?",
-        a: "Divide the job price by the lawn's area in thousands of square feet. Many services land around $4–$8 per 1,000 sq ft for regular mowing, with a minimum charge for small lots. The pro tab shows your price per 1,000 sq ft automatically.",
+        a: "Divide the job price by the lawn size in thousands of square feet. For regular mowing, many services land around $4–$8 per 1,000 sq ft, with a minimum charge for small lots. The pro tab shows your price per 1,000 sq ft automatically.",
       },
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
     related: ["acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
 
