@@ -1256,7 +1256,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["mowing time calculator", "field work time"],
     cardDescription: "Acres per hour from width, speed and efficiency.",
     shortAnswer:
-      "Acres per hour = (working width in inches × speed in mph × efficiency) ÷ 99. A 60-inch deck at 6 mph and 80% efficiency covers about 2.91 acres per hour, so 5 acres takes roughly 1 hour 43 minutes. Enter your equipment below.",
+      "Acres per hour = (working width in inches × speed in mph × efficiency) ÷ 99. A 60-inch deck at 6 mph and 80% efficiency covers about 2.91 acres an hour, so 5 acres takes roughly 1 hour 43 minutes. Enter your mower or equipment below.",
     howTo: [
       "Enter the working width in inches or feet.",
       "Enter the ground speed in mph.",
@@ -1313,44 +1313,44 @@ export const calculators: Calculator[] = [
       footnote: "Mowing time only; add travel and trimming. Pick the column matching your acres per hour.",
     },
     tips: [
-      "Field efficiency accounts for overlap, turns and stops — 70–85% is realistic for most mowing.",
-      "Overlapping each pass by a few inches lowers your effective width and your acres per hour.",
-      "Faster is not always better: ground speed that scalps or leaves clumps costs time on cleanup.",
-      "For planning a route, add travel and trimming time on top of the mowing hours.",
+      "Efficiency covers the time lost to overlap, turns and stops. For most mowing, 70–85% is realistic.",
+      "Overlapping each pass by a few inches shrinks your real cutting width, and your acres per hour drop with it.",
+      "Going faster doesn't always save time. If you scalp the grass or leave clumps, the cleanup eats up what you gained.",
+      "When you plan a route, add travel and trimming time on top of the mowing hours.",
     ],
     faqs: [
       {
         q: "How many acres per hour does a zero-turn mow?",
-        a: "A 60-inch zero-turn at 6 mph and about 80% efficiency covers roughly 2.9 acres per hour. Wider decks and higher speeds raise that, but obstacles and trimming lower real-world output.",
+        a: "A 60-inch zero-turn at 6 mph and about 80% efficiency covers roughly 2.9 acres an hour. A wider deck or higher speed raises that, but obstacles and trimming bring the real number down.",
       },
       {
         q: "How long does it take to mow 1 acre with a push mower?",
-        a: "With a 21-inch push mower at walking speed (about 3 mph) and 75–80% efficiency, one acre takes roughly 1.5–2 hours, depending on the terrain and how much trimming is needed.",
+        a: "With a 21-inch push mower at walking speed (about 3 mph) and 75–80% efficiency, one acre takes roughly 1.5–2 hours. Hills and lots of trimming add to that.",
       },
       {
         q: "What is field efficiency?",
-        a: "Field efficiency is the share of time you are actually cutting at full width, after subtracting turns, overlap, refueling and stops. Mowing is typically 70–85% efficient; it is never 100%.",
+        a: "It's the share of your time spent actually cutting at full width, after you take out turns, overlap, refueling and stops. Mowing usually runs 70–85% efficient. It's never 100%.",
       },
       {
         q: "Where does the 99 (or 8.25) come from?",
-        a: "It converts units. There are 5,280 feet per mile and 43,560 square feet per acre. Width in inches × mph × efficiency ÷ 99 gives acres per hour; using width in feet, the divisor is 8.25.",
+        a: "It's a unit conversion. There are 5,280 feet in a mile and 43,560 square feet in an acre. Width in inches × mph × efficiency ÷ 99 gives you acres per hour. If you measure width in feet, divide by 8.25 instead.",
       },
       {
         q: "How many acres per hour can a 42-inch mower cut?",
-        a: "About 1.0–1.4 acres per hour. At 4 mph and 80% efficiency a 42-inch deck covers 1.36 acres per hour; faster speeds raise it, but obstacles and trimming lower real output. Width (in) × mph × efficiency ÷ 99.",
+        a: "About 1.0–1.4 acres an hour. At 4 mph and 80% efficiency, a 42-inch deck covers 1.36 acres per hour. Going faster raises it, while obstacles and trimming lower it. The formula is width (in) × mph × efficiency ÷ 99.",
       },
       {
         q: "How long does it take to mow 5 acres?",
-        a: "Roughly 1.5–3.5 hours depending on the mower. A 60-inch zero-turn at 6 mph (about 2.9 ac/hr) does 5 acres in around 1 hour 45 minutes; a 42-inch deck at 4 mph takes closer to 3.5 hours.",
+        a: "Roughly 1.5–3.5 hours, depending on the mower. A 60-inch zero-turn at 6 mph (about 2.9 acres an hour) finishes 5 acres in around 1 hour 45 minutes. A 42-inch deck at 4 mph takes closer to 3.5 hours.",
       },
       {
         q: "What speed should I mow at?",
-        a: "Most lawn mowing is done at 3–5 mph. Go faster on open, even ground; slow down in thick or wet grass to avoid scalping and clumping, which cost more time in cleanup than you save.",
+        a: "Most mowing happens at 3–5 mph. Speed up on open, even ground and slow down in thick or wet grass. Scalping and clumps take longer to clean up than the time you save by rushing.",
       },
     ],
     sources: ["ASABE D497 machinery management data"],
     related: ["lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
 
