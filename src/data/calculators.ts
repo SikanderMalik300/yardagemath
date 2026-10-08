@@ -446,7 +446,7 @@ export const calculators: Calculator[] = [
     cardDescription:
       "Slab cubic yards, bags vs ready-mix, and total cost per square foot.",
     shortAnswer:
-      "A 10 × 10 ft slab at 4 inches thick needs about 1.23 cubic yards of concrete (1.36 with 10% waste). At a 2026 average of roughly $160 per cubic yard delivered, that is about $220 in concrete before labor. Enter your size below for a full cost breakdown.",
+      "A 10 × 10 ft slab at 4 inches thick needs about 1.23 cubic yards of concrete, or 1.36 with 10% waste. At a 2026 average of roughly $160 per cubic yard delivered, that's about $220 in concrete before labor. Put in your own size below and you'll get the full cost breakdown.",
     howTo: [
       "Enter the slab length and width in feet and inches.",
       "Set the thickness (4 inches is standard for patios and walkways).",
@@ -507,39 +507,39 @@ export const calculators: Calculator[] = [
       footnote: "Bags shown for 4 inches (80-lb ≈ 0.60 cu ft). Above ~1 cu yd, ready-mix is cheaper and faster than bags.",
     },
     tips: [
-      "Add about 10% waste for spillage, uneven subgrade and over-excavation.",
-      "Bags make sense under roughly 1 cubic yard; above that, ready-mix delivery is usually cheaper and far less work.",
-      "Ask about the ready-mix short-load fee — small orders under about 3–4 cubic yards often carry a surcharge.",
-      "A 4-inch slab suits patios and walkways; driveways and garage floors are usually 5–6 inches. Confirm with local code.",
+      "Add about 10% for waste. Some concrete always spills, and the ground under a slab is never perfectly even.",
+      "Bags make sense for small jobs under about 1 cubic yard. Past that, ready-mix delivery is usually cheaper and saves your back.",
+      "Ask the ready-mix plant about its short-load fee. Orders under about 3–4 cubic yards often cost extra per yard.",
+      "4 inches is the normal thickness for patios and walkways. Driveways and garage floors are usually 5–6 inches. Check your local code before you pour.",
     ],
     faqs: [
       {
         q: "How much does a 20×20 concrete slab cost?",
-        a: "A 20×20 ft slab at 4 inches needs about 5 cubic yards of concrete. Material runs roughly $800–$1,000, and with finishing labor, rebar and base the installed cost is often $2,400–$4,000 depending on your area.",
+        a: "A 20×20 slab at 4 inches thick takes about 5 cubic yards of concrete. The concrete alone runs roughly $800–$1,000. Once you add finishing labor, rebar and a gravel base, most people pay somewhere around $2,400–$4,000, depending on where they live.",
       },
       {
         q: "Is it cheaper to mix bags or order ready-mix?",
-        a: "Bags win only for small pours under about 1 cubic yard. A 10×10 slab takes around 60 bags of 80-lb mix — heavy, slow work. Above a yard, ready-mix delivery is cheaper per yard and much faster.",
+        a: "Bags only win on small pours under about 1 cubic yard. A 10×10 slab already takes around 60 bags of 80-lb mix, and that's a lot of lifting and mixing. Above a yard, ready-mix costs less per yard and goes much faster.",
       },
       {
         q: "How thick should a concrete slab be?",
-        a: "Four inches is standard for patios, sheds and walkways. Driveways and garage floors are usually 5–6 inches, and heavy vehicle areas thicker. Always confirm against your local building code.",
+        a: "4 inches is standard for patios, shed bases and walkways. Driveways and garage floors are usually 5–6 inches, and areas for heavy trucks go thicker. Your local building code has the final say, so check it first.",
       },
       {
         q: "How many 80-lb bags of concrete are in a yard?",
-        a: "About 45 bags of 80-lb concrete mix make one cubic yard, since each bag yields roughly 0.60 cubic feet and a yard is 27 cubic feet. Sixty-pound bags take about 60 per yard.",
+        a: "About 45. Each 80-lb bag makes roughly 0.60 cubic feet of concrete, and a yard is 27 cubic feet. If you're using 60-lb bags, plan on about 60 per yard.",
       },
       {
         q: "Do I need rebar or wire mesh in a slab?",
-        a: "Most slabs benefit from #4 rebar on a grid or welded wire mesh to control cracking, especially driveways and anything bearing loads. Thin, lightly loaded pads can sometimes use fiber-reinforced mix instead.",
+        a: "For most slabs, yes. #4 rebar in a grid or welded wire mesh helps control cracking, especially on driveways and anything that carries weight. Small, lightly used pads can sometimes get by with fiber-reinforced concrete instead.",
       },
       {
         q: "What is the minimum ready-mix order?",
-        a: "Many suppliers deliver a minimum of about 1 cubic yard and add a short-load fee below roughly 3–4 yards. Ask when you order so a small slab does not cost more than you expect.",
+        a: "Many plants will deliver as little as about 1 cubic yard, but they add a short-load fee below roughly 3–4 yards. Ask about it when you call, so a small slab doesn't end up costing more than you planned.",
       },
       {
         q: "How much does a 30x30 concrete slab cost at 4 inches thick?",
-        a: "A 30 × 30 ft slab at 4 inches needs about 11.1 cubic yards (12.2 with 10% waste). Concrete alone runs roughly $1,800–$2,300; with labor, rebar and base, installed cost is often $8,000–$13,000 depending on your area and finish.",
+        a: "A 30 × 30 slab at 4 inches needs about 11.1 cubic yards, or 12.2 with 10% waste. The concrete alone costs roughly $1,800–$2,300. With labor, rebar and base, installed prices usually land between $8,000 and $13,000, depending on your area and the finish you pick.",
       },
     ],
     sources: ["2026 ready-mix price guides", "Quikrete/Sakrete bag yields"],
@@ -549,7 +549,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "square-yard-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Concrete slab cost calculator diagram with length, width and thickness labelled",
   },
 
