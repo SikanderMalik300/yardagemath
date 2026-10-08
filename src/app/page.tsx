@@ -3,14 +3,28 @@ import { buildMetadata, itemListJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ToolCard } from "@/components/layout/ToolCard";
 import { AdSlot } from "@/components/layout/AdSlot";
+import { HomeSearch } from "@/components/HomeSearch";
 import {
   calculators,
   categoryList,
   calculatorsInCategory,
   getCalculator,
   popularSlugs,
+  type CategorySlug,
 } from "@/data/calculators";
 import { fmtDate } from "@/lib/format";
+
+const CATEGORY_BLURB: Record<CategorySlug, string> = {
+  concrete: "Estimate slabs, blocks and full walls — cubic yards, block counts, mortar and cost.",
+  landscaping: "Work out soil, gravel, mulch, stone and square yards from your area and depth.",
+  lawn: "Price a mow, or work out how fast you can cover a lawn or field.",
+};
+
+const POPULAR_ANSWERS: { fact: string; href: string; cta: string }[] = [
+  { fact: "1 cubic yard covers 108 sq ft at 3 in deep", href: "/cubic-yard-calculator/", cta: "Cubic Yard Calculator" },
+  { fact: "112.5 blocks per 100 sq ft of wall", href: "/concrete-block-calculator/", cta: "Concrete Block Calculator" },
+  { fact: "≈45 bags of 80-lb concrete per cubic yard", href: "/concrete-slab-cost-calculator/", cta: "Slab Cost Calculator" },
+];
 
 export const metadata = buildMetadata({
   title: "YardageMath – Free Construction & Yard Calculators",
@@ -49,6 +63,28 @@ export default function HomePage() {
           seconds — with the formula shown so you can check every result. Built for homeowners,
           contractors and landscapers in the US.
         </p>
+        <HomeSearch />
+      </section>
+
+      {/* Popular answers (featured-snippet facts + internal links) */}
+      <section aria-labelledby="popular-answers" style={{ marginBottom: "2.5rem" }}>
+        <h2 id="popular-answers" style={{ fontSize: "1.125rem", marginBottom: "0.75rem" }}>
+          Popular answers
+        </h2>
+        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.5rem" }}>
+          {POPULAR_ANSWERS.map((a) => (
+            <li
+              key={a.href}
+              style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "baseline", fontSize: "0.9375rem" }}
+            >
+              <span style={{ color: "var(--text-secondary)" }}>{a.fact}</span>
+              <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>→</span>
+              <Link href={a.href} style={{ fontWeight: 600 }}>
+                {a.cta}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Most popular */}
@@ -70,6 +106,9 @@ export default function HomePage() {
               View all →
             </Link>
           </div>
+          <p style={{ color: "var(--text-secondary)", marginTop: "-0.5rem", marginBottom: "1rem", fontSize: "0.9375rem", maxWidth: "var(--reading-max-width)" }}>
+            {CATEGORY_BLURB[cat.slug]}
+          </p>
           <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
             {calculatorsInCategory(cat.slug).map((c) => (
               <ToolCard key={c.slug} cal={c} showCategory={false} />

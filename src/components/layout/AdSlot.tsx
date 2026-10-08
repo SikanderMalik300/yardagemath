@@ -15,10 +15,12 @@ type AdSlotProps = {
 export function AdSlot({ minHeight = 280, label = "Advertisement" }: AdSlotProps) {
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
 
-  // Reserve the space regardless, so the layout never shifts.
+  // Until AdSense is enabled, render nothing — no empty reserved gap (audit Task 3).
+  // Space is reserved only once ads are actually present, which is when CLS matters.
+  if (!adsenseId) return null;
+
   return (
     <div
-      aria-hidden={!adsenseId}
       style={{
         minHeight,
         display: "flex",
@@ -27,18 +29,14 @@ export function AdSlot({ minHeight = 280, label = "Advertisement" }: AdSlotProps
         margin: "1.5rem 0",
       }}
     >
-      {adsenseId ? (
-        // Real ad markup is injected later once AdSense is approved; the <ins> tag
-        // and lazy-loaded script live in the analytics/ads loader.
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block", width: "100%" }}
-          data-ad-client={adsenseId}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-          aria-label={label}
-        />
-      ) : null}
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block", width: "100%" }}
+        data-ad-client={adsenseId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+        aria-label={label}
+      />
     </div>
   );
 }
