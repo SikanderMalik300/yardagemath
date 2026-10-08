@@ -1366,7 +1366,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["gutter fall calculator", "gutter pitch"],
     cardDescription: "Gutter drop, pitch and downspouts for any run length.",
     shortAnswer:
-      'Gutters should slope at least ¼ inch per 10 feet toward a downspout. A 40-foot run at that pitch needs a 1-inch total drop from the high end to the low end. Enter your run length and downspout layout below for exact start and end heights.',
+      "Gutters should slope at least ¼ inch for every 10 feet toward a downspout. On a 40-foot run, that means a 1-inch total drop from the high end to the low end. Enter your run length and downspout layout below to get the exact start and end heights.",
     howTo: [
       "Enter the gutter run length in feet.",
       "Choose a slope — ¼ inch per 10 feet is the common minimum.",
@@ -1423,44 +1423,44 @@ export const calculators: Calculator[] = [
       footnote: "Rule of thumb: one downspout per 30–40 ft of run. At 35–40 ft, 1–2 depending on rainfall. Or size by roof area (2×3 in ≈ 600 sq ft; 3×4 in ≈ 1,200 sq ft).",
     },
     tips: [
-      "A minimum of ¼ inch of fall per 10 feet keeps water moving without the gutter looking crooked.",
-      "For runs over about 35–40 feet, peak in the middle and slope to a downspout at each end.",
-      "Too much slope looks off and lets water overshoot the outlet in heavy rain — more is not better.",
-      "Add a downspout roughly every 30–40 feet, or size by roof area for heavy rainfall.",
+      "A slope of ¼ inch per 10 feet keeps water moving without making the gutter look crooked.",
+      "On runs longer than about 35–40 feet, put the high point in the middle and slope down to a downspout at each end.",
+      "More slope isn't better. Too much looks off from the street, and in heavy rain the water can shoot right past the outlet.",
+      "Add a downspout about every 30–40 feet, or size them by roof area if you get a lot of heavy rain.",
     ],
     faqs: [
       {
         q: "What is the correct slope for gutters?",
-        a: "A minimum of ¼ inch of fall per 10 feet of run toward the downspout. Some installers use up to ½ inch per 10 feet for faster drainage. The gutter should always tilt toward its outlet.",
+        a: "At least ¼ inch of drop for every 10 feet of gutter, sloping toward the downspout. Some installers go up to ½ inch per 10 feet so it drains faster. Either way, the gutter should always tilt toward its outlet.",
       },
       {
         q: "Can gutters have too much slope?",
-        a: "Yes. Excessive slope is visually obvious against the roofline and can let water race past the downspout opening in a downpour. Stick to about ¼–½ inch per 10 feet unless a manufacturer says otherwise.",
+        a: "Yes. Too much slope is easy to spot against the roofline, and in a downpour the water can rush right past the downspout opening. Stick to about ¼–½ inch per 10 feet unless the manufacturer says otherwise.",
       },
       {
         q: "How many downspouts do I need?",
-        a: "As a rule of thumb, one downspout per 30–40 feet of gutter. For heavy rainfall or large roofs, size by drainage area — a 2×3-inch downspout handles roughly 600 sq ft of roof and a 3×4-inch about 1,200 sq ft.",
+        a: "A good rule is one downspout for every 30–40 feet of gutter. For big roofs or heavy rain, size them by roof area instead. A 2×3-inch downspout handles roughly 600 sq ft of roof, and a 3×4-inch about 1,200 sq ft.",
       },
       {
         q: "How do I measure gutter slope?",
-        a: "Measure the run length, multiply by the slope rate, and mark the high and low ends. For example, a 20-foot run at ¼ inch per 10 feet drops ½ inch end to end. Snap a chalk line between the marks.",
+        a: "Measure the length of the run, multiply by the slope, and mark the high and low ends on the fascia. For example, a 20-foot run at ¼ inch per 10 feet drops ½ inch from end to end. Snap a chalk line between the two marks and hang the gutter along it.",
       },
       {
         q: "Should long gutters slope both ways?",
-        a: "Yes. For runs longer than about 35–40 feet, set the high point in the middle and slope down to a downspout at each end. That halves the required drop and keeps the gutter closer to level.",
+        a: "Yes. On runs longer than about 35–40 feet, set the high point in the middle and slope down to a downspout at each end. That cuts the drop on each side in half and keeps the gutter looking close to level.",
       },
       {
         q: "How far apart should gutter downspouts be?",
-        a: "No more than about 30–40 feet apart along a run. Long runs drain better with a downspout at each end and a high point in the middle. In heavy-rain regions, add more and size them by roof area.",
+        a: "No more than about 30–40 feet apart. Long runs drain best with a downspout at each end and the high point in the middle. If you live somewhere with heavy rain, add more and size them by roof area.",
       },
       {
         q: "What is the minimum slope for a gutter?",
-        a: "A quarter inch of fall per 10 feet of run — just enough to keep water moving to the downspout. That is a 1-inch drop over a 40-foot run. Keep it under about ½ inch per 10 feet so it does not look crooked.",
+        a: "A quarter inch of drop for every 10 feet of run. That's just enough to keep water moving toward the downspout, and it works out to a 1-inch drop over 40 feet. Keep it under about ½ inch per 10 feet so the gutter doesn't look crooked.",
       },
     ],
     sources: ["gutter manufacturer installation guides", "SMACNA downspout sizing"],
     related: ["square-yard-calculator", "concrete-slab-cost-calculator", "cubic-yard-calculator"],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Gutter slope calculator diagram showing the high end, low end and total drop",
   },
 
