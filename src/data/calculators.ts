@@ -323,7 +323,7 @@ export const calculators: Calculator[] = [
     cardDescription:
       "How many CMU or cinder blocks a wall needs, plus mortar and cost.",
     shortAnswer:
-      "A standard 8×8×16 concrete block covers 8\" × 16\" of wall face, so you need 1.125 blocks per square foot — 112.5 blocks per 100 sq ft. Enter your wall length and height, subtract any openings, and get the block count, mortar bags and cost below.",
+      "Each standard 8×8×16 concrete block covers 8\" × 16\" of wall, so you need 1.125 blocks per square foot. That's 112.5 blocks for every 100 sq ft. Enter your wall length and height, take out any doors or windows, and you'll get the block count, mortar bags and cost below.",
     howTo: [
       "Enter the wall length and height in feet and inches.",
       "Pick your block size (8×8×16 is the standard).",
@@ -382,39 +382,39 @@ export const calculators: Calculator[] = [
       footnote: "Blocks include 5% waste; mortar at about 13 blocks per 80-lb bag.",
     },
     tips: [
-      "Order about 5% extra for breakage and cut blocks at corners and openings.",
-      "A standard CMU weighs roughly 30–38 lb; a lightweight block is lighter. Plan for help lifting.",
-      "One 80-lb bag of mortar mix lays about 13 standard blocks — buy a spare bag.",
-      "Blocks are usually sold on pallets; ask your supplier how many per pallet to save on handling.",
+      "Order about 5% extra. Some blocks always break, and you'll cut a few at corners and openings.",
+      "A standard CMU weighs about 30–38 lb, and lightweight blocks are lighter. Get a helper if you can; lifting a few hundred of them adds up fast.",
+      "One 80-lb bag of mortar mix lays about 13 standard blocks. Grab one spare bag so you don't run out mid-wall.",
+      "Concrete blocks usually come by the pallet. Ask your supplier how many are on one so you can order full pallets and keep delivery simple.",
     ],
     faqs: [
       {
         q: "How many blocks are in 100 square feet?",
-        a: "You need 112.5 standard 8×8×16 blocks per 100 square feet of wall, because each block covers 8\" × 16\" of face (1.125 blocks per square foot). Round up and add about 5% for waste.",
+        a: "You need 112.5 standard 8×8×16 blocks for every 100 square feet of wall. Each block covers 8\" × 16\" of face, which works out to 1.125 blocks per square foot. Round up and add about 5% for waste.",
       },
       {
         q: "What are the actual dimensions of an 8×8×16 block?",
-        a: "The nominal size is 8×8×16 inches, but the actual block measures about 7⅝ × 7⅝ × 15⅝ inches. The missing ⅜ inch on each side leaves room for a standard mortar joint.",
+        a: "8×8×16 is the nominal size. The real block measures about 7⅝ × 7⅝ × 15⅝ inches. The missing ⅜ inch is left for the mortar joint, so once it's laid, each block takes up a full 8\" × 16\".",
       },
       {
         q: "What is the difference between a cinder block and a concrete block?",
-        a: "Both are concrete masonry units (CMU). \"Cinder block\" is an older term for lighter blocks made with cinders or fly ash; modern blocks are usually heavier aggregate concrete. For estimating counts, treat them the same.",
+        a: "Both are concrete masonry units (CMU). \"Cinder block\" is the older name for lighter blocks made with cinders or fly ash, while most blocks sold today use heavier concrete aggregate. For counting how many you need, treat them exactly the same.",
       },
       {
         q: "How much mortar do I need per block?",
-        a: "About one 80-lb bag of mortar mix per 13 standard blocks laid with a ⅜-inch joint. For 142 blocks you would plan on roughly 11 bags. Mix in small batches so it does not set before use.",
+        a: "Plan on about one 80-lb bag of mortar mix for every 13 standard blocks, laid with a ⅜-inch joint. So 142 blocks needs roughly 11 bags. Mix small batches so the mortar doesn't set before you use it.",
       },
       {
         q: "How much does a concrete block weigh?",
-        a: "A standard 8×8×16 block weighs about 30–38 pounds depending on whether it is normal-weight or lightweight aggregate. Solid and larger 12-inch blocks weigh more.",
+        a: "A standard 8×8×16 block weighs about 30–38 pounds, depending on whether it's normal-weight or lightweight aggregate. Solid blocks and wider 12-inch blocks weigh more.",
       },
       {
         q: "How many blocks are on a pallet?",
-        a: "It varies by block size and supplier — typically 90 to 144 standard blocks per pallet. Confirm the exact count with your yard so your delivery and totals line up.",
+        a: "It depends on the block size and the supplier, but it's usually somewhere between 90 and 144 standard blocks per pallet. Ask your yard for the exact number so your order and delivery match.",
       },
       {
         q: "How many bags of mortar do I need for 100 blocks?",
-        a: "About 8 bags of 80-lb mortar mix for 100 standard blocks, since one bag lays roughly 13 blocks (100 ÷ 13 ≈ 7.7, rounded up). Buy one spare bag so you do not run short part-way through a course.",
+        a: "About 8 bags of 80-lb mortar mix. One bag lays roughly 13 blocks, and 100 ÷ 13 ≈ 7.7, so round up to 8. It's worth buying one spare bag so you don't run short halfway through a course.",
       },
     ],
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
@@ -424,7 +424,7 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "rip-rap-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Concrete block calculator diagram of a CMU wall with courses and openings",
   },
 
