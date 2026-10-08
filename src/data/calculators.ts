@@ -61,8 +61,11 @@ export interface Category {
   title: string;
   h1: string;
   metaDescription: string;
+  /** 150–250 word intro for the hub (audit Task 4). */
   intro: string;
-  whichOne: { q: string; a: string }[];
+  /** "Which calculator do I need?" table: project → tool slug. */
+  whichTool: { project: string; slug: string }[];
+  faqs: Faq[];
 }
 
 const UPDATED = "2026-10-07";
@@ -75,19 +78,29 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free concrete and block calculators: estimate concrete blocks, slab cost, and full block-wall materials with the math shown. US units, 2026 prices.",
     intro:
-      "Planning a slab, footing or block wall? These calculators turn your dimensions into the quantities suppliers actually sell: cubic yards of concrete, numbers of blocks, bags of mortar and total material cost. Every tool shows the formula with your numbers plugged in, so you can check the estimate before you order.",
-    whichOne: [
+      "Planning a slab, footing or block wall? These calculators turn your measurements into the quantities a supplier actually sells — cubic yards of ready-mix, numbers of CMU blocks, bags of mortar, cap blocks, core-fill grout and total material cost. They are built for US homeowners and contractors working in feet and inches, with 2026 price estimates you can edit to match a local quote. Concrete and masonry are unforgiving if you under-order: a slab poured short leaves a cold joint, and running out of block mid-course stops the job. So each tool adds a sensible waste allowance and rounds bags and blocks up. Every result comes with a “Show the math” panel, so you can follow the formula with your own numbers instead of trusting a black box, plus a reference table of common sizes for quick planning. Start with the Concrete Block Calculator for a fast block count, the Concrete Slab Cost Calculator for a pour, or the Block Wall Calculator when you need the full material and cost breakdown including grout and rebar. Always confirm structural work, footings and permits with your local building department.",
+    whichTool: [
+      { project: "Pouring a patio, shed base or driveway slab", slug: "concrete-slab-cost-calculator" },
+      { project: "Counting blocks for a wall", slug: "concrete-block-calculator" },
+      { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
+      { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
+    ],
+    faqs: [
       {
-        q: "I just need a block count",
-        a: "Use the Concrete Block Calculator — enter wall length and height, subtract openings, and get the number of blocks and mortar bags.",
+        q: "How much does concrete cost in 2026?",
+        a: "Ready-mix concrete runs about $145–$195 per cubic yard delivered in 2026, with a national average near $160. Small loads under 3–4 yards usually carry a short-load fee. Bagged concrete mix costs more per yard but makes sense for pours under about one cubic yard.",
       },
       {
-        q: "I'm pouring a slab or pad",
-        a: "Use the Concrete Slab Cost Calculator for cubic yards, bags vs ready-mix, and a price per square foot.",
+        q: "How do I estimate how many blocks I need?",
+        a: "Multiply wall length by height for the area, subtract any openings, then multiply by 1.125 blocks per square foot for standard 8×8×16 block (112.5 per 100 sq ft). Add about 5% for waste. The Concrete Block Calculator does this for you.",
       },
       {
-        q: "I'm building a full wall",
-        a: "Use the Block Wall Calculator for courses, blocks, cap blocks, mortar, core-fill grout, rebar and total cost.",
+        q: "How thick should a concrete slab be?",
+        a: "Four inches is standard for patios, walkways and shed bases; driveways and garage floors are usually 5–6 inches. Thicker slabs and heavier loads may need rebar or mesh. Always confirm against your local building code.",
+      },
+      {
+        q: "Do I need a permit for a block wall?",
+        a: "Often yes — especially retaining walls over about 3–4 feet, which usually need an engineer. Freestanding garden walls may not, but footing depth and reinforcement are set by local code. Check with your building department before you build.",
       },
     ],
   },
@@ -98,19 +111,31 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free landscaping calculators for cubic yards, topsoil, pea gravel, mulch, rock, square yards and riprap. Get yards, tons and bags from your area and depth.",
     intro:
-      "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount with a small buffer for waste — not a driveway full of extra material.",
-    whichOne: [
+      "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture from a tape measure. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount — with a small buffer for waste — instead of a driveway full of extra material or a second trip to the yard. They are made for US homeowners and landscapers working in feet and inches, and they cover the full range of bulk materials: topsoil for lawns and beds, mulch and compost, pea gravel and river rock, decomposed granite, sand and crushed stone, plus square yards for carpet, turf and sod, and riprap for erosion control. Each material carries a sensible default depth and a density you can adjust, and every result shows the formula with your numbers plus a reference table of common sizes. Bulk material is sold by the cubic yard and bagged material by the cubic foot, so each tool shows both. Start with the Cubic Yard Calculator for any loose material, the Topsoil or Landscape Material Calculator for beds, or the Square Yard Calculator for flooring.",
+    whichTool: [
+      { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
+      { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
+      { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
+      { project: "Any loose material by area and depth", slug: "cubic-yard-calculator" },
+      { project: "Carpet, turf or sod in square yards", slug: "square-yard-calculator" },
+      { project: "Riprap for a shoreline, ditch or slope", slug: "rip-rap-calculator" },
+    ],
+    faqs: [
       {
-        q: "I know the area and depth",
-        a: "Start with the Cubic Yard Calculator — it covers any loose material and shows coverage by depth.",
+        q: "How many cubic yards do I need?",
+        a: "Multiply the area in square feet by the depth in feet (depth in inches ÷ 12), then divide by 27. For example, 200 sq ft at 3 inches is 200 × 0.25 ÷ 27 ≈ 1.85 cubic yards. Add 5–10% for settling and waste.",
       },
       {
-        q: "I'm filling beds or a lawn",
-        a: "Use the Topsoil Calculator or the Landscape Material Calculator, which set sensible default depths per material.",
+        q: "How much does a cubic yard cover?",
+        a: "One cubic yard covers about 324 sq ft at 1 inch deep, 108 sq ft at 3 inches, or 81 sq ft at 4 inches. Divide 324 by your depth in inches to get the coverage for any material.",
       },
       {
-        q: "I'm measuring for carpet, turf or sod",
-        a: "Use the Square Yard Calculator to convert room sizes to square yards with a waste allowance.",
+        q: "Is it cheaper to buy in bulk or bags?",
+        a: "Bulk by the cubic yard is almost always cheaper above about one cubic yard. Bags are convenient for small beds and easy to transport, but you pay more per yard and do more lifting. Most yards have a delivery minimum.",
+      },
+      {
+        q: "How much does a yard of material weigh?",
+        a: "It depends on the material: roughly 1.1 tons for topsoil, 1.4 tons for gravel, 1.35 tons for sand or river rock, and about 0.3 tons for bark mulch. Moisture changes these, so confirm tonnage with your supplier.",
       },
     ],
   },
@@ -121,15 +146,28 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free lawn care calculators: estimate lawn mowing cost per cut and per season, and work out acres per hour for any mower from width, speed and efficiency.",
     intro:
-      "Whether you are a homeowner checking a quote or a lawn-care pro pricing a route, these tools put real numbers behind mowing. Estimate what a cut should cost by lawn size, or price a job from your mower width, speed and hourly rate.",
-    whichOne: [
+      "Whether you are a homeowner checking a quote or a lawn-care pro pricing a route, these tools put real numbers behind mowing instead of a guess. Homeowners can estimate what a cut should cost from lawn size using 2026 average rates; pros can price a job from mower deck width, ground speed, field efficiency and an hourly rate, and see the price per cut, per month and per season. The same math tells you how long a lawn or field will take: acres per hour equals working width in inches times speed in mph times efficiency, divided by 99. Field efficiency — the share of time actually spent cutting after turns, overlap and stops — is usually 70–85%, never 100%, so the tools build that in. They are made for US lawns measured in square feet or acres, and every result shows the formula with your numbers plus a reference table of common sizes. Start with the Lawn Mowing Cost Calculator to price a cut either way, or the Acres per Hour Calculator to work out mowing time for any mower or tractor.",
+    whichTool: [
+      { project: "What a mow should cost (homeowner)", slug: "lawn-mowing-cost-calculator" },
+      { project: "What to charge for a job (pro)", slug: "lawn-mowing-cost-calculator" },
+      { project: "How long a lawn or field takes to mow", slug: "acres-per-hour-calculator" },
+    ],
+    faqs: [
       {
-        q: "I want to know what mowing should cost",
-        a: "Use the homeowner tab of the Lawn Mowing Cost Calculator, based on lawn size and 2026 average rates.",
+        q: "How much does lawn mowing cost in 2026?",
+        a: "A typical visit runs about $40–$55 for a quarter-acre lot and $90 or more for a full acre, with a national average around $50–$60. Weekly service often costs a little less per visit than one-off cuts. Rates vary by region and terrain.",
       },
       {
-        q: "I need to price jobs as a pro",
-        a: "Use the pro tab of the Lawn Mowing Cost Calculator, or the Acres per Hour Calculator to estimate mowing time.",
+        q: "How many acres can I mow per hour?",
+        a: "Acres per hour = width (in) × speed (mph) × efficiency ÷ 99. A 60-inch zero-turn at 6 mph and 80% efficiency covers about 2.9 acres per hour; a 21-inch push mower at 3 mph does about 0.5 acres per hour.",
+      },
+      {
+        q: "How do pros price mowing jobs?",
+        a: "Estimate the mowing time from acres per hour, add trimming and travel time, multiply by your hourly rate, then add overhead for fuel and wear. Most add a minimum charge for small lots. The pro tab does this automatically.",
+      },
+      {
+        q: "How long does it take to mow an acre?",
+        a: "Roughly 30–60 minutes with a 42–60 inch riding or zero-turn mower, or 1.5–2 hours with a 21-inch push mower. Speed, obstacles and how much trimming is needed all change the time.",
       },
     ],
   },
