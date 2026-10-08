@@ -107,6 +107,25 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
                 <div key={i}>{line}</div>
               ))}
             </div>
+            {cal.formula.example2 && (
+              <>
+                <h3>Second example</h3>
+                <div
+                  style={{
+                    background: "var(--surface-muted)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-sm)",
+                    padding: "1rem",
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {cal.formula.example2.map((line, i) => (
+                    <div key={i}>{line}</div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
           <div style={{ paddingTop: "2.5rem" }}>
             <Diagram slug={cal.slug} category={cal.category} alt={cal.imageAlt} />
@@ -123,6 +142,7 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
         {cal.tables.map((t, i) => (
           <RefTableView key={i} table={t} />
         ))}
+        {cal.commonSizes && <RefTableView table={cal.commonSizes} />}
       </section>
 
       {/* 8. Tips / buying advice */}

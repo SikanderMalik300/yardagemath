@@ -23,6 +23,8 @@ export interface FormulaSpec {
   plain: string[];
   /** A worked example with real numbers. */
   example: string[];
+  /** A second worked example for a different common project (audit Task 1). */
+  example2?: string[];
 }
 
 export interface Calculator {
@@ -40,6 +42,8 @@ export interface Calculator {
   howTo: string[];
   formula: FormulaSpec;
   tables: RefTable[];
+  /** Precomputed "common sizes" table, shown in addition to the reference tables (audit Task 1). */
+  commonSizes?: RefTable;
   tips: string[];
   faqs: Faq[];
   /** Short source labels for the author box. */
@@ -173,6 +177,12 @@ export const calculators: Calculator[] = [
         "volume = 100 × 0.25 = 25 cu ft",
         "cubic yards = 25 ÷ 27 = 0.93 cu yd",
       ],
+      example2: [
+        "A 20 × 12 ft driveway, 4 inches deep:",
+        "area = 20 × 12 = 240 sq ft",
+        "volume = 240 × (4 ÷ 12) = 80 cu ft",
+        "cubic yards = 80 ÷ 27 = 2.96 cu yd",
+      ],
     },
     tables: [
       {
@@ -192,6 +202,17 @@ export const calculators: Calculator[] = [
         footnote: "1 cubic yard = 27 cubic feet, so coverage = 324 ÷ depth in inches.",
       },
     ],
+    commonSizes: {
+      title: "Cubic yards by area and depth",
+      columns: [{ label: "Area" }, { label: '2"', num: true }, { label: '3"', num: true }, { label: '4"', num: true }, { label: '6"', num: true }],
+      rows: [
+        ["100 sq ft", "0.62", "0.93", "1.23", "1.85"],
+        ["200 sq ft", "1.23", "1.85", "2.47", "3.70"],
+        ["500 sq ft", "3.09", "4.63", "6.17", "9.26"],
+        ["1,000 sq ft", "6.17", "9.26", "12.35", "18.52"],
+      ],
+      footnote: "Cubic yards = area × (depth ÷ 12) ÷ 27. Add 5–10% for waste.",
+    },
     tips: [
       "Order about 5–10% extra for settling, uneven ground and spillage.",
       "Bulk material is sold by the cubic yard; bagged material is sold by the cubic foot (commonly 2 cu ft for mulch, 0.75 cu ft for soil, 0.5 cu ft for gravel).",
@@ -222,6 +243,10 @@ export const calculators: Calculator[] = [
       {
         q: "Can a pickup truck carry a cubic yard?",
         a: "Most half-ton pickups can safely carry about one cubic yard of soil or gravel by weight, or two to three cubic yards of lighter mulch. Check your truck's payload rating before loading.",
+      },
+      {
+        q: "How many cubic yards are in a ton?",
+        a: "It depends on the material's density. One ton is about 0.7 cubic yards of gravel (1.4 t/yd³), 0.9 cubic yards of topsoil, or 0.5 cubic yards of wet concrete. Divide the tons by the material's tons-per-cubic-yard to get cubic yards.",
       },
     ],
     sources: ["USDA bulk-density references", "landscape-supply yard figures"],
@@ -278,6 +303,12 @@ export const calculators: Calculator[] = [
         "blocks = 120 × 1.125 = 135",
         "with 5% waste = 135 × 1.05 = 141.75 → 142 blocks",
       ],
+      example2: [
+        "A 40 ft × 4 ft garden wall, no openings, 5% waste:",
+        "net area = 40 × 4 = 160 sq ft",
+        "blocks = 160 × 1.125 = 180",
+        "with 5% waste = 180 × 1.05 = 189 blocks",
+      ],
     },
     tables: [
       {
@@ -297,6 +328,18 @@ export const calculators: Calculator[] = [
         footnote: "112.5 blocks per 100 sq ft. Add about 5% for waste.",
       },
     ],
+    commonSizes: {
+      title: "Common walls: blocks + mortar (incl. 5% waste)",
+      columns: [{ label: "Wall (L × H)" }, { label: "Blocks", num: true }, { label: "Mortar bags", num: true }],
+      rows: [
+        ["10 × 4 ft", 48, 4],
+        ["20 × 4 ft", 95, 8],
+        ["20 × 6 ft", 142, 11],
+        ["30 × 8 ft", 284, 22],
+        ["40 × 8 ft", 378, 30],
+      ],
+      footnote: "Blocks include 5% waste; mortar at about 13 blocks per 80-lb bag.",
+    },
     tips: [
       "Order about 5% extra for breakage and cut blocks at corners and openings.",
       "A standard CMU weighs roughly 30–38 lb; a lightweight block is lighter. Plan for help lifting.",
@@ -327,6 +370,10 @@ export const calculators: Calculator[] = [
       {
         q: "How many blocks are on a pallet?",
         a: "It varies by block size and supplier — typically 90 to 144 standard blocks per pallet. Confirm the exact count with your yard so your delivery and totals line up.",
+      },
+      {
+        q: "How many bags of mortar do I need for 100 blocks?",
+        a: "About 8 bags of 80-lb mortar mix for 100 standard blocks, since one bag lays roughly 13 blocks (100 ÷ 13 ≈ 7.7, rounded up). Buy one spare bag so you do not run short part-way through a course.",
       },
     ],
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
@@ -379,6 +426,12 @@ export const calculators: Calculator[] = [
         "with 10% waste = 1.36 cu yd (36.7 cu ft)",
         "bags of 80 lb = 36.7 ÷ 0.60 = 62 bags",
       ],
+      example2: [
+        "A 24 × 24 ft garage slab, 6 inches thick, 10% waste:",
+        "cubic yards = 576 × (6 ÷ 12) ÷ 27 = 10.67",
+        "with 10% waste = 11.73 cu yd (316.8 cu ft)",
+        "ready-mix at ~$160/yd ≈ $1,877 of concrete",
+      ],
     },
     tables: [
       {
@@ -399,6 +452,19 @@ export const calculators: Calculator[] = [
           "Volumes exclude waste. A 30×30 slab at 4 inches is about 11.1 cubic yards; add 10% and order 12.2.",
       },
     ],
+    commonSizes: {
+      title: "Common slabs: concrete + 80-lb bags",
+      columns: [{ label: "Slab size" }, { label: 'Cu yd @ 4"', num: true }, { label: '80-lb bags @ 4"', num: true }, { label: 'Cu yd @ 6"', num: true }],
+      rows: [
+        ["10 × 10 ft", "1.23", 56, "1.85"],
+        ["12 × 12 ft", "1.78", 80, "2.67"],
+        ["16 × 16 ft", "3.16", 143, "4.74"],
+        ["20 × 20 ft", "4.94", 223, "7.41"],
+        ["24 × 24 ft", "7.11", 320, "10.67"],
+        ["30 × 30 ft", "11.11", 500, "16.67"],
+      ],
+      footnote: "Bags shown for 4 inches (80-lb ≈ 0.60 cu ft). Above ~1 cu yd, ready-mix is cheaper and faster than bags.",
+    },
     tips: [
       "Add about 10% waste for spillage, uneven subgrade and over-excavation.",
       "Bags make sense under roughly 1 cubic yard; above that, ready-mix delivery is usually cheaper and far less work.",
@@ -429,6 +495,10 @@ export const calculators: Calculator[] = [
       {
         q: "What is the minimum ready-mix order?",
         a: "Many suppliers deliver a minimum of about 1 cubic yard and add a short-load fee below roughly 3–4 yards. Ask when you order so a small slab does not cost more than you expect.",
+      },
+      {
+        q: "How much does a 30x30 concrete slab cost at 4 inches thick?",
+        a: "A 30 × 30 ft slab at 4 inches needs about 11.1 cubic yards (12.2 with 10% waste). Concrete alone runs roughly $1,800–$2,300; with labor, rebar and base, installed cost is often $8,000–$13,000 depending on your area and finish.",
       },
     ],
     sources: ["2026 ready-mix price guides", "Quikrete/Sakrete bag yields"],
@@ -474,6 +544,12 @@ export const calculators: Calculator[] = [
         "volume = 200 × 0.333 = 66.7 cu ft",
         "cubic yards = 66.7 ÷ 27 = 2.47 cu yd",
       ],
+      example2: [
+        "A 4 × 8 ft raised bed, 12 inches deep:",
+        "area = 4 × 8 = 32 sq ft",
+        "volume = 32 × (12 ÷ 12) = 32 cu ft",
+        "cubic yards = 32 ÷ 27 = 1.19 cu yd",
+      ],
     },
     tables: [
       {
@@ -488,6 +564,17 @@ export const calculators: Calculator[] = [
         footnote: "One cubic yard covers about 81 sq ft at 4 inches deep.",
       },
     ],
+    commonSizes: {
+      title: "Topsoil by area and depth (cubic yards)",
+      columns: [{ label: "Area" }, { label: '2"', num: true }, { label: '3"', num: true }, { label: '4"', num: true }, { label: '6"', num: true }],
+      rows: [
+        ["100 sq ft", "0.62", "0.93", "1.23", "1.85"],
+        ["200 sq ft", "1.23", "1.85", "2.47", "3.70"],
+        ["500 sq ft", "3.09", "4.63", "6.17", "9.26"],
+        ["1,000 sq ft", "6.17", "9.26", "12.35", "18.52"],
+      ],
+      footnote: "At about 1.1 tons per cubic yard; 36 bags of 0.75 cu ft per yard.",
+    },
     tips: [
       "Buy screened topsoil for lawns and beds; unscreened fill dirt is for grading, not planting.",
       "Topsoil settles — order about 5% extra and rake it slightly high.",
@@ -514,6 +601,14 @@ export const calculators: Calculator[] = [
       {
         q: "How deep should topsoil be for grass?",
         a: "Aim for 4–6 inches of quality topsoil for a new lawn so roots can establish. For over-seeding an existing lawn, a ¼–½ inch top-dressing worked into the surface is enough.",
+      },
+      {
+        q: "How many cubic yards of topsoil for a 1,000 sq ft lawn?",
+        a: "For a new lawn at 4 inches deep, a 1,000 sq ft area needs about 12.3 cubic yards of topsoil. At 2 inches for a lighter re-grade it is about 6.2 cubic yards. Multiply the area by the depth in feet, then divide by 27.",
+      },
+      {
+        q: "Is topsoil sold by the yard or the ton?",
+        a: "Bulk topsoil is usually sold by the cubic yard; some suppliers sell by the ton. One cubic yard of screened topsoil weighs about 1.1 tons, so if you are quoted by the ton, multiply your cubic yards by roughly 1.1.",
       },
     ],
     sources: ["USDA topsoil bulk-density references"],
@@ -559,6 +654,12 @@ export const calculators: Calculator[] = [
         "volume = 144 × 0.25 = 36 cu ft",
         "cubic yards = 36 ÷ 27 = 1.33 cu yd ≈ 1.87 tons",
       ],
+      example2: [
+        "A 3 × 40 ft path, 2 inches deep:",
+        "area = 3 × 40 = 120 sq ft",
+        "volume = 120 × (2 ÷ 12) = 20 cu ft",
+        "cubic yards = 20 ÷ 27 = 0.74 cu yd ≈ 1.04 tons",
+      ],
     },
     tables: [
       {
@@ -572,6 +673,17 @@ export const calculators: Calculator[] = [
         footnote: "One cubic yard ≈ 54 bags of 0.5 cu ft (about 50 lb each).",
       },
     ],
+    commonSizes: {
+      title: "Pea gravel by area and depth (cubic yards)",
+      columns: [{ label: "Area" }, { label: '2"', num: true }, { label: '3"', num: true }, { label: '4"', num: true }],
+      rows: [
+        ["100 sq ft", "0.62", "0.93", "1.23"],
+        ["200 sq ft", "1.23", "1.85", "2.47"],
+        ["500 sq ft", "3.09", "4.63", "6.17"],
+        ["1,000 sq ft", "6.17", "9.26", "12.35"],
+      ],
+      footnote: "At about 1.4 tons per cubic yard; 54 bags of 0.5 cu ft per yard.",
+    },
     tips: [
       "Lay landscape fabric underneath to stop gravel sinking into the soil and to limit weeds.",
       "Use 2–3 inches for walkways, 3–4 inches for patios, and a deeper border edge to keep gravel contained.",
@@ -598,6 +710,14 @@ export const calculators: Calculator[] = [
       {
         q: "Do I need landscape fabric under pea gravel?",
         a: "It is strongly recommended. Fabric separates the gravel from the soil so stones do not sink, keeps the layer cleaner, and reduces weeds. Overlap seams and pin the edges.",
+      },
+      {
+        q: "How much pea gravel do I need for a 10x10 patio?",
+        a: "A 10 × 10 ft patio (100 sq ft) at 3 inches deep needs about 0.93 cubic yards of pea gravel, roughly 1.3 tons or 50 bags of 0.5 cubic feet. Add about 10% extra for raking and settling.",
+      },
+      {
+        q: "How many tons of pea gravel are in a cubic yard?",
+        a: "About 1.4 tons per cubic yard for dry pea gravel, so one cubic yard is roughly 2,800 lb. Moisture and stone size change the weight a little, so confirm tonnage with your supplier for large orders.",
       },
     ],
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
@@ -638,6 +758,11 @@ export const calculators: Calculator[] = [
         "area = 12 × 12 = 144 sq ft",
         "square yards = 144 ÷ 9 = 16 sq yd",
       ],
+      example2: [
+        "A 12 × 15 ft bedroom:",
+        "area = 12 × 15 = 180 sq ft",
+        "square yards = 180 ÷ 9 = 20 sq yd",
+      ],
     },
     tables: [
       {
@@ -657,6 +782,20 @@ export const calculators: Calculator[] = [
         footnote: "1 sq yd = 9 sq ft = 0.836 m².",
       },
     ],
+    commonSizes: {
+      title: "Square feet to square yards",
+      columns: [{ label: "Square feet", num: true }, { label: "Square yards", num: true }],
+      rows: [
+        [50, "5.6"],
+        [100, "11.1"],
+        [150, "16.7"],
+        [200, "22.2"],
+        [300, "33.3"],
+        [450, "50.0"],
+        [600, "66.7"],
+      ],
+      footnote: "Divide square feet by 9. Add about 10% for carpet waste and seams.",
+    },
     tips: [
       "Carpet is usually sold by the square yard; tile and laminate by the square foot — convert before you compare prices.",
       "Add about 10% for carpet waste, more for diagonal or patterned layouts.",
@@ -679,6 +818,18 @@ export const calculators: Calculator[] = [
       {
         q: "How many square yards is a 12×15 room?",
         a: "A 12 × 15 ft room is 180 square feet, which is 20 square yards (180 ÷ 9). Add a waste allowance when ordering carpet or turf.",
+      },
+      {
+        q: "How many square yards is a 10x12 room?",
+        a: "A 10 × 12 ft room is 120 square feet, which is 13.3 square yards (120 ÷ 9). Order about 10% extra for carpet waste, so roughly 14.7 square yards.",
+      },
+      {
+        q: "How do I convert square meters to square yards?",
+        a: "Multiply square meters by 1.196 to get square yards (1 m² = 1.196 sq yd), or divide square yards by 1.196 to go the other way. One square yard is about 0.836 square meters.",
+      },
+      {
+        q: "How much carpet do I need for a 12x12 room?",
+        a: "A 12 × 12 ft room is 144 square feet, or 16 square yards. With a typical 10% waste allowance, order about 17.6 square yards. Carpet comes in 12- and 15-foot-wide rolls, so a 12-foot room often cuts with little waste.",
       },
     ],
     sources: ["standard unit conversions (1 sq yd = 9 sq ft)"],
@@ -727,6 +878,12 @@ export const calculators: Calculator[] = [
         "volume = 108 × 0.25 = 27 cu ft",
         "cubic yards = 27 ÷ 27 = 1 cu yd (≈ 0.3 tons)",
       ],
+      example2: [
+        "A 3 ft × 60 ft bed edge, mulch at 3 inches:",
+        "area = 3 × 60 = 180 sq ft",
+        "volume = 180 × (3 ÷ 12) = 45 cu ft",
+        "cubic yards = 45 ÷ 27 = 1.67 cu yd",
+      ],
     },
     tables: [
       {
@@ -749,6 +906,17 @@ export const calculators: Calculator[] = [
         footnote: "Densities are nominal and vary with moisture; confirm tonnage with your supplier.",
       },
     ],
+    commonSizes: {
+      title: "Material by area and depth (cubic yards)",
+      columns: [{ label: "Area" }, { label: '2"', num: true }, { label: '3"', num: true }, { label: '4"', num: true }, { label: '6"', num: true }],
+      rows: [
+        ["100 sq ft", "0.62", "0.93", "1.23", "1.85"],
+        ["200 sq ft", "1.23", "1.85", "2.47", "3.70"],
+        ["500 sq ft", "3.09", "4.63", "6.17", "9.26"],
+        ["1,000 sq ft", "6.17", "9.26", "12.35", "18.52"],
+      ],
+      footnote: "Cubic yards are the same for any material; multiply by its tons per cubic yard for weight.",
+    },
     tips: [
       "Mulch 2–3 inches deep suppresses weeds and holds moisture; deeper can suffocate roots.",
       "Buying in bulk by the yard is usually far cheaper than bags above about 1 cubic yard.",
@@ -775,6 +943,14 @@ export const calculators: Calculator[] = [
       {
         q: "How much does river rock weigh per yard?",
         a: "River rock weighs roughly 1.35 tons (about 2,700 lb) per cubic yard. Confirm the exact figure with your supplier, as stone size and moisture change the weight.",
+      },
+      {
+        q: "How much mulch do I need for 200 square feet?",
+        a: "At the usual 3-inch depth, 200 square feet needs about 1.85 cubic yards of mulch — close to two bulk yards, or about 25 bags of 2 cubic feet. At 2 inches it is about 1.23 cubic yards.",
+      },
+      {
+        q: "How many bags of river rock equal a cubic yard?",
+        a: "About 54 bags of 0.5 cubic feet make one cubic yard (27 ÷ 0.5). River rock weighs roughly 1.35 tons per cubic yard, so a yard is over 2,700 lb — bulk delivery is usually cheaper for large areas.",
       },
     ],
     sources: ["landscape-supply density tables", "USDA references"],
@@ -828,6 +1004,12 @@ export const calculators: Calculator[] = [
         "mow hours = 0.25 ÷ 0.51 = 0.49 h",
         "+ 15 min trim/travel ≈ 0.74 h × $60 ≈ $45",
       ],
+      example2: [
+        "Pro job: 0.5 acre, 42-inch deck, 4 mph, 80% efficiency:",
+        "acres per hour = (42 × 4 × 0.8) ÷ 99 = 1.36",
+        "mow hours = 0.5 ÷ 1.36 = 0.37 h ≈ 22 min",
+        "add trim + travel, then × your hourly rate",
+      ],
     },
     tables: [
       {
@@ -840,9 +1022,21 @@ export const calculators: Calculator[] = [
           ["1 acre", "$90"],
           ["2 acres", "$150"],
         ],
-        footnote: "Planning estimates; local rates vary with region, terrain and service level.",
+        footnote: "Source: 2026 US lawn-care cost guides (e.g. LawnStarter). Local rates vary with region, terrain and service.",
       },
     ],
+    commonSizes: {
+      title: "Mowing time by lawn size (42-inch deck, 4 mph, 80%)",
+      columns: [{ label: "Lawn size" }, { label: "Acres", num: true }, { label: "Mowing time", num: true }],
+      rows: [
+        ["¼ acre", "0.25", "11 min"],
+        ["½ acre", "0.50", "22 min"],
+        ["¾ acre", "0.75", "33 min"],
+        ["1 acre", "1.00", "44 min"],
+        ["2 acres", "2.00", "1 h 28 min"],
+      ],
+      footnote: "Mowing time only, before trimming and travel, at 1.36 acres per hour.",
+    },
     tips: [
       "Weekly mowing usually costs less per visit than one-off cuts because the grass is easier to manage.",
       "Pros: factor in drive time and fuel — a cheap small lawn far away can lose money.",
@@ -869,6 +1063,14 @@ export const calculators: Calculator[] = [
       {
         q: "What should a lawn care estimate include?",
         a: "A good estimate lists the services (mowing, edging, string trimming, blowing off hard surfaces), the price per visit, the frequency, and any extras like bagging or seasonal cleanups. Get it in writing.",
+      },
+      {
+        q: "How much should I charge to mow a half-acre lawn?",
+        a: "Most pros charge about $55–$75 to mow a half-acre of open lawn in 2026. Price it from your time: a half-acre takes roughly 20–35 minutes of mowing with a 42–48 inch deck, plus trimming and travel, times your hourly rate and overhead.",
+      },
+      {
+        q: "How do you price lawn mowing per 1,000 square feet?",
+        a: "Divide the job price by the lawn's area in thousands of square feet. Many services land around $4–$8 per 1,000 sq ft for regular mowing, with a minimum charge for small lots. The pro tab shows your price per 1,000 sq ft automatically.",
       },
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
@@ -917,6 +1119,12 @@ export const calculators: Calculator[] = [
         "blocks = 120 sq ft × 1.125 × 1.05 = 142",
         "cap blocks = 360 ÷ 16 = 23",
       ],
+      example2: [
+        "A 50 ft × 3 ft wall, 8-inch block, capped, no openings:",
+        "courses = 36 ÷ 8 = 5 (rounds up from 4.5)",
+        "blocks = 150 sq ft × 1.125 × 1.05 = 178",
+        "cap blocks = 600 ÷ 16 = 38",
+      ],
     },
     tables: [
       {
@@ -936,6 +1144,17 @@ export const calculators: Calculator[] = [
         footnote: "Add cap blocks (one per 16 inches of length) and grout/rebar if reinforced.",
       },
     ],
+    commonSizes: {
+      title: "Common walls: blocks, caps & mortar (8-inch, incl. 5% waste)",
+      columns: [{ label: "Wall (L × H)" }, { label: "Blocks", num: true }, { label: "Caps", num: true }, { label: "Mortar bags", num: true }],
+      rows: [
+        ["20 × 4 ft", 95, 15, 8],
+        ["30 × 4 ft", 142, 23, 11],
+        ["40 × 6 ft", 284, 30, 22],
+        ["50 × 6 ft", 355, 38, 28],
+      ],
+      footnote: "Caps at one per 16 inches of length. Add grout and rebar if the wall is reinforced.",
+    },
     tips: [
       "A block wall needs a proper concrete footing below the frost line — budget for it separately.",
       "Reinforced walls need vertical rebar in grouted cores at the spacing your local code requires.",
@@ -962,6 +1181,14 @@ export const calculators: Calculator[] = [
       {
         q: "How many courses are in a 4-foot wall?",
         a: "Six courses. Each standard block course is 8 inches tall including the mortar joint, so 48 inches ÷ 8 = 6 courses.",
+      },
+      {
+        q: "How many blocks do I need for a 50-foot wall?",
+        a: "A 50 ft wall at 4 feet tall is 200 sq ft, about 225 blocks before waste or 237 with 5% (200 × 1.125 × 1.05). At 3 feet tall it is about 178 blocks. Add cap blocks at one per 16 inches of length.",
+      },
+      {
+        q: "How much does it cost to build a 50-foot block wall?",
+        a: "Materials for a 50 ft × 4 ft unreinforced wall often run $1,200–$2,400 (blocks, mortar, caps). Installed with footing, grout, rebar and labor, expect roughly $6,000–$12,000 depending on height, reinforcement and your area.",
       },
     ],
     sources: ["NCMA TEK grout-quantity tables", "Quikrete mortar coverage"],
@@ -1007,6 +1234,11 @@ export const calculators: Calculator[] = [
         "acres per hour = (60 × 6 × 0.8) ÷ 99 = 2.91",
         "5 acres ÷ 2.91 = 1.72 h = 1 h 43 min",
       ],
+      example2: [
+        "A 42-inch deck at 4 mph, 80% efficiency:",
+        "acres per hour = (42 × 4 × 0.8) ÷ 99 = 1.36",
+        "1 acre ÷ 1.36 = 0.74 h = 44 minutes",
+      ],
     },
     tables: [
       {
@@ -1028,6 +1260,17 @@ export const calculators: Calculator[] = [
         footnote: "Theoretical coverage × field efficiency. Real output is lower with obstacles and overlap.",
       },
     ],
+    commonSizes: {
+      title: "Time to cover an area by acres per hour",
+      columns: [{ label: "Area" }, { label: "@1.0 ac/hr", num: true }, { label: "@2.0 ac/hr", num: true }, { label: "@3.0 ac/hr", num: true }],
+      rows: [
+        ["½ acre", "30 min", "15 min", "10 min"],
+        ["1 acre", "1 h 00 min", "30 min", "20 min"],
+        ["2 acres", "2 h 00 min", "1 h 00 min", "40 min"],
+        ["5 acres", "5 h 00 min", "2 h 30 min", "1 h 40 min"],
+      ],
+      footnote: "Mowing time only; add travel and trimming. Pick the column matching your acres per hour.",
+    },
     tips: [
       "Field efficiency accounts for overlap, turns and stops — 70–85% is realistic for most mowing.",
       "Overlapping each pass by a few inches lowers your effective width and your acres per hour.",
@@ -1050,6 +1293,18 @@ export const calculators: Calculator[] = [
       {
         q: "Where does the 99 (or 8.25) come from?",
         a: "It converts units. There are 5,280 feet per mile and 43,560 square feet per acre. Width in inches × mph × efficiency ÷ 99 gives acres per hour; using width in feet, the divisor is 8.25.",
+      },
+      {
+        q: "How many acres per hour can a 42-inch mower cut?",
+        a: "About 1.0–1.4 acres per hour. At 4 mph and 80% efficiency a 42-inch deck covers 1.36 acres per hour; faster speeds raise it, but obstacles and trimming lower real output. Width (in) × mph × efficiency ÷ 99.",
+      },
+      {
+        q: "How long does it take to mow 5 acres?",
+        a: "Roughly 1.5–3.5 hours depending on the mower. A 60-inch zero-turn at 6 mph (about 2.9 ac/hr) does 5 acres in around 1 hour 45 minutes; a 42-inch deck at 4 mph takes closer to 3.5 hours.",
+      },
+      {
+        q: "What speed should I mow at?",
+        a: "Most lawn mowing is done at 3–5 mph. Go faster on open, even ground; slow down in thick or wet grass to avoid scalping and clumping, which cost more time in cleanup than you save.",
       },
     ],
     sources: ["ASABE D497 machinery management data"],
@@ -1089,6 +1344,12 @@ export const calculators: Calculator[] = [
         "drop = (40 ÷ 10) × 0.25 = 1 inch total",
         "so the far end sits 1 inch below the downspout end",
       ],
+      example2: [
+        "A 60 ft run with a downspout at each end:",
+        "slope from the middle: each side = 60 ÷ 2 = 30 ft",
+        "drop each side = (30 ÷ 10) × 0.25 = 0.75 inch",
+        "the centre sits 0.75 inch above each outlet",
+      ],
     },
     tables: [
       {
@@ -1109,6 +1370,17 @@ export const calculators: Calculator[] = [
         footnote: "For long runs, slope from a high mid-point down to a downspout at each end.",
       },
     ],
+    commonSizes: {
+      title: "Downspouts by gutter run",
+      columns: [{ label: "Run length" }, { label: "Downspouts" }],
+      rows: [
+        ["Up to 30 ft", "1"],
+        ["35–40 ft", "1–2"],
+        ["40–75 ft", "2"],
+        ["75–110 ft", "3"],
+      ],
+      footnote: "Rule of thumb: one downspout per 30–40 ft of run. At 35–40 ft, 1–2 depending on rainfall. Or size by roof area (2×3 in ≈ 600 sq ft; 3×4 in ≈ 1,200 sq ft).",
+    },
     tips: [
       "A minimum of ¼ inch of fall per 10 feet keeps water moving without the gutter looking crooked.",
       "For runs over about 35–40 feet, peak in the middle and slope to a downspout at each end.",
@@ -1135,6 +1407,14 @@ export const calculators: Calculator[] = [
       {
         q: "Should long gutters slope both ways?",
         a: "Yes. For runs longer than about 35–40 feet, set the high point in the middle and slope down to a downspout at each end. That halves the required drop and keeps the gutter closer to level.",
+      },
+      {
+        q: "How far apart should gutter downspouts be?",
+        a: "No more than about 30–40 feet apart along a run. Long runs drain better with a downspout at each end and a high point in the middle. In heavy-rain regions, add more and size them by roof area.",
+      },
+      {
+        q: "What is the minimum slope for a gutter?",
+        a: "A quarter inch of fall per 10 feet of run — just enough to keep water moving to the downspout. That is a 1-inch drop over a 40-foot run. Keep it under about ½ inch per 10 feet so it does not look crooked.",
       },
     ],
     sources: ["gutter manufacturer installation guides", "SMACNA downspout sizing"],
@@ -1175,6 +1455,12 @@ export const calculators: Calculator[] = [
         "cubic yards = 300 ÷ 27 = 11.1",
         "tons = 11.1 × 1.5 = 16.7 tons",
       ],
+      example2: [
+        "A 30 ft × 8 ft slope, 18 inches thick:",
+        "area = 30 × 8 = 240 sq ft",
+        "volume = 240 × (18 ÷ 12) = 360 cu ft",
+        "cubic yards = 360 ÷ 27 = 13.33 ≈ 20 tons",
+      ],
     },
     tables: [
       {
@@ -1192,6 +1478,17 @@ export const calculators: Calculator[] = [
         footnote: "Classes and gradations vary by state DOT. Confirm against your local specification.",
       },
     ],
+    commonSizes: {
+      title: "Riprap tons by area and thickness (1.5 t/yd³)",
+      columns: [{ label: "Area" }, { label: '12"', num: true }, { label: '18"', num: true }, { label: '24"', num: true }],
+      rows: [
+        ["100 sq ft", "5.6", "8.3", "11.1"],
+        ["200 sq ft", "11.1", "16.7", "22.2"],
+        ["300 sq ft", "16.7", "25.0", "33.3"],
+        ["500 sq ft", "27.8", "41.7", "55.6"],
+      ],
+      footnote: "At about 1.5 tons per cubic yard; one ton covers roughly 18 sq ft at 12 inches thick.",
+    },
     tips: [
       "Place riprap over a filter fabric or granular filter layer to stop the soil beneath from washing out.",
       "Make the layer at least 1.5 times the largest stone thick so stones interlock.",
@@ -1218,6 +1515,14 @@ export const calculators: Calculator[] = [
       {
         q: "How much does riprap cost per ton?",
         a: "Riprap commonly runs about $45–$100 per ton delivered in 2026, depending on stone class, quarry distance and quantity. Get a local quote, since haul distance drives much of the cost.",
+      },
+      {
+        q: "How many tons of riprap do I need per square foot?",
+        a: "At 12 inches thick and about 1.5 tons per cubic yard, you need roughly 0.056 tons (about 110 lb) per square foot. So 100 square feet at 12 inches is about 5.6 tons. Thicker layers need proportionally more.",
+      },
+      {
+        q: "How much riprap do I need for a 100-foot shoreline?",
+        a: "For a 100 ft shoreline 6 ft wide (600 sq ft) at 18 inches thick, you need about 33 cubic yards or 50 tons of riprap at 1.5 t/yd³. Confirm the thickness and stone class with your engineer or local permit.",
       },
     ],
     sources: ["state DOT riprap gradation tables", "USACE/FHWA riprap design guidance"],
