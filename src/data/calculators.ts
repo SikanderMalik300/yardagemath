@@ -900,7 +900,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Yards, tons and bags for mulch, rock, soil, sand and more.",
     shortAnswer:
-      "One yard of mulch covers about 108 sq ft at 3 inches deep; one yard of rock or soil covers about 81 sq ft at 4 inches. Pick your material below — mulch, rock, decomposed granite, compost, topsoil, sand or gravel — and get cubic yards, tons and bags.",
+      "One yard of mulch covers about 108 sq ft at 3 inches deep. One yard of rock or soil covers about 81 sq ft at 4 inches. Pick your material below (mulch, rock, decomposed granite, compost, topsoil, sand or gravel) and you'll get cubic yards, tons and bags.",
     howTo: [
       "Choose your material; the depth default updates to a sensible value.",
       "Select the shape and enter the area dimensions.",
@@ -959,39 +959,39 @@ export const calculators: Calculator[] = [
       footnote: "Cubic yards are the same for any material; multiply by its tons per cubic yard for weight.",
     },
     tips: [
-      "Mulch 2–3 inches deep suppresses weeds and holds moisture; deeper can suffocate roots.",
-      "Buying in bulk by the yard is usually far cheaper than bags above about 1 cubic yard.",
-      "Refresh bark mulch yearly; it breaks down. Rock and decomposed granite last for years.",
-      "River rock and gravel are heavy — confirm tonnage and delivery access for large orders.",
+      "Spread mulch 2–3 inches deep. That's enough to block weeds and hold moisture, and going deeper can smother plant roots.",
+      "Above about 1 cubic yard, buying in bulk is usually much cheaper than bags.",
+      "Bark mulch breaks down, so plan to top it up every year. Rock and decomposed granite last for years.",
+      "River rock and gravel are heavy. On big orders, confirm the tonnage and make sure the delivery truck can reach your spot.",
     ],
     faqs: [
       {
         q: "How much does a yard of mulch cover?",
-        a: "One cubic yard of mulch covers about 108 sq ft at 3 inches deep, or 162 sq ft at 2 inches. Spread it 2–3 inches thick for effective weed control and moisture retention.",
+        a: "About 108 sq ft at 3 inches deep, or 162 sq ft at 2 inches. Keep it 2–3 inches thick if you want it to stop weeds and hold moisture.",
       },
       {
         q: "How deep should mulch be?",
-        a: "Two to three inches is ideal. That is enough to block light to weeds and slow evaporation without smothering plant roots. Keep mulch a couple of inches away from trunks and stems.",
+        a: "2 to 3 inches. That blocks light to weeds and slows evaporation without smothering the roots. Keep the mulch a couple of inches back from tree trunks and plant stems.",
       },
       {
         q: "How many bags of mulch are in a yard?",
-        a: "A cubic yard equals 13.5 bags of 2-cubic-foot mulch (27 ÷ 2). Round up to 14 bags to match one bulk yard. Above a yard or two, bulk delivery is usually cheaper.",
+        a: "13.5 bags of 2-cubic-foot mulch (27 ÷ 2). Round up to 14 to match one bulk yard. Once you need more than a yard or two, bulk delivery is usually cheaper.",
       },
       {
         q: "Is it cheaper to buy mulch in bulk?",
-        a: "Yes, almost always above about one cubic yard. Bulk mulch by the yard typically costs a fraction of the equivalent bagged price, though bags are convenient for small beds and easier to transport.",
+        a: "Almost always, once you need more than about one cubic yard. Bulk mulch usually costs a fraction of the same amount in bags. Bags still make sense for small beds and are easier to haul home.",
       },
       {
         q: "How much does river rock weigh per yard?",
-        a: "River rock weighs roughly 1.35 tons (about 2,700 lb) per cubic yard. Confirm the exact figure with your supplier, as stone size and moisture change the weight.",
+        a: "About 1.35 tons per cubic yard, or roughly 2,700 lb. Stone size and moisture change the weight, so ask your supplier for their exact number.",
       },
       {
         q: "How much mulch do I need for 200 square feet?",
-        a: "At the usual 3-inch depth, 200 square feet needs about 1.85 cubic yards of mulch — close to two bulk yards, or about 25 bags of 2 cubic feet. At 2 inches it is about 1.23 cubic yards.",
+        a: "At the usual 3-inch depth, 200 square feet needs about 1.85 cubic yards of mulch. That's close to two bulk yards, or about 25 bags of 2 cubic feet. At 2 inches, it's about 1.23 cubic yards.",
       },
       {
         q: "How many bags of river rock equal a cubic yard?",
-        a: "About 54 bags of 0.5 cubic feet make one cubic yard (27 ÷ 0.5). River rock weighs roughly 1.35 tons per cubic yard, so a yard is over 2,700 lb — bulk delivery is usually cheaper for large areas.",
+        a: "About 54 bags of 0.5 cubic feet (27 ÷ 0.5). River rock weighs around 1.35 tons per cubic yard, so one yard is over 2,700 lb. For large areas, bulk delivery is usually cheaper.",
       },
     ],
     sources: ["landscape-supply density tables", "USDA references"],
@@ -1001,7 +1001,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "rip-rap-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Landscape material calculator diagram with material depth over an area",
   },
 
