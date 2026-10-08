@@ -146,6 +146,26 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
         {cal.commonSizes && <RefTableView table={cal.commonSizes} />}
       </section>
 
+      {/* Personal note from the owner (shown only where provided) */}
+      {cal.fromSikander && (
+        <aside
+          aria-label="A note from Sikander"
+          style={{
+            marginTop: "2rem",
+            borderLeft: "3px solid var(--brand)",
+            borderRadius: "var(--radius-sm)",
+            background: "var(--brand-soft)",
+            padding: "1rem 1.125rem",
+            maxWidth: "var(--reading-max-width)",
+          }}
+        >
+          <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
+            From Sikander
+          </div>
+          <p style={{ margin: 0, color: "var(--text-secondary)" }}>{cal.fromSikander}</p>
+        </aside>
+      )}
+
       {/* 8. Tips / buying advice */}
       <section className="prose" style={{ marginTop: "1.5rem" }}>
         <h2>Tips &amp; buying advice</h2>

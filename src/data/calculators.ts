@@ -45,6 +45,8 @@ export interface Calculator {
   /** Precomputed "common sizes" table, shown in addition to the reference tables (audit Task 1). */
   commonSizes?: RefTable;
   tips: string[];
+  /** Optional personal note from the owner, shown above Tips (audit: humanized content). */
+  fromSikander?: string;
   faqs: Faq[];
   /** Short source labels for the author box. */
   sources: string[];
@@ -194,7 +196,7 @@ export const calculators: Calculator[] = [
     cardDescription:
       "Area and depth to cubic yards, tons and bags for any loose material.",
     shortAnswer:
-      "1 cubic yard = 27 cubic feet. It covers 324 sq ft at 1 inch deep, 108 sq ft at 3 inches, or 81 sq ft at 4 inches. Enter your area and depth below to get cubic yards, tons and bags for gravel, soil, mulch or concrete.",
+      "1 cubic yard = 27 cubic feet. Spread it 1 inch deep and it covers 324 sq ft. At 3 inches you get 108 sq ft, and at 4 inches it's 81 sq ft. Just enter your area and depth below and you'll see the cubic yards, tons and bags you need for gravel, soil, mulch or concrete.",
     howTo: [
       "Pick the shape of your area: rectangle, circle or triangle.",
       "Enter the dimensions in feet and inches.",
@@ -251,40 +253,41 @@ export const calculators: Calculator[] = [
       ],
       footnote: "Cubic yards = area × (depth ÷ 12) ÷ 27. Add 5–10% for waste.",
     },
+    fromSikander: "When I measured my own garden beds, I kept mixing up the depth. I'd measure in inches but think in feet, and my numbers came out way off. That's why this calculator asks for depth in inches and length in feet. My tip: measure depth with a ruler in inches, then let the calculator do the converting.",
     tips: [
-      "Order about 5–10% extra for settling, uneven ground and spillage.",
-      "Bulk material is sold by the cubic yard; bagged material is sold by the cubic foot (commonly 2 cu ft for mulch, 0.75 cu ft for soil, 0.5 cu ft for gravel).",
-      "Many yards have a delivery minimum — buying in bulk usually beats bags above roughly 1 cubic yard.",
-      "A standard pickup bed holds roughly 2–3 cubic yards of mulch but only about 1 cubic yard of gravel or soil by weight.",
+      "Order about 5–10% extra. Material settles, ground is never perfectly flat, and some always ends up on the driveway.",
+      "Bulk material is sold by the cubic yard, and bags are sold by the cubic foot. Mulch bags are usually 2 cu ft, soil 0.75 cu ft and gravel 0.5 cu ft.",
+      "Lots of yards have a delivery minimum. Once you need more than roughly 1 cubic yard, bulk usually works out cheaper than bags.",
+      "A standard pickup bed fits about 2–3 cubic yards of mulch. Gravel and soil are much heavier, so weight limits you to about 1 cubic yard.",
     ],
     faqs: [
       {
         q: "Is a cubic yard 3×3×3?",
-        a: "Yes. A cubic yard is a cube 3 feet on each side: 3 ft × 3 ft × 3 ft = 27 cubic feet. That is why you divide cubic feet by 27 to get cubic yards.",
+        a: "Yep. Picture a box that's 3 feet on every side: 3 ft × 3 ft × 3 ft = 27 cubic feet. That's why you divide cubic feet by 27 to get cubic yards.",
       },
       {
         q: "How many square feet does a cubic yard cover?",
-        a: "It depends on depth. One cubic yard covers 324 sq ft at 1 inch, 108 sq ft at 3 inches, and 81 sq ft at 4 inches. Divide 324 by the depth in inches to get the coverage.",
+        a: "It comes down to how deep you go. One cubic yard covers 324 sq ft at 1 inch, 108 sq ft at 3 inches and 81 sq ft at 4 inches. Quick trick: divide 324 by your depth in inches.",
       },
       {
         q: "How many bags of mulch are in a yard?",
-        a: "A cubic yard is 27 cubic feet, so it equals 13.5 bags of 2-cubic-foot mulch. Round up to 14 bags to fully replace one bulk yard.",
+        a: "A yard holds 27 cubic feet, so that's 13.5 bags of the 2-cubic-foot kind. I'd round up to 14 bags if you want to fully match one bulk yard.",
       },
       {
         q: "How do I convert cubic feet to cubic yards?",
-        a: "Divide the number of cubic feet by 27. For example, 54 cubic feet ÷ 27 = 2 cubic yards. To go the other way, multiply cubic yards by 27.",
+        a: "Just divide your cubic feet by 27. Say you've got 54 cubic feet: 54 ÷ 27 = 2 cubic yards. Going the other way? Multiply cubic yards by 27.",
       },
       {
         q: "How much does a cubic yard weigh?",
-        a: "Weight depends on the material. A cubic yard is roughly 1.4 tons of gravel, 1.1 tons of topsoil, 2 tons of wet concrete, or just 0.3 tons of bark mulch. Moisture changes these figures.",
+        a: "It depends on the material. Gravel comes in around 1.4 tons per cubic yard, topsoil about 1.1 tons, wet concrete about 2 tons, and bark mulch only 0.3 tons. Wet material weighs more, so treat these as ballpark figures.",
       },
       {
         q: "Can a pickup truck carry a cubic yard?",
-        a: "Most half-ton pickups can safely carry about one cubic yard of soil or gravel by weight, or two to three cubic yards of lighter mulch. Check your truck's payload rating before loading.",
+        a: "Most half-ton pickups can safely carry about one cubic yard of soil or gravel. Mulch is much lighter, so you can usually fit two to three cubic yards. Check your truck's payload rating before you load up.",
       },
       {
         q: "How many cubic yards are in a ton?",
-        a: "It depends on the material's density. One ton is about 0.7 cubic yards of gravel (1.4 t/yd³), 0.9 cubic yards of topsoil, or 0.5 cubic yards of wet concrete. Divide the tons by the material's tons-per-cubic-yard to get cubic yards.",
+        a: "It depends on how dense the material is. A ton of gravel is about 0.7 cubic yards (1.4 t/yd³), a ton of topsoil about 0.9 cubic yards, and a ton of wet concrete about 0.5 cubic yards. To work it out, divide the tons by the material's tons-per-cubic-yard.",
       },
     ],
     sources: ["USDA bulk-density references", "landscape-supply yard figures"],
@@ -295,7 +298,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "rip-rap-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Cubic yard calculator diagram showing length, width and depth of an area",
   },
 
