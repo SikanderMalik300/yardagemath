@@ -13,30 +13,30 @@ function url(path: string): string {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = [
-    "/",
-    "/about/",
-    "/contact/",
-    "/how-we-calculate/",
-    "/sitemap/",
-    "/privacy-policy/",
-    "/terms/",
-    "/disclaimer/",
-    "/affiliate-disclosure/",
+  // Honest per-page lastmod: pages whose content changed on 2026-10-08 carry that
+  // date; untouched pages keep 2026-10-07.
+  const staticPages: { path: string; lastmod: string }[] = [
+    { path: "/", lastmod: "2026-10-08" },
+    { path: "/about/", lastmod: "2026-10-08" },
+    { path: "/sitemap/", lastmod: "2026-10-08" },
+    { path: "/how-we-calculate/", lastmod: "2026-10-07" },
+    { path: "/contact/", lastmod: "2026-10-07" },
+    { path: "/privacy-policy/", lastmod: "2026-10-07" },
+    { path: "/terms/", lastmod: "2026-10-07" },
+    { path: "/disclaimer/", lastmod: "2026-10-07" },
+    { path: "/affiliate-disclosure/", lastmod: "2026-10-07" },
   ];
-
-  const now = "2026-10-07";
 
   return [
     ...staticPages.map((p) => ({
-      url: url(p),
-      lastModified: now,
+      url: url(p.path),
+      lastModified: p.lastmod,
       changeFrequency: "monthly" as const,
-      priority: p === "/" ? 1 : 0.5,
+      priority: p.path === "/" ? 1 : 0.5,
     })),
     ...categoryList.map((c) => ({
       url: url(`/${c.slug}/`),
-      lastModified: now,
+      lastModified: "2026-10-08",
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

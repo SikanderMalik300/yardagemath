@@ -68,7 +68,7 @@ export interface Category {
   faqs: Faq[];
 }
 
-const UPDATED = "2026-10-07";
+const UPDATED = "2026-10-08";
 
 export const categories: Record<CategorySlug, Category> = {
   concrete: {
@@ -1380,7 +1380,7 @@ export const calculators: Calculator[] = [
       example: [
         "A 40 ft run at ¼ inch per 10 ft:",
         "drop = (40 ÷ 10) × 0.25 = 1 inch total",
-        "so the far end sits 1 inch below the downspout end",
+        "so the far end sits 1 inch higher than the downspout end",
       ],
       example2: [
         "A 60 ft run with a downspout at each end:",
