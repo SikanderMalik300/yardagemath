@@ -70,8 +70,6 @@ export interface Category {
   faqs: Faq[];
 }
 
-const UPDATED = "2026-10-08";
-
 export const categories: Record<CategorySlug, Category> = {
   concrete: {
     slug: "concrete",
@@ -1476,7 +1474,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["riprap calculator", "riprap tons"],
     cardDescription: "Riprap cubic yards and tons by area and layer thickness.",
     shortAnswer:
-      "A 50 ft × 6 ft area covered 12 inches thick needs about 11.1 cubic yards of riprap, roughly 16.7 tons at 1.5 tons per cubic yard. Layer thickness is usually 1.5–2 times the stone's D50 size. Enter your dimensions and stone class below.",
+      "A 50 ft × 6 ft area covered 12 inches thick needs about 11.1 cubic yards of riprap. At 1.5 tons per cubic yard, that's roughly 16.7 tons. The layer is usually 1.5–2 times the stone's D50 size. Enter your measurements and stone class below.",
     howTo: [
       "Enter the length and width (or slope length) of the area.",
       "Set the layer thickness in inches.",
@@ -1531,46 +1529,46 @@ export const calculators: Calculator[] = [
       footnote: "At about 1.5 tons per cubic yard; one ton covers roughly 18 sq ft at 12 inches thick.",
     },
     tips: [
-      "Place riprap over a filter fabric or granular filter layer to stop the soil beneath from washing out.",
-      "Make the layer at least 1.5 times the largest stone thick so stones interlock.",
-      "Key the toe of a slope in below grade so the blanket does not slide.",
-      "Order about 10% extra — angular stone leaves voids and placement is never perfectly even.",
+      "Lay riprap over filter fabric or a gravel filter layer. Without it, the soil underneath washes out through the gaps.",
+      "Make the layer at least 1.5 times as thick as the largest stone so the stones lock together.",
+      "On a slope, dig the bottom edge (the toe) in below grade so the whole layer doesn't slide.",
+      "Order about 10% extra. Angular stone leaves gaps, and no one places it perfectly even.",
     ],
     faqs: [
       {
         q: "How much area does a ton of riprap cover?",
-        a: "At 12 inches thick and about 1.5 tons per cubic yard, one ton covers roughly 18 square feet. Thinner layers cover more; a 6-inch layer covers about 36 square feet per ton.",
+        a: "At 12 inches thick and about 1.5 tons per cubic yard, one ton covers roughly 18 square feet. A thinner layer covers more. At 6 inches, it's about 36 square feet per ton.",
       },
       {
         q: "What size riprap do I need?",
-        a: "It depends on flow velocity and slope. Light classes (4–6 inch stone) suit gentle ditches and low banks; heavier classes resist faster water. For channel or shoreline work, follow an engineer's or DOT specification.",
+        a: "It depends on how fast the water moves and how steep the slope is. Light classes (4–6 inch stone) work for gentle ditches and low banks, and heavier classes hold up against faster water. For streams, channels or shorelines, follow an engineer's or your state DOT's specification.",
       },
       {
         q: "How thick should riprap be?",
-        a: "Make the blanket at least 1.5 to 2 times the D50 stone size, and never less than the largest stone. A typical light riprap layer is about 12 inches; heavier classes are 18 inches or more.",
+        a: "At least 1.5 to 2 times the D50 stone size, and never thinner than your biggest stone. A typical light riprap layer is about 12 inches. Heavier classes run 18 inches or more.",
       },
       {
         q: "Do I need filter fabric under riprap?",
-        a: "Almost always. A geotextile filter fabric or granular filter layer keeps the underlying soil from eroding out through the stone voids, which would undermine the riprap. Overlap seams generously.",
+        a: "Almost always. Filter fabric or a gravel filter layer keeps the soil underneath from washing out through the gaps between the stones. If that soil goes, the riprap sinks. Overlap the seams generously.",
       },
       {
         q: "How much does riprap cost per ton?",
-        a: "Riprap commonly runs about $45–$100 per ton delivered in 2026, depending on stone class, quarry distance and quantity. Get a local quote, since haul distance drives much of the cost.",
+        a: "In 2026, riprap usually runs about $45–$100 per ton delivered. Where you land depends on the stone class, how far the quarry is and how much you buy. Get a local quote, since the trucking distance drives a lot of the price.",
       },
       {
         q: "How many tons of riprap do I need per square foot?",
-        a: "At 12 inches thick and about 1.5 tons per cubic yard, you need roughly 0.056 tons (about 110 lb) per square foot. So 100 square feet at 12 inches is about 5.6 tons. Thicker layers need proportionally more.",
+        a: "At 12 inches thick and about 1.5 tons per cubic yard, you need roughly 0.056 tons, or about 110 lb, per square foot. So 100 square feet at 12 inches comes to about 5.6 tons. Thicker layers need proportionally more.",
       },
       {
         q: "How much riprap do I need for a 100-foot shoreline?",
-        a: "For a 100 ft shoreline 6 ft wide (600 sq ft) at 18 inches thick, you need about 33 cubic yards or 50 tons of riprap at 1.5 t/yd³. Confirm the thickness and stone class with your engineer or local permit.",
+        a: "For a 100-foot shoreline 6 feet wide (600 sq ft) at 18 inches thick, you need about 33 cubic yards, or 50 tons, at 1.5 tons per cubic yard. Check the thickness and stone class with your engineer or permit office before you order.",
       },
     ],
     sources: ["state DOT riprap gradation tables", "USACE/FHWA riprap design guidance"],
     warning:
       "For shoreline or channel work, follow your engineer or local permit requirements.",
     related: ["cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Rip rap calculator diagram of a stone layer on a slope with thickness labelled",
   },
 ];
