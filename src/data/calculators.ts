@@ -675,7 +675,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["calculating pea gravel", "pea gravel estimator"],
     cardDescription: "Pea gravel cubic yards, tons and bags by area and depth.",
     shortAnswer:
-      "A 12 × 12 ft area at 3 inches deep needs about 1.33 cubic yards of pea gravel, roughly 1.87 tons or 72 bags of 0.5 cu ft. Use 2–3 inches for paths, 3–4 inches for patios. Enter your dimensions below for an exact amount.",
+      "A 12 × 12 ft area at 3 inches deep needs about 1.33 cubic yards of pea gravel. That's roughly 1.87 tons, or 72 bags of 0.5 cu ft. Go 2–3 inches deep for paths and 3–4 inches for patios. Enter your measurements below for the exact amount.",
     howTo: [
       "Choose the shape and enter your area dimensions.",
       "Set the depth — use a preset for a path, patio or playground.",
@@ -726,39 +726,39 @@ export const calculators: Calculator[] = [
       footnote: "At about 1.4 tons per cubic yard; 54 bags of 0.5 cu ft per yard.",
     },
     tips: [
-      "Lay landscape fabric underneath to stop gravel sinking into the soil and to limit weeds.",
-      "Use 2–3 inches for walkways, 3–4 inches for patios, and a deeper border edge to keep gravel contained.",
-      "Pea gravel shifts underfoot; for driveways a crushed, angular stone compacts better.",
-      "Order about 10% extra — pea gravel spreads and settles more than angular stone.",
+      "Put landscape fabric down first. It keeps the gravel from sinking into the dirt and cuts down on weeds.",
+      "Use 2–3 inches for walkways and 3–4 inches for patios, with a solid edge to keep the stones from wandering.",
+      "Pea gravel rolls around underfoot. For a driveway, crushed angular stone packs down much better.",
+      "Order about 10% extra. Pea gravel spreads out and settles more than crushed stone does.",
     ],
     faqs: [
       {
         q: "How much area does a ton of pea gravel cover?",
-        a: "About 100 sq ft at 2 inches deep, or roughly 65–70 sq ft at 3 inches, since a ton is about 0.7 cubic yards. Coverage drops as depth increases.",
+        a: "About 115 sq ft at 2 inches deep, or roughly 77 sq ft at 3 inches. A ton is about 0.71 cubic yards (1 ÷ 1.4), so the deeper you go, the less ground it covers.",
       },
       {
         q: "How deep should pea gravel be for a patio?",
-        a: "Three to four inches over a compacted base and landscape fabric gives a stable patio surface. Shallower layers shift and show the ground underneath; deeper layers feel loose to walk on.",
+        a: "3 to 4 inches over a compacted base and landscape fabric makes a patio that feels solid. Go thinner and the stones shift and the ground shows through. Go much thicker and it feels loose to walk on.",
       },
       {
         q: "Is pea gravel or crushed stone better for a driveway?",
-        a: "Crushed, angular stone is better for driveways because its edges lock together and resist rutting. Smooth, round pea gravel migrates under tires and is better suited to patios and paths.",
+        a: "Crushed stone. Its sharp edges lock together and hold up under tires. Smooth, round pea gravel gets pushed around by cars, so it's better for patios and garden paths.",
       },
       {
         q: "How many bags of pea gravel are in a yard?",
-        a: "About 54 bags of 0.5 cubic feet make one cubic yard (27 ÷ 0.5). At roughly 50 lb per bag that is over 2,600 lb, so bulk delivery is usually cheaper above a yard.",
+        a: "About 54 bags of 0.5 cubic feet make one cubic yard (27 ÷ 0.5). At roughly 50 lb a bag, that's over 2,600 lb, so above a yard, bulk delivery usually costs less.",
       },
       {
         q: "Do I need landscape fabric under pea gravel?",
-        a: "It is strongly recommended. Fabric separates the gravel from the soil so stones do not sink, keeps the layer cleaner, and reduces weeds. Overlap seams and pin the edges.",
+        a: "I'd always use it. Fabric keeps the gravel from sinking into the soil, keeps the layer clean and cuts down on weeds. Overlap the seams and pin down the edges.",
       },
       {
         q: "How much pea gravel do I need for a 10x10 patio?",
-        a: "A 10 × 10 ft patio (100 sq ft) at 3 inches deep needs about 0.93 cubic yards of pea gravel, roughly 1.3 tons or 50 bags of 0.5 cubic feet. Add about 10% extra for raking and settling.",
+        a: "A 10 × 10 patio (100 sq ft) at 3 inches deep needs about 0.93 cubic yards of pea gravel. That's roughly 1.3 tons or 50 bags of 0.5 cubic feet. Add about 10% for raking and settling.",
       },
       {
         q: "How many tons of pea gravel are in a cubic yard?",
-        a: "About 1.4 tons per cubic yard for dry pea gravel, so one cubic yard is roughly 2,800 lb. Moisture and stone size change the weight a little, so confirm tonnage with your supplier for large orders.",
+        a: "About 1.4 tons for dry pea gravel, so one cubic yard weighs around 2,800 lb. Wet stone and bigger stone sizes change that a bit, so check with your supplier on large orders.",
       },
     ],
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
@@ -768,7 +768,7 @@ export const calculators: Calculator[] = [
       "rip-rap-calculator",
       "topsoil-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Pea gravel calculator diagram of a patio area with gravel depth labelled",
   },
 
