@@ -565,7 +565,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["loam calculator", "how much topsoil do i need"],
     cardDescription: "Topsoil cubic yards, tons and bags for lawns and beds.",
     shortAnswer:
-      "A 20 × 10 ft bed at 4 inches deep needs about 2.47 cubic yards of topsoil (roughly 2.7 tons). For a new lawn, spread 4–6 inches; for top-dressing, ¼–½ inch. Enter your area and depth below for cubic yards, tons and bags.",
+      "A 20 × 10 ft bed at 4 inches deep needs about 2.47 cubic yards of topsoil, which is roughly 2.7 tons. For a new lawn, spread 4–6 inches. For top-dressing an existing lawn, ¼–½ inch is plenty. Enter your area and depth below to get cubic yards, tons and bags.",
     howTo: [
       "Choose your shape and enter the area dimensions, or use raised-bed mode (length × width × height).",
       "Set the depth — 4 inches is a common default for beds.",
@@ -617,39 +617,39 @@ export const calculators: Calculator[] = [
       footnote: "At about 1.1 tons per cubic yard; 36 bags of 0.75 cu ft per yard.",
     },
     tips: [
-      "Buy screened topsoil for lawns and beds; unscreened fill dirt is for grading, not planting.",
-      "Topsoil settles — order about 5% extra and rake it slightly high.",
-      "Bulk delivery beats bags above roughly 1 cubic yard (a yard is about 36 bags of 0.75 cu ft).",
-      "For raised beds, mix topsoil with compost rather than using pure topsoil.",
+      "Buy screened topsoil for lawns and garden beds. Unscreened fill dirt is for grading and filling holes, not for growing things.",
+      "Topsoil settles after a rain or two, so order about 5% extra and rake it a little high.",
+      "Once you need more than about 1 cubic yard, bulk delivery beats bags. One yard is about 36 bags of 0.75 cu ft.",
+      "For raised beds, mix topsoil with compost instead of filling them with straight topsoil.",
     ],
     faqs: [
       {
         q: "How much area does a yard of topsoil cover?",
-        a: "One cubic yard of topsoil covers about 324 sq ft at 1 inch, 108 sq ft at 3 inches, or 81 sq ft at 4 inches deep. Divide 324 by your depth in inches to get the coverage.",
+        a: "One cubic yard covers about 324 sq ft at 1 inch deep, 108 sq ft at 3 inches, or 81 sq ft at 4 inches. For any depth, divide 324 by the depth in inches.",
       },
       {
         q: "How much does a yard of topsoil weigh?",
-        a: "Screened topsoil weighs roughly 1.1 tons (about 2,200 lb) per cubic yard when moderately dry. Wet or heavy clay soil can weigh noticeably more, so treat tonnage as an estimate.",
+        a: "Screened topsoil weighs about 1.1 tons per cubic yard, or roughly 2,200 lb, when it's fairly dry. Wet soil or heavy clay can weigh a lot more, so treat the tonnage as an estimate.",
       },
       {
         q: "What is the difference between topsoil, garden soil and fill dirt?",
-        a: "Topsoil is screened surface soil for general use; garden soil is topsoil amended with compost for planting; fill dirt is subsoil with little organic matter, used to raise or level ground, not to grow in.",
+        a: "Topsoil is screened soil from the surface layer, good for general use. Garden soil is topsoil with compost mixed in, made for planting. Fill dirt is subsoil with very little organic matter. Use it to raise or level ground, not to grow grass or plants in.",
       },
       {
         q: "How many bags of topsoil make a yard?",
-        a: "At 0.75 cubic feet per bag, one cubic yard equals 36 bags (27 ÷ 0.75). At 1 cubic foot per bag it is 27 bags. Above a yard, bulk delivery is usually cheaper.",
+        a: "With 0.75-cubic-foot bags, you need 36 bags for one cubic yard (27 ÷ 0.75). With 1-cubic-foot bags, it's 27. Past a yard, bulk delivery is usually the cheaper way to go.",
       },
       {
         q: "How deep should topsoil be for grass?",
-        a: "Aim for 4–6 inches of quality topsoil for a new lawn so roots can establish. For over-seeding an existing lawn, a ¼–½ inch top-dressing worked into the surface is enough.",
+        a: "For a new lawn, aim for 4–6 inches of good topsoil so the roots have room to grow. If you're just overseeding an existing lawn, a ¼–½ inch top-dressing raked into the surface is enough.",
       },
       {
         q: "How many cubic yards of topsoil for a 1,000 sq ft lawn?",
-        a: "For a new lawn at 4 inches deep, a 1,000 sq ft area needs about 12.3 cubic yards of topsoil. At 2 inches for a lighter re-grade it is about 6.2 cubic yards. Multiply the area by the depth in feet, then divide by 27.",
+        a: "At 4 inches deep, a 1,000 sq ft lawn needs about 12.3 cubic yards of topsoil. At 2 inches, for a lighter regrade, it's about 6.2 cubic yards. The math is area times depth in feet, divided by 27.",
       },
       {
         q: "Is topsoil sold by the yard or the ton?",
-        a: "Bulk topsoil is usually sold by the cubic yard; some suppliers sell by the ton. One cubic yard of screened topsoil weighs about 1.1 tons, so if you are quoted by the ton, multiply your cubic yards by roughly 1.1.",
+        a: "Most suppliers sell bulk topsoil by the cubic yard, but some sell it by the ton. One cubic yard of screened topsoil weighs about 1.1 tons, so if you get a price per ton, multiply your cubic yards by about 1.1.",
       },
     ],
     sources: ["USDA topsoil bulk-density references"],
@@ -659,7 +659,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "lawn-mowing-cost-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
 
