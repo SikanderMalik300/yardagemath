@@ -784,7 +784,7 @@ export const calculators: Calculator[] = [
     secondaryKeywords: ["yard measurement", "square feet to square yards"],
     cardDescription: "Convert feet and rooms to square yards, with waste and cost.",
     shortAnswer:
-      "1 square yard = 9 square feet = 0.836 square meters. A 12 × 12 ft room is 144 sq ft, which is 16 square yards. Add each room below, include a waste allowance for carpet, and get the total square yards and cost.",
+      "1 square yard = 9 square feet = 0.836 square meters. A 12 × 12 ft room is 144 sq ft, which works out to 16 square yards. Add each room below, include a little extra for carpet waste, and you'll get the total square yards and cost.",
     howTo: [
       "Enter each room or area as length × width in feet, or type a square-foot value directly.",
       'Use "Add another area" for multiple rooms.',
@@ -838,39 +838,39 @@ export const calculators: Calculator[] = [
       footnote: "Divide square feet by 9. Add about 10% for carpet waste and seams.",
     },
     tips: [
-      "Carpet is usually sold by the square yard; tile and laminate by the square foot — convert before you compare prices.",
-      "Add about 10% for carpet waste, more for diagonal or patterned layouts.",
-      "Measure each room separately and add them, rather than averaging, to avoid under-ordering.",
-      "Round up to the nearest half or full square yard when ordering rolls.",
+      "Carpet is usually priced by the square yard, while tile and laminate are priced by the square foot. Convert before you compare prices.",
+      "Add about 10% for carpet waste, and more if the layout is diagonal or the carpet has a pattern.",
+      "Measure every room on its own and add them up. Averaging rooms together is how people end up short.",
+      "Round up to the nearest half or full square yard when you order from a roll.",
     ],
     faqs: [
       {
         q: "How many square feet are in a square yard?",
-        a: "There are 9 square feet in a square yard, because a yard is 3 feet and 3 × 3 = 9. To convert square feet to square yards, divide by 9.",
+        a: "9. A yard is 3 feet, and 3 × 3 = 9. To turn square feet into square yards, divide by 9.",
       },
       {
         q: "How do I calculate square yards for carpet?",
-        a: "Measure each room's length and width in feet, multiply to get square feet, add the rooms together, then divide by 9. Add about 10% for waste and seams before ordering.",
+        a: "Measure each room's length and width in feet and multiply them to get square feet. Add all the rooms together, then divide by 9. Add about 10% for waste and seams before you order.",
       },
       {
         q: "What is the difference between square yards and cubic yards?",
-        a: "Square yards measure area (a flat surface, like carpet). Cubic yards measure volume (a quantity of material with depth, like concrete or soil). They are not interchangeable.",
+        a: "Square yards measure a flat area, like the floor you're covering with carpet. Cubic yards measure volume, meaning material with depth, like concrete or soil. You can't swap one for the other.",
       },
       {
         q: "How many square yards is a 12×15 room?",
-        a: "A 12 × 15 ft room is 180 square feet, which is 20 square yards (180 ÷ 9). Add a waste allowance when ordering carpet or turf.",
+        a: "A 12 × 15 room is 180 square feet, which is 20 square yards (180 ÷ 9). Add a waste allowance when you order carpet or turf.",
       },
       {
         q: "How many square yards is a 10x12 room?",
-        a: "A 10 × 12 ft room is 120 square feet, which is 13.3 square yards (120 ÷ 9). Order about 10% extra for carpet waste, so roughly 14.7 square yards.",
+        a: "A 10 × 12 room is 120 square feet, or 13.3 square yards (120 ÷ 9). With about 10% extra for carpet waste, order roughly 14.7 square yards.",
       },
       {
         q: "How do I convert square meters to square yards?",
-        a: "Multiply square meters by 1.196 to get square yards (1 m² = 1.196 sq yd), or divide square yards by 1.196 to go the other way. One square yard is about 0.836 square meters.",
+        a: "Multiply square meters by 1.196 to get square yards, since 1 m² = 1.196 sq yd. To go back, divide square yards by 1.196. One square yard is about 0.836 square meters.",
       },
       {
         q: "How much carpet do I need for a 12x12 room?",
-        a: "A 12 × 12 ft room is 144 square feet, or 16 square yards. With a typical 10% waste allowance, order about 17.6 square yards. Carpet comes in 12- and 15-foot-wide rolls, so a 12-foot room often cuts with little waste.",
+        a: "A 12 × 12 room is 144 square feet, or 16 square yards. With the usual 10% for waste, order about 17.6 square yards. Carpet comes in 12- and 15-foot-wide rolls, so a 12-foot room often cuts with very little waste.",
       },
     ],
     sources: ["standard unit conversions (1 sq yd = 9 sq ft)"],
@@ -879,7 +879,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: UPDATED,
+    lastUpdated: "2026-10-09",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
 
