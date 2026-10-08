@@ -516,6 +516,33 @@
   }
 }
 
+/* Print stylesheet for calculators (audit Task 6): keep inputs, results and the
+   math; drop nav, footer, ads and the sticky bar. */
+@media print {
+  header,
+  footer,
+  .site-footer,
+  .sticky-result-bar,
+  .sticky-result-spacer,
+  .skip-link {
+    display: none !important;
+  }
+  /* Expand "Show the math" and FAQ answers so they print */
+  details > *:not(summary) {
+    display: block !important;
+  }
+  .calculator-layout {
+    grid-template-columns: 1fr !important;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  body {
+    background: #fff;
+  }
+}
+
 /* Mobile sticky result bar (audit Task 5) — shown under 768px only */
 .sticky-result-bar {
   display: none;

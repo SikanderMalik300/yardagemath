@@ -11,23 +11,26 @@ export const metadata = buildMetadata({
 });
 
 const TRUST = [
-  { label: "About", href: "/about/" },
-  { label: "Contact", href: "/contact/" },
-  { label: "How We Calculate", href: "/how-we-calculate/" },
+  { label: "About", href: "/about/", desc: "Who builds and tests the calculators, and how." },
+  { label: "Contact", href: "/contact/", desc: "Send a question, suggestion or correction." },
+  { label: "How We Calculate", href: "/how-we-calculate/", desc: "Every formula and figure with its source and date." },
 ];
 const LEGAL = [
-  { label: "Privacy Policy", href: "/privacy-policy/" },
-  { label: "Terms of Use", href: "/terms/" },
-  { label: "Disclaimer", href: "/disclaimer/" },
-  { label: "Affiliate Disclosure", href: "/affiliate-disclosure/" },
+  { label: "Privacy Policy", href: "/privacy-policy/", desc: "What we collect, cookies, analytics and your rights." },
+  { label: "Terms of Use", href: "/terms/", desc: "The terms governing use of the site." },
+  { label: "Disclaimer", href: "/disclaimer/", desc: "Results are estimates for planning only." },
+  { label: "Affiliate Disclosure", href: "/affiliate-disclosure/", desc: "How the site may earn from some links." },
 ];
 
-function LinkList({ items }: { items: { label: string; href: string }[] }) {
+function LinkList({ items }: { items: { label: string; href: string; desc: string }[] }) {
   return (
-    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.5rem" }}>
+    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.75rem" }}>
       {items.map((i) => (
         <li key={i.href}>
-          <Link href={i.href}>{i.label}</Link>
+          <Link href={i.href} style={{ fontWeight: 600 }}>
+            {i.label}
+          </Link>
+          <div style={{ fontSize: "0.8125rem", color: "var(--text-secondary)" }}>{i.desc}</div>
         </li>
       ))}
     </ul>
@@ -42,10 +45,10 @@ export default function SitemapPage() {
         All calculators &amp; pages
       </h1>
       <p style={{ color: "var(--text-secondary)", maxWidth: "var(--reading-max-width)", marginBottom: "2rem" }}>
-        Every tool and page on YardageMath, grouped by category.
+        Every tool and page on YardageMath, grouped by category, with a one-line description.
       </p>
 
-      <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+      <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
         {categoryList.map((cat) => (
           <section key={cat.slug}>
             <h2 style={{ fontSize: "1.125rem", marginBottom: "0.75rem" }}>
@@ -55,6 +58,7 @@ export default function SitemapPage() {
               items={calculatorsInCategory(cat.slug).map((c) => ({
                 label: c.h1.replace(/\s*\(.*\)/, ""),
                 href: `/${c.slug}/`,
+                desc: c.cardDescription,
               }))}
             />
           </section>
