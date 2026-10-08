@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata, aboutPageJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -19,6 +20,34 @@ export default function AboutPage() {
     >
       <JsonLd data={aboutPageJsonLd()} />
 
+      <figure
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          margin: "0 0 1.5rem",
+          padding: "1rem",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-md)",
+          background: "var(--surface)",
+        }}
+      >
+        <Image
+          src="/brand/profile-v1.jpg"
+          alt={`${SITE.founder}, founder of ${SITE.name}`}
+          width={88}
+          height={88}
+          style={{ borderRadius: "50%", flexShrink: 0 }}
+        />
+        <figcaption style={{ margin: 0 }}>
+          <strong style={{ color: "var(--text-primary)" }}>{SITE.founder}</strong>
+          <br />
+          <span style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
+            Founder &amp; maintainer · <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          </span>
+        </figcaption>
+      </figure>
+
       <h2>Why I built this</h2>
       <p>
         I&apos;m {SITE.founder}, and I built YardageMath after one too many trips back to the
@@ -28,13 +57,27 @@ export default function AboutPage() {
         where the numbers come from.
       </p>
 
-      <h2>How the calculators are made and checked</h2>
-      <p>
-        Every formula lives in tested code, not buried in a web page, and each one has unit tests
-        that confirm the worked examples you see on the page. The densities, bag yields, coverage
-        figures and slope rules come from manufacturer and industry sources — each listed, with
-        the date it was checked, on <Link href="/how-we-calculate/">How We Calculate</Link>.
-      </p>
+      <h2>How I build and test each calculator</h2>
+      <p>Every calculator goes through the same three steps before it is published:</p>
+      <ol>
+        <li>
+          <strong>Formulas cross-checked against sources.</strong> Each formula is checked against
+          manufacturer data sheets (for example, Quikrete bag yields and Quikrete mortar coverage)
+          and industry references (NCMA/CMHA for masonry, ASABE for field efficiency, FHWA/USACE for
+          riprap). Every figure is listed with its source and date on{" "}
+          <Link href="/how-we-calculate/">How We Calculate</Link>.
+        </li>
+        <li>
+          <strong>Hand-calculated worked examples.</strong> I work each example by hand and show it
+          on the page, so you can follow the math with your own numbers in the &ldquo;Show the
+          math&rdquo; panel.
+        </li>
+        <li>
+          <strong>Automated unit tests for every formula.</strong> The formulas live in tested
+          TypeScript, not buried in a web page. A test suite confirms the worked example on each page
+          matches the code to two decimals, so a change can&apos;t quietly break a result.
+        </li>
+      </ol>
       <p>
         I review every page before it goes live. When a figure can vary — like material weight or
         local prices — the calculator lets you edit it, and I say so plainly rather than pretending
@@ -49,11 +92,11 @@ export default function AboutPage() {
         work — please confirm with a professional and your local building department.
       </p>
 
-      <h2>Editorial policy &amp; corrections</h2>
+      <h2>Corrections</h2>
       <p>
-        Corrections are genuinely welcome. If a number looks off or a source has changed, email{" "}
-        <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and I&apos;ll check it. When content
-        changes meaningfully, I update the &ldquo;Last updated&rdquo; date on that page.
+        Found an error? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and I&apos;ll fix it
+        and note the update date on the page. Corrections are genuinely welcome — accurate numbers
+        matter more than being right the first time.
       </p>
 
       <h2>Get in touch</h2>
