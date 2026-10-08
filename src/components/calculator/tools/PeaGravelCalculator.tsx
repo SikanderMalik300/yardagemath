@@ -56,7 +56,7 @@ export function PeaGravelCalculator() {
 
   const summary = `Pea gravel: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd ≈ ${fmtNumber(
     round(result.tons, 2)
-  )} tons (${result.bags} bags of 0.5 cu ft). — YardageMath`;
+  )} tons (${result.bags} bags of 0.5 cu ft). — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

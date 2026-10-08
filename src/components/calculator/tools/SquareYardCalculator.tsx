@@ -50,7 +50,7 @@ export function SquareYardCalculator() {
     setPrice("");
   };
 
-  const summary = `${fmtNumber(round(result.totalSqYd, 2))} sq yd (${fmtNumber(round(result.totalSqFt, 1))} sq ft). With ${waste}% waste: ${fmtNumber(round(result.totalSqYdWithWaste, 2))} sq yd. — YardageMath`;
+  const summary = `${fmtNumber(round(result.totalSqYd, 2))} sq yd (${fmtNumber(round(result.totalSqFt, 1))} sq ft). With ${waste}% waste: ${fmtNumber(round(result.totalSqYdWithWaste, 2))} sq yd. — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

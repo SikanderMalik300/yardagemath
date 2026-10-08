@@ -38,7 +38,7 @@ export function GutterSlopeCalculator() {
     setRunLength("40"); setSlope("0.25"); setPosition("one-end"); setRoofArea("");
   };
 
-  const summary = `Gutter: ${fmtNumber(round(result.totalDropIn, 2))}" total drop over a ${runLength} ft run. — YardageMath`;
+  const summary = `Gutter: ${fmtNumber(round(result.totalDropIn, 2))}" total drop over a ${runLength} ft run. — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

@@ -516,6 +516,45 @@
   }
 }
 
+/* Mobile sticky result bar (audit Task 5) — shown under 768px only */
+.sticky-result-bar {
+  display: none;
+}
+.sticky-result-spacer {
+  display: none;
+}
+@media (max-width: 767px) {
+  .sticky-result-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    min-height: 56px;
+    background: var(--brand);
+    color: var(--text-inverse);
+    box-shadow: 0 -2px 10px rgba(23, 32, 27, 0.18);
+  }
+  .sticky-result-bar__label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+  .sticky-result-bar__value {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  .sticky-result-spacer {
+    display: block;
+    height: 64px;
+  }
+}
+
 /* Skip link — visible only on focus */
 .skip-link:focus {
   left: 1rem !important;

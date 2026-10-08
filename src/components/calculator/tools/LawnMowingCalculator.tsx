@@ -121,8 +121,8 @@ export function LawnMowingCalculator() {
     );
   };
 
-  const homeSummary = `Mowing ${fmtUSD(home.perCut)} per cut, ${fmtUSD(home.perMonth)}/month, ${fmtUSD(home.perSeason)}/season. — YardageMath`;
-  const proSummary = `Mowing job: ${fmtUSD(pro.price)} (${fmtNumber(round(pro.totalHours, 2))} h at ${fmtUSD(num(rate))}/h). — YardageMath`;
+  const homeSummary = `Mowing ${fmtUSD(home.perCut)} per cut, ${fmtUSD(home.perMonth)}/month, ${fmtUSD(home.perSeason)}/season. — yardagemath.com/${SLUG}/`;
+  const proSummary = `Mowing job: ${fmtUSD(pro.price)} (${fmtNumber(round(pro.totalHours, 2))} h at ${fmtUSD(num(rate))}/h). — yardagemath.com/${SLUG}/`;
 
   return (
     <div>

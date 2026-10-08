@@ -59,9 +59,13 @@ export function CubicYardCalculator() {
     setMaterial("none");
   };
 
-  const summary = `${fmtNumber(round(result.cubicYards, 2))} cubic yards (${fmtNumber(
-    round(result.volumeCuFt, 2)
-  )} cu ft). With ${dims.wastePct}% waste, order ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd. — YardageMath`;
+  const dimsStr =
+    state.shape === "rectangle"
+      ? `${state.lengthFt} ft × ${state.widthFt} ft × ${state.depthIn} in`
+      : `${fmtNumber(round(result.areaSqFt, 1))} sq ft × ${state.depthIn} in`;
+  const summary = `${dimsStr} = ${fmtNumber(round(result.cubicYards, 2))} cu yd (${fmtNumber(
+    round(result.cubicYardsWithWaste, 2)
+  )} with ${dims.wastePct}% waste) — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

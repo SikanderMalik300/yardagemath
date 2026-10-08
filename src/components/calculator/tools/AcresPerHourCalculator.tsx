@@ -43,7 +43,7 @@ export function AcresPerHourCalculator() {
   };
 
   const timeStr = `${result.hoursWhole} h ${result.minutes} min`;
-  const summary = `${fmtNumber(round(result.acresPerHour, 2))} acres/hour; ${fmtNumber(round(result.areaAcres, 2))} acres takes ${timeStr}. — YardageMath`;
+  const summary = `${fmtNumber(round(result.acresPerHour, 2))} acres/hour; ${fmtNumber(round(result.areaAcres, 2))} acres takes ${timeStr}. — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

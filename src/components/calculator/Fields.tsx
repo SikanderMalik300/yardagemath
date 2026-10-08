@@ -61,7 +61,7 @@ export function NumberInput({
       className="input"
       type="text"
       inputMode="decimal"
-      enterKeyHint={enterKeyHint}
+      enterKeyHint={enterKeyHint ?? "next"}
       value={value}
       min={min}
       step={step}

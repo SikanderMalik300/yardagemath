@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { StickyResultBar } from "./StickyResultBar";
 
 /** Primary result with aria-live region (design.md §8, build-spec A3 accessibility). */
 export function PrimaryResult({
@@ -24,6 +25,8 @@ export function PrimaryResult({
         )}
       </div>
       {sub && <div style={{ marginTop: "0.5rem", fontSize: "0.875rem", color: "var(--text-secondary)" }}>{sub}</div>}
+      {/* Mobile-only sticky summary that appears after the first input change */}
+      <StickyResultBar label={label} value={value} unit={unit} />
     </div>
   );
 }

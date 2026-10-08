@@ -55,7 +55,7 @@ export function RipRapCalculator() {
     setDensity(String(DENSITY_TONS_PER_CUYD.ripRap)); setWaste("10"); setPrice("");
   };
 
-  const summary = `Riprap: ${fmtNumber(round(result.cubicYardsWithWaste, 1))} cu yd ≈ ${fmtNumber(round(result.tons, 1))} tons. — YardageMath`;
+  const summary = `Riprap: ${fmtNumber(round(result.cubicYardsWithWaste, 1))} cu yd ≈ ${fmtNumber(round(result.tons, 1))} tons. — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

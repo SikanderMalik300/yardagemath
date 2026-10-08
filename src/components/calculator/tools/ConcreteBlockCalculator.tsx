@@ -50,7 +50,7 @@ export function ConcreteBlockCalculator() {
     setOpenings([]);
   };
 
-  const summary = `${fmtInt(result.blocks)} blocks (${result.courses} courses), ${result.mortarBags} mortar bags. — YardageMath`;
+  const summary = `${fmtInt(result.blocks)} blocks (${result.courses} courses), ${result.mortarBags} mortar bags. — yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell
