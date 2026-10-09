@@ -385,6 +385,7 @@ export const calculators: Calculator[] = [
       ],
       footnote: "Blocks include 5% waste; mortar at about 12 blocks per 80-lb bag.",
     },
+    fromSikander: "When I ran 142 blocks through Quikrete's mortar calculator, it said 12 bags. My first version said 11, because I'd used a slightly higher blocks-per-bag figure. I switched to Quikrete's number, since running out of mortar halfway up a wall is worse than having a bag left over.",
     tips: [
       "Order about 5% extra. Some blocks always break, and you'll cut a few at corners and openings.",
       "A standard CMU weighs about 30–38 lb, and lightweight blocks are lighter. Get a helper if you can; lifting a few hundred of them adds up fast.",
@@ -511,6 +512,7 @@ export const calculators: Calculator[] = [
       ],
       footnote: "Bags shown for 4 inches (80-lb ≈ 0.60 cu ft). Above ~1 cu yd, ready-mix is cheaper and faster than bags.",
     },
+    fromSikander: "I checked this calculator against Quikrete's own concrete calculator. For a 100 sq ft slab at 4 inches, both say 56 bags of 80-lb mix. Quikrete's number has no waste built in, so I'd still add the 10% this page uses.",
     tips: [
       "Add about 10% for waste. Some concrete always spills, and the ground under a slab is never perfectly even.",
       "Bags make sense for small jobs under about 1 cubic yard. Past that, ready-mix delivery is usually cheaper and saves your back.",
@@ -732,6 +734,7 @@ export const calculators: Calculator[] = [
       ],
       footnote: "At about 1.4 tons per cubic yard; 54 bags of 0.5 cu ft per yard.",
     },
+    fromSikander: "I compared the bag counts with Quikrete's sand and stone calculator. For 100 sq ft, it says 34, 51 and 67 bags of 50-lb stone at 2, 3 and 4 inches. This page gives 34, 50 and 67, the same apart from one bag of rounding.",
     tips: [
       "Put landscape fabric down first. It keeps the gravel from sinking into the dirt and cuts down on weeds.",
       "Use 2–3 inches for walkways and 3–4 inches for patios, with a solid edge to keep the stones from wandering.",
@@ -1207,6 +1210,7 @@ export const calculators: Calculator[] = [
       ],
       footnote: "Caps at one per 16 inches of length. Add grout and rebar if the wall is reinforced.",
     },
+    fromSikander: "The mortar count here matches Quikrete's own calculator: about 12 bags of 80-lb mix for 142 standard blocks. I still buy one spare bag, because the first few batches always go slower than you expect.",
     tips: [
       "A block wall needs a proper concrete footing below the frost line. Budget for it separately.",
       "Reinforced walls need vertical rebar in grouted cores, spaced the way your local code requires.",
