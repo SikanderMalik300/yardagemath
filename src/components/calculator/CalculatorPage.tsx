@@ -134,6 +134,14 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
         </div>
       </section>
 
+      {/* What this calculator doesn't cover (after worked examples, before tables) */}
+      {cal.notCovered && (
+        <section className="prose" style={{ marginTop: "1.5rem", maxWidth: "var(--reading-max-width)" }}>
+          <h2>What this calculator doesn&apos;t cover</h2>
+          <p>{cal.notCovered}</p>
+        </section>
+      )}
+
       {/* In-content ad slot (after the formula section — never between inputs and results) */}
       <AdSlot minHeight={120} />
 

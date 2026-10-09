@@ -41,6 +41,8 @@ export interface Calculator {
   shortAnswer: string;
   howTo: string[];
   formula: FormulaSpec;
+  /** "What this calculator doesn't cover" note, shown after the worked examples. */
+  notCovered?: string;
   tables: RefTable[];
   /** Precomputed "common sizes" table, shown in addition to the reference tables (audit Task 1). */
   commonSizes?: RefTable;
@@ -222,6 +224,7 @@ export const calculators: Calculator[] = [
         "cubic yards = 80 ÷ 27 = 2.96 cu yd",
       ],
     },
+    notCovered: "It assumes a flat, even area. Sloped ground, low spots and compaction all use more material, so measure depth in a few places and keep some waste. For odd shapes, split the area into rectangles, circles and triangles and add them up.",
     tables: [
       {
         title: "Coverage of 1 cubic yard by depth",
@@ -349,6 +352,7 @@ export const calculators: Calculator[] = [
         "with 5% waste = 180 × 1.05 = 189 blocks",
       ],
     },
+    notCovered: "It assumes standard 8 × 16 inch block faces with ⅜-inch mortar joints. It doesn't count special corner, pilaster or bond-beam blocks, and it doesn't size your footing. Use the Block Wall Calculator for caps, grout and rebar.",
     tables: [
       {
         title: "Blocks by common wall size (8×8×16, before waste)",
@@ -472,6 +476,7 @@ export const calculators: Calculator[] = [
         "ready-mix at ~$160/yd ≈ $1,877 of concrete",
       ],
     },
+    notCovered: "Prices are 2026 national averages, not a quote. It doesn't include permits, removing an old slab, major site prep, a pump truck or decorative finishes. Get local bids before you budget the job.",
     tables: [
       {
         title: "Concrete needed for common slabs",
@@ -590,6 +595,7 @@ export const calculators: Calculator[] = [
         "cubic yards = 32 ÷ 27 = 1.19 cu yd",
       ],
     },
+    notCovered: "It doesn't know your existing grade or how much your soil will settle beyond the waste percentage. It also doesn't work out compost or amendment ratios for raised beds.",
     tables: [
       {
         title: "Recommended topsoil depth by use",
@@ -700,6 +706,7 @@ export const calculators: Calculator[] = [
         "cubic yards = 20 ÷ 27 = 0.74 cu yd ≈ 1.04 tons",
       ],
     },
+    notCovered: "It covers the gravel layer only. It doesn't add the compacted base, landscape fabric or edging, and it assumes the gravel isn't compacted.",
     tables: [
       {
         title: "Pea gravel coverage by depth (1 cubic yard)",
@@ -803,6 +810,7 @@ export const calculators: Calculator[] = [
         "square yards = 180 ÷ 9 = 20 sq yd",
       ],
     },
+    notCovered: "It adds up area and waste. It doesn't plan seam placement, pattern matching or how pieces fit on a 12- or 15-foot roll, so ask your installer for the final cut list.",
     tables: [
       {
         title: "Common room sizes in square yards",
@@ -924,6 +932,7 @@ export const calculators: Calculator[] = [
         "cubic yards = 45 ÷ 27 = 1.67 cu yd",
       ],
     },
+    notCovered: "Weights use typical dry densities. Real products vary by supplier and moisture, so check the tonnage on your quote before you order a truckload.",
     tables: [
       {
         title: "Recommended depth and density by material",
@@ -1050,6 +1059,7 @@ export const calculators: Calculator[] = [
         "add trim + travel, then × your hourly rate",
       ],
     },
+    notCovered: "Prices are national averages. It doesn't know your local market, taxes, insurance or how many obstacles a yard has, and steep or rough lawns take longer than the math shows.",
     tables: [
       {
         title: "Typical 2026 mowing price by lawn size",
@@ -1165,6 +1175,7 @@ export const calculators: Calculator[] = [
         "cap blocks = 600 ÷ 16 = 38",
       ],
     },
+    notCovered: "This is a materials estimate, not a structural design. It doesn't size footings or rebar to code. Retaining walls over about 3–4 feet usually need an engineer and a permit.",
     tables: [
       {
         title: "Materials for common block walls (8-inch, no openings)",
@@ -1279,6 +1290,7 @@ export const calculators: Calculator[] = [
         "1 acre ÷ 1.36 = 0.74 h = 44 minutes",
       ],
     },
+    notCovered: "It assumes a steady speed and a fixed efficiency. Hills, trees, tight turns and wet grass all slow you down, so treat the result as a best case for open ground.",
     tables: [
       {
         title: "Acres per hour by deck width and speed (80% efficiency)",
@@ -1390,6 +1402,7 @@ export const calculators: Calculator[] = [
         "the centre sits 0.75 inch above each outlet",
       ],
     },
+    notCovered: "It uses common slope and downspout rules of thumb. It doesn't size gutters for your local rainfall intensity, and it isn't meant for flat or low-slope roof drainage design.",
     tables: [
       {
         title: "Gutter drop by run length",
@@ -1501,6 +1514,7 @@ export const calculators: Calculator[] = [
         "cubic yards = 360 ÷ 27 = 13.33 ≈ 20 tons",
       ],
     },
+    notCovered: "This is a quantity estimate, not a hydraulic design. Stone size and thickness for streams, channels and shorelines should come from an engineer or your state DOT specification.",
     tables: [
       {
         title: "Typical riprap stone classes",
