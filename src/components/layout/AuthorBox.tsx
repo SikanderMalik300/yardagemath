@@ -18,8 +18,11 @@ export function AuthorBox({ sources, lastUpdated }: { sources: string[]; lastUpd
       }}
     >
       <p style={{ margin: 0 }}>
-        Built and maintained by <strong style={{ color: "var(--text-primary)" }}>{SITE.founder}</strong>.
-        Formulas checked against {sources.join(", ")}.{" "}
+        Built and maintained by{" "}
+        <Link href="/authors/sikander-mushtaq/" style={{ fontWeight: 700 }}>
+          {SITE.founder}
+        </Link>
+        . Formulas checked against {sources.join(", ")}.{" "}
         <Link href="/how-we-calculate/">See our methodology and sources</Link>, or{" "}
         <Link href="/about/">learn about YardageMath</Link>.{" "}
         <Link href="/editorial-policy/">See our editorial policy</Link>.

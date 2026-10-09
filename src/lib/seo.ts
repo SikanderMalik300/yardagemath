@@ -4,6 +4,10 @@ import type { Calculator, Category } from "@/data/calculators";
 
 const BASE = SITE.url;
 
+/** Canonical author identity, referenced by @id across all schema (audit Task 3). */
+export const AUTHOR_URL = `${BASE}/authors/sikander-mushtaq/`;
+export const AUTHOR_ID = `${AUTHOR_URL}#person`;
+
 /** Absolute, trailing-slash URL for a path. */
 export function absUrl(path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
@@ -67,9 +71,9 @@ export function organizationJsonLd() {
     email: SITE.email,
     founder: {
       "@type": "Person",
+      "@id": AUTHOR_ID,
       name: SITE.founder,
-      url: absUrl("/about/"),
-      email: SITE.email,
+      url: AUTHOR_URL,
     },
   };
 }
@@ -107,7 +111,7 @@ export function webApplicationJsonLd(cal: Calculator) {
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: cal.metaDescription,
     dateModified: cal.lastUpdated,
-    author: { "@type": "Organization", name: SITE.name, url: BASE },
+    author: { "@type": "Person", "@id": AUTHOR_ID, name: SITE.founder, url: AUTHOR_URL },
     publisher: { "@type": "Organization", name: SITE.name, url: BASE },
   };
 }
@@ -164,8 +168,9 @@ export function aboutPageJsonLd() {
     url: absUrl("/about/"),
     mainEntity: {
       "@type": "Person",
+      "@id": AUTHOR_ID,
       name: SITE.founder,
-      url: absUrl("/about/"),
+      url: AUTHOR_URL,
       email: SITE.email,
       description: `Founder of ${SITE.name}.`,
     },
