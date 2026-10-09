@@ -1,5 +1,6 @@
 import type { Source } from "@/lib/sources";
 import { fmtDate } from "@/lib/format";
+import { OutboundLink } from "@/components/OutboundLink";
 
 /** Renders a citation list. Links open in a new tab with rel="noopener" and are NOT nofollowed. */
 export function SourcesList({ sources, compact = false }: { sources: Source[]; compact?: boolean }) {
@@ -8,9 +9,9 @@ export function SourcesList({ sources, compact = false }: { sources: Source[]; c
     <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: compact ? "0.375rem" : "0.5rem" }}>
       {sources.map((s) => (
         <li key={s.id} style={{ fontSize: compact ? "0.8125rem" : "0.875rem", color: "var(--text-secondary)" }}>
-          <a href={s.url} target="_blank" rel="noopener" style={{ textDecoration: "underline" }}>
+          <OutboundLink href={s.url} style={{ textDecoration: "underline" }}>
             {s.publisher}: {s.title}
-          </a>
+          </OutboundLink>
           <span style={{ color: "var(--text-muted)" }}> — accessed {fmtDate(s.checked)}</span>
         </li>
       ))}

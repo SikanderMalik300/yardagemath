@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <ContentPage title="Privacy Policy" updated="2026-10-08">
+    <ContentPage title="Privacy Policy" updated="2026-10-09">
       <p>
         This Privacy Policy explains what information {SITE.name} (&ldquo;we&rdquo;,
         &ldquo;us&rdquo;) collects when you visit {SITE.domain}, and how we use it. We aim to
@@ -22,10 +22,20 @@ export default function PrivacyPage() {
       <h2>What we collect</h2>
       <ul>
         <li>
+          <strong>Google Analytics.</strong> We use Google Analytics 4 to understand which
+          calculators people use and how the site performs. It collects information such as pages
+          viewed, device type, approximate location (country/city) and how you interact with the
+          tools. Google Analytics uses cookies. Visitors in the EEA, UK and Switzerland are asked for
+          consent first, and analytics cookies stay off until you agree. You can opt out of Google
+          Analytics on all sites with Google&apos;s{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">opt-out browser add-on</a>.
+          We keep analytics data for 14 months.
+        </li>
+        <li>
           <strong>Analytics (Cloudflare Web Analytics).</strong> We use{" "}
           <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a>,
           which is privacy-first and cookieless. It does not use client-side state such as cookies
-          or localStorage to track you, and it reports aggregated data only — page views, approximate
+          or localStorage to track you, and it reports aggregated data only: page views, approximate
           region, referrer and device type. It does not fingerprint individuals.
         </li>
         <li>
@@ -43,10 +53,9 @@ export default function PrivacyPage() {
 
       <h2>Cookies and similar technologies</h2>
       <p>
-        Our current analytics (Cloudflare Web Analytics) is cookieless. The only cookies that may be
-        set are those required by advertising once it is enabled (see below). You can block or delete
-        cookies in your browser settings. If we add a cookie-based analytics provider in future, we
-        will update this policy first.
+        Google Analytics sets cookies; in the EEA, UK and Switzerland they stay off until you accept.
+        Cloudflare Web Analytics is cookieless. Advertising cookies may be set once ads are enabled
+        (see below). You can block or delete cookies in your browser settings.
       </p>
 
       <h2>Advertising</h2>
