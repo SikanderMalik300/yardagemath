@@ -47,6 +47,7 @@ function Cite({ keys }: { keys: SourceKey[] }) {
 const ALL_SOURCE_KEYS: SourceKey[] = [
   "quikreteConcrete",
   "quikreteMortar",
+  "quikreteMortarCalc",
   "ncmaTek",
   "asabeD497",
   "isuFieldCapacity",
@@ -152,13 +153,13 @@ export default function HowWeCalculatePage() {
         <li>
           Blocks per sq ft = 144 ÷ (8 × 16) = <strong>{BLOCKS_PER_SQFT}</strong> (112.5 per 100 sq ft)
         </li>
-        <li>Mortar ≈ {BLOCKS_PER_MORTAR_BAG} standard blocks per 80 lb bag (Quikrete Mortar Mix data sheet)</li>
+        <li>Mortar ≈ {BLOCKS_PER_MORTAR_BAG} standard blocks per 80-lb bag (matches Quikrete&apos;s Mortar Mix calculator)</li>
         <li>
           Core-fill grout per sq ft of wall (NCMA TEK): 6″ = {GROUT_CUFT_PER_SQFT.in6}, 8″ ={" "}
           {GROUT_CUFT_PER_SQFT.in8}, 12″ = {GROUT_CUFT_PER_SQFT.in12} cu ft
         </li>
       </ul>
-      <Cite keys={["ncmaTek", "quikreteMortar"]} />
+      <Cite keys={["ncmaTek", "quikreteMortar", "quikreteMortarCalc"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

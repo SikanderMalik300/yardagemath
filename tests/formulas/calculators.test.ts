@@ -99,8 +99,10 @@ describe("concrete block calculator", () => {
     expect(o.netAreaSqFt).toBe(108);
     expect(o.blocks).toBe(Math.ceil(108 * 1.125));
   });
-  it("mortar bags ~13 blocks/bag", () => {
-    expect(r.mortarBags).toBe(Math.ceil(142 / 13));
+  it("mortar bags ~12 blocks/bag", () => {
+    // ceil(142/12) = 12 (matches Quikrete's Mortar Mix calculator)
+    expect(r.mortarBags).toBe(Math.ceil(142 / 12));
+    expect(r.mortarBags).toBe(12);
   });
 });
 
@@ -274,7 +276,7 @@ describe("lawn mowing calculator", () => {
   });
 });
 
-/* 9. Block wall — 30×4, 8" block → 135 blocks +5%=142, ~11 mortar bags (spec #9) */
+/* 9. Block wall — 30×4, 8" block → 135 blocks +5%=142, ~12 mortar bags (spec #9) */
 describe("block wall calculator", () => {
   const r = computeBlockWall({
     lengthFt: 30,
@@ -290,7 +292,7 @@ describe("block wall calculator", () => {
     expect(r.courses).toBe(6); // 48in / 8
     expect(r.blocks).toBe(142); // 120 * 1.125 * 1.05 = 141.75 → 142
     expect(r.capBlocks).toBe(23); // 360in / 16 = 22.5 → 23
-    expect(r.mortarBags).toBe(11); // ceil(142/13)
+    expect(r.mortarBags).toBe(12); // ceil(142/12)
   });
   it("no rebar/grout when core fill is none", () => {
     expect(r.rebarBars).toBe(0);

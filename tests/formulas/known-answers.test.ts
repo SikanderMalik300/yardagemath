@@ -122,9 +122,18 @@ describe("concrete block — known answers", () => {
     // net 120-12=108; 108*1.125=121.5 -> ceil 122
     expect(cb(20, 6, 0, [{ count: 1, widthFt: 3, heightFt: 4 }]).blocks).toBe(122);
   });
-  it("mortar bags round up: 142 blocks -> 11", () => {
-    // ceil(142/13)=11
-    expect(cb(20, 6, 5).mortarBags).toBe(11);
+  it("mortar bags round up: 142 blocks -> 12", () => {
+    // ceil(142/12)=12 (matches Quikrete's Mortar Mix calculator)
+    expect(cb(20, 6, 5).mortarBags).toBe(12);
+  });
+  it("mortar at 12 blocks/bag: 100 -> 9, 135 -> 12, 189 -> 16", () => {
+    // ceil(100/12)=9; ceil(135/12)=12 (11.25); ceil(189/12)=16 (15.75)
+    expect(Math.ceil(100 / 12)).toBe(9);
+    expect(cb(40, 4, 5).blocks).toBe(189);
+    expect(cb(40, 4, 5).mortarBags).toBe(16);
+    // a 135-block wall (20x6 no waste) -> ceil(135/12)=12
+    expect(cb(20, 6, 0).blocks).toBe(135);
+    expect(cb(20, 6, 0).mortarBags).toBe(12);
   });
   it("zero input: no NaN", () => {
     expect(cb(0, 0).blocks).toBe(0);
@@ -484,12 +493,12 @@ describe("block wall — known answers", () => {
   const bw = (L: number, H: number, opts: Partial<{ cap: boolean; coreFill: "none" | "everyOther" | "full" }> = {}) =>
     computeBlockWall({ lengthFt: L, heightFt: H, blockWidth: "in8", openings: [], capBlocks: opts.cap ?? true, coreFill: opts.coreFill ?? "none", rebarSpacingIn: 32, prices });
 
-  it("example 1: 30x4 = 6 courses, 142 blocks, 23 caps, 11 mortar", () => {
+  it("example 1: 30x4 = 6 courses, 142 blocks, 23 caps, 12 mortar", () => {
     const r = bw(30, 4);
     expect(r.courses).toBe(6); // 48/8
     expect(r.blocks).toBe(142); // 120*1.125*1.05 = 141.75 -> 142
     expect(r.capBlocks).toBe(23); // ceil(360/16)
-    expect(r.mortarBags).toBe(11); // ceil(142/13)
+    expect(r.mortarBags).toBe(12); // ceil(142/12)
   });
   it("example 2: 50x3 = 178 blocks, 38 caps", () => {
     const r = bw(50, 3);
@@ -536,7 +545,7 @@ describe("block wall — known answers", () => {
   it("table: 20x4 = 95 blocks, 8 mortar", () => {
     const r = bw(20, 4);
     expect(r.blocks).toBe(95); // 80*1.125*1.05 = 94.5 -> 95
-    expect(r.mortarBags).toBe(8); // ceil(95/13)
+    expect(r.mortarBags).toBe(8); // ceil(95/12)
   });
 });
 

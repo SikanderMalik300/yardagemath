@@ -103,7 +103,7 @@ export function ConcreteBlockCalculator() {
             <MathLine>net area = {fmtNumber(result.netAreaSqFt, 1)} sq ft (after openings)</MathLine>
             <MathLine>blocks = {fmtNumber(result.netAreaSqFt, 1)} × 1.125 = {fmtNumber(result.blocksBeforeWaste, 2)}</MathLine>
             <MathLine>+ {waste}% waste → {fmtInt(result.blocks)} blocks</MathLine>
-            <MathLine>mortar = ceil({fmtInt(result.blocks)} ÷ 13) = {fmtInt(result.mortarBags)} bags</MathLine>
+            <MathLine>mortar = ceil({fmtInt(result.blocks)} ÷ 12) = {fmtInt(result.mortarBags)} bags</MathLine>
           </ShowMath>
 
           <ResultActions

@@ -339,7 +339,7 @@ export const calculators: Calculator[] = [
         "net area = (length × height) − openings",
         "blocks per sq ft = 144 ÷ (8 × 16) = 1.125",
         "blocks = ceil(net area × 1.125 × (1 + waste%))",
-        "mortar bags ≈ ceil(blocks ÷ 13)",
+        "mortar bags ≈ ceil(blocks ÷ 12)",
       ],
       example: [
         "A 20 ft × 6 ft wall, no openings, 5% waste:",
@@ -379,16 +379,16 @@ export const calculators: Calculator[] = [
       rows: [
         ["10 × 4 ft", 48, 4],
         ["20 × 4 ft", 95, 8],
-        ["20 × 6 ft", 142, 11],
-        ["30 × 8 ft", 284, 22],
-        ["40 × 8 ft", 378, 30],
+        ["20 × 6 ft", 142, 12],
+        ["30 × 8 ft", 284, 24],
+        ["40 × 8 ft", 378, 32],
       ],
-      footnote: "Blocks include 5% waste; mortar at about 13 blocks per 80-lb bag.",
+      footnote: "Blocks include 5% waste; mortar at about 12 blocks per 80-lb bag.",
     },
     tips: [
       "Order about 5% extra. Some blocks always break, and you'll cut a few at corners and openings.",
       "A standard CMU weighs about 30–38 lb, and lightweight blocks are lighter. Get a helper if you can; lifting a few hundred of them adds up fast.",
-      "One 80-lb bag of mortar mix lays about 13 standard blocks. Grab one spare bag so you don't run out mid-wall.",
+      "One 80-lb bag of mortar mix lays about 12 standard blocks. Grab one spare bag so you don't run out mid-wall.",
       "Concrete blocks usually come by the pallet. Ask your supplier how many are on one so you can order full pallets and keep delivery simple.",
     ],
     faqs: [
@@ -406,7 +406,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How much mortar do I need per block?",
-        a: "Plan on about one 80-lb bag of mortar mix for every 13 standard blocks, laid with a ⅜-inch joint. So 142 blocks needs roughly 11 bags. Mix small batches so the mortar doesn't set before you use it.",
+        a: "Plan on about one 80-lb bag of mortar mix for every 12 standard blocks, laid with a ⅜-inch joint. So 142 blocks needs about 12 bags. Mix small batches so the mortar doesn't set before you use it.",
       },
       {
         q: "How much does a concrete block weigh?",
@@ -418,7 +418,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How many bags of mortar do I need for 100 blocks?",
-        a: "About 8 bags of 80-lb mortar mix. One bag lays roughly 13 blocks, and 100 ÷ 13 ≈ 7.7, so round up to 8. It's worth buying one spare bag so you don't run short halfway through a course.",
+        a: "About 9 bags of 80-lb mortar mix. One bag lays roughly 12 blocks, and 100 ÷ 12 ≈ 8.3, so round up to 9. It's worth buying one spare bag so you don't run short halfway through a course.",
       },
     ],
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
@@ -1148,7 +1148,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Courses, blocks, cap, mortar, grout, rebar and total cost.",
     shortAnswer:
-      "A 30 ft × 4 ft block wall takes 6 courses and about 142 standard blocks with 5% waste, plus roughly 11 bags of mortar. This calculator also works out cap blocks, core-fill grout, rebar and your total material cost. Enter your wall below.",
+      "A 30 ft × 4 ft block wall takes 6 courses and about 142 standard blocks with 5% waste, plus about 12 bags of mortar. This calculator also works out cap blocks, core-fill grout, rebar and your total material cost. Enter your wall below.",
     howTo: [
       "Enter the wall length and height.",
       "Choose the block width (6, 8 or 12 inches).",
@@ -1189,9 +1189,9 @@ export const calculators: Calculator[] = [
         ],
         rows: [
           ["20 × 4 ft", 6, 95, 8],
-          ["30 × 4 ft", 6, 142, 11],
-          ["40 × 6 ft", 9, 284, 22],
-          ["50 × 6 ft", 9, 355, 28],
+          ["30 × 4 ft", 6, 142, 12],
+          ["40 × 6 ft", 9, 284, 24],
+          ["50 × 6 ft", 9, 355, 30],
         ],
         footnote: "Add cap blocks (one per 16 inches of length) and grout/rebar if reinforced.",
       },
@@ -1201,9 +1201,9 @@ export const calculators: Calculator[] = [
       columns: [{ label: "Wall (L × H)" }, { label: "Blocks", num: true }, { label: "Caps", num: true }, { label: "Mortar bags", num: true }],
       rows: [
         ["20 × 4 ft", 95, 15, 8],
-        ["30 × 4 ft", 142, 23, 11],
-        ["40 × 6 ft", 284, 30, 22],
-        ["50 × 6 ft", 355, 38, 28],
+        ["30 × 4 ft", 142, 23, 12],
+        ["40 × 6 ft", 284, 30, 24],
+        ["50 × 6 ft", 355, 38, 30],
       ],
       footnote: "Caps at one per 16 inches of length. Add grout and rebar if the wall is reinforced.",
     },

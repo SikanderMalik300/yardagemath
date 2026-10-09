@@ -24,10 +24,17 @@ export const SOURCES = {
   },
   quikreteMortar: {
     id: "quikreteMortar",
-    title: "Mortar Mix No. 1102 — product data sheet (one 80 lb bag lays ~13 blocks)",
+    title: "Mortar Mix No. 1102 — product data sheet",
     publisher: "QUIKRETE",
     url: "https://www.quikrete.com/pdfs/data_sheet-mortar%20mix%201102.pdf",
     checked: CHECKED,
+  },
+  quikreteMortarCalc: {
+    id: "quikreteMortarCalc",
+    title: "Mortar Mix online calculator: 142 standard blocks → 12 bags of 80 lb",
+    publisher: "QUIKRETE",
+    url: "https://www.quikrete.com/calculator/main.asp",
+    checked: "2026-10-09",
   },
   ncmaTek: {
     id: "ncmaTek",
@@ -134,14 +141,14 @@ export type SourceKey = keyof typeof SOURCES;
 /** Sources shown in the per-tool "Sources" block (audit P1 #1). */
 export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "cubic-yard-calculator": ["inchGravel", "cuydWeightChart"],
-  "concrete-block-calculator": ["ncmaTek", "quikreteMortar"],
+  "concrete-block-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
   "concrete-slab-cost-calculator": ["quikreteConcrete", "slabCost2026"],
   "topsoil-calculator": ["cuydWeightChart", "inchSand"],
   "pea-gravel-calculator": ["inchGravel", "cuydWeightChart"],
   "square-yard-calculator": ["inchSquare", "inchCarpet"],
   "landscape-materials-calculator": ["inchGravel", "cuydWeightChart"],
   "lawn-mowing-cost-calculator": ["lawnCost2026", "asabeD497"],
-  "block-wall-calculator": ["ncmaTek", "quikreteMortar"],
+  "block-wall-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

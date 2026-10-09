@@ -102,9 +102,9 @@ export const BLOCKS_PER_100_SQFT = 112.5;
 export const BLOCK_NOMINAL_HEIGHT_IN = 8;
 export const BLOCK_NOMINAL_LENGTH_IN = 16;
 
-// Mortar: ~13 standard blocks per 80 lb bag of mortar mix.
-// VERIFY against Quikrete Mortar Mix coverage data.
-export const BLOCKS_PER_MORTAR_BAG = 13;
+// Mortar: ~12 standard blocks per 80-lb bag of mortar mix.
+// Quikrete Mortar Mix online calculator: 142 blocks → 12 bags (accessed 9 Oct 2026).
+export const BLOCKS_PER_MORTAR_BAG = 12;
 
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.

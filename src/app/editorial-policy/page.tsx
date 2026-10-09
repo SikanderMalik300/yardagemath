@@ -87,6 +87,11 @@ export default function EditorialPolicyPage() {
       <h3>Corrections log</h3>
       <ul>
         <li>
+          9 Oct 2026: Mortar estimate. We changed from about 13 to about 12 blocks per 80-lb bag to
+          match Quikrete&apos;s own Mortar Mix calculator. A 142-block wall now shows 12 bags instead
+          of 11.
+        </li>
+        <li>
           9 Oct 2026: Pea Gravel Calculator FAQ. Coverage per ton was understated. Corrected to
           about 115 sq ft at 2 inches and 77 sq ft at 3 inches.
         </li>

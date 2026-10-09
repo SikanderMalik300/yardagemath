@@ -65,10 +65,11 @@ describe("second worked examples", () => {
     expect(Math.round(r.mowHours * 60)).toBe(22);
   });
 
-  it("block wall: 50 x 3 ft = 178 blocks, 38 caps", () => {
+  it("block wall: 50 x 3 ft = 178 blocks, 38 caps, 15 mortar", () => {
     const r = computeBlockWall({ lengthFt: 50, heightFt: 3, blockWidth: "in8", openings: [], capBlocks: true, coreFill: "none", rebarSpacingIn: 32, prices: { block: 2, cap: 2.5, mortarBag: 7.5, groutPerCuYd: 170, rebar20ftBar: 9 } });
     expect(r.blocks).toBe(178);
     expect(r.capBlocks).toBe(38);
+    expect(r.mortarBags).toBe(15); // ceil(178/12) = 14.83 -> 15
   });
 
   it("acres per hour: 42 in at 4 mph, 80% = 1.36 ac/hr", () => {
