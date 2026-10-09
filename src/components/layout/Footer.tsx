@@ -86,7 +86,14 @@ export function Footer() {
           <span>
             © {year} {SITE.name}. Built and maintained by {SITE.founder}.
           </span>
-          <span>
+          <span style={{ display: "flex", gap: "1rem" }}>
+            <a
+              href="https://www.pinterest.com/yardagemath/"
+              target="_blank"
+              rel="me noopener"
+            >
+              Pinterest
+            </a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           </span>
         </div>

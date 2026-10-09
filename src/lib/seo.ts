@@ -69,6 +69,7 @@ export function organizationJsonLd() {
     // No trailing slash — this is a file, not a route.
     logo: `${BASE}/brand/icon-512-v2.png`,
     email: SITE.email,
+    sameAs: ["https://www.pinterest.com/yardagemath/"],
     founder: {
       "@type": "Person",
       "@id": AUTHOR_ID,
