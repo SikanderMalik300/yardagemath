@@ -1,0 +1,68 @@
+name: IndexNow submit
+
+# After each push to main, wait for the Cloudflare Pages deploy, then tell IndexNow
+# (Bing, Yandex and others) about the URLs whose sitemap <lastmod> is today (UTC).
+# We only bump <lastmod> when a page's content changes, so only changed URLs are sent.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare Pages deploy
+        run: sleep 240
+
+      - name: Submit changed URLs to IndexNow
+        env:
+          INDEXNOW_KEY: "611bb630766bb7917bbbb5320facaa3c"
+        run: |
+          python3 - <<'PY'
+          import urllib.request, urllib.error, json, os, re, datetime, sys
+
+          HOST = "yardagemath.com"
+          KEY = os.environ["INDEXNOW_KEY"]
+          KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
+          today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+
+          xml = urllib.request.urlopen(f"https://{HOST}/sitemap.xml", timeout=30).read().decode("utf-8")
+
+          urls = []
+          for block in re.findall(r"<url>(.*?)</url>", xml, re.S):
+              loc = re.search(r"<loc>(.*?)</loc>", block)
+              mod = re.search(r"<lastmod>(.*?)</lastmod>", block)
+              if loc and mod and mod.group(1)[:10] == today:
+                  urls.append(loc.group(1).strip())
+
+          if not urls:
+              print(f"No URLs with lastmod {today}; nothing to submit.")
+              sys.exit(0)
+
+          payload = {"host": HOST, "key": KEY, "keyLocation": KEY_LOCATION, "urlList": urls}
+          print(f"Submitting {len(urls)} URL(s) changed on {today}:")
+          print("\n".join(urls))
+
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          try:
+              resp = urllib.request.urlopen(req, timeout=30)
+              print(f"IndexNow response: {resp.status}")
+          except urllib.error.HTTPError as e:
+              print(f"IndexNow HTTP {e.code}: {e.read().decode('utf-8', 'ignore')[:300]}")
+              # 200 and 202 are success; treat other codes as a soft failure note.
+              if e.code not in (200, 202):
+                  sys.exit(0)
+          PY
