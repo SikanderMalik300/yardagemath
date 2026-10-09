@@ -95,7 +95,7 @@ export default function HowWeCalculatePage() {
     <ContentPage
       title="How We Calculate"
       intro="Every number our calculators show comes from the sources below. Values are checked against the sources listed. Materials vary, so every value is editable in the calculator. Confirm final quantities with your supplier."
-      updated="2026-10-07"
+      updated="2026-10-09"
     >
       <h2>Core formulas</h2>
       <p>All volume tools share the same geometry, done in feet and converted at the end:</p>
@@ -206,6 +206,11 @@ export default function HowWeCalculatePage() {
       <h2>References</h2>
       <p>Every figure above links to the source it was checked against. Full list:</p>
       <SourcesList sources={ALL_SOURCE_KEYS.map((k) => SOURCES[k])} />
+
+      <p style={{ marginTop: "1.5rem" }}>
+        For how these pages are written, checked and corrected, see our{" "}
+        <Link href="/editorial-policy/">editorial policy</Link>.
+      </p>
     </ContentPage>
   );
 }

@@ -14,6 +14,7 @@ const TRUST = [
   { label: "About", href: "/about/", desc: "Who builds and tests the calculators, and how." },
   { label: "Contact", href: "/contact/", desc: "Send a question, suggestion or correction." },
   { label: "How We Calculate", href: "/how-we-calculate/", desc: "Every formula and figure with its source and date." },
+  { label: "Editorial Policy", href: "/editorial-policy/", desc: "How pages are written, checked, sourced and corrected." },
 ];
 const LEGAL = [
   { label: "Privacy Policy", href: "/privacy-policy/", desc: "What we collect, cookies, analytics and your rights." },

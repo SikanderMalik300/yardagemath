@@ -13,6 +13,7 @@ const SITE_LINKS = [
   { label: "About", href: "/about/" },
   { label: "Contact", href: "/contact/" },
   { label: "How We Calculate", href: "/how-we-calculate/" },
+  { label: "Editorial Policy", href: "/editorial-policy/" },
   { label: "All Calculators", href: "/sitemap/" },
 ] as const;
 

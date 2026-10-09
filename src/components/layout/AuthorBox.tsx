@@ -21,7 +21,8 @@ export function AuthorBox({ sources, lastUpdated }: { sources: string[]; lastUpd
         Built and maintained by <strong style={{ color: "var(--text-primary)" }}>{SITE.founder}</strong>.
         Formulas checked against {sources.join(", ")}.{" "}
         <Link href="/how-we-calculate/">See our methodology and sources</Link>, or{" "}
-        <Link href="/about/">learn about YardageMath</Link>.
+        <Link href="/about/">learn about YardageMath</Link>.{" "}
+        <Link href="/editorial-policy/">See our editorial policy</Link>.
       </p>
       <p style={{ margin: "0.5rem 0 0", color: "var(--text-muted)" }}>
         Last updated: <time dateTime={lastUpdated}>{fmtDate(lastUpdated)}</time>
