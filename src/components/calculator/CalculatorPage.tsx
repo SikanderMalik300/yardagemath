@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Calculator } from "@/data/calculators";
 import { categories } from "@/data/calculators";
@@ -154,8 +155,8 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
         {cal.commonSizes && <RefTableView table={cal.commonSizes} />}
       </section>
 
-      {/* Personal note from the owner (shown only where provided) */}
-      {cal.fromSikander && (
+      {/* Personal note from the owner, with optional photo (shown only where provided) */}
+      {(cal.fromSikander || cal.fromSikanderImage) && (
         <aside
           aria-label="A note from Sikander"
           style={{
@@ -167,10 +168,26 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
             maxWidth: "var(--reading-max-width)",
           }}
         >
-          <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.25rem" }}>
+          <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
             From Sikander
           </div>
-          <p style={{ margin: 0, color: "var(--text-secondary)" }}>{cal.fromSikander}</p>
+          {cal.fromSikanderImage ? (
+            <figure style={{ display: "flex", gap: "1rem", alignItems: "flex-start", margin: 0 }}>
+              <Image
+                src={cal.fromSikanderImage.src}
+                alt={cal.fromSikanderImage.alt}
+                width={cal.fromSikanderImage.width}
+                height={cal.fromSikanderImage.height}
+                loading="lazy"
+                style={{ borderRadius: "var(--radius-sm)", flexShrink: 0, height: "auto" }}
+              />
+              <figcaption style={{ margin: 0, color: "var(--text-secondary)" }}>
+                {cal.fromSikander}
+              </figcaption>
+            </figure>
+          ) : (
+            <p style={{ margin: 0, color: "var(--text-secondary)" }}>{cal.fromSikander}</p>
+          )}
         </aside>
       )}
 

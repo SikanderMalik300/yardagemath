@@ -49,6 +49,8 @@ export interface Calculator {
   tips: string[];
   /** Optional personal note from the owner, shown above Tips (audit: humanized content). */
   fromSikander?: string;
+  /** Optional photo for the "From Sikander" note (WebP, explicit dimensions, lazy-loaded). */
+  fromSikanderImage?: { src: string; alt: string; width: number; height: number };
   faqs: Faq[];
   /** Short source labels for the author box. */
   sources: string[];
