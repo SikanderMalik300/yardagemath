@@ -1,12 +1,14 @@
 name: IndexNow submit
 
-# After each push to main, wait for the Cloudflare Pages deploy, then tell IndexNow
-# (Bing, Yandex and others) about the URLs whose sitemap <lastmod> is today (UTC).
-# We only bump <lastmod> when a page's content changes, so only changed URLs are sent.
+# After each push to main, build the site, then tell IndexNow (Bing, Yandex and
+# others) about the URLs whose sitemap <lastmod> is today (UTC). We read the
+# freshly built out/sitemap.xml instead of fetching the live one, because
+# Cloudflare blocks data-center requests with Python's default user agent.
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,10 +19,24 @@ concurrency:
 
 jobs:
   submit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        # Only out/sitemap.xml is used; no real secrets needed.
+        run: npm run build
+
       - name: Wait for Cloudflare Pages deploy
-        run: sleep 240
+        run: sleep 120
 
       - name: Submit changed URLs to IndexNow
         env:
@@ -34,7 +50,8 @@ jobs:
           KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
           today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
-          xml = urllib.request.urlopen(f"https://{HOST}/sitemap.xml", timeout=30).read().decode("utf-8")
+          with open("out/sitemap.xml", encoding="utf-8") as f:
+              xml = f.read()
 
           urls = []
           for block in re.findall(r"<url>(.*?)</url>", xml, re.S):
@@ -54,7 +71,10 @@ jobs:
           req = urllib.request.Request(
               "https://api.indexnow.org/indexnow",
               data=json.dumps(payload).encode("utf-8"),
-              headers={"Content-Type": "application/json; charset=utf-8"},
+              headers={
+                  "Content-Type": "application/json; charset=utf-8",
+                  "User-Agent": "YardageMath-IndexNow/1.0 (+https://yardagemath.com)",
+              },
               method="POST",
           )
           try:
@@ -62,7 +82,6 @@ jobs:
               print(f"IndexNow response: {resp.status}")
           except urllib.error.HTTPError as e:
               print(f"IndexNow HTTP {e.code}: {e.read().decode('utf-8', 'ignore')[:300]}")
-              # 200 and 202 are success; treat other codes as a soft failure note.
               if e.code not in (200, 202):
                   sys.exit(0)
           PY
