@@ -5,7 +5,7 @@ import { categories } from "@/data/calculators";
 /** Compact, consistent tool card (design.md §10). */
 export function ToolCard({ cal, showCategory = true }: { cal: Calculator; showCategory?: boolean }) {
   return (
-    <Link href={`/${cal.slug}/`} className="tool-card">
+    <Link href={`/${cal.slug}/`} prefetch={false} className="tool-card">
       <div>
         {showCategory && (
           <span

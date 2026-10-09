@@ -68,7 +68,7 @@ export function HubPage({ slug }: { slug: CategorySlug }) {
                       {item.project}
                     </th>
                     <td>
-                      <Link href={`/${item.slug}/`}>{tool ? tool.h1.replace(/\s*\(.*\)/, "") : item.slug}</Link>
+                      <Link href={`/${item.slug}/`} prefetch={false}>{tool ? tool.h1.replace(/\s*\(.*\)/, "") : item.slug}</Link>
                     </td>
                   </tr>
                 );
@@ -82,7 +82,7 @@ export function HubPage({ slug }: { slug: CategorySlug }) {
 
       <p style={{ marginTop: "1.5rem", fontSize: "0.8125rem", color: "var(--text-muted)" }}>
         Estimates for planning. Built and maintained by{" "}
-        <Link href="/about/">{SITE.founder}</Link>.
+        <Link href="/about/" prefetch={false}>{SITE.founder}</Link>.
       </p>
     </div>
   );

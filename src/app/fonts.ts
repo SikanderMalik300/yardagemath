@@ -10,4 +10,6 @@ export const inter = Inter({
   display: "swap",
   variable: "--font-inter",
   preload: true,
+  // Size-adjusted fallback metrics so the swap causes no layout shift (CLS 0).
+  adjustFontFallback: true,
 });

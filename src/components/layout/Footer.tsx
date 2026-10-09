@@ -48,7 +48,7 @@ export function Footer() {
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
                 {calculatorsInCategory(cat.slug).map((c) => (
                   <li key={c.slug}>
-                    <Link href={`/${c.slug}/`}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
+                    <Link href={`/${c.slug}/`} prefetch={false}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
                   </li>
                 ))}
               </ul>
@@ -62,7 +62,7 @@ export function Footer() {
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
               {SITE_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
+                  <Link href={l.href} prefetch={false}>{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -75,7 +75,7 @@ export function Footer() {
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.375rem", fontSize: "0.875rem" }}>
               {LEGAL.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
+                  <Link href={l.href} prefetch={false}>{l.label}</Link>
                 </li>
               ))}
             </ul>

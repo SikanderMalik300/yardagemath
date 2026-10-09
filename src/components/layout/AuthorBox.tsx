@@ -19,13 +19,13 @@ export function AuthorBox({ sources, lastUpdated }: { sources: string[]; lastUpd
     >
       <p style={{ margin: 0 }}>
         Built and maintained by{" "}
-        <Link href="/authors/sikander-mushtaq/" style={{ fontWeight: 700 }}>
+        <Link href="/authors/sikander-mushtaq/" prefetch={false} style={{ fontWeight: 700 }}>
           {SITE.founder}
         </Link>
         . Formulas checked against {sources.join(", ")}.{" "}
-        <Link href="/how-we-calculate/">See our methodology and sources</Link>, or{" "}
-        <Link href="/about/">learn about YardageMath</Link>.{" "}
-        <Link href="/editorial-policy/">See our editorial policy</Link>.
+        <Link href="/how-we-calculate/" prefetch={false}>See our methodology and sources</Link>, or{" "}
+        <Link href="/about/" prefetch={false}>learn about YardageMath</Link>.{" "}
+        <Link href="/editorial-policy/" prefetch={false}>See our editorial policy</Link>.
       </p>
       <p style={{ margin: "0.5rem 0 0", color: "var(--text-muted)" }}>
         Last updated: <time dateTime={lastUpdated}>{fmtDate(lastUpdated)}</time>
@@ -39,7 +39,7 @@ export function DisclaimerLine() {
   return (
     <p style={{ marginTop: "1.5rem", fontSize: "0.8125rem", color: "var(--text-muted)" }}>
       Estimates only. Confirm quantities with your supplier or contractor.{" "}
-      <Link href="/disclaimer/">Read the full disclaimer</Link>.
+      <Link href="/disclaimer/" prefetch={false}>Read the full disclaimer</Link>.
     </p>
   );
 }

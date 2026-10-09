@@ -26,7 +26,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           return (
             <li key={i} style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
               {item.href && !last ? (
-                <Link href={item.href} style={{ color: "var(--text-secondary)" }}>
+                <Link href={item.href} prefetch={false} style={{ color: "var(--text-secondary)" }}>
                   {item.name}
                 </Link>
               ) : (

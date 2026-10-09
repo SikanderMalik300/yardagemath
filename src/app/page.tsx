@@ -79,7 +79,7 @@ export default function HomePage() {
             >
               <span style={{ color: "var(--text-secondary)" }}>{a.fact}</span>
               <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>→</span>
-              <Link href={a.href} style={{ fontWeight: 600 }}>
+              <Link href={a.href} prefetch={false} style={{ fontWeight: 600 }}>
                 {a.cta}
               </Link>
             </li>
@@ -102,7 +102,7 @@ export default function HomePage() {
         <section key={cat.slug} style={{ marginBottom: "2.5rem" }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "1rem" }}>
             <SectionHeading>{cat.title}</SectionHeading>
-            <Link href={`/${cat.slug}/`} style={{ fontSize: "0.875rem", fontWeight: 600, flexShrink: 0 }}>
+            <Link href={`/${cat.slug}/`} prefetch={false} style={{ fontSize: "0.875rem", fontWeight: 600, flexShrink: 0 }}>
               View all →
             </Link>
           </div>
@@ -140,14 +140,14 @@ export default function HomePage() {
             <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>Sources are cited</h3>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
               Densities, bag yields and slope rules come from manufacturer and industry sources,
-              listed on <Link href="/how-we-calculate/">How We Calculate</Link>.
+              listed on <Link href="/how-we-calculate/" prefetch={false}>How We Calculate</Link>.
             </p>
           </div>
           <div>
             <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>Kept up to date</h3>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
               Each page shows when it was last reviewed. Built and maintained by{" "}
-              <Link href="/about/">Sikander Mushtaq</Link>.
+              <Link href="/about/" prefetch={false}>Sikander Mushtaq</Link>.
             </p>
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function HomePage() {
               key={c.slug}
               style={{ display: "flex", justifyContent: "space-between", gap: "1rem", fontSize: "0.9375rem", borderBottom: "1px solid var(--border)", paddingBottom: "0.5rem" }}
             >
-              <Link href={`/${c.slug}/`}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
+              <Link href={`/${c.slug}/`} prefetch={false}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
               <time dateTime={c.lastUpdated} style={{ color: "var(--text-muted)", flexShrink: 0 }}>
                 {fmtDate(c.lastUpdated)}
               </time>

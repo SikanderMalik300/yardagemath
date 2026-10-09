@@ -224,7 +224,7 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
       <DisclaimerLine />
 
       <p style={{ marginTop: "0.75rem", fontSize: "0.8125rem" }}>
-        <Link href={`/${category.slug}/`}>← Back to {category.title}</Link>
+        <Link href={`/${category.slug}/`} prefetch={false}>← Back to {category.title}</Link>
       </p>
     </article>
   );
