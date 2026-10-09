@@ -50,18 +50,23 @@ export default function EditorialPolicyPage() {
           <Link href="/how-we-calculate/">How We Calculate</Link>.
         </li>
         <li>
-          I work the examples by hand, then write automated tests so the calculator always gives the
-          same answer as the hand calculation.
+          Every worked example is calculated step by step, then locked in with automated tests, so
+          the calculator always gives the same answer as the worked example.
         </li>
         <li>Every page shows the math, so you can check the result yourself.</li>
+        <li>
+          Where a manufacturer has its own calculator, I compare results. For example, our concrete
+          bag counts match Quikrete&apos;s calculator exactly, and our mortar estimate was changed to
+          match theirs.
+        </li>
       </ol>
 
       <h2>How I use AI tools</h2>
       <p>
-        I use AI tools to help with research, first drafts and code. Nothing goes live until
-        I&apos;ve checked the numbers, compared them with the sources and edited the wording. AI
-        doesn&apos;t decide the formulas, the default values or the sources. Those are checked by
-        hand and by tests.
+        I use AI tools to help with research, first drafts and code. Nothing goes live until the
+        numbers have been checked against the cited sources and covered by automated tests, and
+        I&apos;ve reviewed the page. Formulas, default values and sources are always verified against
+        real references, never taken from an AI tool on trust.
       </p>
 
       <h2>Sources and prices</h2>

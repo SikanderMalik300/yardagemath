@@ -59,8 +59,8 @@ export default function AuthorPage() {
 
       <p>
         I build and maintain every calculator on YardageMath. I check each formula against
-        manufacturer and industry sources, work the examples by hand, and back every tool with
-        automated tests. If something looks off, email me at{" "}
+        manufacturer and industry sources, show the math step by step on every page, and back every
+        tool with automated tests. If something looks off, email me at{" "}
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and I&apos;ll fix it.
       </p>
 

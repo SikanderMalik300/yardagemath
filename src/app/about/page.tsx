@@ -68,9 +68,8 @@ export default function AboutPage() {
           <Link href="/how-we-calculate/">How We Calculate</Link>.
         </li>
         <li>
-          <strong>Hand-calculated worked examples.</strong> I work each example by hand and show it
-          on the page, so you can follow the math with your own numbers in the &ldquo;Show the
-          math&rdquo; panel.
+          <strong>Worked examples shown step by step.</strong> I show the math step by step on every
+          page, so you can follow it with your own numbers in the &ldquo;Show the math&rdquo; panel.
         </li>
         <li>
           <strong>Automated unit tests for every formula.</strong> The formulas live in tested

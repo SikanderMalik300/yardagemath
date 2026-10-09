@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // date; untouched pages keep 2026-10-07.
   const staticPages: { path: string; lastmod: string }[] = [
     { path: "/", lastmod: "2026-10-08" },
-    { path: "/about/", lastmod: "2026-10-08" },
+    { path: "/about/", lastmod: "2026-10-09" },
     { path: "/authors/sikander-mushtaq/", lastmod: "2026-10-09" },
     { path: "/sitemap/", lastmod: "2026-10-09" },
     { path: "/editorial-policy/", lastmod: "2026-10-09" },
