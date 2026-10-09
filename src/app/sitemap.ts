@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about/", lastmod: "2026-10-09" },
     { path: "/authors/sikander-mushtaq/", lastmod: "2026-10-09" },
     { path: "/sitemap/", lastmod: "2026-10-09" },
-    { path: "/editorial-policy/", lastmod: "2026-10-09" },
+    { path: "/editorial-policy/", lastmod: "2026-10-10" },
     { path: "/how-we-calculate/", lastmod: "2026-10-09" },
     { path: "/contact/", lastmod: "2026-10-07" },
     { path: "/privacy-policy/", lastmod: "2026-10-09" },

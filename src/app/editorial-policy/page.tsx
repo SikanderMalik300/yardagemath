@@ -23,7 +23,7 @@ const webPageJsonLd = {
 
 export default function EditorialPolicyPage() {
   return (
-    <ContentPage title="Editorial Policy" updated="2026-10-09">
+    <ContentPage title="Editorial Policy" updated="2026-10-10">
       <JsonLd
         data={[
           webPageJsonLd,
@@ -91,6 +91,11 @@ export default function EditorialPolicyPage() {
 
       <h3>Corrections log</h3>
       <ul>
+        <li>
+          10 Oct 2026: Yards of Concrete Calculator. A rounding error made some bag counts one bag
+          too high (for example 89 instead of 88 for a 12 × 12 slab at 4 inches with 10% extra).
+          Fixed on all calculators.
+        </li>
         <li>
           9 Oct 2026: Mortar estimate. We changed from about 13 to about 12 blocks per 80-lb bag to
           match Quikrete&apos;s own Mortar Mix calculator. A 142-block wall now shows 12 bags instead

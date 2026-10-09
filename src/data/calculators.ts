@@ -1703,13 +1703,14 @@ export const calculators: Calculator[] = [
       },
     ],
     sources: ["Quikrete 80-lb concrete mix yield", "2026 ready-mix cost guide"],
+    fromSikander: "I checked this page against Quikrete's own concrete calculator. For a 12 × 12 slab, both say 80 bags of 80-lb mix at 4 inches and 120 at 6 inches. Quikrete's numbers leave out waste, so this page adds 10% on top by default.",
     related: [
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
       "block-wall-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-10",
     imageAlt: "Yards of concrete calculator diagram of a slab, strip footing and round column",
   },
 ];
