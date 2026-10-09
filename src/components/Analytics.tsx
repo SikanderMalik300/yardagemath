@@ -37,7 +37,9 @@ export function Analytics() {
           gtag('config', '${gaId}', { anonymize_ip: true });
         `}
       </Script>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+      {/* lazyOnload keeps gtag off the critical path; events fired earlier queue on
+          window.dataLayer and run once gtag.js loads (audit Task 2). */}
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="lazyOnload" />
     </>
   );
 }
