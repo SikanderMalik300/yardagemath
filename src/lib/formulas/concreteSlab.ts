@@ -1,6 +1,7 @@
 /** Concrete Slab Cost Calculator formula (build-spec #3). */
 import { CONCRETE_BAG_YIELD_CUFT } from "../constants";
 import { areaSqFt, computeVolume } from "./volume";
+import { ceilCount } from "./units";
 
 export type BagSize = "lb80" | "lb60" | "lb40";
 export type SupplyMode = "readymix" | "bags";
@@ -41,7 +42,7 @@ export function computeConcreteSlab(input: ConcreteSlabInput): ConcreteSlabResul
   const v = computeVolume(area, input.thicknessIn, input.wastePct);
 
   const yield_ = CONCRETE_BAG_YIELD_CUFT[input.bagSize];
-  const bagCount = Math.ceil(v.volumeCuFtWithWaste / yield_);
+  const bagCount = ceilCount(v.volumeCuFtWithWaste / yield_);
 
   const gravelBaseVol = computeVolume(area, input.gravelBaseDepthIn, 0);
 

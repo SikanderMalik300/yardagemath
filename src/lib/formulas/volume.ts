@@ -12,7 +12,7 @@
  *   tons                = cubicYards × densityTonsPerCuYd
  *   bags                = ceil(volumeCuFt / bagSizeCuFt)
  */
-import { CUFT_PER_CUYD, cuYdToCuM } from "./units";
+import { CUFT_PER_CUYD, cuYdToCuM, ceilCount } from "./units";
 
 export type Shape = "rectangle" | "circle" | "triangle";
 
@@ -61,7 +61,7 @@ export function tons(cuyd: number, densityTonsPerCuYd: number): number {
 /** Number of bags needed, rounded up, from a volume and bag size (both cu ft). */
 export function bags(cuft: number, bagSizeCuFt: number): number {
   if (bagSizeCuFt <= 0) return 0;
-  return Math.ceil(cuft / bagSizeCuFt);
+  return ceilCount(cuft / bagSizeCuFt);
 }
 
 /**

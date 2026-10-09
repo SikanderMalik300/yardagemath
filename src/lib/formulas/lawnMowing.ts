@@ -1,6 +1,6 @@
 /** Lawn Mowing Cost Calculator formula (build-spec #8). Two audiences. */
 import { ACRES_PER_HOUR_CONST_IN, LAWN_PRICE_TIERS } from "../constants";
-import { SQFT_PER_ACRE } from "./units";
+import { SQFT_PER_ACRE, ceilCount } from "./units";
 
 /* -------------------- Homeowner tab -------------------- */
 export type Frequency = "weekly" | "biweekly";
@@ -40,7 +40,7 @@ export function computeHomeowner(input: HomeownerInput): HomeownerResult {
   perCut += extras;
 
   const cutsPerSeason =
-    input.frequency === "weekly" ? input.seasonWeeks : Math.ceil(input.seasonWeeks / 2);
+    input.frequency === "weekly" ? input.seasonWeeks : ceilCount(input.seasonWeeks / 2);
   const cutsPerMonth = input.frequency === "weekly" ? 4 : 2;
 
   return {

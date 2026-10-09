@@ -1,5 +1,5 @@
 /** Yards of Concrete Calculator formula (next-5 spec, page 13). */
-import { CUFT_PER_CUYD } from "./units";
+import { CUFT_PER_CUYD, ceilCount } from "./units";
 
 export type ConcreteShape = "slab" | "strip" | "column";
 
@@ -51,7 +51,7 @@ export function computeYardsOfConcrete(input: YardsOfConcreteInput): YardsOfConc
   const cuftWithWaste = cuft * factor;
   const cubicYards = cuft / CUFT_PER_CUYD;
   const cubicYardsWithWaste = cubicYards * factor;
-  const bags = input.bagYieldCuFt > 0 ? Math.ceil(cuftWithWaste / input.bagYieldCuFt) : 0;
+  const bags = input.bagYieldCuFt > 0 ? ceilCount(cuftWithWaste / input.bagYieldCuFt) : 0;
   const cost = cubicYardsWithWaste * input.pricePerCuYd;
   return { cubicFeet: cuft, cubicYards, cubicYardsWithWaste, bags, cost };
 }

@@ -5,6 +5,7 @@ import {
   BLOCK_NOMINAL_HEIGHT_IN,
   BLOCK_NOMINAL_LENGTH_IN,
 } from "../constants";
+import { ceilCount } from "./units";
 
 export interface Opening {
   count: number;
@@ -42,12 +43,12 @@ export function computeConcreteBlock(input: ConcreteBlockInput): ConcreteBlockRe
 
   const lengthIn = input.wallLengthFt * 12;
   const heightIn = input.wallHeightFt * 12;
-  const courses = Math.ceil(heightIn / BLOCK_NOMINAL_HEIGHT_IN);
-  const blocksPerCourse = Math.ceil(lengthIn / BLOCK_NOMINAL_LENGTH_IN);
+  const courses = ceilCount(heightIn / BLOCK_NOMINAL_HEIGHT_IN);
+  const blocksPerCourse = ceilCount(lengthIn / BLOCK_NOMINAL_LENGTH_IN);
 
   const blocksBeforeWaste = netArea * BLOCKS_PER_SQFT;
-  const blocks = Math.ceil(blocksBeforeWaste * (1 + input.wastePct / 100));
-  const mortarBags = Math.ceil(blocks / BLOCKS_PER_MORTAR_BAG);
+  const blocks = ceilCount(blocksBeforeWaste * (1 + input.wastePct / 100));
+  const mortarBags = ceilCount(blocks / BLOCKS_PER_MORTAR_BAG);
 
   const totalCost =
     input.pricePerBlock === null ? null : blocks * input.pricePerBlock;

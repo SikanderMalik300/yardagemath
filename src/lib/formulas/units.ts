@@ -59,3 +59,14 @@ export function round(value: number, dp = 2): number {
 export function safeNumber(value: number, fallback = 0): number {
   return Number.isFinite(value) && value >= 0 ? value : fallback;
 }
+
+/**
+ * Round a count UP to a whole number, after clearing binary floating-point
+ * noise at the 6th decimal. Without this, 48 * 1.1 / 0.6 computes as
+ * 88.00000000000001 and Math.ceil would return 89 instead of 88.
+ * Use for every whole-unit count: bags, blocks, caps, rebar, downspouts.
+ */
+export function ceilCount(x: number): number {
+  if (!Number.isFinite(x)) return 0;
+  return Math.ceil(Math.round(x * 1e6) / 1e6);
+}

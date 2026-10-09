@@ -368,3 +368,53 @@ describe("rip rap calculator", () => {
     expect(round(r.tons, 1)).toBe(16.7);
   });
 });
+
+/* Float round-up: counts must not land one too high at exact integer boundaries.
+   Each case produces an exact whole count whose IEEE-754 product is N + 1e-14,
+   which naive Math.ceil would push to N + 1. ceilCount() clears the noise. */
+describe("floating-point round-up (count never one too high)", () => {
+  it("concrete slab: 12x12x4 + 10% waste, 80-lb = 88 bags (not 89)", () => {
+    const r = computeConcreteSlab({
+      lengthFt: 12,
+      widthFt: 12,
+      thicknessIn: 4,
+      wastePct: 10, // 48 * 1.10 = 52.8 cu ft; 52.8 / 0.60 = 88 exactly
+      supplyMode: "bags",
+      bagSize: "lb80",
+      pricePerCuYd: 160,
+      pricePerBag: 7,
+      laborPerSqFt: 0,
+      rebarPerSqFt: 0,
+      gravelBaseDepthIn: 0,
+    });
+    expect(r.bags).toBe(88);
+  });
+
+  it("concrete block: 20x4 wall + 10% waste = 99 blocks (not 100)", () => {
+    // 80 sq ft * 1.125 = 90; 90 * 1.10 = 99.00000000000001
+    const r = computeConcreteBlock({
+      wallLengthFt: 20,
+      wallHeightFt: 4,
+      openings: [],
+      wastePct: 10,
+      pricePerBlock: null,
+    });
+    expect(r.blocksBeforeWaste).toBe(90);
+    expect(r.blocks).toBe(99);
+  });
+
+  it("block wall: 40x4 + 5% default waste = 189 blocks (not 190)", () => {
+    // 160 sq ft * 1.125 = 180; 180 * 1.05 = 189.00000000000003
+    const r = computeBlockWall({
+      lengthFt: 40,
+      heightFt: 4,
+      blockWidth: "in8",
+      openings: [],
+      capBlocks: false,
+      coreFill: "none",
+      rebarSpacingIn: 32,
+      prices: { block: 2, cap: 2.5, mortarBag: 7.5, groutPerCuYd: 170, rebar20ftBar: 9 },
+    });
+    expect(r.blocks).toBe(189);
+  });
+});

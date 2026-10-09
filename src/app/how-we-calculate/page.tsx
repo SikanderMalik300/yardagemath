@@ -16,6 +16,7 @@ import {
   FIELD_EFFICIENCY_PRESETS,
   DEFAULT_WASTE,
 } from "@/lib/constants";
+import { ceilCount } from "@/lib/formulas/units";
 
 export const metadata = buildMetadata({
   title: "How We Calculate",
@@ -141,9 +142,9 @@ export default function HowWeCalculatePage() {
       <SimpleTable
         head={["Bag", "Cu ft yield", "Bags per cu yd"]}
         rows={[
-          ["80 lb", CONCRETE_BAG_YIELD_CUFT.lb80, Math.ceil(27 / CONCRETE_BAG_YIELD_CUFT.lb80)],
-          ["60 lb", CONCRETE_BAG_YIELD_CUFT.lb60, Math.ceil(27 / CONCRETE_BAG_YIELD_CUFT.lb60)],
-          ["40 lb", CONCRETE_BAG_YIELD_CUFT.lb40, Math.ceil(27 / CONCRETE_BAG_YIELD_CUFT.lb40)],
+          ["80 lb", CONCRETE_BAG_YIELD_CUFT.lb80, ceilCount(27 / CONCRETE_BAG_YIELD_CUFT.lb80)],
+          ["60 lb", CONCRETE_BAG_YIELD_CUFT.lb60, ceilCount(27 / CONCRETE_BAG_YIELD_CUFT.lb60)],
+          ["40 lb", CONCRETE_BAG_YIELD_CUFT.lb40, ceilCount(27 / CONCRETE_BAG_YIELD_CUFT.lb40)],
         ]}
       />
       <Cite keys={["quikreteConcrete"]} />

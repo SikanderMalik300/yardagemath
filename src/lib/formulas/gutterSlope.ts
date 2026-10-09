@@ -3,6 +3,7 @@ import {
   DOWNSPOUT_CAPACITY_SQFT,
   DOWNSPOUT_SPACING_FT,
 } from "../constants";
+import { ceilCount } from "./units";
 
 export type DownspoutPosition = "one-end" | "both-ends" | "middle";
 
@@ -32,10 +33,10 @@ export function computeGutterSlope(input: GutterSlopeInput): GutterSlopeResult {
 
   const totalDropIn = (slopeRunFt / 10) * input.slopeInPer10ft;
 
-  const downspoutsBySpacing = Math.max(1, Math.ceil(input.runLengthFt / DOWNSPOUT_SPACING_FT));
+  const downspoutsBySpacing = Math.max(1, ceilCount(input.runLengthFt / DOWNSPOUT_SPACING_FT));
 
   const byArea = (cap: number) =>
-    input.roofAreaSqFt === null ? null : Math.max(1, Math.ceil(input.roofAreaSqFt / cap));
+    input.roofAreaSqFt === null ? null : Math.max(1, ceilCount(input.roofAreaSqFt / cap));
 
   return {
     slopeRunFt,

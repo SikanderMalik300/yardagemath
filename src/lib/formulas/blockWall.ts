@@ -7,7 +7,7 @@ import {
   GROUT_CUFT_PER_SQFT,
 } from "../constants";
 import type { Opening } from "./concreteBlock";
-import { CUFT_PER_CUYD } from "./units";
+import { CUFT_PER_CUYD, ceilCount } from "./units";
 
 export type BlockWidth = "in6" | "in8" | "in12";
 export type CoreFill = "none" | "everyOther" | "full";
@@ -54,8 +54,8 @@ const WASTE = 5; // default waste % for block walls (build-spec example)
 export function computeBlockWall(input: BlockWallInput): BlockWallResult {
   const lengthIn = input.lengthFt * 12;
   const heightIn = input.heightFt * 12;
-  const courses = Math.ceil(heightIn / BLOCK_NOMINAL_HEIGHT_IN);
-  const blocksPerCourse = Math.ceil(lengthIn / BLOCK_NOMINAL_LENGTH_IN);
+  const courses = ceilCount(heightIn / BLOCK_NOMINAL_HEIGHT_IN);
+  const blocksPerCourse = ceilCount(lengthIn / BLOCK_NOMINAL_LENGTH_IN);
 
   const grossArea = input.lengthFt * input.heightFt;
   const openingsArea = input.openings.reduce(
@@ -64,9 +64,9 @@ export function computeBlockWall(input: BlockWallInput): BlockWallResult {
   );
   const netArea = Math.max(0, grossArea - openingsArea);
 
-  const blocks = Math.ceil(netArea * BLOCKS_PER_SQFT * (1 + WASTE / 100));
-  const capBlocks = input.capBlocks ? Math.ceil(lengthIn / BLOCK_NOMINAL_LENGTH_IN) : 0;
-  const mortarBags = Math.ceil(blocks / BLOCKS_PER_MORTAR_BAG);
+  const blocks = ceilCount(netArea * BLOCKS_PER_SQFT * (1 + WASTE / 100));
+  const capBlocks = input.capBlocks ? ceilCount(lengthIn / BLOCK_NOMINAL_LENGTH_IN) : 0;
+  const mortarBags = ceilCount(blocks / BLOCKS_PER_MORTAR_BAG);
 
   // Grout (core fill): cu ft per sq ft of wall × fill fraction.
   const fillFraction = input.coreFill === "full" ? 1 : input.coreFill === "everyOther" ? 0.5 : 0;
@@ -75,7 +75,7 @@ export function computeBlockWall(input: BlockWallInput): BlockWallResult {
 
   // Vertical rebar bars: one per spacing across the length, + 1, each bar = height + lap.
   const rebarBars =
-    input.coreFill === "none" ? 0 : Math.ceil(lengthIn / input.rebarSpacingIn) + 1;
+    input.coreFill === "none" ? 0 : ceilCount(lengthIn / input.rebarSpacingIn) + 1;
 
   const costBlock = blocks * input.prices.block;
   const costCap = capBlocks * input.prices.cap;

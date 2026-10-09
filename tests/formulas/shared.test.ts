@@ -8,7 +8,7 @@ import {
   tons,
   bags,
 } from "@/lib/formulas/volume";
-import { feetInchesToFeet, round, sqFtToSqYd } from "@/lib/formulas/units";
+import { feetInchesToFeet, round, sqFtToSqYd, ceilCount } from "@/lib/formulas/units";
 
 describe("shared volume math", () => {
   it("rectangle area", () => {
@@ -48,6 +48,20 @@ describe("shared volume math", () => {
     expect(bags(25, 2)).toBe(13);
     expect(bags(27, 2)).toBe(14);
     expect(bags(0, 2)).toBe(0);
+  });
+
+  it("ceilCount clears float noise before rounding up", () => {
+    // 48 * 1.1 / 0.6 === 88.00000000000001 in IEEE-754
+    expect(48 * 1.1 / 0.6).not.toBe(88);
+    expect(ceilCount(88.00000000000001)).toBe(88);
+    expect(ceilCount(88.0001)).toBe(89);
+    expect(ceilCount(88)).toBe(88);
+    expect(ceilCount(87.9999999)).toBe(88); // within 1e-6 of 88 rounds to 88 then ceils
+    expect(ceilCount(0)).toBe(0);
+  });
+
+  it("bags() uses ceilCount: 52.8 cu ft / 0.6 = 88 (not 89)", () => {
+    expect(bags(52.8, 0.6)).toBe(88);
   });
 
   it("feet + inches to decimal feet", () => {

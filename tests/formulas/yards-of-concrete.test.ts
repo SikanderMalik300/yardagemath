@@ -151,4 +151,12 @@ describe("yards of concrete — known answers", () => {
     // 1.9556 cu yd * 160 = 312.9
     expect(Math.round(slab(12, 12, 4, 10, 0.6, 160).cost)).toBe(313);
   });
+
+  it("default (12x12x4, 10% waste, 80-lb) = 88 bags, not 89 (float round-up bug)", () => {
+    // 48 * 1.10 = 52.8 cu ft; 52.8 / 0.60 = 88 exactly.
+    // Naive Math.ceil(52.8/0.6) returns 89 due to 88.00000000000001.
+    const r = slab(12, 12, 4, 10, 0.6, 160);
+    expect(r.bags).toBe(88);
+    expect(Math.round(r.cost)).toBe(313);
+  });
 });
