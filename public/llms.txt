@@ -7,6 +7,7 @@
 - [Cubic Yard Calculator](https://yardagemath.com/cubic-yard-calculator/): Area and depth to cubic yards, tons and bags for gravel, soil, mulch or concrete.
 - [Concrete Block Calculator](https://yardagemath.com/concrete-block-calculator/): How many CMU or cinder blocks a wall needs, plus mortar and cost.
 - [Concrete Slab Cost Calculator](https://yardagemath.com/concrete-slab-cost-calculator/): Slab cubic yards, bags vs ready-mix, and total cost per square foot (2026 prices).
+- [Yards of Concrete Calculator](https://yardagemath.com/yards-of-concrete-calculator/): How many cubic yards of concrete for a slab, footing strip or round column, plus bags and cost.
 - [Topsoil Calculator](https://yardagemath.com/topsoil-calculator/): Topsoil cubic yards, tons and bags for lawns and beds.
 - [Pea Gravel Calculator](https://yardagemath.com/pea-gravel-calculator/): Pea gravel cubic yards, tons and 0.5 cu ft bags by area and depth.
 - [Square Yard Calculator](https://yardagemath.com/square-yard-calculator/): Convert feet and multiple rooms to square yards, with waste and cost.

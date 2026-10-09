@@ -143,6 +143,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "cubic-yard-calculator": ["inchGravel", "cuydWeightChart"],
   "concrete-block-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
   "concrete-slab-cost-calculator": ["quikreteConcrete", "slabCost2026"],
+  "yards-of-concrete-calculator": ["quikreteConcrete", "slabCost2026"],
   "topsoil-calculator": ["cuydWeightChart", "inchSand"],
   "pea-gravel-calculator": ["inchGravel", "cuydWeightChart"],
   "square-yard-calculator": ["inchSquare", "inchCarpet"],

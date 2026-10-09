@@ -85,6 +85,7 @@ export const categories: Record<CategorySlug, Category> = {
       "Planning a slab, footing or block wall? These calculators turn your measurements into the quantities a supplier actually sells — cubic yards of ready-mix, numbers of CMU blocks, bags of mortar, cap blocks, core-fill grout and total material cost. They are built for US homeowners and contractors working in feet and inches, with 2026 price estimates you can edit to match a local quote. Concrete and masonry are unforgiving if you under-order: a slab poured short leaves a cold joint, and running out of block mid-course stops the job. So each tool adds a sensible waste allowance and rounds bags and blocks up. Every result comes with a “Show the math” panel, so you can follow the formula with your own numbers instead of trusting a black box, plus a reference table of common sizes for quick planning. Start with the Concrete Block Calculator for a fast block count, the Concrete Slab Cost Calculator for a pour, or the Block Wall Calculator when you need the full material and cost breakdown including grout and rebar. Always confirm structural work, footings and permits with your local building department.",
     whichTool: [
       { project: "Pouring a patio, shed base or driveway slab", slug: "concrete-slab-cost-calculator" },
+      { project: "How many yards of concrete for a pour", slug: "yards-of-concrete-calculator" },
       { project: "Counting blocks for a wall", slug: "concrete-block-calculator" },
       { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
@@ -295,6 +296,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["USDA bulk-density references", "landscape-supply yard figures"],
     related: [
+      "yards-of-concrete-calculator",
       "topsoil-calculator",
       "pea-gravel-calculator",
       "landscape-materials-calculator",
@@ -425,6 +427,7 @@ export const calculators: Calculator[] = [
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
     related: [
       "block-wall-calculator",
+      "yards-of-concrete-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
       "rip-rap-calculator",
@@ -551,6 +554,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["2026 ready-mix price guides", "Quikrete/Sakrete bag yields"],
     related: [
+      "yards-of-concrete-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
       "block-wall-calculator",
@@ -1590,6 +1594,123 @@ export const calculators: Calculator[] = [
     related: ["cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
     lastUpdated: "2026-10-09",
     imageAlt: "Rip rap calculator diagram of a stone layer on a slope with thickness labelled",
+  },
+
+  /* ---------------------------------------------------------------- 13 */
+  {
+    slug: "yards-of-concrete-calculator",
+    category: "concrete",
+    title: "Yards of Concrete Calculator – How Many Yards Do I Need?",
+    metaDescription:
+      "Find how many cubic yards of concrete you need for a slab, footing or round column. Includes waste, 80-lb bag count and cost at your price per yard.",
+    h1: "Yards of Concrete Calculator",
+    primaryKeyword: "how many yards of concrete do i need",
+    secondaryKeywords: [
+      "yard of concrete",
+      "how much is a yard of concrete",
+      "concrete yardage",
+      "concrete calculator yards",
+      "how to calculate yards of concrete",
+    ],
+    cardDescription: "How many cubic yards of concrete for a slab, strip or column.",
+    shortAnswer:
+      "One cubic yard of concrete is 27 cubic feet. That fills a 10 × 10 ft slab about 3¼ inches thick, or about 81 sq ft at 4 inches. Pick your shape below, enter the size, and you'll get the cubic yards, the bag count and the cost.",
+    howTo: [
+      "Pick the shape: slab, wall or footing strip, or round column.",
+      "Enter the size in feet and inches. Thickness is in inches.",
+      "Leave waste at 10% unless you have a reason to change it.",
+      "Add your local price per yard if you have a quote.",
+      "Read the cubic yards. Round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "slab cu ft = L × W × (thickness ÷ 12)",
+        "strip cu ft = L × W × D   (all in feet)",
+        "column cu ft = π × (diameter ÷ 2)² × height × quantity",
+        "cubic yards = cu ft ÷ 27",
+        "bags = ceil(cu ft × (1 + waste%) ÷ yield)   (80 lb = 0.60, 60 lb = 0.45)",
+      ],
+      example: [
+        "A 12 × 12 ft patio, 4 inches thick:",
+        "cu ft = 144 × (4 ÷ 12) = 48",
+        "cubic yards = 48 ÷ 27 = 1.78",
+        "+ 10% waste = 1.96 cu yd",
+      ],
+      example2: [
+        "Four 12-inch round columns, 4 ft tall:",
+        "cu ft = π × 0.5² × 4 × 4 = 12.57",
+        "cubic yards = 12.57 ÷ 27 = 0.47",
+        "+ 10% waste = 0.51 cu yd",
+      ],
+    },
+    notCovered:
+      "It gives the volume of concrete for slabs, footings and round columns. It doesn't allow for an uneven subgrade, forms that bow, or concrete left in the truck or pump line, so order the extra it suggests. Ask your supplier about minimum orders and short-load fees.",
+    tables: [
+      {
+        title: "Cubic yards and 80-lb bags for common slabs",
+        columns: [
+          { label: "Slab size" },
+          { label: 'Cu yd @ 4"', num: true },
+          { label: 'Cu yd @ 6"', num: true },
+          { label: '80-lb bags @ 4"', num: true },
+          { label: '80-lb bags @ 6"', num: true },
+        ],
+        rows: [
+          ["10 × 10 ft", "1.23", "1.85", 56, 84],
+          ["12 × 12 ft", "1.78", "2.67", 80, 120],
+          ["16 × 16 ft", "3.16", "4.74", 143, 214],
+          ["20 × 20 ft", "4.94", "7.41", 223, 334],
+          ["24 × 24 ft", "7.11", "10.67", 320, 480],
+          ["30 × 30 ft", "11.11", "16.67", 500, 750],
+        ],
+        footnote: "Volumes and bags exclude waste; add about 10% when you order. An 80-lb bag yields about 0.60 cu ft.",
+      },
+    ],
+    tips: [
+      "Always round your order up. Running out of concrete halfway through a pour leaves a cold joint, and that's a weak spot.",
+      "Ready-mix plants usually sell in quarter- or half-yard steps, so round up to the next step.",
+      "Small orders often carry a short-load fee. If you need under about 1 cubic yard, bags can make more sense.",
+      "Measure thickness in a few spots. If your base dips an inch, a big slab can eat a lot more concrete than you planned.",
+    ],
+    faqs: [
+      {
+        q: "How many yards of concrete do I need for a 10x10 slab?",
+        a: "About 1.23 cubic yards at 4 inches thick, or 1.36 with 10% extra. At 6 inches thick it's about 1.85 cubic yards.",
+      },
+      {
+        q: "How much is a yard of concrete?",
+        a: "In 2026 a cubic yard of ready-mix usually costs around $145–$195 delivered, depending on your area and the mix strength. Small loads cost more per yard because of short-load fees, so get a local quote.",
+      },
+      {
+        q: "How many square feet does a yard of concrete cover?",
+        a: "It depends on thickness. One yard covers about 81 sq ft at 4 inches, 65 sq ft at 5 inches and 54 sq ft at 6 inches. Divide 324 by the thickness in inches.",
+      },
+      {
+        q: "How do I calculate yards of concrete?",
+        a: "Multiply length × width × thickness, all in feet, to get cubic feet. Then divide by 27. A 12 × 12 slab at 4 inches is 12 × 12 × 0.333 = 48 cubic feet, which is 1.78 yards.",
+      },
+      {
+        q: "How many 80-lb bags make a yard of concrete?",
+        a: "About 45. Each 80-lb bag makes about 0.60 cubic feet, and a yard is 27 cubic feet.",
+      },
+      {
+        q: "Should I order extra concrete?",
+        a: "Yes, about 10%. Uneven ground, form bulges and spills all use more than the math says. Being short is a much bigger problem than having a little left over.",
+      },
+      {
+        q: "What is the minimum amount of concrete I can order?",
+        a: "Many plants deliver as little as 1 cubic yard, but loads under about 3–4 yards often carry a short-load fee. Ask about it when you call.",
+      },
+    ],
+    sources: ["Quikrete 80-lb concrete mix yield", "2026 ready-mix cost guide"],
+    related: [
+      "concrete-slab-cost-calculator",
+      "cubic-yard-calculator",
+      "concrete-block-calculator",
+      "block-wall-calculator",
+    ],
+    lastUpdated: "2026-10-09",
+    imageAlt: "Yards of concrete calculator diagram of a slab, strip footing and round column",
   },
 ];
 
