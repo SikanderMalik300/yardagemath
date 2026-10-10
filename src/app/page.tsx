@@ -13,7 +13,6 @@ import { fmtDate } from "@/lib/format";
 import { figtree } from "@/components/home/homeFont";
 import { Hero } from "@/components/home/Hero";
 import { HomeTile } from "@/components/home/HomeTile";
-import { allHomePhotos } from "@/lib/data/photos";
 import styles from "@/components/home/home.module.css";
 
 export const metadata = buildMetadata({
@@ -61,7 +60,7 @@ export default function HomePage() {
       <Hero />
 
         {/* Most popular calculators */}
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sep}`}>
           <div className={styles.container}>
             <div className={styles.sectionHead}>
               <h2 className={styles.h2}>Most popular calculators</h2>
@@ -74,7 +73,7 @@ export default function HomePage() {
 
         {/* Category bands */}
         {categoryList.map((cat) => (
-          <section key={cat.slug} className={`${styles.band} ${BAND_STYLE[cat.slug].band}`}>
+          <section key={cat.slug} className={`${styles.band} ${styles.sep} ${BAND_STYLE[cat.slug].band}`}>
             <div className={`${styles.container} ${styles.section}`}>
               <div className={styles.sectionHead}>
                 <h2 className={styles.h2}>{cat.title}</h2>
@@ -93,7 +92,7 @@ export default function HomePage() {
         ))}
 
         {/* Popular answers */}
-        <section className={`${styles.band} ${styles.bandPaper}`}>
+        <section className={`${styles.band} ${styles.sep} ${styles.bandPaper}`}>
           <div className={`${styles.container} ${styles.section}`}>
             <h2 className={styles.h2}>Popular answers</h2>
             <div className={styles.answerGrid}>
@@ -112,7 +111,7 @@ export default function HomePage() {
         </section>
 
         {/* Why trust these calculators */}
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sep}`}>
           <div className={styles.container}>
             <h2 className={styles.h2}>Why trust these calculators</h2>
             <div className={styles.trustGrid}>
@@ -142,7 +141,7 @@ export default function HomePage() {
         </section>
 
         {/* Latest updates */}
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sep}`}>
           <div className={styles.container}>
             <h2 className={styles.h2}>Latest updates</h2>
             <ul className={styles.updates}>
@@ -155,25 +154,6 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        {/* Photo credits */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <div className={styles.credits}>
-              <p className={styles.creditsHead}>Photo credits</p>
-              <ul className={styles.creditsList}>
-                {allHomePhotos().map((p) => (
-                  <li key={p.id}>
-                    {p.alt} by {p.photographer} on{" "}
-                    <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      {p.source}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </section>
     </div>

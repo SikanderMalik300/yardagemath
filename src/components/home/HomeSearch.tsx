@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { calculators } from "@/data/calculators";
-import { HomeTile } from "./HomeTile";
 import styles from "./home.module.css";
 
 /**
@@ -24,37 +24,36 @@ export function HomeSearch() {
     : [];
 
   return (
-    <div>
-      <div className={styles.searchWrap}>
-        <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
-          <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M12.5 12.5 16 16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        </svg>
-        <input
-          id="home-search"
-          type="search"
-          className={styles.searchInput}
-          inputMode="search"
-          enterKeyHint="search"
-          placeholder="e.g. gravel, concrete, mulch, topsoil…"
-          aria-label="Search calculators"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          autoComplete="off"
-        />
-      </div>
+    <div className={styles.searchWrap}>
+      <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+        <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M12.5 12.5 16 16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+      <input
+        id="home-search"
+        type="search"
+        className={styles.searchInput}
+        inputMode="search"
+        enterKeyHint="search"
+        placeholder="e.g. gravel, concrete, mulch, topsoil…"
+        aria-label="Search calculators"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        autoComplete="off"
+      />
       {query && (
-        <div aria-live="polite" style={{ marginTop: "20px" }}>
+        <div className={styles.searchResults} aria-live="polite">
           {matches.length === 0 ? (
-            <p className={styles.trustText}>
+            <p className={styles.resultEmpty}>
               No calculator matches &ldquo;{q}&rdquo;. Try &ldquo;gravel&rdquo;, &ldquo;concrete&rdquo; or &ldquo;mulch&rdquo;.
             </p>
           ) : (
-            <div className={styles.tileGrid}>
-              {matches.map((c) => (
-                <HomeTile key={c.slug} cal={c} />
-              ))}
-            </div>
+            matches.map((c) => (
+              <Link key={c.slug} href={`/${c.slug}/`} prefetch={false} className={styles.resultRow}>
+                <span className={styles.resultName}>{c.h1.replace(/\s*\(.*\)/, "")}</span>
+                <span className={styles.resultDesc}>{c.cardDescription}</span>
+              </Link>
+            ))
           )}
         </div>
       )}

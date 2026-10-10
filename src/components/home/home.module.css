@@ -3,14 +3,14 @@
 
 .home {
   /* Home-only color tokens */
-  --ym-sand: #f2ece0;
-  --ym-stone: #ece8e1;
-  --ym-sage: #ddebdf;
-  --ym-grass: #e4efc9;
-  --ym-paper: #f5f3ef;
+  --ym-sand: #f0e7d4;
+  --ym-stone: #eae4d6;
+  --ym-sage: #daebdc;
+  --ym-grass: #e6f0ca;
+  --ym-paper: #f1ecde;
   --ym-ink: #17201b;
   --ym-muted: #53605a;
-  --ym-line: #e3e1db;
+  --ym-line: #d9d5cb;
   --ym-green: #236b4b;
 
   font-family: var(--font-figtree), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -49,6 +49,10 @@
 .bandSage { background: var(--ym-sage); }
 .bandGrass { background: var(--ym-grass); }
 .bandPaper { background: var(--ym-paper); }
+
+/* Hairline separator between stacked sections, so each band/section reads as a
+   distinct block even where two soft tints meet. */
+.sep { border-top: 1px solid var(--ym-line); }
 
 /* Headings (no bold) ------------------------------------------------------ */
 .h1 {
@@ -194,6 +198,34 @@
   line-height: 1;
 }
 .chip:hover { border-color: var(--ym-green); }
+
+/* Search results dropdown (overlays below the input, breaks out of the hero
+   column so results are never cramped). */
+.searchResults {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(560px, 92vw);
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid var(--ym-line);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 8px;
+  z-index: 30;
+}
+.resultRow {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--ym-ink);
+}
+.resultRow:hover { background: var(--ym-paper); }
+.resultName { display: block; font-size: 15px; font-weight: 500; color: var(--ym-ink); }
+.resultDesc { display: block; font-size: 13px; color: var(--ym-muted); margin-top: 2px; }
+.resultEmpty { padding: 12px; font-size: 14px; color: var(--ym-muted); margin: 0; }
 
 /* Tiles ------------------------------------------------------------------- */
 .tileGrid {
