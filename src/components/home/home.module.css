@@ -222,7 +222,8 @@
   text-decoration: none;
   color: var(--ym-ink);
 }
-.resultRow:hover { background: var(--ym-paper); }
+.resultRow:hover,
+.resultRowActive { background: var(--ym-paper); }
 .resultName { display: block; font-size: 15px; font-weight: 500; color: var(--ym-ink); }
 .resultDesc { display: block; font-size: 13px; color: var(--ym-muted); margin-top: 2px; }
 .resultEmpty { padding: 12px; font-size: 14px; color: var(--ym-muted); margin: 0; }

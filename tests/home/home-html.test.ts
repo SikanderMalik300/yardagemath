@@ -84,9 +84,13 @@ describe.skipIf(!hasBuild)("homepage redesign: SEO is unchanged", () => {
     expect(html).toContain("e.g. gravel, concrete, mulch, topsoil…");
   });
 
-  it("the search component declares an aria-live results region", () => {
+  it("the search uses the ARIA combobox pattern", () => {
     const src = fs.readFileSync(path.join(process.cwd(), "src/components/home/HomeSearch.tsx"), "utf8");
-    expect(src).toContain('aria-live="polite"');
+    expect(src).toContain('role="combobox"');
+    expect(src).toContain("aria-controls");
+    expect(src).toContain("aria-activedescendant");
+    expect(src).toContain('role="listbox"');
+    expect(src).toContain('role="option"');
   });
 
   it("keeps every section heading", () => {
