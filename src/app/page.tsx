@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { buildMetadata, itemListJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { ToolCard } from "@/components/layout/ToolCard";
-import { AdSlot } from "@/components/layout/AdSlot";
-import { HomeSearch } from "@/components/HomeSearch";
 import {
   calculators,
   categoryList,
@@ -13,18 +10,11 @@ import {
   type CategorySlug,
 } from "@/data/calculators";
 import { fmtDate } from "@/lib/format";
-
-const CATEGORY_BLURB: Record<CategorySlug, string> = {
-  concrete: "Estimate slabs, blocks and full walls — cubic yards, block counts, mortar and cost.",
-  landscaping: "Work out soil, gravel, mulch, stone and square yards from your area and depth.",
-  lawn: "Price a mow, or work out how fast you can cover a lawn or field.",
-};
-
-const POPULAR_ANSWERS: { fact: string; href: string; cta: string }[] = [
-  { fact: "1 cubic yard covers 108 sq ft at 3 in deep", href: "/cubic-yard-calculator/", cta: "Cubic Yard Calculator" },
-  { fact: "112.5 blocks per 100 sq ft of wall", href: "/concrete-block-calculator/", cta: "Concrete Block Calculator" },
-  { fact: "≈45 bags of 80-lb concrete per cubic yard", href: "/concrete-slab-cost-calculator/", cta: "Slab Cost Calculator" },
-];
+import { figtree } from "@/components/home/homeFont";
+import { Hero } from "@/components/home/Hero";
+import { HomeTile } from "@/components/home/HomeTile";
+import { allHomePhotos } from "@/lib/data/photos";
+import styles from "@/components/home/home.module.css";
 
 export const metadata = buildMetadata({
   title: "YardageMath – Free Construction & Yard Calculators",
@@ -34,13 +24,29 @@ export const metadata = buildMetadata({
   absoluteTitle: true,
 });
 
-function SectionHeading({ children, id }: { children: React.ReactNode; id?: string }) {
-  return (
-    <h2 id={id} style={{ fontSize: "1.5rem", marginBottom: "1rem", marginTop: 0 }}>
-      {children}
-    </h2>
-  );
-}
+const BAND_INTRO: Record<CategorySlug, string> = {
+  concrete: "Estimate slabs, blocks and full walls: cubic yards, block counts, mortar and cost.",
+  landscaping: "Work out soil, gravel, mulch, stone and square yards from your area and depth.",
+  lawn: "Price a mow, or work out how fast you can cover a lawn or field.",
+};
+
+const BAND_STYLE: Record<CategorySlug, { band: string; fallback: string }> = {
+  concrete: { band: styles.bandStone, fallback: "--ym-stone" },
+  landscaping: { band: styles.bandSage, fallback: "--ym-sage" },
+  lawn: { band: styles.bandGrass, fallback: "--ym-grass" },
+};
+
+const POPULAR_ANSWERS: { fact: string; href: string; cta: string }[] = [
+  { fact: "1 cubic yard covers 108 sq ft at 3 in deep", href: "/cubic-yard-calculator/", cta: "Cubic Yard Calculator" },
+  { fact: "112.5 blocks per 100 sq ft of wall", href: "/concrete-block-calculator/", cta: "Concrete Block Calculator" },
+  { fact: "≈45 bags of 80-lb concrete per cubic yard", href: "/concrete-slab-cost-calculator/", cta: "Slab Cost Calculator" },
+];
+
+const ARROW = (
+  <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style={{ flexShrink: 0 }}>
+    <path d="M3 8h9M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 export default function HomePage() {
   const popular = popularSlugs.map((s) => getCalculator(s)).filter(Boolean);
@@ -49,127 +55,126 @@ export default function HomePage() {
     .slice(0, 6);
 
   return (
-    <div className="container-content" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+    <div className={`${styles.home} ${figtree.variable}`}>
       <JsonLd data={itemListJsonLd(calculators)} />
 
-      {/* Compact intro — no marketing hero (design.md §10) */}
-      <section style={{ marginBottom: "2rem", maxWidth: "var(--reading-max-width)" }}>
-        <h1 className="page-h1" style={{ marginBottom: "0.75rem" }}>
-          Free Construction &amp; Yard Calculators
-        </h1>
-        <p style={{ color: "var(--text-secondary)", fontSize: "1.0625rem" }}>
-          Fast, accurate calculators for concrete, blocks, gravel, topsoil, mulch, gutters and
-          lawn care. Enter your measurements and get cubic yards, tons, bags and costs in
-          seconds — with the formula shown so you can check every result. Built for homeowners,
-          contractors and landscapers in the US.
-        </p>
-        <HomeSearch />
-      </section>
+      <Hero />
 
-      {/* Popular answers (featured-snippet facts + internal links) */}
-      <section aria-labelledby="popular-answers" style={{ marginBottom: "2.5rem" }}>
-        <h2 id="popular-answers" style={{ fontSize: "1.125rem", marginBottom: "0.75rem" }}>
-          Popular answers
-        </h2>
-        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.5rem" }}>
-          {POPULAR_ANSWERS.map((a) => (
-            <li
-              key={a.href}
-              style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "baseline", fontSize: "0.9375rem" }}
-            >
-              <span style={{ color: "var(--text-secondary)" }}>{a.fact}</span>
-              <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>→</span>
-              <Link href={a.href} prefetch={false} style={{ fontWeight: 600 }}>
-                {a.cta}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Most popular */}
-      <section style={{ marginBottom: "2.5rem" }}>
-        <SectionHeading>Most popular calculators</SectionHeading>
-        <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
-          {popular.map((c) => c && <ToolCard key={c.slug} cal={c} />)}
-        </div>
-      </section>
-
-      <AdSlot minHeight={120} />
-
-      {/* Category sections */}
-      {categoryList.map((cat) => (
-        <section key={cat.slug} style={{ marginBottom: "2.5rem" }}>
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "1rem" }}>
-            <SectionHeading>{cat.title}</SectionHeading>
-            <Link href={`/${cat.slug}/`} prefetch={false} style={{ fontSize: "0.875rem", fontWeight: 600, flexShrink: 0 }}>
-              View all →
-            </Link>
-          </div>
-          <p style={{ color: "var(--text-secondary)", marginTop: "-0.5rem", marginBottom: "1rem", fontSize: "0.9375rem", maxWidth: "var(--reading-max-width)" }}>
-            {CATEGORY_BLURB[cat.slug]}
-          </p>
-          <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))" }}>
-            {calculatorsInCategory(cat.slug).map((c) => (
-              <ToolCard key={c.slug} cal={c} showCategory={false} />
-            ))}
+        {/* Most popular calculators */}
+        <section className={`${styles.section} ${styles.sep}`}>
+          <div className={styles.container}>
+            <div className={styles.sectionHead}>
+              <h2 className={styles.h2}>Most popular calculators</h2>
+            </div>
+            <div className={styles.tileGrid}>
+              {popular.map((c) => c && <HomeTile key={c.slug} cal={c} />)}
+            </div>
           </div>
         </section>
-      ))}
 
-      {/* Trust / methodology */}
-      <section
-        style={{
-          marginBottom: "2.5rem",
-          padding: "1.5rem",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius-lg)",
-          background: "var(--surface)",
-        }}
-      >
-        <SectionHeading>Why trust these calculators</SectionHeading>
-        <div style={{ display: "grid", gap: "1.25rem", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
-          <div>
-            <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>The math is shown</h3>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
-              Every tool has a &ldquo;Show the math&rdquo; panel with your numbers plugged into the
-              formula — nothing is hidden.
-            </p>
-          </div>
-          <div>
-            <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>Sources are cited</h3>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
-              Densities, bag yields and slope rules come from manufacturer and industry sources,
-              listed on <Link href="/how-we-calculate/" prefetch={false}>How We Calculate</Link>.
-            </p>
-          </div>
-          <div>
-            <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.375rem" }}>Kept up to date</h3>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}>
-              Each page shows when it was last reviewed. Built and maintained by{" "}
-              <Link href="/about/" prefetch={false}>Sikander Mushtaq</Link>.
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* Category bands */}
+        {categoryList.map((cat) => (
+          <section key={cat.slug} className={`${styles.band} ${styles.sep} ${BAND_STYLE[cat.slug].band}`}>
+            <div className={`${styles.container} ${styles.section}`}>
+              <div className={styles.sectionHead}>
+                <h2 className={styles.h2}>{cat.title}</h2>
+                <Link href={`/${cat.slug}/`} prefetch={false} className={styles.viewAll}>
+                  View all {ARROW}
+                </Link>
+              </div>
+              <p className={styles.bandIntro}>{BAND_INTRO[cat.slug]}</p>
+              <div className={styles.tileGrid}>
+                {calculatorsInCategory(cat.slug).map((c) => (
+                  <HomeTile key={c.slug} cal={c} fallbackVar={BAND_STYLE[cat.slug].fallback} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
 
-      {/* Latest updates */}
-      <section style={{ marginBottom: "1rem" }}>
-        <SectionHeading>Latest updates</SectionHeading>
-        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "0.5rem" }}>
-          {latest.map((c) => (
-            <li
-              key={c.slug}
-              style={{ display: "flex", justifyContent: "space-between", gap: "1rem", fontSize: "0.9375rem", borderBottom: "1px solid var(--border)", paddingBottom: "0.5rem" }}
-            >
-              <Link href={`/${c.slug}/`} prefetch={false}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
-              <time dateTime={c.lastUpdated} style={{ color: "var(--text-muted)", flexShrink: 0 }}>
-                {fmtDate(c.lastUpdated)}
-              </time>
-            </li>
-          ))}
-        </ul>
-      </section>
+        {/* Popular answers */}
+        <section className={`${styles.band} ${styles.sep} ${styles.bandPaper}`}>
+          <div className={`${styles.container} ${styles.section}`}>
+            <h2 className={styles.h2}>Popular answers</h2>
+            <div className={styles.answerGrid}>
+              {POPULAR_ANSWERS.map((a) => (
+                <div key={a.href} className={styles.answerCard}>
+                  <p className={styles.answerFact}>
+                    <span className={styles.answerNum}>{a.fact}</span>
+                  </p>
+                  <Link href={a.href} prefetch={false} className={styles.answerLink}>
+                    {a.cta} {ARROW}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why trust these calculators */}
+        <section className={`${styles.section} ${styles.sep}`}>
+          <div className={styles.container}>
+            <h2 className={styles.h2}>Why trust these calculators</h2>
+            <div className={styles.trustGrid}>
+              <div>
+                <h3 className={styles.h3}>The math is shown</h3>
+                <p className={styles.trustText}>
+                  Every tool has a &ldquo;Show the math&rdquo; panel with your numbers plugged into the
+                  formula, nothing is hidden.
+                </p>
+              </div>
+              <div>
+                <h3 className={styles.h3}>Sources are cited</h3>
+                <p className={styles.trustText}>
+                  Densities, bag yields and slope rules come from manufacturer and industry sources,
+                  listed on <Link href="/how-we-calculate/" prefetch={false}>How We Calculate</Link>.
+                </p>
+              </div>
+              <div>
+                <h3 className={styles.h3}>Kept up to date</h3>
+                <p className={styles.trustText}>
+                  Each page shows when it was last reviewed. Built and maintained by{" "}
+                  <Link href="/about/" prefetch={false}>Sikander Mushtaq</Link>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Latest updates */}
+        <section className={`${styles.section} ${styles.sep}`}>
+          <div className={styles.container}>
+            <h2 className={styles.h2}>Latest updates</h2>
+            <ul className={styles.updates}>
+              {latest.map((c) => (
+                <li key={c.slug} className={styles.updateRow}>
+                  <Link href={`/${c.slug}/`} prefetch={false}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
+                  <time dateTime={c.lastUpdated} className={styles.updateDate}>
+                    {fmtDate(c.lastUpdated)}
+                  </time>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Photo credits */}
+        <section className={`${styles.section} ${styles.sep}`}>
+          <div className={styles.container}>
+            <p className={styles.creditsHead}>Photo credits</p>
+            <p className={styles.credits}>
+              Photos from Pexels:{" "}
+              {allHomePhotos().map((p, i) => (
+                <span key={p.id}>
+                  {i > 0 ? " · " : ""}
+                  <a href={p.sourceUrl} target="_blank" rel="nofollow noopener">
+                    {p.photographer}
+                  </a>
+                </span>
+              ))}
+            </p>
+          </div>
+        </section>
     </div>
   );
 }

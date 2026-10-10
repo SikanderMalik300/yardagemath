@@ -28,3 +28,7 @@ yarn-error.log*
 
 # vercel / typescript build info
 *.tsbuildinfo
+
+# home-redesign scratch
+.photo-src/
+.shots/
