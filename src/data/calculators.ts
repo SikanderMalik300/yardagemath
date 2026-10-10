@@ -1717,7 +1717,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
     ],
     lastUpdated: "2026-10-10",
-    imageAlt: "Yards of concrete calculator diagram of a slab, strip footing and round column",
+    imageAlt: "Yards of concrete diagram: slab, strip footing and round column with the dimensions the calculator uses.",
   },
 
   /* ---------------------------------------------------------------- 14 */
@@ -1831,7 +1831,7 @@ export const calculators: Calculator[] = [
       "yards-of-concrete-calculator",
     ],
     lastUpdated: "2026-10-10",
-    imageAlt: "Concrete block weight chart showing 4, 6, 8, 10 and 12 inch CMU weights",
+    imageAlt: "Concrete block weight: a standard 8×8×16 block and a 90-block pallet.",
   },
 
   /* ---------------------------------------------------------------- 15 */
@@ -1945,7 +1945,7 @@ export const calculators: Calculator[] = [
       "yards-of-concrete-calculator",
     ],
     lastUpdated: "2026-10-10",
-    imageAlt: "CMU block sizes chart showing nominal and actual dimensions for 4 to 12 inch blocks",
+    imageAlt: "CMU nominal vs actual size: a 15⅝ × 7⅝ in block plus a ⅜ in joint fills 16 × 8 in.",
   },
 ];
 

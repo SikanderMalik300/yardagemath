@@ -97,6 +97,100 @@ function MowerPath({ title }: { title: string }) {
   );
 }
 
+/** Yards of concrete: slab, strip footing and round column side by side. */
+function ConcreteShapes({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Slab */}
+      <polygon points="28,78 86,78 100,66 42,66" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <polygon points="86,78 100,66 100,92 86,104" fill="#d9e6de" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="28,78 86,78 86,104 28,104" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="57" y="118" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">L</text>
+      <text x="20" y="94" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 20 94)">W</text>
+      <text x="105" y="84" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">T</text>
+      <text x="60" y="140" textAnchor="middle" fill={LINE} fontSize="11">Slab</text>
+
+      {/* Strip footing */}
+      <polygon points="132,66 176,66 190,54 146,54" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <polygon points="176,66 190,54 190,96 176,108" fill="#d9e6de" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="132,66 176,66 176,108 132,108" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="154" y="122" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">L</text>
+      <text x="124" y="90" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 124 90)">W</text>
+      <text x="195" y="86" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">D</text>
+      <text x="158" y="140" textAnchor="middle" fill={LINE} fontSize="11">Footing</text>
+
+      {/* Round column */}
+      <path d="M236 64 V104 A24 8 0 0 0 284 104 V64" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <ellipse cx="260" cy="64" rx="24" ry="8" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <text x="260" y="50" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">d</text>
+      <text x="226" y="88" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 226 88)">h</text>
+      <text x="260" y="140" textAnchor="middle" fill={LINE} fontSize="11">Column</text>
+    </Frame>
+  );
+}
+
+/** Concrete block weight: a standard 8x8x16 block and a 90-block pallet. */
+function BlockWeightDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* CMU block, 3D with two cores */}
+      <polygon points="28,64 116,64 136,52 48,52" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <polygon points="116,64 136,52 136,98 116,110" fill="#d9e6de" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="28,64 116,64 116,110 28,110" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="50,62 74,62 86,54 62,54" fill="#fff" stroke={LINE} strokeWidth="1" />
+      <polygon points="84,62 108,62 120,54 96,54" fill="#fff" stroke={LINE} strokeWidth="1" />
+      <text x="82" y="128" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">8 × 8 × 16 block</text>
+      <text x="82" y="142" textAnchor="middle" fill={LINE} fontSize="9.5">≈ 38 lb normal · ≈ 28 lb lightweight</text>
+
+      {/* Pallet stack of blocks */}
+      {[0, 1, 2].map((r) =>
+        [0, 1, 2, 3].map((c) => (
+          <rect
+            key={`${r}-${c}`}
+            x={204 + c * 21}
+            y={58 + r * 15}
+            width="19"
+            height="13"
+            rx="1.5"
+            fill="#fff"
+            stroke={LINE}
+            strokeWidth="1.1"
+          />
+        ))
+      )}
+      <rect x="201" y="104" width="90" height="7" fill={SOFT} stroke={LINE} strokeWidth="1.1" />
+      <line x1="210" y1="111" x2="210" y2="118" stroke={LINE} strokeWidth="1.1" />
+      <line x1="246" y1="111" x2="246" y2="118" stroke={LINE} strokeWidth="1.1" />
+      <line x1="282" y1="111" x2="282" y2="118" stroke={LINE} strokeWidth="1.1" />
+      <text x="246" y="132" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">90-block pallet</text>
+      <text x="246" y="142" textAnchor="middle" fill={LINE} fontSize="9.5">≈ 3,420 lb</text>
+    </Frame>
+  );
+}
+
+/** CMU sizes: actual 15 5/8 x 7 5/8 block inside the dashed nominal 16 x 8 module. */
+function CmuSizeDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Nominal module (dashed), extends right + down by the joint */}
+      <rect x="58" y="50" width="184" height="72" fill="none" stroke={LINE} strokeWidth="1.2" strokeDasharray="5 4" />
+      {/* Actual block (solid) seated in the top-left of the module */}
+      <rect x="58" y="50" width="176" height="64" rx="2" fill="#fff" stroke={LINE} strokeWidth="1.6" />
+      <rect x="80" y="62" width="62" height="40" rx="3" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
+      <rect x="150" y="62" width="62" height="40" rx="3" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
+      {/* Actual dimensions (brand) */}
+      <text x="146" y="130" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">actual 15⅝ in</text>
+      <text x="49" y="82" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 49 82)">7⅝ in</text>
+      {/* Nominal label (gray) */}
+      <text x="150" y="44" textAnchor="middle" fill={LINE} fontSize="10">nominal 16 × 8 in</text>
+      {/* Mortar-joint callout, pointing at the gap on the right */}
+      <line x1="236" y1="88" x2="256" y2="88" stroke={LINE} strokeWidth="1" />
+      <text x="258" y="91" textAnchor="start" fill={LINE} fontSize="9.5">⅜ in</text>
+      <text x="146" y="150" textAnchor="middle" fill={LINE} fontSize="10">dashed = nominal · gap = ⅜ in mortar joint</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -110,6 +204,12 @@ export function Diagram({
   let node: React.ReactNode;
   if (slug === "concrete-block-calculator" || slug === "block-wall-calculator") {
     node = <WallCourses title={alt} />;
+  } else if (slug === "yards-of-concrete-calculator") {
+    node = <ConcreteShapes title={alt} />;
+  } else if (slug === "concrete-block-weight") {
+    node = <BlockWeightDiagram title={alt} />;
+  } else if (slug === "cmu-block-sizes") {
+    node = <CmuSizeDiagram title={alt} />;
   } else if (slug === "gutter-slope-calculator") {
     node = <GutterSlopeDiagram title={alt} />;
   } else if (slug === "lawn-mowing-cost-calculator" || slug === "acres-per-hour-calculator") {
