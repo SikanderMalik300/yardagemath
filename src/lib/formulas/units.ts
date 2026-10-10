@@ -70,3 +70,13 @@ export function ceilCount(x: number): number {
   if (!Number.isFinite(x)) return 0;
   return Math.ceil(Math.round(x * 1e6) / 1e6);
 }
+
+/**
+ * Round a count DOWN to a whole number, after clearing binary floating-point
+ * noise at the 6th decimal. Mirror of ceilCount for "how many whole units fit"
+ * cases such as blocks per truck trip (floor(payload / block weight)).
+ */
+export function floorCount(x: number): number {
+  if (!Number.isFinite(x)) return 0;
+  return Math.floor(Math.round(x * 1e6) / 1e6);
+}

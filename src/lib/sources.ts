@@ -134,6 +134,34 @@ export const SOURCES = {
     url: "https://www.inchcalculator.com/carpet-calculator/",
     checked: CHECKED,
   },
+  terrehillBlockWeights: {
+    id: "terrehillBlockWeights",
+    title: "Concrete block weight list — per-unit weights (8×8×16 hollow 40 lb, lightweight 34 lb, solid 65 lb)",
+    publisher: "Terrehill Concrete Products",
+    url: "https://www.terrehill.com/wp-content/uploads/2017/07/NO.pdf",
+    checked: "2026-10-10",
+  },
+  escsiCmuWeights: {
+    id: "escsiCmuWeights",
+    title: "Lightweight CMU — unit weights from the NCMA study (8-inch: lightweight <28 lb, heavyweight ≥34 lb)",
+    publisher: "Expanded Shale, Clay & Slate Institute (NCMA data)",
+    url: "https://www.escsi.org/wp-content/uploads/2017/10/3600.0-LW-CMU-A-Weight-Off-Our-Shoulders.pdf",
+    checked: "2026-10-10",
+  },
+  mimCmuWeight: {
+    id: "mimCmuWeight",
+    title: "Specifying CMUs — ASTM C90 density classes (normal ≥125 pcf, medium 105–125, lightweight <105)",
+    publisher: "Masonry Institute of Michigan",
+    url: "https://www.masonryinfo.org/wp-content/uploads/2021/02/specifying-cmus-final-2015.original.pdf",
+    checked: "2026-10-10",
+  },
+  cmhaTek142: {
+    id: "cmhaTek142",
+    title: "TEK 14-02 / CMU-TEC-002 — standard concrete masonry unit sizes and nominal vs actual dimensions",
+    publisher: "NCMA / Concrete Masonry & Hardscapes Association",
+    url: "https://ncma.org/resource/types-and-sizes-of-concrete-masonry-units/",
+    checked: "2026-10-10",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -150,6 +178,8 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "landscape-materials-calculator": ["inchGravel", "cuydWeightChart"],
   "lawn-mowing-cost-calculator": ["lawnCost2026", "asabeD497"],
   "block-wall-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
+  "concrete-block-weight": ["terrehillBlockWeights", "escsiCmuWeights", "mimCmuWeight"],
+  "cmu-block-sizes": ["cmhaTek142", "terrehillBlockWeights"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

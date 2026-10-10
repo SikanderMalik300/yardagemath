@@ -14,6 +14,7 @@
 - [Landscape Material Calculator](https://yardagemath.com/landscape-materials-calculator/): Yards, tons and bags for mulch, rock, soil, sand, decomposed granite and more.
 - [Lawn Mowing Cost Calculator](https://yardagemath.com/lawn-mowing-cost-calculator/): What a cut should cost (homeowner) or what to charge (pro), per cut and per season.
 - [Block Wall Calculator](https://yardagemath.com/block-wall-calculator/): Courses, blocks, cap blocks, mortar, grout, rebar and total material cost.
+- [Concrete Block Weight Chart & Calculator](https://yardagemath.com/concrete-block-weight/): Weights for 4, 6, 8, 10 and 12 inch CMU, normal and lightweight, plus total load, pallet and per-trip weight.
 - [Acres per Hour Calculator](https://yardagemath.com/acres-per-hour-calculator/): Acres per hour from working width, speed and field efficiency, and time to finish.
 - [Gutter Slope Calculator](https://yardagemath.com/gutter-slope-calculator/): Gutter drop, pitch and downspout count for any run length.
 - [Rip Rap Calculator](https://yardagemath.com/rip-rap-calculator/): Riprap cubic yards and tons by area and layer thickness, with stone classes.

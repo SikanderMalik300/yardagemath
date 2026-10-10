@@ -88,6 +88,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "How many yards of concrete for a pour", slug: "yards-of-concrete-calculator" },
       { project: "Counting blocks for a wall", slug: "concrete-block-calculator" },
       { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
+      { project: "How much a load of block weighs", slug: "concrete-block-weight" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
     faqs: [
@@ -427,6 +428,7 @@ export const calculators: Calculator[] = [
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
     related: [
       "block-wall-calculator",
+      "concrete-block-weight",
       "yards-of-concrete-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
@@ -1256,6 +1258,7 @@ export const calculators: Calculator[] = [
       "Retaining walls over about 3–4 feet usually need an engineer and a permit. Always check local codes.",
     related: [
       "concrete-block-calculator",
+      "concrete-block-weight",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
     ],
@@ -1712,6 +1715,120 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-10",
     imageAlt: "Yards of concrete calculator diagram of a slab, strip footing and round column",
+  },
+
+  /* ---------------------------------------------------------------- 14 */
+  {
+    slug: "concrete-block-weight",
+    category: "concrete",
+    title: "Concrete Block Weight Chart – CMU & Cinder Block Weights",
+    metaDescription:
+      "How much does a concrete block weigh? Weights for 4, 6, 8, 10 and 12 inch CMU, normal and lightweight, plus a calculator for total load and pallet weight.",
+    h1: "Concrete Block Weight Chart & Calculator",
+    primaryKeyword: "how much does a concrete block weigh",
+    secondaryKeywords: [
+      "cement block weight",
+      "how much does a cmu block weigh",
+      "how much does a cinder block weigh",
+      "8x8x16 concrete block weight",
+      "cmu weight",
+    ],
+    cardDescription: "Weights for 4, 6, 8, 10 and 12 inch CMU, plus total load and pallet weight.",
+    shortAnswer:
+      "A standard 8×8×16 concrete block weighs about 38 lb in normal-weight concrete and about 28 lb as a lightweight block. A pallet of 90 standard blocks is around 3,400 lb. Use the chart for other sizes, or the calculator to get the total weight of your order.",
+    howTo: [
+      "Pick your block size and whether it's normal-weight or lightweight.",
+      "Enter how many blocks you have.",
+      "Read the total weight in pounds and tons.",
+      "Optional: set blocks per pallet to see the pallet weight.",
+      "Optional: enter your truck's payload to see blocks per trip.",
+    ],
+    formula: {
+      plain: [
+        "total weight = number of blocks × weight per block",
+        "tons = total lb ÷ 2,000",
+        "pallet weight = blocks per pallet × weight per block",
+        "blocks per trip = floor(payload ÷ weight per block)",
+      ],
+      example: [
+        "142 standard 8×8×16 blocks at 38 lb each:",
+        "142 × 38 = 5,396 lb",
+        "5,396 ÷ 2,000 = 2.70 tons",
+      ],
+      example2: [
+        "One pallet of 90 standard blocks at 38 lb:",
+        "90 × 38 = 3,420 lb",
+        "half-ton pickup, 1,500 lb payload: floor(1,500 ÷ 38) = 39 blocks per trip",
+      ],
+    },
+    notCovered:
+      "Weights are typical ranges for dry blocks. Real weight depends on the aggregate, the plant and how wet the blocks are, so check the supplier's spec sheet before you plan a load for a truck, trailer or floor.",
+    tables: [
+      {
+        title: "Concrete block weight chart (typical, dry)",
+        columns: [
+          { label: "Block (nominal)" },
+          { label: "Normal weight" },
+          { label: "Lightweight" },
+        ],
+        rows: [
+          ["4 × 8 × 16", "about 26 lb", "about 19 lb"],
+          ["6 × 8 × 16", "about 32 lb", "about 24 lb"],
+          ["8 × 8 × 16", "about 38 lb", "about 28 lb"],
+          ["10 × 8 × 16", "about 45 lb", "about 33 lb"],
+          ["12 × 8 × 16", "about 52 lb", "about 38 lb"],
+          ["8 × 8 × 8 half block", "about 19 lb", "about 14 lb"],
+          ["8 × 8 × 16 solid", "about 60–70 lb", "n/a"],
+        ],
+        footnote:
+          "Typical dry weights. Manufacturer and NCMA figures vary by a few pounds: an 8-inch normal-weight block runs about 34–42 lb and a lightweight one about 25–30 lb. Checked against Terrehill, the ESCSI/NCMA unit-weight study and ASTM C90 density classes.",
+      },
+    ],
+    tips: [
+      "Ask your yard whether their blocks are normal-weight or lightweight. The difference is about 10 lb a block, and on a big wall that adds up to tons.",
+      "A half-ton pickup can usually carry only about 35–40 standard blocks. Check your payload sticker before loading a pallet's worth.",
+      "Wet blocks weigh more. Blocks left in the rain soak up water, so weigh-limited trips get shorter.",
+      "Lift with your legs, and get help for 12-inch and solid blocks. They're heavier than they look.",
+    ],
+    faqs: [
+      {
+        q: "How much does an 8x8x16 concrete block weigh?",
+        a: "About 38 lb for a normal-weight block and about 28 lb for a lightweight one. Exact weight varies by manufacturer and mix, so check the spec sheet if it matters.",
+      },
+      {
+        q: "How much does a cinder block weigh?",
+        a: "Most blocks sold as \"cinder blocks\" today are regular concrete blocks, so a standard 8×8×16 weighs about 28–38 lb. True old-style cinder blocks were lighter, closer to the lightweight numbers.",
+      },
+      {
+        q: "How much does a pallet of concrete blocks weigh?",
+        a: "A pallet of 90 standard 8-inch blocks weighs roughly 3,400 lb, plus about 40–50 lb for the pallet itself. Pallets with more or bigger blocks can top 4,000 lb.",
+      },
+      {
+        q: "How many concrete blocks can a pickup truck carry?",
+        a: "A half-ton pickup with about 1,500 lb of payload can carry roughly 39 standard 38-lb blocks. A three-quarter-ton truck can carry more. Always go by your truck's payload rating, not by how much fits in the bed.",
+      },
+      {
+        q: "What is the difference between normal-weight and lightweight block?",
+        a: "Lightweight blocks use lighter aggregate like expanded shale or slag, so they're about 25–30% lighter and easier to lay. Normal-weight blocks are denser and a little stronger. For most garden and yard walls, either works.",
+      },
+      {
+        q: "How much does a 12-inch concrete block weigh?",
+        a: "About 52 lb for a normal-weight 12×8×16 block and about 38 lb for a lightweight one.",
+      },
+      {
+        q: "How much does a solid concrete block weigh?",
+        a: "A solid 8×8×16 block weighs roughly 60–70 lb, nearly twice a hollow one. Solid blocks are used for caps, footings and places that need extra strength.",
+      },
+    ],
+    sources: ["Terrehill per-unit block weights", "ESCSI/NCMA unit-weight study", "ASTM C90 density classes"],
+    related: [
+      "cmu-block-sizes",
+      "concrete-block-calculator",
+      "block-wall-calculator",
+      "yards-of-concrete-calculator",
+    ],
+    lastUpdated: "2026-10-10",
+    imageAlt: "Concrete block weight chart showing 4, 6, 8, 10 and 12 inch CMU weights",
   },
 ];
 

@@ -115,6 +115,35 @@ export const GROUT_CUFT_PER_SQFT = {
 } as const;
 
 /* =========================================================================
+   Concrete block (CMU) weights — typical dry per-unit weight, pounds.
+   Checked 10 Oct 2026 against three independent sources:
+     1. Terrehill Concrete Products per-unit weight list (manufacturer):
+        4"→25, 6"→32, 8"→40, 10"→48, 12"→55; half 8x8x8→21; solid 8x8x16→65.
+     2. ESCSI / NCMA unit-weight study (Masonry mag. table): 4" 17.0 LW / 24.3 HW,
+        6" 19.1/32.6, 8" 25.3/34.3, 12" 35.6/48.4; "8-inch heavyweight >=34 lb,
+        medium 28-34, lightweight <28".
+     3. Masonry Institute of Michigan / ASTM C90 density classes
+        (normal >=125 pcf, medium 105-125, lightweight <105).
+   Values below are representative points inside those ranges; real units vary by
+   plant, aggregate and moisture (see each tool's "doesn't cover" note).
+   ========================================================================= */
+export const CMU_WEIGHTS = {
+  "4x8x16": { label: "4 × 8 × 16", normal: 26, light: 19 },
+  "6x8x16": { label: "6 × 8 × 16", normal: 32, light: 24 },
+  "8x8x16": { label: "8 × 8 × 16 (standard)", normal: 38, light: 28 },
+  "10x8x16": { label: "10 × 8 × 16", normal: 45, light: 33 },
+  "12x8x16": { label: "12 × 8 × 16", normal: 52, light: 38 },
+  "half": { label: "8 × 8 × 8 half block", normal: 19, light: 14 },
+  "solid": { label: "8 × 8 × 16 solid", normal: 65, light: null },
+} as const;
+
+export type CmuWeightKey = keyof typeof CMU_WEIGHTS;
+
+// Pallet / truck defaults for the load calculator.
+export const BLOCKS_PER_PALLET_DEFAULT = 90; // typical cube of 8-inch block
+export const PICKUP_PAYLOAD_LB_DEFAULT = 1500; // half-ton pickup payload
+
+/* =========================================================================
    Prices — 2026 national-average ESTIMATES (editable in every calculator)
    VERIFY: figures below are planning estimates; the owner must cite a 2026
    source (e.g. HomeAdvisor/Angi cost guides, ready-mix supplier) before use.
