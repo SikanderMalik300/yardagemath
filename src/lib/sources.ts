@@ -155,11 +155,18 @@ export const SOURCES = {
     url: "https://www.masonryinfo.org/wp-content/uploads/2021/02/specifying-cmus-final-2015.original.pdf",
     checked: "2026-10-10",
   },
-  cmhaTek142: {
-    id: "cmhaTek142",
-    title: "TEK 14-02 / CMU-TEC-002 — standard concrete masonry unit sizes and nominal vs actual dimensions",
-    publisher: "NCMA / Concrete Masonry & Hardscapes Association",
-    url: "https://ncma.org/resource/types-and-sizes-of-concrete-masonry-units/",
+  ncmaTek21a: {
+    id: "ncmaTek21a",
+    title: "TEK 2-1A, Typical Sizes and Shapes of CMUs — actual = nominal − 3/8 in.; 8×8×16 nominal = 7⅝×7⅝×15⅝ actual",
+    publisher: "NCMA (National Concrete Masonry Association)",
+    url: "https://basalite.ca/wp-content/uploads/2020/06/2-1a-typical-size-and-shapes-of-cmus.pdf",
+    checked: "2026-10-10",
+  },
+  bpcCmuSpec: {
+    id: "bpcCmuSpec",
+    title: "Standard Concrete Masonry Units spec — nominal 16×8 face = 15⅝×7⅝ actual, 3/8 in. mortar joints",
+    publisher: "Building Products Corp (manufacturer catalog)",
+    url: "https://buildingproductscorp.com/wp-content/uploads/2020/05/Standard-Concrete-Masonry-Spec.pdf",
     checked: "2026-10-10",
   },
 } as const;
@@ -179,7 +186,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "lawn-mowing-cost-calculator": ["lawnCost2026", "asabeD497"],
   "block-wall-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
   "concrete-block-weight": ["terrehillBlockWeights", "escsiCmuWeights", "mimCmuWeight"],
-  "cmu-block-sizes": ["cmhaTek142", "terrehillBlockWeights"],
+  "cmu-block-sizes": ["ncmaTek21a", "bpcCmuSpec"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

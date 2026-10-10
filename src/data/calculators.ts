@@ -89,6 +89,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Counting blocks for a wall", slug: "concrete-block-calculator" },
       { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
       { project: "How much a load of block weighs", slug: "concrete-block-weight" },
+      { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
     faqs: [
@@ -429,6 +430,7 @@ export const calculators: Calculator[] = [
     related: [
       "block-wall-calculator",
       "concrete-block-weight",
+      "cmu-block-sizes",
       "yards-of-concrete-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
@@ -1259,6 +1261,7 @@ export const calculators: Calculator[] = [
     related: [
       "concrete-block-calculator",
       "concrete-block-weight",
+      "cmu-block-sizes",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
     ],
@@ -1829,6 +1832,120 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-10",
     imageAlt: "Concrete block weight chart showing 4, 6, 8, 10 and 12 inch CMU weights",
+  },
+
+  /* ---------------------------------------------------------------- 15 */
+  {
+    slug: "cmu-block-sizes",
+    category: "concrete",
+    title: "CMU Block Sizes & Dimensions – Nominal vs Actual Chart",
+    metaDescription:
+      "Standard CMU block sizes with nominal and actual dimensions, half blocks and half-high units, plus a course converter for wall height and length.",
+    h1: "CMU Block Sizes and Dimensions",
+    primaryKeyword: "cmu block dimensions",
+    secondaryKeywords: [
+      "standard cmu sizes",
+      "concrete masonry block dimensions",
+      "concrete block height",
+      "8 cmu block dimensions",
+      "what is the size of a cinder block",
+    ],
+    cardDescription: "Nominal vs actual CMU sizes, half and half-high units, plus a course converter.",
+    shortAnswer:
+      "A standard CMU is 8 × 8 × 16 inches nominal, but the block itself measures 7⅝ × 7⅝ × 15⅝ inches. The missing ⅜ inch is the mortar joint, so every laid block takes up exactly 8 × 16 inches of wall. The chart below covers 4, 6, 8, 10 and 12-inch blocks, half blocks and half-high units.",
+    howTo: [
+      "Read the chart for the nominal and actual size of each block.",
+      "For a wall, enter the height in feet and inches.",
+      "Enter the wall length to get blocks per course.",
+      "Read the course count and the built height.",
+      "Plan heights in 8-inch steps and lengths in 16-inch steps to cut fewer blocks.",
+    ],
+    formula: {
+      plain: [
+        "actual size = nominal size − ⅜ inch (the mortar joint)",
+        "courses = ceil(wall height in inches ÷ 8)",
+        "built height = courses × 8 inches",
+        "blocks per course = ceil(wall length in inches ÷ 16)",
+      ],
+      example: [
+        "A 6 ft wall:",
+        "72 ÷ 8 = 9 courses",
+        "built height = 9 × 8 = 72 in, exactly 6 ft",
+      ],
+      example2: [
+        "A 52-inch wall:",
+        "52 ÷ 8 = 6.5, round up to 7 courses (56 in)",
+        "or 6 courses plus one half-high row (52 in)",
+      ],
+    },
+    notCovered:
+      "These are standard US nominal and actual sizes. Local plants also make special shapes, split-face and lightweight units that can differ, so confirm the exact size with your supplier.",
+    tables: [
+      {
+        title: "Standard CMU sizes: nominal vs actual",
+        columns: [
+          { label: "Nominal (W × H × L)" },
+          { label: "Actual (W × H × L)" },
+          { label: "Common use" },
+        ],
+        rows: [
+          ["4 × 8 × 16", "3⅝ × 7⅝ × 15⅝", "veneers, partitions"],
+          ["6 × 8 × 16", "5⅝ × 7⅝ × 15⅝", "interior walls"],
+          ["8 × 8 × 16", "7⅝ × 7⅝ × 15⅝", "standard walls, foundations"],
+          ["10 × 8 × 16", "9⅝ × 7⅝ × 15⅝", "taller or loaded walls"],
+          ["12 × 8 × 16", "11⅝ × 7⅝ × 15⅝", "retaining, heavy loads"],
+          ["8 × 8 × 8 (half)", "7⅝ × 7⅝ × 7⅝", "wall ends, openings"],
+          ["8 × 4 × 16 (half-high)", "7⅝ × 3⅝ × 15⅝", "adjusting course height"],
+        ],
+        footnote:
+          "Actual (specified) size is 3/8 in. less than nominal in each direction, leaving room for a 3/8-in. mortar joint. Verified against NCMA TEK 2-1A and a manufacturer spec.",
+      },
+    ],
+    tips: [
+      "Plan walls in 8-inch steps of height and 16-inch steps of length. You'll cut far fewer blocks.",
+      "\"8-inch block\" means the wall thickness, not the height. Every standard size is 8 inches tall.",
+      "Use half blocks at wall ends and openings to keep the running bond pattern without cutting.",
+      "If your height doesn't land on an 8-inch step, a row of half-high blocks gets you there.",
+    ],
+    faqs: [
+      {
+        q: "What are the standard CMU block sizes?",
+        a: "The common sizes are 4, 6, 8, 10 and 12 inches wide, all 8 inches tall and 16 inches long (nominal). The 8 × 8 × 16 is by far the most used.",
+      },
+      {
+        q: "What are the actual dimensions of an 8x8x16 block?",
+        a: "7⅝ × 7⅝ × 15⅝ inches. The ⅜-inch difference is left for the mortar joint.",
+      },
+      {
+        q: "Why are CMU blocks smaller than their nominal size?",
+        a: "So the math works once they're laid. A 7⅝-inch block plus a ⅜-inch mortar joint equals 8 inches, which makes walls easy to plan in clean 8-inch and 16-inch units.",
+      },
+      {
+        q: "How tall is a concrete block course?",
+        a: "8 inches, including the mortar joint. That gives you 1.5 courses per foot, so a 4-foot wall has 6 courses.",
+      },
+      {
+        q: "What size is a cinder block?",
+        a: "Same as a concrete block. A standard \"cinder block\" is 8 × 8 × 16 nominal, or 7⅝ × 7⅝ × 15⅝ actual.",
+      },
+      {
+        q: "What is a half block?",
+        a: "A block that's 8 inches long instead of 16 (nominal 8 × 8 × 8). It's used at wall ends, corners and openings so you don't have to cut full blocks.",
+      },
+      {
+        q: "How many blocks are in one course?",
+        a: "Divide the wall length in inches by 16 and round up. A 20-foot wall is 240 inches, so it takes 15 blocks per course.",
+      },
+    ],
+    sources: ["NCMA TEK 2-1A unit sizes", "Manufacturer CMU spec (nominal vs actual)"],
+    related: [
+      "concrete-block-weight",
+      "concrete-block-calculator",
+      "block-wall-calculator",
+      "yards-of-concrete-calculator",
+    ],
+    lastUpdated: "2026-10-10",
+    imageAlt: "CMU block sizes chart showing nominal and actual dimensions for 4 to 12 inch blocks",
   },
 ];
 
