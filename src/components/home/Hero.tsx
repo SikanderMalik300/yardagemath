@@ -35,8 +35,9 @@ export function Hero() {
           </div>
         </div>
         <div className={styles.heroPhotoWrap}>
-          {/* Not high-priority: keeps the H1 (text) as the LCP element on every
-              viewport, and keeps above-the-fold image bytes near zero on mobile. */}
+          {/* Hero mode: eager load with fetchpriority=auto so the desktop right
+              half is not blank on first paint. On mobile the photo sits below the
+              full-height text block, so the H1/intro still wins the LCP. */}
           <HomePhoto
             photo={HERO}
             widths={HERO_WIDTHS}
@@ -44,6 +45,7 @@ export function Hero() {
             ratio="4 / 3"
             imgW={1280}
             imgH={854}
+            hero
             fallbackVar="--ym-sand"
           />
         </div>

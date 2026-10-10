@@ -13,6 +13,7 @@ export function HomePhoto({
   imgW,
   imgH,
   priority = false,
+  hero = false,
   fallbackVar = "--ym-stone",
   className,
 }: {
@@ -23,6 +24,12 @@ export function HomePhoto({
   imgW: number;
   imgH: number;
   priority?: boolean;
+  /**
+   * Hero mode: no `loading="lazy"` and `fetchpriority="auto"`. On desktop the
+   * photo loads eagerly (no blank half on first paint); on mobile it sits below
+   * the full-height text block, so the H1/intro still wins the LCP.
+   */
+  hero?: boolean;
   fallbackVar?: string;
   className?: string;
 }) {
@@ -51,9 +58,9 @@ export function HomePhoto({
         alt={photo.alt}
         width={imgW}
         height={imgH}
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "auto" : "async"}
-        fetchPriority={priority ? "high" : "low"}
+        loading={hero ? undefined : priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={hero ? "auto" : priority ? "high" : "low"}
         className={className}
         style={{ objectFit: "cover", objectPosition: `${photo.focalX * 100}% ${photo.focalY * 100}%`, width: "100%", height: "100%", display: "block" }}
       />
