@@ -13,6 +13,7 @@ import { fmtDate } from "@/lib/format";
 import { figtree } from "@/components/home/homeFont";
 import { Hero } from "@/components/home/Hero";
 import { HomeTile } from "@/components/home/HomeTile";
+import { allHomePhotos } from "@/lib/data/photos";
 import styles from "@/components/home/home.module.css";
 
 export const metadata = buildMetadata({
@@ -154,6 +155,24 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* Photo credits */}
+        <section className={`${styles.section} ${styles.sep}`}>
+          <div className={styles.container}>
+            <p className={styles.creditsHead}>Photo credits</p>
+            <p className={styles.credits}>
+              Photos from Pexels:{" "}
+              {allHomePhotos().map((p, i) => (
+                <span key={p.id}>
+                  {i > 0 ? " · " : ""}
+                  <a href={p.sourceUrl} target="_blank" rel="nofollow noopener">
+                    {p.photographer}
+                  </a>
+                </span>
+              ))}
+            </p>
           </div>
         </section>
     </div>

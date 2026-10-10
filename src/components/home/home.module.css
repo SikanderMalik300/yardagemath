@@ -327,10 +327,8 @@
 .updateDate { color: var(--ym-muted); font-size: 14px; flex-shrink: 0; }
 
 /* Photo credits ----------------------------------------------------------- */
-.credits { font-size: 14px; color: var(--ym-muted); }
-.creditsHead { font-size: 14px; font-weight: 500; color: var(--ym-ink); margin: 0 0 8px; }
-.creditsList { list-style: none; margin: 0; padding: 0; }
-.creditsList li { margin: 2px 0; }
+.credits { font-size: 13px; line-height: 1.8; color: var(--ym-muted); margin: 0; max-width: 72ch; }
+.creditsHead { font-size: 14px; font-weight: 500; color: var(--ym-ink); margin: 0 0 6px; }
 
 /* Focus + motion ---------------------------------------------------------- */
 .home a:focus-visible,
