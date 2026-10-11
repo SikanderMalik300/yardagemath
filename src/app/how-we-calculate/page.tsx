@@ -156,11 +156,22 @@ export default function HowWeCalculatePage() {
         </li>
         <li>Mortar ≈ {BLOCKS_PER_MORTAR_BAG} standard blocks per 80-lb bag (matches Quikrete&apos;s Mortar Mix calculator)</li>
         <li>
-          Core-fill grout per sq ft of wall (NCMA TEK): 6″ = {GROUT_CUFT_PER_SQFT.in6}, 8″ ={" "}
-          {GROUT_CUFT_PER_SQFT.in8}, 12″ = {GROUT_CUFT_PER_SQFT.in12} cu ft
+          Core-fill grout per sq ft of fully grouted wall: 6″ = {GROUT_CUFT_PER_SQFT.in6}, 8″ ={" "}
+          {GROUT_CUFT_PER_SQFT.in8}, 12″ = {GROUT_CUFT_PER_SQFT.in12} cu ft (the net core volume; per
+          block = per sq ft ÷ 1.125). A manufacturer core-fill grout confirms about 0.26 cu ft per sq
+          ft for 8-inch block.
         </li>
       </ul>
-      <Cite keys={["ncmaTek", "quikreteMortar", "quikreteMortarCalc"]} />
+      <Cite keys={["ncmaTek", "tccCoreFill", "quikreteMortar", "quikreteMortarCalc"]} />
+
+      <h2>Concrete footings</h2>
+      <p>
+        Footing concrete uses the same geometry as the slab and column tools: strip = L × W × D, pads
+        = L × W × D × quantity, piers = π × (d ÷ 2)² × D × quantity, then ÷ 27 for cubic yards. Footing
+        size and depth (commonly about twice the wall width, at least 12 in wide and 6 in thick, and
+        below the frost line) follow IRC R403.1 and your local code.
+      </p>
+      <Cite keys={["ircR403", "quikreteConcrete"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

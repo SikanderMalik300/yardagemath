@@ -120,6 +120,12 @@
           "position": 15,
           "url": "https://yardagemath.com/cmu-block-sizes/",
           "name": "CMU Block Sizes and Dimensions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "url": "https://yardagemath.com/concrete-footing-calculator/",
+          "name": "Concrete Footing Calculator"
         }
       ]
     }

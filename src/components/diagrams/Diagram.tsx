@@ -191,6 +191,74 @@ function CmuSizeDiagram({ title }: { title: string }) {
   );
 }
 
+/** Concrete footing: strip (under a wall), square pad and round pier. */
+function FootingDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Strip footing in a trench under a block wall */}
+      <rect x="40" y="44" width="40" height="24" fill={SOFT} stroke={LINE} strokeWidth="1.1" />
+      <line x1="60" y1="44" x2="60" y2="68" stroke={LINE} strokeWidth="0.8" />
+      <polygon points="28,78 86,78 98,70 40,70" fill="#d9e6de" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="86,78 98,70 98,100 86,108" fill="#cfe0d6" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="28,78 86,78 86,108 28,108" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="57" y="122" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">L</text>
+      <text x="20" y="94" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 20 94)">W</text>
+      <text x="103" y="90" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">D</text>
+      <text x="58" y="140" textAnchor="middle" fill={LINE} fontSize="11">Strip</text>
+
+      {/* Square pad */}
+      <polygon points="134,74 174,74 188,64 148,64" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <polygon points="174,74 188,64 188,96 174,106" fill="#cfe0d6" stroke={LINE} strokeWidth="1.3" />
+      <polygon points="134,74 174,74 174,106 134,106" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="154" y="120" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">L</text>
+      <text x="126" y="90" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 126 90)">W</text>
+      <text x="193" y="88" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">D</text>
+      <text x="158" y="140" textAnchor="middle" fill={LINE} fontSize="11">Pad</text>
+
+      {/* Round pier */}
+      <path d="M238 62 V104 A22 7 0 0 0 282 104 V62" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <ellipse cx="260" cy="62" rx="22" ry="7" fill={SOFT} stroke={LINE} strokeWidth="1.3" />
+      <text x="260" y="50" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">d</text>
+      <text x="228" y="86" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 228 86)">D</text>
+      <text x="260" y="140" textAnchor="middle" fill={LINE} fontSize="11">Pier</text>
+    </Frame>
+  );
+}
+
+/** Cinder block fill: one block's two cores (one filled with rebar), plus a
+    wall elevation with every other core shaded. */
+function CinderFillDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Top-down view of one 8-inch block with two cores */}
+      <rect x="28" y="58" width="104" height="52" rx="2" fill="#fff" stroke={LINE} strokeWidth="1.5" />
+      {/* left core: filled + rebar dot */}
+      <rect x="40" y="68" width="34" height="32" rx="2" fill="#cfe0d6" stroke={LINE} strokeWidth="1.2" />
+      <circle cx="57" cy="84" r="3.5" fill={BRAND} />
+      {/* right core: empty */}
+      <rect x="86" y="68" width="34" height="32" rx="2" fill="#fff" stroke={LINE} strokeWidth="1.2" />
+      <text x="57" y="126" textAnchor="middle" fill={BRAND} fontSize="10.5" fontWeight="600">filled core</text>
+      <text x="103" y="126" textAnchor="middle" fill={LINE} fontSize="10.5">open core</text>
+      <text x="80" y="140" textAnchor="middle" fill={LINE} fontSize="10.5">One block, two cores</text>
+
+      {/* Wall elevation: every other core shaded */}
+      {[0, 1, 2].map((row) =>
+        [0, 1, 2, 3].map((col) => {
+          const x = 170 + col * 30;
+          const y = 50 + row * 24;
+          const filled = (col + row) % 2 === 0;
+          return (
+            <g key={`${row}-${col}`}>
+              <rect x={x} y={y} width="28" height="22" fill={filled ? "#cfe0d6" : "#fff"} stroke={LINE} strokeWidth="1.1" />
+            </g>
+          );
+        })
+      )}
+      <text x="228" y="140" textAnchor="middle" fill={LINE} fontSize="10.5">Every other core filled</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -210,6 +278,10 @@ export function Diagram({
     node = <BlockWeightDiagram title={alt} />;
   } else if (slug === "cmu-block-sizes") {
     node = <CmuSizeDiagram title={alt} />;
+  } else if (slug === "concrete-footing-calculator") {
+    node = <FootingDiagram title={alt} />;
+  } else if (slug === "cinder-block-fill-calculator") {
+    node = <CinderFillDiagram title={alt} />;
   } else if (slug === "gutter-slope-calculator") {
     node = <GutterSlopeDiagram title={alt} />;
   } else if (slug === "lawn-mowing-cost-calculator" || slug === "acres-per-hour-calculator") {

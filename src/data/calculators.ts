@@ -90,6 +90,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
       { project: "How much a load of block weighs", slug: "concrete-block-weight" },
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
+      { project: "Concrete for strip, pad or pier footings", slug: "concrete-footing-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
     faqs: [
@@ -559,6 +560,7 @@ export const calculators: Calculator[] = [
     sources: ["2026 ready-mix price guides", "Quikrete/Sakrete bag yields"],
     related: [
       "yards-of-concrete-calculator",
+      "concrete-footing-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
       "block-wall-calculator",
@@ -1260,6 +1262,7 @@ export const calculators: Calculator[] = [
       "Retaining walls over about 3–4 feet usually need an engineer and a permit. Always check local codes.",
     related: [
       "concrete-block-calculator",
+      "concrete-footing-calculator",
       "concrete-block-weight",
       "cmu-block-sizes",
       "concrete-slab-cost-calculator",
@@ -1711,6 +1714,7 @@ export const calculators: Calculator[] = [
     sources: ["Quikrete 80-lb concrete mix yield", "2026 ready-mix cost guide"],
     fromSikander: "I checked this page against Quikrete's own concrete calculator. For a 12 × 12 slab, both say 80 bags of 80-lb mix at 4 inches and 120 at 6 inches. Quikrete's numbers leave out waste, so this page adds 10% on top by default.",
     related: [
+      "concrete-footing-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
@@ -1946,6 +1950,122 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-10",
     imageAlt: "CMU nominal vs actual size: a 15⅝ × 7⅝ in block plus a ⅜ in joint fills 16 × 8 in.",
+  },
+
+  /* ---------------------------------------------------------------- 16 */
+  {
+    slug: "concrete-footing-calculator",
+    category: "concrete",
+    title: "Concrete Footing Calculator – Yards & Bags for Footings",
+    metaDescription:
+      "Work out concrete for continuous wall footings, square pad footings and round pier footings. Get cubic yards, 80-lb bags and cost, with waste included.",
+    h1: "Concrete Footing Calculator",
+    primaryKeyword: "concrete footing calculator",
+    secondaryKeywords: [
+      "footing calculator concrete",
+      "concrete foundation calculator",
+      "footing concrete calculator",
+      "how much concrete for footings",
+    ],
+    cardDescription: "Concrete for strip, pad and round pier footings, with yards, bags and cost.",
+    shortAnswer:
+      "A 40-foot strip footing that's 16 inches wide and 8 inches deep takes about 1.32 cubic yards of concrete, or about 1.45 with 10% extra. Pick strip, pad or round pier footings below and enter your sizes to get yards, bags and cost.",
+    howTo: [
+      "Pick the footing type: continuous strip, square pads or round piers.",
+      "Enter the size in feet and inches, and the number of footings.",
+      "Keep 10% waste. Trenches are never perfectly square.",
+      "Read the cubic yards and round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "strip cu ft = L × W × D",
+        "pads cu ft = L × W × D × quantity",
+        "piers cu ft = π × (d ÷ 2)² × D × quantity",
+        "cubic yards = cu ft ÷ 27",
+        "bags = ceil(cu ft × (1 + waste%) ÷ yield)   (80 lb = 0.60, 60 lb = 0.45)",
+      ],
+      example: [
+        "A 40 ft strip footing, 16 in wide and 8 in deep:",
+        "cu ft = 40 × 1.333 × 0.667 = 35.56",
+        "cubic yards = 35.56 ÷ 27 = 1.32",
+        "+ 10% waste = 1.45 cu yd",
+      ],
+      example2: [
+        "Six 24 × 24 in pad footings, 12 in deep:",
+        "cu ft = 2 × 2 × 1 × 6 = 24",
+        "cubic yards = 24 ÷ 27 = 0.89",
+        "40 bags of 80-lb before waste, 44 with 10%",
+      ],
+    },
+    notCovered:
+      "This is a concrete quantity estimate, not a footing design. Footing width, depth and rebar depend on your soil, frost line and local code, so check with your building department or an engineer.",
+    tables: [
+      {
+        title: "Cubic yards and 80-lb bags for strip footings (before waste)",
+        columns: [
+          { label: "Length" },
+          { label: 'Cu yd (16 × 8")', num: true },
+          { label: '80-lb bags (16 × 8")', num: true },
+          { label: 'Cu yd (20 × 10")', num: true },
+          { label: '80-lb bags (20 × 10")', num: true },
+        ],
+        rows: [
+          ["20 ft", "0.66", 30, "1.03", 47],
+          ["40 ft", "1.32", 60, "2.06", 93],
+          ["60 ft", "1.98", 89, "3.09", 139],
+          ["80 ft", "2.63", 119, "4.12", 186],
+          ["100 ft", "3.29", 149, "5.14", 232],
+        ],
+        footnote: "Volumes and bags exclude waste; add about 10% when you order. An 80-lb bag yields about 0.60 cu ft.",
+      },
+    ],
+    tips: [
+      "Dig footings to undisturbed soil and below your local frost line. Your building department can tell you the depth.",
+      "Trenches are rarely cut clean. Measure the real width and depth in a few places before you order.",
+      "For a small shed or deck, bags may be enough. Past about 1 cubic yard, ready-mix is usually easier and cheaper.",
+      "Most footings need rebar. Ask your inspector what size and how many runs your project needs.",
+    ],
+    faqs: [
+      {
+        q: "How big should a concrete footing be?",
+        a: "A common rule is twice the width of the wall, so an 8-inch block wall gets a 16-inch footing. Many codes call for at least 12 inches wide and 6 inches thick for light structures. Your local building code sets the actual size.",
+      },
+      {
+        q: "How deep should footings be?",
+        a: "Below the frost line, which ranges from a few inches in the south to 4 feet or more up north. Footings also need to sit on undisturbed or compacted soil. Check your local code for the exact depth.",
+      },
+      {
+        q: "How much concrete do I need for a footing?",
+        a: "Multiply length × width × depth in feet, then divide by 27 for cubic yards. A 40-foot footing, 16 inches wide and 8 inches deep, is about 1.32 yards before waste.",
+      },
+      {
+        q: "How many bags of concrete for a footing?",
+        a: "Divide the footing's cubic feet by 0.6 for 80-lb bags. A footing with 24 cubic feet of concrete needs about 40 bags, or 44 with 10% extra.",
+      },
+      {
+        q: "Do footings need rebar?",
+        a: "Most do. Two runs of #4 rebar is common for residential strip footings, but requirements vary. Follow your plans or ask your local inspector.",
+      },
+      {
+        q: "How much concrete for a deck footing?",
+        a: "A 12-inch round pier footing 3 feet deep takes about 2.4 cubic feet of concrete, which is 4 bags of 80-lb mix. Multiply by the number of piers.",
+      },
+      {
+        q: "Can I pour a footing and wall at the same time?",
+        a: "Sometimes, with a monolithic pour, but most block walls go on a footing that's poured and cured first. Your plans and local code decide which method you use.",
+      },
+    ],
+    sources: ["IRC R403.1 footing sizes", "Quikrete 80-lb concrete mix yield", "2026 ready-mix cost guide"],
+    warning:
+      "Footings are commonly about twice the wall width, at least 12 in wide and 6 in thick for light structures, and below the frost line. Always follow your local code.",
+    related: [
+      "yards-of-concrete-calculator",
+      "block-wall-calculator",
+      "concrete-slab-cost-calculator",
+      "cubic-yard-calculator",
+    ],
+    lastUpdated: "2026-10-12",
+    imageAlt: "Concrete footing diagram: strip, pad and round pier footings with the dimensions the calculator uses.",
   },
 ];
 

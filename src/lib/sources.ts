@@ -169,6 +169,20 @@ export const SOURCES = {
     url: "https://buildingproductscorp.com/wp-content/uploads/2020/05/Standard-Concrete-Masonry-Spec.pdf",
     checked: "2026-10-10",
   },
+  ircR403: {
+    id: "ircR403",
+    title: "IRC R403.1 Footings — min 12 in wide and 6 in thick, project ≥2 in each face (≈ twice wall width), bear on undisturbed soil below the frost line (R403.1.4)",
+    publisher: "ICC International Residential Code",
+    url: "https://codes.iccsafe.org/content/IRC2015/chapter-4-foundations",
+    checked: "2026-10-12",
+  },
+  tccCoreFill: {
+    id: "tccCoreFill",
+    title: "Core Fill Masonry Grout data sheet — 80 lb ≈ 2/3 cu ft, fills about 5.5 cores of an 8 in block (≈ 0.26 cu ft grout per sq ft of fully grouted 8 in wall)",
+    publisher: "TCC Materials (ASTM C476 core-fill grout)",
+    url: "https://www.tccmaterials.com/wp-content/uploads/2020/07/data_corefill.pdf",
+    checked: "2026-10-12",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -187,6 +201,8 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "block-wall-calculator": ["ncmaTek", "quikreteMortar", "quikreteMortarCalc"],
   "concrete-block-weight": ["terrehillBlockWeights", "escsiCmuWeights", "mimCmuWeight"],
   "cmu-block-sizes": ["ncmaTek21a", "bpcCmuSpec"],
+  "concrete-footing-calculator": ["ircR403", "quikreteConcrete", "slabCost2026"],
+  "cinder-block-fill-calculator": ["tccCoreFill", "ncmaTek21a", "quikreteConcrete"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],
