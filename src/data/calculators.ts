@@ -91,6 +91,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "How much a load of block weighs", slug: "concrete-block-weight" },
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
       { project: "Concrete for strip, pad or pier footings", slug: "concrete-footing-calculator" },
+      { project: "Filling block cores with concrete or grout", slug: "cinder-block-fill-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
     faqs: [
@@ -430,6 +431,7 @@ export const calculators: Calculator[] = [
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
     related: [
       "block-wall-calculator",
+      "cinder-block-fill-calculator",
       "concrete-block-weight",
       "cmu-block-sizes",
       "yards-of-concrete-calculator",
@@ -1262,6 +1264,7 @@ export const calculators: Calculator[] = [
       "Retaining walls over about 3–4 feet usually need an engineer and a permit. Always check local codes.",
     related: [
       "concrete-block-calculator",
+      "cinder-block-fill-calculator",
       "concrete-footing-calculator",
       "concrete-block-weight",
       "cmu-block-sizes",
@@ -1943,6 +1946,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["NCMA TEK 2-1A unit sizes", "Manufacturer CMU spec (nominal vs actual)"],
     related: [
+      "cinder-block-fill-calculator",
       "concrete-block-weight",
       "concrete-block-calculator",
       "block-wall-calculator",
@@ -2066,6 +2070,121 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-12",
     imageAlt: "Concrete footing diagram: strip, pad and round pier footings with the dimensions the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 17 */
+  {
+    slug: "cinder-block-fill-calculator",
+    category: "concrete",
+    title: "Cinder Block Fill Calculator – Concrete to Fill Block Cores",
+    metaDescription:
+      "How much concrete or grout to fill cinder block cores. Enter blocks or wall size, pick full or partial fill, and get cubic feet, yards and 80-lb bags.",
+    h1: "Cinder Block Fill Calculator",
+    primaryKeyword: "cinder block fill calculator",
+    secondaryKeywords: [
+      "cinder block concrete fill calculator",
+      "how much concrete to fill cinder blocks",
+      "block fill calculator",
+      "grout fill calculator",
+      "core fill concrete",
+    ],
+    cardDescription: "Concrete or grout to fill cinder block cores, by blocks or wall size.",
+    shortAnswer:
+      "Filling every core of an 8-inch concrete block wall takes about 0.26 cubic feet of concrete per square foot of wall. That's roughly 0.23 cubic feet per block, so one 80-lb bag fills about 2½ blocks. Enter your blocks or wall size below to get cubic feet, yards and bags.",
+    howTo: [
+      "Enter the number of blocks, or the wall length and height.",
+      "Pick the block width: 6, 8 or 12 inches.",
+      "Choose all cores, every other core, or only the rebar cores.",
+      "Keep about 10% extra and read the bags or yards.",
+    ],
+    formula: {
+      plain: [
+        "wall area = blocks ÷ 1.125, or L × H",
+        "cu ft = area × grout per sq ft × fill fraction",
+        "grout per sq ft: 6 in = 0.17, 8 in = 0.26, 12 in = 0.42",
+        "cubic yards = cu ft ÷ 27",
+        "bags = ceil(cu ft × (1 + waste%) ÷ 0.60)",
+      ],
+      example: [
+        "100 standard 8-inch blocks, all cores:",
+        "cu ft = 100 × (0.26 ÷ 1.125) = 23.1",
+        "cubic yards = 23.1 ÷ 27 = 0.86",
+        "bags = 23.1 ÷ 0.60 = 39 (before waste)",
+      ],
+      example2: [
+        "A 20 × 4 ft wall of 8-inch block, every other core:",
+        "cu ft = 80 × 0.26 × 0.5 = 10.4",
+        "bags = 10.4 ÷ 0.60 = 18",
+      ],
+    },
+    notCovered:
+      "It estimates the grout or concrete needed to fill block cores. It assumes standard hollow cores, doesn't subtract rebar, and doesn't count grout lost into gaps and cleanouts. For structural walls, follow the engineer's grout spec.",
+    tables: [
+      {
+        title: "Cubic feet and 80-lb bags to fill all cores (before waste)",
+        columns: [
+          { label: "Blocks" },
+          { label: 'Cu ft (6")', num: true },
+          { label: 'Cu ft (8")', num: true },
+          { label: 'Cu ft (12")', num: true },
+          { label: 'Bags (6")', num: true },
+          { label: 'Bags (8")', num: true },
+          { label: 'Bags (12")', num: true },
+        ],
+        rows: [
+          [50, "7.6", "11.6", "18.7", 13, 20, 32],
+          [100, "15.1", "23.1", "37.3", 26, 39, 63],
+          [200, "30.2", "46.2", "74.7", 51, 78, 125],
+          [500, "75.6", "115.6", "186.7", 126, 193, 312],
+        ],
+        footnote: "All cores filled, before waste; add about 10%. Cubic yards = cu ft ÷ 27. An 80-lb bag yields about 0.60 cu ft.",
+      },
+    ],
+    tips: [
+      "Use a pourable mix. Regular concrete with big stones can bridge in narrow cores and leave empty pockets. Ask your supplier for core-fill grout or a pea-gravel mix.",
+      "Fill in lifts of about 4 feet or less and rod each lift so the concrete settles all the way down.",
+      "For more than about half a yard, a small ready-mix load or a grout pump saves a lot of bag mixing.",
+      "Only fill the cores your plans call for. Filling every core uses twice the concrete of every other core.",
+    ],
+    faqs: [
+      {
+        q: "How much concrete does it take to fill a cinder block?",
+        a: "About 0.23 cubic feet for a standard 8-inch block, based on 0.26 cubic feet per square foot of wall. One 80-lb bag fills about 2½ blocks.",
+      },
+      {
+        q: "How many bags of concrete to fill 100 cinder blocks?",
+        a: "About 39 bags of 80-lb mix for 100 standard 8-inch blocks with every core filled, before waste. Filling every other core takes about half that.",
+      },
+      {
+        q: "Can I use regular concrete to fill block cores?",
+        a: "You can, but a mix with small aggregate pours better. Big stones can jam in the cores and leave voids. Core-fill grout or a pea-gravel mix is made for this job.",
+      },
+      {
+        q: "Do I need to fill every core?",
+        a: "No. Many walls only need cores filled where there's vertical rebar, often every 16 to 48 inches. Fill every core only if your plans or engineer call for a fully grouted wall.",
+      },
+      {
+        q: "How much grout per square foot of block wall?",
+        a: "About 0.17 cubic feet for 6-inch block, 0.26 for 8-inch and 0.42 for 12-inch when every core is filled.",
+      },
+      {
+        q: "How many cinder blocks does a yard of concrete fill?",
+        a: "About 117 standard 8-inch blocks with every core filled, since a yard is 27 cubic feet and each block takes about 0.23 cubic feet. Plan on closer to 105 once you allow 10% for waste.",
+      },
+      {
+        q: "Should I fill cinder blocks with concrete or gravel?",
+        a: "Use concrete or grout where the wall carries load or has rebar. Gravel adds weight but no strength, so it's only used in some landscape and garden walls where the plans allow it.",
+      },
+    ],
+    sources: ["Core-fill grout coverage (TCC Materials)", "NCMA CMU geometry (TEK 2-1A)", "Quikrete 80-lb concrete mix yield"],
+    related: [
+      "block-wall-calculator",
+      "concrete-block-calculator",
+      "cmu-block-sizes",
+      "concrete-block-weight",
+    ],
+    lastUpdated: "2026-10-12",
+    imageAlt: "Cinder block fill diagram: a block's two cores and a wall with every other core filled.",
   },
 ];
 

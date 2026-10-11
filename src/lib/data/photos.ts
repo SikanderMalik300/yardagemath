@@ -74,6 +74,7 @@ export const TOOL_PHOTOS: Record<string, Photo> = {
   "concrete-block-weight": p("37528607", "Shox", "Grey concrete blocks stacked on a wooden pallet", ["concrete-block-weight"], 0.5, 0.55),
   "cmu-block-sizes": p("14408706", "Huys Photography", "Grey hollow concrete blocks showing the cores", ["cmu-block-sizes"]),
   "concrete-footing-calculator": p("36815365", "Peter Dyllong", "Concrete foundation footings with steel rebar reinforcement", ["concrete-footing-calculator"], 0.5, 0.55),
+  "cinder-block-fill-calculator": p("15458299", "Ulrick Trappschuh", "A concrete block wall under construction with rebar in the cores", ["cinder-block-fill-calculator"], 0.5, 0.55),
   "square-yard-calculator": p("39901273", "Shadow Photography", "A yellow tape measure extended across a surface", ["square-yard-calculator"]),
   "landscape-materials-calculator": p("9890699", "Magda Ehlers", "Brown bark mulch in a garden bed", ["landscape-materials-calculator"]),
   "gutter-slope-calculator": p("20113440", "Zeynep Sude Emek", "A rain gutter along a house roof edge", ["gutter-slope-calculator"], 0.5, 0.4),
