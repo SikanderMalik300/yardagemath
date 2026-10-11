@@ -1,9 +1,12 @@
 name: IndexNow submit
 
 # After each push to main, build the site, then tell IndexNow (Bing, Yandex and
-# others) about the URLs whose sitemap <lastmod> is today (UTC). We read the
-# freshly built out/sitemap.xml instead of fetching the live one, because
-# Cloudflare blocks data-center requests with Python's default user agent.
+# others) about the URLs whose sitemap <lastmod> is yesterday, today or tomorrow
+# in UTC. The wide window covers the owner's local time zone (Pakistan, UTC+5),
+# where a page dated "tomorrow" relative to the runner's UTC date would otherwise
+# be skipped. We read the freshly built out/sitemap.xml instead of fetching the
+# live one, because Cloudflare blocks data-center requests with Python's default
+# user agent. Selection logic lives in scripts/indexnow-urls.mjs (unit-tested).
 
 on:
   push:
@@ -22,6 +25,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -35,53 +40,26 @@ jobs:
         # Only out/sitemap.xml is used; no real secrets needed.
         run: npm run build
 
+      - name: Compute changed files
+        # For a push, list files changed since the previous head. For a manual
+        # run (workflow_dispatch) leave it empty, so an empty URL list is fine.
+        env:
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = "push" ] && [ -n "$BEFORE" ] && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            git diff --name-only "$BEFORE" "$SHA" > changed.txt
+          else
+            : > changed.txt
+          fi
+          echo "Changed files:"
+          cat changed.txt
+
       - name: Wait for Cloudflare Pages deploy
         run: sleep 120
 
       - name: Submit changed URLs to IndexNow
         env:
           INDEXNOW_KEY: "611bb630766bb7917bbbb5320facaa3c"
-        run: |
-          python3 - <<'PY'
-          import urllib.request, urllib.error, json, os, re, datetime, sys
-
-          HOST = "yardagemath.com"
-          KEY = os.environ["INDEXNOW_KEY"]
-          KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
-          today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
-
-          with open("out/sitemap.xml", encoding="utf-8") as f:
-              xml = f.read()
-
-          urls = []
-          for block in re.findall(r"<url>(.*?)</url>", xml, re.S):
-              loc = re.search(r"<loc>(.*?)</loc>", block)
-              mod = re.search(r"<lastmod>(.*?)</lastmod>", block)
-              if loc and mod and mod.group(1)[:10] == today:
-                  urls.append(loc.group(1).strip())
-
-          if not urls:
-              print(f"No URLs with lastmod {today}; nothing to submit.")
-              sys.exit(0)
-
-          payload = {"host": HOST, "key": KEY, "keyLocation": KEY_LOCATION, "urlList": urls}
-          print(f"Submitting {len(urls)} URL(s) changed on {today}:")
-          print("\n".join(urls))
-
-          req = urllib.request.Request(
-              "https://api.indexnow.org/indexnow",
-              data=json.dumps(payload).encode("utf-8"),
-              headers={
-                  "Content-Type": "application/json; charset=utf-8",
-                  "User-Agent": "YardageMath-IndexNow/1.0 (+https://yardagemath.com)",
-              },
-              method="POST",
-          )
-          try:
-              resp = urllib.request.urlopen(req, timeout=30)
-              print(f"IndexNow response: {resp.status}")
-          except urllib.error.HTTPError as e:
-              print(f"IndexNow HTTP {e.code}: {e.read().decode('utf-8', 'ignore')[:300]}")
-              if e.code not in (200, 202):
-                  sys.exit(0)
-          PY
+        run: node scripts/indexnow-urls.mjs
