@@ -132,6 +132,12 @@
           "position": 17,
           "url": "https://yardagemath.com/cinder-block-fill-calculator/",
           "name": "Cinder Block Fill Calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "url": "https://yardagemath.com/mulch-calculator/",
+          "name": "Mulch Calculator"
         }
       ]
     }

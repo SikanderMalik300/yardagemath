@@ -173,6 +173,16 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["ircR403", "quikreteConcrete"]} />
 
+      <h2>Mulch</h2>
+      <p>
+        Mulch volume uses the shared area and yard math: cu ft = area × depth ÷ 12, then ÷ 27 for cubic
+        yards. One cubic yard covers 324 ÷ depth square feet (108 sq ft at 3 in). Recommended depth is 2
+        to 4 inches (3 in is a good default), kept a few inches off trunks and stems. A standard bag is 2
+        cu ft and covers about 8 sq ft at 3 in, so 13.5 bags make a cubic yard. Default prices are 2026
+        estimates: about $40/cu yd bulk and $4 for a 2 cu ft bag.
+      </p>
+      <Cite keys={["kstateMulch", "mulchBag2026", "mulchCost2026"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

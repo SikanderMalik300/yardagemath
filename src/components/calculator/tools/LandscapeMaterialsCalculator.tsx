@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import {
   computeLandscape,
   LANDSCAPE_MATERIALS,
@@ -99,6 +100,15 @@ export function LandscapeMaterialsCalculator() {
           <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
             Sold as: {result.soldAs}.
           </p>
+
+          {material === "mulch" && (
+            <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+              Need bags and coverage for mulch?{" "}
+              <Link href="/mulch-calculator/" prefetch={false}>
+                Use the Mulch Calculator.
+              </Link>
+            </p>
+          )}
 
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>

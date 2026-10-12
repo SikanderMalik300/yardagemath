@@ -183,6 +183,27 @@ export const SOURCES = {
     url: "https://www.tccmaterials.com/wp-content/uploads/2020/07/data_corefill.pdf",
     checked: "2026-10-12",
   },
+  kstateMulch: {
+    id: "kstateMulch",
+    title: "How to Mulch Trees — recommended mulch depth is 2 to 4 inches; keep 3 to 6 inches away from the trunk",
+    publisher: "K-State Research and Extension",
+    url: "https://www.johnson.k-state.edu/programs/lawn-garden/agent-articles-fact-sheets-and-more/agent-articles/trees-shrubs/how-to-mulch-trees.html",
+    checked: "2026-10-13",
+  },
+  mulchBag2026: {
+    id: "mulchBag2026",
+    title: "Vigoro 2 cu ft bagged wood mulch — a 2 cu ft bag covers about 8 sq ft at 3 in (so 13.5 bags per cu yd, about 108 sq ft per yard at 3 in)",
+    publisher: "Vigoro (retail product listing)",
+    url: "https://superarbor.io/products/205606416-2-cu-ft-bagged-red-mulch",
+    checked: "2026-10-13",
+  },
+  mulchCost2026: {
+    id: "mulchCost2026",
+    title: "How Much Does Mulch Cost in 2026? — bulk wood mulch about $30-55/cu yd ($30-135 all types); a 2 cu ft bag $3.25-6.50",
+    publisher: "LawnStarter (2026 cost guide)",
+    url: "https://www.lawnstarter.com/blog/cost/mulch-price/",
+    checked: "2026-10-13",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -203,6 +224,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "cmu-block-sizes": ["ncmaTek21a", "bpcCmuSpec"],
   "concrete-footing-calculator": ["ircR403", "quikreteConcrete", "slabCost2026"],
   "cinder-block-fill-calculator": ["tccCoreFill", "ncmaTek21a", "quikreteConcrete"],
+  "mulch-calculator": ["kstateMulch", "mulchBag2026", "mulchCost2026"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

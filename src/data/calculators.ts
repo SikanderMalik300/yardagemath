@@ -123,6 +123,7 @@ export const categories: Record<CategorySlug, Category> = {
       "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture from a tape measure. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount — with a small buffer for waste — instead of a driveway full of extra material or a second trip to the yard. They are made for US homeowners and landscapers working in feet and inches, and they cover the full range of bulk materials: topsoil for lawns and beds, mulch and compost, pea gravel and river rock, decomposed granite, sand and crushed stone, plus square yards for carpet, turf and sod, and riprap for erosion control. Each material carries a sensible default depth and a density you can adjust, and every result shows the formula with your numbers plus a reference table of common sizes. Bulk material is sold by the cubic yard and bagged material by the cubic foot, so each tool shows both. Start with the Cubic Yard Calculator for any loose material, the Topsoil or Landscape Material Calculator for beds, or the Square Yard Calculator for flooring.",
     whichTool: [
       { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
+      { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
       { project: "Any loose material by area and depth", slug: "cubic-yard-calculator" },
@@ -302,6 +303,7 @@ export const calculators: Calculator[] = [
     related: [
       "yards-of-concrete-calculator",
       "topsoil-calculator",
+      "mulch-calculator",
       "pea-gravel-calculator",
       "landscape-materials-calculator",
       "concrete-slab-cost-calculator",
@@ -675,6 +677,7 @@ export const calculators: Calculator[] = [
     sources: ["USDA topsoil bulk-density references"],
     related: [
       "cubic-yard-calculator",
+      "mulch-calculator",
       "landscape-materials-calculator",
       "pea-gravel-calculator",
       "lawn-mowing-cost-calculator",
@@ -786,6 +789,7 @@ export const calculators: Calculator[] = [
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
     related: [
       "cubic-yard-calculator",
+      "mulch-calculator",
       "landscape-materials-calculator",
       "rip-rap-calculator",
       "topsoil-calculator",
@@ -1020,6 +1024,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["landscape-supply density tables", "USDA references"],
     related: [
+      "mulch-calculator",
       "cubic-yard-calculator",
       "topsoil-calculator",
       "pea-gravel-calculator",
@@ -2185,6 +2190,120 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-12",
     imageAlt: "Cinder block fill diagram: a block's two cores and a wall with every other core filled.",
+  },
+
+  /* ---------------------------------------------------------------- 18 (batch 2) */
+  {
+    slug: "mulch-calculator",
+    category: "landscaping",
+    title: "Mulch Calculator – Cubic Yards & Bags of Mulch Needed",
+    metaDescription:
+      "Find how much mulch you need for beds, borders and tree rings. Enter the area and depth to get cubic yards, 2 or 3 cu ft bags, coverage and cost.",
+    h1: "Mulch Calculator",
+    primaryKeyword: "mulch calculator",
+    secondaryKeywords: [
+      "how much mulch do i need",
+      "yard of mulch",
+      "mulch coverage calculator",
+      "bags of mulch calculator",
+      "how many bags of mulch in a yard",
+      "how much does a yard of mulch cover",
+    ],
+    cardDescription: "How much mulch for beds and tree rings: cubic yards, bags, coverage and cost.",
+    shortAnswer:
+      "One cubic yard of mulch covers about 108 square feet at 3 inches deep, or 162 square feet at 2 inches. A 10 by 20 foot bed at 3 inches needs about 1.85 cubic yards, or 25 bags of 2 cubic feet. Enter your beds below to get yards, bags and cost.",
+    howTo: [
+      "Pick a shape and enter the size of each bed. Add more beds if you have several.",
+      "Choose the depth. Three inches is a good default for most beds.",
+      "Keep 10% extra for uneven ground and settling.",
+      "Compare the bulk and bagged cost, then round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × depth (in) ÷ 12",
+        "cubic yards = cu ft ÷ 27",
+        "bags = ceil(cu ft × (1 + waste%) ÷ bag size)",
+        "coverage per yard (sq ft) = 324 ÷ depth (in)",
+      ],
+      example: [
+        "A 10 × 20 ft bed, 3 inches deep:",
+        "cu ft = 200 × 3 ÷ 12 = 50",
+        "cubic yards = 50 ÷ 27 = 1.85",
+        "25 bags of 2 cu ft, or 17 bags of 3 cu ft (before waste)",
+      ],
+      example2: [
+        "A tree ring 6 ft across, 3 inches deep:",
+        "cu ft = π × 3² × 0.25 = 7.07",
+        "cubic yards = 7.07 ÷ 27 = 0.26",
+        "4 bags of 2 cu ft",
+      ],
+    },
+    notCovered:
+      "It estimates loose mulch volume for flat beds. It doesn't account for slopes, mulch that's already there, or how much fresh mulch settles in the first few weeks. Rubber mulch and stone are sold by weight, so check the supplier's coverage chart for those.",
+    tables: [
+      {
+        title: "Cubic yards of mulch by area and depth",
+        columns: [
+          { label: "Area" },
+          { label: '2 in', num: true },
+          { label: '3 in', num: true },
+          { label: '4 in', num: true },
+          { label: "2 cu ft bags at 3 in", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "0.62", "0.93", "1.23", 13],
+          ["200 sq ft", "1.23", "1.85", "2.47", 25],
+          ["500 sq ft", "3.09", "4.63", "6.17", 63],
+          ["1,000 sq ft", "6.17", "9.26", "12.35", 125],
+        ],
+        footnote: "Cubic yards and bags exclude waste; add about 10% when you order. A cubic yard is 27 cu ft; a 2 cu ft bag covers about 8 sq ft at 3 inches.",
+      },
+    ],
+    tips: [
+      "Check the depth of the old mulch first. If there's already 2 inches, you may only need to top up an inch.",
+      "Keep mulch a few inches away from tree trunks and plant stems. Piling it against the bark invites rot and pests.",
+      "Past about 2 or 3 cubic yards, bulk delivery is usually cheaper than bags, even with the delivery fee.",
+      "Bags are easier for small beds, steep yards or places a truck can't reach.",
+    ],
+    faqs: [
+      {
+        q: "How much mulch do I need?",
+        a: "Multiply the bed's square feet by the depth in inches, divide by 12 for cubic feet, then divide by 27 for cubic yards. A 200 square foot bed at 3 inches needs about 1.85 cubic yards.",
+      },
+      {
+        q: "How much does a yard of mulch cover?",
+        a: "About 324 square feet at 1 inch deep. That's 162 square feet at 2 inches, 108 at 3 inches and 81 at 4 inches.",
+      },
+      {
+        q: "How many bags of mulch are in a yard?",
+        a: "About 13.5 bags of 2 cubic feet, or 9 bags of 3 cubic feet. A cubic yard is 27 cubic feet.",
+      },
+      {
+        q: "How deep should mulch be?",
+        a: "Two to four inches for most beds. Two inches is enough for fine mulch, and three inches is a good default. Going much deeper can keep water and air from reaching the roots.",
+      },
+      {
+        q: "Is it cheaper to buy mulch in bulk or bags?",
+        a: "Bulk is usually cheaper once you need more than about 2 or 3 cubic yards, even with a delivery fee. For a small bed or two, bags often cost less overall.",
+      },
+      {
+        q: "How much mulch for a tree ring?",
+        a: "A ring 6 feet across at 3 inches deep takes about 7 cubic feet, which is 4 bags of 2 cubic feet. Keep the mulch a few inches away from the trunk.",
+      },
+      {
+        q: "How often should I replace mulch?",
+        a: "Most wood mulch breaks down in about a year or two. Many people add an inch each spring rather than replacing it all.",
+      },
+    ],
+    sources: ["K-State Extension mulch depth", "Vigoro 2 cu ft bag coverage", "2026 mulch cost guide"],
+    related: [
+      "landscape-materials-calculator",
+      "cubic-yard-calculator",
+      "topsoil-calculator",
+      "pea-gravel-calculator",
+    ],
+    lastUpdated: "2026-10-12",
+    imageAlt: "Mulch calculator diagram: bed depth and a tree ring, the measurements the calculator uses.",
   },
 ];
 

@@ -163,7 +163,8 @@ export const PRICES = {
   peaGravelPerTon: 55, // VERIFY: bulk pea gravel national avg
   ripRapPerTon: 70, // VERIFY: varies by class & haul distance
   topsoilPerCuYd: 40, // VERIFY: bulk screened topsoil
-  mulchPerCuYd: 40, // VERIFY: bulk bark mulch
+  mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)
+  mulchPerBag: 4, // VERIFY: 2026 price of a 2 cu ft bag, within $3.25-6.50 (LawnStarter)
 } as const;
 
 /* =========================================================================

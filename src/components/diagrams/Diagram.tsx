@@ -259,6 +259,35 @@ function CinderFillDiagram({ title }: { title: string }) {
   );
 }
 
+/** Mulch: a bed in side view with a mulch layer + depth arrow, and a tree ring. */
+function MulchDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Side view: soil with a mulch layer on top */}
+      <rect x="24" y="78" width="130" height="34" fill="#efe7d4" stroke={LINE} strokeWidth="1.2" />
+      <rect x="24" y="64" width="130" height="14" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
+      {/* depth arrow for the mulch layer */}
+      <line x1="40" y1="64" x2="40" y2="78" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M40 64 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M40 78 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="47" y="75" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">3&Prime;</text>
+      <text x="89" y="100" textAnchor="middle" fill={LINE} fontSize="10">soil</text>
+      <text x="89" y="128" textAnchor="middle" fill={LINE} fontSize="11">Bed (side view)</text>
+
+      {/* Top view: tree ring with diameter + gap around trunk */}
+      <circle cx="245" cy="78" r="38" fill="#efe7d4" stroke={LINE} strokeWidth="1.3" />
+      <circle cx="245" cy="78" r="9" fill="#fff" stroke={LINE} strokeWidth="1.1" />
+      <circle cx="245" cy="78" r="3.5" fill="#8a6a4a" />
+      {/* diameter line */}
+      <line x1="207" y1="78" x2="283" y2="78" stroke={BRAND} strokeWidth="1.2" strokeDasharray="3 3" />
+      <path d="M207 78 l4 -2.5 v5 z" fill={BRAND} />
+      <path d="M283 78 l-4 -2.5 v5 z" fill={BRAND} />
+      <text x="245" y="60" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">diameter</text>
+      <text x="245" y="128" textAnchor="middle" fill={LINE} fontSize="11">Tree ring (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -282,6 +311,8 @@ export function Diagram({
     node = <FootingDiagram title={alt} />;
   } else if (slug === "cinder-block-fill-calculator") {
     node = <CinderFillDiagram title={alt} />;
+  } else if (slug === "mulch-calculator") {
+    node = <MulchDiagram title={alt} />;
   } else if (slug === "gutter-slope-calculator") {
     node = <GutterSlopeDiagram title={alt} />;
   } else if (slug === "lawn-mowing-cost-calculator" || slug === "acres-per-hour-calculator") {

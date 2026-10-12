@@ -17,6 +17,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "pea-gravel-calculator": ["gravel", "stone", "path", "patio", "rock"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
+  // "mulch" resolves to the Mulch Calculator first because its name matches (name
+  // matches rank before keyword matches); these add bed/ring/bag synonyms.
+  "mulch-calculator": ["mulch", "bark", "wood chips", "bags", "flower bed", "garden bed", "tree ring", "cover"],
   "gutter-slope-calculator": ["downspout", "pitch", "drainage", "roof"],
   "rip-rap-calculator": ["riprap", "boulders", "erosion", "shoreline", "creek"],
   "lawn-mowing-cost-calculator": ["mow", "mowing", "grass", "lawn care", "price"],
