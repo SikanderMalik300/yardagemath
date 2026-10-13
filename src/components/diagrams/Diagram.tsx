@@ -288,6 +288,33 @@ function MulchDiagram({ title }: { title: string }) {
   );
 }
 
+function GravelDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Side view: a driveway cross-section with a base layer and a top layer */}
+      <rect x="26" y="92" width="120" height="26" fill="#d8d2c4" stroke={LINE} strokeWidth="1.2" />
+      <rect x="26" y="72" width="120" height="20" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
+      {/* base depth arrow (left) */}
+      <line x1="40" y1="92" x2="40" y2="118" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M40 92 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M40 118 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="47" y="108" textAnchor="start" fill={BRAND} fontSize="10" fontWeight="600">base 4&Prime;</text>
+      {/* top depth arrow (right) */}
+      <line x1="132" y1="72" x2="132" y2="92" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M132 72 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M132 92 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="126" y="86" textAnchor="end" fill={BRAND} fontSize="10" fontWeight="600">top 2&Prime;</text>
+      <text x="86" y="138" textAnchor="middle" fill={LINE} fontSize="11">Driveway (side view)</text>
+
+      {/* Top view: a rectangle labelled L and W */}
+      <rect x="200" y="62" width="82" height="44" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="241" y="120" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="84" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 84)">W</text>
+      <text x="241" y="138" textAnchor="middle" fill={LINE} fontSize="11">Area (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -313,6 +340,8 @@ export function Diagram({
     node = <CinderFillDiagram title={alt} />;
   } else if (slug === "mulch-calculator") {
     node = <MulchDiagram title={alt} />;
+  } else if (slug === "gravel-calculator") {
+    node = <GravelDiagram title={alt} />;
   } else if (slug === "gutter-slope-calculator") {
     node = <GutterSlopeDiagram title={alt} />;
   } else if (slug === "lawn-mowing-cost-calculator" || slug === "acres-per-hour-calculator") {

@@ -15,6 +15,10 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "cmu-block-sizes": ["size", "dimensions", "8x8x16", "nominal", "actual", "course"],
   "topsoil-calculator": ["soil", "dirt", "garden", "raised bed", "lawn"],
   "pea-gravel-calculator": ["gravel", "stone", "path", "patio", "rock"],
+  // "gravel" resolves to the Gravel Calculator first (its name starts with the
+  // query, which beats Pea Gravel's name-contains match), then Pea Gravel, then
+  // Cubic Yard via its keyword.
+  "gravel-calculator": ["gravel", "crushed stone", "rock", "driveway", "#57", "crusher run", "road base", "river rock", "tons", "base"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name
@@ -38,11 +42,17 @@ export function tileName(c: Calculator): string {
 export function searchCalculators(query: string, limit = 8): Calculator[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
-  const nameMatches: Calculator[] = [];
+  const nameStarts: Calculator[] = [];
+  const nameContains: Calculator[] = [];
   const keywordMatches: Calculator[] = [];
   for (const c of calculators) {
-    if (tileName(c).toLowerCase().includes(q)) {
-      nameMatches.push(c);
+    const name = tileName(c).toLowerCase();
+    if (name.startsWith(q)) {
+      nameStarts.push(c);
+      continue;
+    }
+    if (name.includes(q)) {
+      nameContains.push(c);
       continue;
     }
     const hay = [c.cardDescription, c.primaryKeyword, ...c.secondaryKeywords, ...(SEARCH_KEYWORDS[c.slug] ?? [])]
@@ -50,5 +60,8 @@ export function searchCalculators(query: string, limit = 8): Calculator[] {
       .toLowerCase();
     if (hay.includes(q)) keywordMatches.push(c);
   }
-  return [...nameMatches, ...keywordMatches].slice(0, limit);
+  // Name matches rank before keyword matches; a name that starts with the query
+  // (e.g. "Gravel Calculator" for "gravel") beats one that only contains it
+  // (e.g. "Pea Gravel Calculator").
+  return [...nameStarts, ...nameContains, ...keywordMatches].slice(0, limit);
 }

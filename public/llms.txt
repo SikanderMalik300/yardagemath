@@ -13,6 +13,7 @@
 - [Square Yard Calculator](https://yardagemath.com/square-yard-calculator/): Convert feet and multiple rooms to square yards, with waste and cost.
 - [Landscape Material Calculator](https://yardagemath.com/landscape-materials-calculator/): Yards, tons and bags for mulch, rock, soil, sand, decomposed granite and more.
 - [Mulch Calculator](https://yardagemath.com/mulch-calculator/): How much mulch for beds and tree rings: cubic yards, 2 or 3 cu ft bags, coverage and bulk vs bagged cost.
+- [Gravel Calculator](https://yardagemath.com/gravel-calculator/): How much gravel for a driveway, path or patio: cubic yards, tons, bags, coverage and cost by gravel type.
 - [Lawn Mowing Cost Calculator](https://yardagemath.com/lawn-mowing-cost-calculator/): What a cut should cost (homeowner) or what to charge (pro), per cut and per season.
 - [Block Wall Calculator](https://yardagemath.com/block-wall-calculator/): Courses, blocks, cap blocks, mortar, grout, rebar and total material cost.
 - [Concrete Block Weight Chart & Calculator](https://yardagemath.com/concrete-block-weight/): Weights for 4, 6, 8, 10 and 12 inch CMU, normal and lightweight, plus total load, pallet and per-trip weight.

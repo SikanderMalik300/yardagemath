@@ -32,7 +32,8 @@ export const DENSITY_TONS_PER_CUYD = {
   topsoil: 1.1, // VERIFY: screened topsoil, varies with moisture
   mulch: 0.3, // VERIFY: bark mulch is light and highly variable
   concreteWet: 2.0, // VERIFY: wet ready-mix ~4000 lb/cu yd
-  riverRock: 1.35, // VERIFY
+  riverRock: 1.35, // VERIFY: a little lighter than crushed stone
+  crusherRun: 1.5, // VERIFY: crusher run / road base packs denser than clean stone
   decomposedGranite: 1.3, // VERIFY
   compost: 0.6, // VERIFY
   ripRap: 1.5, // VERIFY: varies by stone class / state DOT tables
@@ -54,6 +55,7 @@ export const MATERIAL_LABELS: Record<MaterialKey, string> = {
   mulch: "Mulch",
   concreteWet: "Concrete (wet)",
   riverRock: "River rock",
+  crusherRun: "Crusher run / road base",
   decomposedGranite: "Decomposed granite",
   compost: "Compost",
   ripRap: "Riprap",
@@ -161,6 +163,7 @@ export const PRICES = {
   rebar20ftBar: 9.0, // VERIFY: #4 x 20 ft
   groutPerCuYd: 170, // VERIFY
   peaGravelPerTon: 55, // VERIFY: bulk pea gravel national avg
+  gravelPerTon: 45, // VERIFY: 2026 bulk crushed stone, within $30-60/ton (Gravel Monkey)
   ripRapPerTon: 70, // VERIFY: varies by class & haul distance
   topsoilPerCuYd: 40, // VERIFY: bulk screened topsoil
   mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)

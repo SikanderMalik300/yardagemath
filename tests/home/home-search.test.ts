@@ -10,8 +10,9 @@ import { searchCalculators, tileName } from "@/lib/data/homeSearch";
 const slugs = (q: string) => searchCalculators(q).map((c) => c.slug);
 
 describe("home search", () => {
-  it("'gravel' returns at least Pea Gravel, Cubic Yard and Landscape Material", () => {
+  it("'gravel' returns Gravel, Pea Gravel, Cubic Yard and Landscape Material", () => {
     const r = slugs("gravel");
+    expect(r).toContain("gravel-calculator");
     expect(r).toContain("pea-gravel-calculator");
     expect(r).toContain("cubic-yard-calculator");
     expect(r).toContain("landscape-materials-calculator");
@@ -32,16 +33,18 @@ describe("home search", () => {
     expect(searchCalculators("   ")).toEqual([]);
   });
 
-  it("name matches rank before keyword matches", () => {
-    // "gravel" is in the Pea Gravel name but only a keyword for Cubic Yard.
+  it("name matches rank before keyword matches, name-starts-with wins", () => {
+    // "Gravel Calculator" starts with "gravel" so it ranks first; "Pea Gravel
+    // Calculator" only contains it; "Cubic Yard" has it only as a keyword.
     const r = slugs("gravel");
-    expect(r[0]).toBe("pea-gravel-calculator");
+    expect(r[0]).toBe("gravel-calculator");
+    expect(r.indexOf("gravel-calculator")).toBeLessThan(r.indexOf("pea-gravel-calculator"));
     expect(r.indexOf("pea-gravel-calculator")).toBeLessThan(r.indexOf("cubic-yard-calculator"));
   });
 
   it("ArrowDown then Enter would open the first result (results[0])", () => {
     // The component highlights index 0 on the first ArrowDown and opens it on Enter.
-    expect(searchCalculators("gravel")[0].slug).toBe("pea-gravel-calculator");
+    expect(searchCalculators("gravel")[0].slug).toBe("gravel-calculator");
     expect(searchCalculators("block wall")[0] && tileName(searchCalculators("block wall")[0])).toContain("Block Wall");
   });
 

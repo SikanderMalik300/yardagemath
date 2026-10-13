@@ -110,6 +110,15 @@ export function LandscapeMaterialsCalculator() {
             </p>
           )}
 
+          {(material === "gravel" || material === "crushedStone" || material === "riverRock") && (
+            <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+              Using crushed stone, river rock or driveway gravel?{" "}
+              <Link href="/gravel-calculator/" prefetch={false}>
+                Use the Gravel Calculator.
+              </Link>
+            </p>
+          )}
+
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>
             <MathLine>

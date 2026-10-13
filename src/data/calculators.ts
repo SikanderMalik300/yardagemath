@@ -125,6 +125,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
+      { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
       { project: "Any loose material by area and depth", slug: "cubic-yard-calculator" },
       { project: "Carpet, turf or sod in square yards", slug: "square-yard-calculator" },
@@ -302,6 +303,7 @@ export const calculators: Calculator[] = [
     sources: ["USDA bulk-density references", "landscape-supply yard figures"],
     related: [
       "yards-of-concrete-calculator",
+      "gravel-calculator",
       "topsoil-calculator",
       "mulch-calculator",
       "pea-gravel-calculator",
@@ -788,6 +790,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
     related: [
+      "gravel-calculator",
       "cubic-yard-calculator",
       "mulch-calculator",
       "landscape-materials-calculator",
@@ -1024,6 +1027,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["landscape-supply density tables", "USDA references"],
     related: [
+      "gravel-calculator",
       "mulch-calculator",
       "cubic-yard-calculator",
       "topsoil-calculator",
@@ -1608,7 +1612,7 @@ export const calculators: Calculator[] = [
     sources: ["state DOT riprap gradation tables", "USACE/FHWA riprap design guidance"],
     warning:
       "For shoreline or channel work, follow your engineer or local permit requirements.",
-    related: ["cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
+    related: ["gravel-calculator", "cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
     lastUpdated: "2026-10-09",
     imageAlt: "Rip rap calculator diagram of a stone layer on a slope with thickness labelled",
   },
@@ -2297,6 +2301,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["K-State Extension mulch depth", "Vigoro 2 cu ft bag coverage", "2026 mulch cost guide"],
     related: [
+      "gravel-calculator",
       "landscape-materials-calculator",
       "cubic-yard-calculator",
       "topsoil-calculator",
@@ -2304,6 +2309,121 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-12",
     imageAlt: "Mulch calculator diagram: bed depth and a tree ring, the measurements the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 19 (batch 2) */
+  {
+    slug: "gravel-calculator",
+    category: "landscaping",
+    title: "Gravel Calculator – Tons & Cubic Yards of Gravel Needed",
+    metaDescription:
+      "Work out how much gravel you need for a driveway, path or patio. Pick the gravel type and depth to get cubic yards, tons, bags and cost.",
+    h1: "Gravel Calculator",
+    primaryKeyword: "gravel calculator",
+    secondaryKeywords: [
+      "gravel driveway calculator",
+      "driveway gravel calculator",
+      "how much gravel do i need",
+      "how to calculate yards of gravel",
+      "how much does a ton of gravel cover",
+      "how much does a yard of gravel weigh",
+    ],
+    cardDescription: "How much gravel for a driveway, path or patio: cubic yards, tons, bags and cost.",
+    shortAnswer:
+      "One ton of gravel covers about 77 square feet at 3 inches deep, or 58 square feet at 4 inches. A 12 by 50 foot driveway at 4 inches needs about 7.4 cubic yards, or 10.4 tons. Enter your area, depth and gravel type below to get tons, yards, bags and cost.",
+    howTo: [
+      "Measure each area and pick a shape. Add more areas if you have several.",
+      "Choose the gravel type. Crushed stone and road base are heavier than river rock.",
+      "Pick a depth: about 2 to 3 inches for paths and patios, 4 inches or more for driveways.",
+      "Keep 10% extra for compaction and uneven ground, then round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × depth (in) ÷ 12",
+        "cubic yards = cu ft ÷ 27",
+        "tons = cubic yards × density (about 1.4 for most gravel)",
+        "bags = ceil(cu ft × (1 + waste%) ÷ bag size)",
+        "sq ft per ton = (27 ÷ density) ÷ (depth ÷ 12)",
+      ],
+      example: [
+        "A 12 × 50 ft driveway, 4 inches deep (density 1.4):",
+        "cu ft = 600 × 4 ÷ 12 = 200",
+        "cubic yards = 200 ÷ 27 = 7.41",
+        "tons = 7.41 × 1.4 = 10.37, about 400 bags of 0.5 cu ft before waste",
+      ],
+      example2: [
+        "A 3 × 40 ft path, 3 inches deep:",
+        "cu ft = 120 × 3 ÷ 12 = 30",
+        "cubic yards = 30 ÷ 27 = 1.11, about 1.56 tons",
+        "60 bags of 0.5 cu ft",
+      ],
+    },
+    notCovered:
+      "It estimates loose gravel for a flat area. It doesn't design a driveway base, account for slopes, or figure out how much the ground will settle under heavy trucks. Weights vary with moisture and stone size, so check the supplier's tons-per-yard figure before you order.",
+    tables: [
+      {
+        title: "Cubic yards and tons of gravel by area and depth",
+        columns: [
+          { label: "Area" },
+          { label: "2 in (yd / t)", num: true },
+          { label: "3 in (yd / t)", num: true },
+          { label: "4 in (yd / t)", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "0.62 / 0.9", "0.93 / 1.3", "1.23 / 1.7"],
+          ["250 sq ft", "1.54 / 2.2", "2.31 / 3.2", "3.09 / 4.3"],
+          ["500 sq ft", "3.09 / 4.3", "4.63 / 6.5", "6.17 / 8.6"],
+          ["1,000 sq ft", "6.17 / 8.6", "9.26 / 13.0", "12.35 / 17.3"],
+        ],
+        footnote: "Cubic yards and tons at density 1.4 t/yd, before waste; add about 10% when you order. A cubic yard is 27 cu ft and weighs about 1.4 tons (2,800 lb) for typical gravel.",
+      },
+    ],
+    tips: [
+      "Most suppliers sell gravel by the ton. If they quote by the yard, ask how many tons a yard of that stone weighs.",
+      "For a driveway, lay a compacted base of crusher run or larger stone first, then a top layer of #57 or similar.",
+      "Put landscape fabric under paths and patios to keep weeds down and stop the gravel sinking into the soil.",
+      "Past about 1 ton, bulk delivery is almost always cheaper than bags.",
+    ],
+    faqs: [
+      {
+        q: "How much gravel do I need?",
+        a: "Multiply length × width in feet to get square feet, multiply by the depth in inches and divide by 12 for cubic feet, then divide by 27 for cubic yards. Multiply cubic yards by about 1.4 to get tons for most gravel.",
+      },
+      {
+        q: "How much does a ton of gravel cover?",
+        a: "About 116 square feet at 2 inches deep, 77 square feet at 3 inches and 58 square feet at 4 inches. Heavier stone covers a little less.",
+      },
+      {
+        q: "How much does a yard of gravel weigh?",
+        a: "About 1.4 tons, or 2,800 pounds, for typical crushed stone or pea gravel. Road base and crusher run are heavier, and river rock is a little lighter.",
+      },
+      {
+        q: "How much gravel do I need for a driveway?",
+        a: "A 12 by 50 foot driveway at 4 inches deep needs about 7.4 cubic yards, or about 10.4 tons. A brand new driveway often needs 6 inches or more including the base layer.",
+      },
+      {
+        q: "How deep should gravel be?",
+        a: "About 2 inches for a decorative layer, 3 inches for paths and patios, and 4 to 6 inches for driveways. Driveways on soft ground need a deeper base.",
+      },
+      {
+        q: "How many bags of gravel are in a ton?",
+        a: "About 39 bags of 0.5 cubic feet, since a ton is about 19.3 cubic feet. That's a lot of bags, so bulk is usually cheaper past a ton.",
+      },
+      {
+        q: "What is the best gravel for a driveway?",
+        a: "Crusher run or road base packs down well as a base. Many people top it with #57 crushed stone. Pea gravel and river rock are round and tend to shift under car tires.",
+      },
+    ],
+    sources: ["#57 gravel weight (1.4 t/yd)", "Driveway gravel layers (Gravelshop)", "2026 gravel prices"],
+    related: [
+      "pea-gravel-calculator",
+      "cubic-yard-calculator",
+      "landscape-materials-calculator",
+      "rip-rap-calculator",
+      "mulch-calculator",
+    ],
+    lastUpdated: "2026-10-14",
+    imageAlt: "Gravel calculator diagram: driveway layers and the length, width and depth the calculator uses.",
   },
 ];
 

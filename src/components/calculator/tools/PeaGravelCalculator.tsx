@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { computePeaGravel } from "@/lib/formulas/peaGravel";
 import { round } from "@/lib/formulas/units";
 import { num } from "@/lib/analytics";
@@ -99,6 +100,13 @@ export function PeaGravelCalculator() {
             <SecondaryItem label="Cubic feet" value={`${fmtNumber(round(result.cubicFeetWithWaste, 1))} cu ft`} />
             {result.cost !== null && <SecondaryItem label="Estimated cost" value={fmtUSD(result.cost)} />}
           </SecondaryResults>
+
+          <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+            Using crushed stone, river rock or driveway gravel?{" "}
+            <Link href="/gravel-calculator/" prefetch={false}>
+              Use the Gravel Calculator.
+            </Link>
+          </p>
 
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>

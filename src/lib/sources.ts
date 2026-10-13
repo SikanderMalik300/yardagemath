@@ -204,6 +204,27 @@ export const SOURCES = {
     url: "https://www.lawnstarter.com/blog/cost/mulch-price/",
     checked: "2026-10-13",
   },
+  gravelDensity57: {
+    id: "gravelDensity57",
+    title: "#57 gravel weighs about 1.4 tons per cubic yard (≈ 2,800 lb/yd³); a cubic yard is roughly 1.4 tons",
+    publisher: "Cubic Yard Calculator",
+    url: "https://cubicyard-calculator.us/57-gravel-calculator/",
+    checked: "2026-10-14",
+  },
+  gravelDriveway: {
+    id: "gravelDriveway",
+    title: "Driveway gravel layers — a compacted base of 4 to 6 inches for cars and vans, with a top driving surface such as #57 a couple of inches deep",
+    publisher: "Gravelshop (aggregate supplier)",
+    url: "https://www.gravelshop.com/application-and-uses/driveway-gravel-122.asp",
+    checked: "2026-10-14",
+  },
+  gravelCost2026: {
+    id: "gravelCost2026",
+    title: "Gravel prices in 2026 — bulk per ton: 3/4 in crushed stone $30-60, crusher run $25-50, road base $20-45, pea gravel $40-75, river rock $50-110",
+    publisher: "Gravel Monkey (2026 cost guide)",
+    url: "https://mygravelmonkey.com/blog/gravel-prices-2026-cost-per-ton-yard-truckload/",
+    checked: "2026-10-14",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -225,6 +246,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "concrete-footing-calculator": ["ircR403", "quikreteConcrete", "slabCost2026"],
   "cinder-block-fill-calculator": ["tccCoreFill", "ncmaTek21a", "quikreteConcrete"],
   "mulch-calculator": ["kstateMulch", "mulchBag2026", "mulchCost2026"],
+  "gravel-calculator": ["gravelDensity57", "gravelDriveway", "gravelCost2026"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

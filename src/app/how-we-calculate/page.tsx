@@ -183,6 +183,18 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["kstateMulch", "mulchBag2026", "mulchCost2026"]} />
 
+      <h2>Gravel</h2>
+      <p>
+        Gravel uses the same area and yard math: cu ft = area × depth ÷ 12, then ÷ 27 for cubic yards,
+        and tons = cubic yards × density. Typical crushed stone, #57 and pea gravel weigh about 1.4
+        tons per cubic yard (2,800 lb); river rock is a little lighter (about 1.35) and crusher run or
+        road base packs heavier (about 1.5). One ton covers (27 ÷ density) ÷ (depth ÷ 12) square feet,
+        so about 77 sq ft at 3 in or 58 sq ft at 4 in for 1.4-ton gravel. For a new driveway, builders
+        commonly lay 4 to 6 inches of crusher run or larger stone as a base, with a couple of inches of
+        #57 or similar on top. The default price is a 2026 estimate of about $45 per ton.
+      </p>
+      <Cite keys={["gravelDensity57", "gravelDriveway", "gravelCost2026"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×
