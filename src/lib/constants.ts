@@ -164,6 +164,8 @@ export const PRICES = {
   groutPerCuYd: 170, // VERIFY
   peaGravelPerTon: 55, // VERIFY: bulk pea gravel national avg
   gravelPerTon: 45, // VERIFY: 2026 bulk crushed stone, within $30-60/ton (Gravel Monkey)
+  sandPerTon: 40, // VERIFY: 2026 bulk sand, within $40-60 play / $25-45 mason (Yard & Bag)
+  sandPerBag: 6, // VERIFY: 2026 price of a 50 lb play sand bag, within $5-8 (Yard & Bag)
   ripRapPerTon: 70, // VERIFY: varies by class & haul distance
   topsoilPerCuYd: 40, // VERIFY: bulk screened topsoil
   mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)

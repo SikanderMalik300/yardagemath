@@ -19,6 +19,8 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // query, which beats Pea Gravel's name-contains match), then Pea Gravel, then
   // Cubic Yard via its keyword.
   "gravel-calculator": ["gravel", "crushed stone", "rock", "driveway", "#57", "crusher run", "road base", "river rock", "tons", "base"],
+  // "sand" resolves to the Sand Calculator first (its name starts with the query).
+  "sand-calculator": ["sand", "play sand", "sandbox", "paver sand", "leveling sand", "mason sand", "concrete sand", "bedding", "polymeric"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name

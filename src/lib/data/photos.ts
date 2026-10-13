@@ -79,6 +79,7 @@ export const TOOL_PHOTOS: Record<string, Photo> = {
   "landscape-materials-calculator": p("9890699", "Magda Ehlers", "Brown bark mulch in a garden bed", ["landscape-materials-calculator"]),
   "mulch-calculator": p("5807154", "Anastasiia", "A freshly mulched flower bed with white crocuses in spring", ["mulch-calculator"]),
   "gravel-calculator": p("9685866", "Magda Ehlers", "A surface of grey crushed gravel stone in daylight", ["gravel-calculator"]),
+  "sand-calculator": p("17268238", "David Iloba", "A heap of clean tan building sand in daylight", ["sand-calculator"]),
   "gutter-slope-calculator": p("20113440", "Zeynep Sude Emek", "A rain gutter along a house roof edge", ["gutter-slope-calculator"], 0.5, 0.4),
   "rip-rap-calculator": p("11845363", "Henry Chau", "Large angular rip rap rock along a shoreline", ["rip-rap-calculator"], 0.5, 0.62),
   "lawn-mowing-cost-calculator": p("17151642", "Vanda Bako", "A lawn mower on a freshly cut striped lawn", ["lawn-mowing-cost-calculator"]),

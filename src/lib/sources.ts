@@ -225,6 +225,27 @@ export const SOURCES = {
     url: "https://mygravelmonkey.com/blog/gravel-prices-2026-cost-per-ton-yard-truckload/",
     checked: "2026-10-14",
   },
+  sandDensity: {
+    id: "sandDensity",
+    title: "Sand weight — dry sand about 1.3 to 1.5 tons per cubic yard (≈ 2,700 lb at 100 lb/cu ft, so a 50-lb bag is about 0.5 cu ft); damp, compacted sand runs heavier, about 1.5 tons per yard or more",
+    publisher: "Cubic Yard Calculator (sand)",
+    url: "https://cubicyard-calculator.us/sand-calculator/",
+    checked: "2026-10-14",
+  },
+  paverBedIcpi: {
+    id: "paverBedIcpi",
+    title: "Concrete paver installation (ICPI method) — the bedding sand layer is a uniform 1 to 1.5 inches over a compacted base, never used to level the base",
+    publisher: "ICPI installation guide (San Diego Pavers)",
+    url: "https://sandiegopavers.com/the-art-of-paver-installation-a-guide-based-on-icpi-guidelines/",
+    checked: "2026-10-14",
+  },
+  sandCost2026: {
+    id: "sandCost2026",
+    title: "Sand prices per ton (2026) — bulk play sand about $40-60/ton, mason $25-45, concrete $15-25, fill $10-20; a 50-lb bag of play sand about $5-8",
+    publisher: "Yard & Bag (2026 cost guide)",
+    url: "https://www.yardandbag.com/articles/sand-prices-per-ton-2026/",
+    checked: "2026-10-14",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -247,6 +268,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "cinder-block-fill-calculator": ["tccCoreFill", "ncmaTek21a", "quikreteConcrete"],
   "mulch-calculator": ["kstateMulch", "mulchBag2026", "mulchCost2026"],
   "gravel-calculator": ["gravelDensity57", "gravelDriveway", "gravelCost2026"],
+  "sand-calculator": ["inchSand", "sandDensity", "paverBedIcpi", "sandCost2026"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

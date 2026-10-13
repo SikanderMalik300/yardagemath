@@ -119,6 +119,15 @@ export function LandscapeMaterialsCalculator() {
             </p>
           )}
 
+          {material === "sand" && (
+            <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+              Need bags, sandbox or paver bedding sand?{" "}
+              <Link href="/sand-calculator/" prefetch={false}>
+                Use the Sand Calculator.
+              </Link>
+            </p>
+          )}
+
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>
             <MathLine>

@@ -126,6 +126,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
       { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
+      { project: "Sand for a sandbox, paver base or fill", slug: "sand-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
       { project: "Any loose material by area and depth", slug: "cubic-yard-calculator" },
       { project: "Carpet, turf or sod in square yards", slug: "square-yard-calculator" },
@@ -304,6 +305,7 @@ export const calculators: Calculator[] = [
     related: [
       "yards-of-concrete-calculator",
       "gravel-calculator",
+      "sand-calculator",
       "topsoil-calculator",
       "mulch-calculator",
       "pea-gravel-calculator",
@@ -679,6 +681,7 @@ export const calculators: Calculator[] = [
     sources: ["USDA topsoil bulk-density references"],
     related: [
       "cubic-yard-calculator",
+      "sand-calculator",
       "mulch-calculator",
       "landscape-materials-calculator",
       "pea-gravel-calculator",
@@ -791,6 +794,7 @@ export const calculators: Calculator[] = [
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
     related: [
       "gravel-calculator",
+      "sand-calculator",
       "cubic-yard-calculator",
       "mulch-calculator",
       "landscape-materials-calculator",
@@ -1028,6 +1032,7 @@ export const calculators: Calculator[] = [
     sources: ["landscape-supply density tables", "USDA references"],
     related: [
       "gravel-calculator",
+      "sand-calculator",
       "mulch-calculator",
       "cubic-yard-calculator",
       "topsoil-calculator",
@@ -2416,6 +2421,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["#57 gravel weight (1.4 t/yd)", "Driveway gravel layers (Gravelshop)", "2026 gravel prices"],
     related: [
+      "sand-calculator",
       "pea-gravel-calculator",
       "cubic-yard-calculator",
       "landscape-materials-calculator",
@@ -2424,6 +2430,121 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-14",
     imageAlt: "Gravel calculator diagram: driveway layers and the length, width and depth the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 20 (batch 2) */
+  {
+    slug: "sand-calculator",
+    category: "landscaping",
+    title: "Sand Calculator – Tons, Cubic Yards & Bags of Sand",
+    metaDescription:
+      "Find how much sand you need for a sandbox, paver base or fill. Enter the area and depth to get cubic yards, tons, 50-lb bags and cost.",
+    h1: "Sand Calculator",
+    primaryKeyword: "sand calculator",
+    secondaryKeywords: [
+      "paver sand calculator",
+      "play sand calculator",
+      "how much sand do i need",
+      "how many bags of sand do i need",
+      "how much does a yard of sand weigh",
+      "sandbox sand calculator",
+    ],
+    cardDescription: "How much sand for a sandbox, paver base or fill: cubic yards, tons, 50-lb bags and cost.",
+    shortAnswer:
+      "A ton of dry sand covers about 120 square feet at 2 inches deep, or 240 square feet at 1 inch for paver bedding. A 6 by 6 foot sandbox filled 12 inches deep takes about 1.8 tons, or 72 bags of 50-lb play sand. Enter your area and depth below to get tons, yards, bags and cost.",
+    howTo: [
+      "Measure each area and pick a shape. Add more areas if you need to.",
+      "Pick a project or type your own depth: about 1 inch under pavers, 2 inches for leveling, 12 inches for a sandbox.",
+      "Choose dry or damp sand. Damp sand weighs more per yard.",
+      "Keep 10% extra for compaction and spillage, then compare bulk and bagged cost.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × depth (in) ÷ 12",
+        "cubic yards = cu ft ÷ 27",
+        "tons = cubic yards × density (about 1.35 for dry sand)",
+        "bags = ceil(cu ft × (1 + waste%) ÷ 0.5)",
+        "sq ft per ton = (27 ÷ density) ÷ (depth ÷ 12)",
+      ],
+      example: [
+        "A 6 × 6 ft sandbox, 12 inches deep (dry sand, 1.35):",
+        "cu ft = 36 × 12 ÷ 12 = 36",
+        "cubic yards = 36 ÷ 27 = 1.33",
+        "tons = 1.33 × 1.35 = 1.80, or 72 bags of 50-lb play sand",
+      ],
+      example2: [
+        "A 12 × 12 ft paver patio, 1 inch of bedding sand:",
+        "cu ft = 144 × 1 ÷ 12 = 12",
+        "cubic yards = 12 ÷ 27 = 0.44, about 0.60 tons",
+        "24 bags of 50-lb sand",
+      ],
+    },
+    notCovered:
+      "It estimates loose sand for a flat area. It doesn't size the gravel base under pavers, the sand needed to fill paver joints, or pool filter sand, which is sold by the filter maker's spec. Weights change a lot with moisture, so check the supplier's tons-per-yard figure.",
+    tables: [
+      {
+        title: "Cubic yards and tons of dry sand by area and depth",
+        columns: [
+          { label: "Area" },
+          { label: "1 in (yd / t)", num: true },
+          { label: "2 in (yd / t)", num: true },
+          { label: "4 in (yd / t)", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "0.31 / 0.4", "0.62 / 0.8", "1.23 / 1.7"],
+          ["250 sq ft", "0.77 / 1.0", "1.54 / 2.1", "3.09 / 4.2"],
+          ["500 sq ft", "1.54 / 2.1", "3.09 / 4.2", "6.17 / 8.3"],
+          ["1,000 sq ft", "3.09 / 4.2", "6.17 / 8.3", "12.35 / 16.7"],
+        ],
+        footnote: "Cubic yards and tons for dry sand at 1.35 t/yd, before waste; add about 10% when you order. A cubic yard is 27 cu ft and weighs about 1.35 tons (2,700 lb) of dry sand.",
+      },
+    ],
+    tips: [
+      "Use the right sand. Play sand is washed and fine. Concrete or coarse sand is best for paver bedding. Mason sand is for mortar.",
+      "Under pavers, about 1 inch of bedding sand goes on top of a compacted gravel base, not straight on soil.",
+      "Sand is sold by the ton or the yard. Ask which, and how much a yard weighs, before you compare prices.",
+      "Bags make sense for a small sandbox or a few pavers. Past about a ton, bulk delivery is usually cheaper.",
+    ],
+    faqs: [
+      {
+        q: "How much sand do I need?",
+        a: "Multiply length × width in feet, multiply by the depth in inches and divide by 12 for cubic feet, then divide by 27 for cubic yards. Multiply cubic yards by about 1.35 to get tons of dry sand.",
+      },
+      {
+        q: "How much does a yard of sand weigh?",
+        a: "About 1.35 tons, or 2,700 pounds, for dry sand. Damp sand can weigh 1.5 tons or more per yard.",
+      },
+      {
+        q: "How much area does a ton of sand cover?",
+        a: "About 240 square feet at 1 inch deep, 120 square feet at 2 inches and 60 square feet at 4 inches.",
+      },
+      {
+        q: "How much sand do I need for a sandbox?",
+        a: "A 6 by 6 foot sandbox filled 12 inches deep needs about 36 cubic feet, which is about 1.8 tons or 72 bags of 50-lb play sand. A 4 by 4 foot box at 6 inches needs about 16 bags.",
+      },
+      {
+        q: "How much sand do I need under pavers?",
+        a: "About 1 inch of bedding sand on top of a compacted gravel base. A 12 by 12 foot patio needs about 12 cubic feet, or 24 bags of 50-lb sand.",
+      },
+      {
+        q: "How many bags of sand are in a ton?",
+        a: "About 40 bags of 50 lb, since a ton is 2,000 pounds. By volume, a ton of dry sand is about 20 cubic feet.",
+      },
+      {
+        q: "What kind of sand should I use?",
+        a: "Play sand for sandboxes, coarse concrete sand for paver bedding, mason sand for mortar, and polymeric sand only for filling paver joints.",
+      },
+    ],
+    sources: ["Dry sand weight (Inch Calculator)", "Sand unit weight, dry and damp", "Paver bedding depth (ICPI)", "2026 sand prices"],
+    related: [
+      "gravel-calculator",
+      "landscape-materials-calculator",
+      "cubic-yard-calculator",
+      "pea-gravel-calculator",
+      "topsoil-calculator",
+    ],
+    lastUpdated: "2026-10-14",
+    imageAlt: "Sand calculator diagram: paver bedding layer and a sandbox, the measurements the calculator uses.",
   },
 ];
 

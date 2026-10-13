@@ -315,6 +315,33 @@ function GravelDiagram({ title }: { title: string }) {
   );
 }
 
+function SandDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Left: paver cross-section with pavers, a thin sand bedding layer and a gravel base */}
+      {[0, 1, 2].map((c) => (
+        <rect key={c} x={26 + c * 40} y="54" width="38" height="14" fill="#fff" stroke={LINE} strokeWidth="1.2" />
+      ))}
+      <rect x="26" y="68" width="120" height="12" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
+      <rect x="26" y="80" width="120" height="26" fill="#d8d2c4" stroke={LINE} strokeWidth="1.2" />
+      {/* sand bedding depth arrow (right) */}
+      <line x1="134" y1="68" x2="134" y2="80" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M134 68 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M134 80 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="128" y="78" textAnchor="end" fill={BRAND} fontSize="10" fontWeight="600">sand 1&Prime;</text>
+      <text x="86" y="95" textAnchor="middle" fill={LINE} fontSize="10">gravel base</text>
+      <text x="86" y="124" textAnchor="middle" fill={LINE} fontSize="11">Pavers (side view)</text>
+
+      {/* Right: top view of a square sandbox labelled L, W and depth */}
+      <rect x="200" y="58" width="80" height="48" fill="#efe7d4" stroke={LINE} strokeWidth="1.3" />
+      <text x="240" y="118" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="82" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 82)">W</text>
+      <text x="240" y="82" textAnchor="middle" fill={BRAND} fontSize="10" fontWeight="600">depth 12&Prime;</text>
+      <text x="240" y="124" textAnchor="middle" fill={LINE} fontSize="11">Sandbox (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -342,6 +369,8 @@ export function Diagram({
     node = <MulchDiagram title={alt} />;
   } else if (slug === "gravel-calculator") {
     node = <GravelDiagram title={alt} />;
+  } else if (slug === "sand-calculator") {
+    node = <SandDiagram title={alt} />;
   } else if (slug === "gutter-slope-calculator") {
     node = <GutterSlopeDiagram title={alt} />;
   } else if (slug === "lawn-mowing-cost-calculator" || slug === "acres-per-hour-calculator") {

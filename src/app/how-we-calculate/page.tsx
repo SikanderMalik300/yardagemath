@@ -195,6 +195,20 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["gravelDensity57", "gravelDriveway", "gravelCost2026"]} />
 
+      <h2>Sand</h2>
+      <p>
+        Sand uses the same area and yard math: cu ft = area × depth ÷ 12, then ÷ 27 for cubic yards,
+        and tons = cubic yards × density. Dry play, mason or concrete sand weighs about 1.35 tons per
+        cubic yard (2,700 lb, at roughly 100 lb per cubic foot); damp sand holds water in the gaps and
+        runs about 1.5 tons per yard or more. Because 50 lb at 100 lb per cubic foot is half a cubic
+        foot, a 50-lb bag is about 0.5 cu ft, so a ton (about 20 cu ft of dry sand) is close to 40
+        bags. One ton covers (27 ÷ density) ÷ (depth ÷ 12) square feet, so about 120 sq ft at 2 in or
+        240 sq ft at 1 in for bedding. Under pavers, the bedding sand is a uniform 1 inch over a
+        compacted gravel base. Default prices are 2026 estimates: about $40 per ton and $6 for a 50-lb
+        bag.
+      </p>
+      <Cite keys={["inchSand", "sandDensity", "paverBedIcpi", "sandCost2026"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×
