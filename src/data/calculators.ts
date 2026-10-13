@@ -13,6 +13,8 @@ export interface Faq {
 
 export interface RefTable {
   title: string;
+  /** Optional intro paragraph shown above the table. */
+  intro?: string;
   columns: { label: string; num?: boolean }[];
   rows: (string | number)[][];
   footnote?: string;
@@ -467,7 +469,7 @@ export const calculators: Calculator[] = [
     cardDescription:
       "Slab cubic yards, bags vs ready-mix, and total cost per square foot.",
     shortAnswer:
-      "A 10 × 10 ft slab at 4 inches thick needs about 1.23 cubic yards of concrete, or 1.36 with 10% waste. At a 2026 average of roughly $160 per cubic yard delivered, that's about $220 in concrete before labor. Put in your own size below and you'll get the full cost breakdown.",
+      "A 10 × 10 ft concrete slab at 4 inches thick costs about $220 in concrete alone, or roughly $650 installed with labor. That's about $2.17 per square foot for materials and $6 to $12 per square foot for a finished slab. Enter your size below for a full breakdown.",
     howTo: [
       "Enter the slab length and width in feet and inches.",
       "Set the thickness (4 inches is standard for patios and walkways).",
@@ -498,33 +500,65 @@ export const calculators: Calculator[] = [
     notCovered: "Prices are 2026 national averages, not a quote. It doesn't include permits, removing an old slab, major site prep, a pump truck or decorative finishes. Get local bids before you budget the job.",
     tables: [
       {
-        title: "Concrete needed for common slabs",
+        title: "Concrete cost per square foot (2026)",
+        intro:
+          "Ready-mix concrete alone costs about $2 to $3.30 per square foot, depending on thickness. A finished slab with labor usually runs about $6 to $12 per square foot. Decorative finishes like stamping cost more.",
         columns: [
-          { label: "Slab size" },
-          { label: 'Cu yd @ 4"', num: true },
-          { label: 'Cu yd @ 6"', num: true },
+          { label: "Thickness" },
+          { label: "No waste", num: true },
+          { label: "With 10% waste", num: true },
         ],
         rows: [
-          ["10 × 10 ft", "1.23", "1.85"],
-          ["12 × 12 ft", "1.78", "2.67"],
-          ["20 × 20 ft", "4.94", "7.41"],
-          ["24 × 24 ft", "7.11", "10.67"],
-          ["30 × 30 ft", "11.11", "16.67"],
+          ['4 in', "$1.98", "$2.17"],
+          ['5 in', "$2.47", "$2.72"],
+          ['6 in', "$2.96", "$3.26"],
         ],
-        footnote:
-          "Volumes exclude waste. A 30×30 slab at 4 inches is about 11.1 cubic yards; add 10% and order 12.2.",
+        footnote: "Concrete only, at $160 per cubic yard. Formula: thickness ÷ 12 ÷ 27 × price per yard.",
+      },
+      {
+        title: "Installed cost per square foot by project",
+        columns: [
+          { label: "Project" },
+          { label: "Typical installed cost per sq ft" },
+        ],
+        rows: [
+          ["Basic patio or walkway (4 in, broom finish)", "$4 to $12"],
+          ["Driveway (4 to 6 in, with base)", "$6 to $15"],
+          ["Garage floor (4 to 6 in)", "$6 to $12"],
+          ["Stamped or colored concrete", "$8 to $19"],
+        ],
+        footnote: "Ranges are 2026 national averages from HomeGuide. Local prices vary a lot, so get two or three quotes.",
+      },
+      {
+        title: "How much does a concrete slab cost by size?",
+        columns: [
+          { label: "Slab size" },
+          { label: "Area", num: true },
+          { label: "Concrete (cu yd, with waste)", num: true },
+          { label: "Concrete cost", num: true },
+          { label: "Installed estimate", num: true },
+        ],
+        rows: [
+          ["10 × 10 ft", "100 sq ft", "1.36", "$217", "$652"],
+          ["12 × 12 ft", "144 sq ft", "1.96", "$313", "$939"],
+          ["16 × 16 ft", "256 sq ft", "3.48", "$556", "$1,670"],
+          ["20 × 20 ft", "400 sq ft", "5.43", "$869", "$2,609"],
+          ["24 × 24 ft", "576 sq ft", "7.82", "$1,252", "$3,757"],
+          ["30 × 30 ft", "900 sq ft", "12.22", "$1,956", "$5,871"],
+        ],
+        footnote: "Concrete at 4 inches, 10% waste and $160/yd. The installed estimate adds labor ($4/sq ft) and welded wire mesh ($0.35/sq ft); it excludes a gravel base, site prep and decorative finishes. Get local quotes.",
       },
     ],
     commonSizes: {
-      title: "Common slabs: concrete + 80-lb bags",
-      columns: [{ label: "Slab size" }, { label: 'Cu yd @ 4"', num: true }, { label: '80-lb bags @ 4"', num: true }, { label: 'Cu yd @ 6"', num: true }],
+      title: "Common slabs: 80-lb bags and 6-inch volume",
+      columns: [{ label: "Slab size" }, { label: '80-lb bags @ 4"', num: true }, { label: 'Cu yd @ 6"', num: true }],
       rows: [
-        ["10 × 10 ft", "1.23", 56, "1.85"],
-        ["12 × 12 ft", "1.78", 80, "2.67"],
-        ["16 × 16 ft", "3.16", 143, "4.74"],
-        ["20 × 20 ft", "4.94", 223, "7.41"],
-        ["24 × 24 ft", "7.11", 320, "10.67"],
-        ["30 × 30 ft", "11.11", 500, "16.67"],
+        ["10 × 10 ft", 56, "1.85"],
+        ["12 × 12 ft", 80, "2.67"],
+        ["16 × 16 ft", 143, "4.74"],
+        ["20 × 20 ft", 223, "7.41"],
+        ["24 × 24 ft", 320, "10.67"],
+        ["30 × 30 ft", 500, "16.67"],
       ],
       footnote: "Bags shown for 4 inches (80-lb ≈ 0.60 cu ft). Above ~1 cu yd, ready-mix is cheaper and faster than bags.",
     },
@@ -538,7 +572,7 @@ export const calculators: Calculator[] = [
     faqs: [
       {
         q: "How much does a 20×20 concrete slab cost?",
-        a: "A 20×20 slab at 4 inches thick takes about 5 cubic yards of concrete. The concrete alone runs roughly $800–$1,000. Once you add finishing labor, rebar and a gravel base, most people pay somewhere around $2,400–$4,000, depending on where they live.",
+        a: "A 20 × 20 slab at 4 inches takes about 4.94 cubic yards, or 5.43 with 10% waste. The concrete alone is about $869. With labor and wire mesh, our installed estimate is about $2,609, and finished prices usually run about $2,400 to $4,800, depending on where you live and the finish.",
       },
       {
         q: "Is it cheaper to mix bags or order ready-mix?",
@@ -562,10 +596,18 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How much does a 30x30 concrete slab cost at 4 inches thick?",
-        a: "A 30 × 30 slab at 4 inches needs about 11.1 cubic yards, or 12.2 with 10% waste. The concrete alone costs roughly $1,800–$2,300. With labor, rebar and base, installed prices usually land between $8,000 and $13,000, depending on your area and the finish you pick.",
+        a: "A 30 × 30 slab at 4 inches needs about 11.1 cubic yards, or 12.2 with 10% waste. The concrete alone costs about $1,956. Our installed estimate is about $5,871, and finished prices usually run about $5,400 to $10,800, depending on your area and the finish you pick.",
+      },
+      {
+        q: "How much does concrete cost per square foot?",
+        a: "About $2 to $3.30 per square foot for the concrete alone, depending on whether the slab is 4, 5 or 6 inches thick. A finished slab with labor usually costs about $6 to $12 per square foot.",
+      },
+      {
+        q: "Is it cheaper to pour concrete yourself?",
+        a: "Usually, if the slab is small. Doing it yourself saves the labor, which is often more than half the installed price. Past about 100 square feet, or for a driveway, most people hire a crew because the pour and finishing have to happen fast.",
       },
     ],
-    sources: ["2026 ready-mix price guides", "Quikrete/Sakrete bag yields"],
+    sources: ["2026 installed cost guide (HomeGuide)", "Rebar and mesh prices (HomeGuide)", "Quikrete/Sakrete bag yields"],
     related: [
       "yards-of-concrete-calculator",
       "concrete-footing-calculator",
@@ -574,8 +616,8 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "square-yard-calculator",
     ],
-    lastUpdated: "2026-10-09",
-    imageAlt: "Concrete slab cost calculator diagram with length, width and thickness labelled",
+    lastUpdated: "2026-10-14",
+    imageAlt: "Concrete slab cost diagram: slab thickness, gravel base and rebar, plus the length and width the calculator uses.",
   },
 
   /* ---------------------------------------------------------------- 4 */
@@ -2535,7 +2577,7 @@ export const calculators: Calculator[] = [
         a: "Play sand for sandboxes, coarse concrete sand for paver bedding, mason sand for mortar, and polymeric sand only for filling paver joints.",
       },
     ],
-    sources: ["Dry sand weight (Inch Calculator)", "Sand unit weight, dry and damp", "Paver bedding depth (ICPI)", "2026 sand prices"],
+    sources: ["Dry sand weight (Inch Calculator)", "Sand unit weight (supplier)", "Paver bedding depth (Belgard)", "2026 sand prices"],
     related: [
       "gravel-calculator",
       "landscape-materials-calculator",

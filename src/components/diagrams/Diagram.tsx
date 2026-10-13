@@ -342,6 +342,34 @@ function SandDiagram({ title }: { title: string }) {
   );
 }
 
+function SlabCostDiagram({ title }: { title: string }) {
+  return (
+    <Frame title={title}>
+      {/* Cross-section: concrete slab over a gravel base, with rebar/mesh inside */}
+      <rect x="26" y="90" width="118" height="24" fill="#d8d2c4" stroke={LINE} strokeWidth="1.2" />
+      <rect x="26" y="62" width="118" height="28" fill="#e3e6e4" stroke={LINE} strokeWidth="1.2" />
+      <line x1="72" y1="76" x2="138" y2="76" stroke={BRAND} strokeWidth="1.2" strokeDasharray="5 3" />
+      {/* slab thickness arrow */}
+      <line x1="40" y1="62" x2="40" y2="90" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M40 62 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M40 90 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="46" y="79" textAnchor="start" fill={BRAND} fontSize="10" fontWeight="600">4 in</text>
+      {/* gravel base arrow */}
+      <line x1="40" y1="90" x2="40" y2="114" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M40 90 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M40 114 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="46" y="106" textAnchor="start" fill={BRAND} fontSize="10" fontWeight="600">base 4 in</text>
+      <text x="100" y="56" textAnchor="middle" fill={LINE} fontSize="10">concrete + rebar</text>
+      <text x="85" y="130" textAnchor="middle" fill={LINE} fontSize="11">Slab (side view)</text>
+      {/* Top view rectangle */}
+      <rect x="200" y="62" width="82" height="44" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="241" y="120" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="84" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 84)">W</text>
+      <text x="241" y="138" textAnchor="middle" fill={LINE} fontSize="11">Area (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -355,6 +383,8 @@ export function Diagram({
   let node: React.ReactNode;
   if (slug === "concrete-block-calculator" || slug === "block-wall-calculator") {
     node = <WallCourses title={alt} />;
+  } else if (slug === "concrete-slab-cost-calculator") {
+    node = <SlabCostDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

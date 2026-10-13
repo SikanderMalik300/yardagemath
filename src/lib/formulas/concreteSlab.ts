@@ -34,6 +34,14 @@ export interface ConcreteSlabResult {
   costPerSqFt: number;
 }
 
+/**
+ * Concrete material cost per square foot at a given thickness:
+ *   thickness (in) ÷ 12 ÷ 27 × price per cubic yard, times (1 + waste%).
+ */
+export function concreteCostPerSqFt(thicknessIn: number, pricePerCuYd: number, wastePct = 0): number {
+  return (thicknessIn / 12 / 27) * pricePerCuYd * (1 + wastePct / 100);
+}
+
 export function computeConcreteSlab(input: ConcreteSlabInput): ConcreteSlabResult {
   const area = areaSqFt("rectangle", {
     length: input.lengthFt,

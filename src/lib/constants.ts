@@ -155,8 +155,8 @@ export const PRICES = {
   concreteBag80: 7.0, // VERIFY: retail 80 lb concrete mix
   concreteBag60: 5.5, // VERIFY
   concreteBag40: 4.5, // VERIFY
-  concreteLaborPerSqFt: 4.5, // VERIFY: finishing labor only, varies widely
-  rebarMeshPerSqFt: 0.35, // VERIFY: #4 rebar grid or WWM
+  concreteLaborPerSqFt: 4.0, // VERIFY: 2026 labor to place+finish a basic 4in slab, midpoint of $3-5/sq ft (HomeGuide)
+  rebarMeshPerSqFt: 0.35, // VERIFY: welded wire mesh on a basic slab (HomeGuide rebar/mesh pricing)
   blockEach: 2.0, // VERIFY: standard 8×8×16 CMU
   capBlockEach: 2.5, // VERIFY
   mortarBag: 7.5, // VERIFY: 80 lb mortar mix

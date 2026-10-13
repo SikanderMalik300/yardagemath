@@ -207,7 +207,7 @@ export default function HowWeCalculatePage() {
         compacted gravel base. Default prices are 2026 estimates: about $40 per ton and $6 for a 50-lb
         bag.
       </p>
-      <Cite keys={["inchSand", "sandDensity", "paverBedIcpi", "sandCost2026"]} />
+      <Cite keys={["inchSand", "sandSupplierWeight", "paverBedBelgard", "sandCost2026"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
@@ -242,6 +242,18 @@ export default function HowWeCalculatePage() {
         {DEFAULT_WASTE.block}%, carpet {DEFAULT_WASTE.carpet}%. You can change the waste percentage
         on every tool.
       </p>
+
+      <h2>Concrete slab installed cost</h2>
+      <p>
+        The slab calculator can show a materials-only (DIY) total or an installed total with labor.
+        A finished slab runs about $6 to $12 per square foot installed, averaging around $8. We default
+        labor to $4 per square foot, the midpoint of a 2026 placing-and-finishing range of $3 to $5,
+        and welded wire mesh to about $0.35 per square foot for a basic slab. By project the installed
+        range is about $4 to $12 per sq ft for a basic patio or walkway, $6 to $15 for a driveway, $6
+        to $12 for a garage floor and $8 to $19 for stamped or colored concrete. Local prices vary a
+        lot, so get two or three quotes.
+      </p>
+      <Cite keys={["homeGuideSlab", "homeGuideRebar"]} />
 
       <h2>Prices</h2>
       <p>

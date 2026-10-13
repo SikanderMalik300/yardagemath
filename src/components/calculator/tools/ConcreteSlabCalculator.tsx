@@ -29,9 +29,22 @@ export function ConcreteSlabCalculator() {
   const [bagSize, setBagSize] = useState<BagSize>("lb80");
   const [pricePerCuYd, setPricePerCuYd] = useState(String(PRICES.concretePerCuYd));
   const [pricePerBag, setPricePerBag] = useState(String(PRICES.concreteBag80));
-  const [labor, setLabor] = useState("0");
-  const [rebar, setRebar] = useState("0");
+  // Installed (with labor) is the default; Materials only (DIY) zeroes labor + rebar.
+  const [costMode, setCostMode] = useState<"installed" | "materials">("installed");
+  const [labor, setLabor] = useState(String(PRICES.concreteLaborPerSqFt));
+  const [rebar, setRebar] = useState(String(PRICES.rebarMeshPerSqFt));
   const [gravelBase, setGravelBase] = useState("0");
+
+  const setMode = (mode: "installed" | "materials") => {
+    setCostMode(mode);
+    if (mode === "installed") {
+      setLabor(String(PRICES.concreteLaborPerSqFt));
+      setRebar(String(PRICES.rebarMeshPerSqFt));
+    } else {
+      setLabor("0");
+      setRebar("0");
+    }
+  };
 
   const result = useMemo(
     () =>
@@ -62,8 +75,15 @@ export function ConcreteSlabCalculator() {
     setLenFt("10"); setLenIn("0"); setWidFt("10"); setWidIn("0");
     setThickness("4"); setWaste("10"); setSupplyMode("readymix"); setBagSize("lb80");
     setPricePerCuYd(String(PRICES.concretePerCuYd)); setPricePerBag(String(PRICES.concreteBag80));
-    setLabor("0"); setRebar("0"); setGravelBase("0");
+    setCostMode("installed");
+    setLabor(String(PRICES.concreteLaborPerSqFt)); setRebar(String(PRICES.rebarMeshPerSqFt)); setGravelBase("0");
   };
+
+  // Both comparison figures, independent of the toggle, using the installed defaults.
+  const installedTotal = result.materialCost + (PRICES.concreteLaborPerSqFt + PRICES.rebarMeshPerSqFt) * result.areaSqFt;
+  const materialsTotal = result.materialCost;
+  const installedPerSqFt = result.areaSqFt > 0 ? installedTotal / result.areaSqFt : 0;
+  const materialsPerSqFt = result.areaSqFt > 0 ? materialsTotal / result.areaSqFt : 0;
 
   const summary = `Concrete slab: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd, total ${fmtUSD(
     result.totalCost
@@ -104,6 +124,20 @@ export function ConcreteSlabCalculator() {
 
           <FormGroupDivider />
           <GroupLabel>Supply &amp; pricing</GroupLabel>
+          <div role="group" aria-label="Cost mode" style={{ display: "flex", gap: "0.375rem", marginBottom: "0.875rem" }}>
+            {([["installed", "Installed (with labor)"], ["materials", "Materials only (DIY)"]] as const).map(([mode, label]) => (
+              <button
+                key={mode}
+                type="button"
+                className="button-secondary"
+                aria-pressed={costMode === mode}
+                onClick={() => setMode(mode)}
+                style={{ flex: 1, minHeight: 40, borderColor: costMode === mode ? "var(--brand)" : undefined, color: costMode === mode ? "var(--brand)" : undefined, fontWeight: costMode === mode ? 600 : undefined }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <Field label="Supply mode" htmlFor="supply">
             <Select
               id="supply"
@@ -155,10 +189,18 @@ export function ConcreteSlabCalculator() {
       right={
         <div>
           <PrimaryResult
-            label="Total estimated cost"
+            label={costMode === "installed" ? "Installed cost (with labor)" : "Materials cost (DIY)"}
             value={fmtUSD(result.totalCost)}
             sub={`${fmtUSD(result.costPerSqFt)} per sq ft · ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd of concrete`}
           />
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", fontSize: "0.875rem", margin: "0.5rem 0 0.25rem" }}>
+            <div>
+              <strong>Installed:</strong> {fmtUSD(installedTotal)} ({fmtUSD(installedPerSqFt)} per sq ft)
+            </div>
+            <div>
+              <strong>Materials only:</strong> {fmtUSD(materialsTotal)} ({fmtUSD(materialsPerSqFt)} per sq ft)
+            </div>
+          </div>
           <SecondaryResults>
             <SecondaryItem label="Concrete (with waste)" value={`${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd`} />
             {supplyMode === "bags" && <SecondaryItem label={`Bags (${bagSize.replace("lb", "")} lb)`} value={fmtInt(result.bags)} />}
