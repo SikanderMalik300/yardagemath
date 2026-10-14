@@ -48,6 +48,15 @@ describe("home search", () => {
     expect(searchCalculators("block wall")[0] && tileName(searchCalculators("block wall")[0])).toContain("Block Wall");
   });
 
+  it("'brick' and 'mortar' both resolve to the Brick Calculator first", () => {
+    expect(slugs("brick")[0]).toBe("brick-calculator");
+    // "mortar" is an explicit keyword for brick but only a blurb word for the
+    // block calc, so brick ranks first.
+    const m = slugs("mortar");
+    expect(m[0]).toBe("brick-calculator");
+    expect(m.indexOf("brick-calculator")).toBeLessThan(m.indexOf("concrete-block-calculator"));
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

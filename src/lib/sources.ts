@@ -24,7 +24,7 @@ export const SOURCES = {
   },
   quikreteMortar: {
     id: "quikreteMortar",
-    title: "Mortar Mix No. 1102 — product data sheet",
+    title: "Mortar Mix No. 1102 data sheet — one 80-lb bag lays up to 37 standard bricks or 13 standard (8×8×16) blocks",
     publisher: "QUIKRETE",
     url: "https://www.quikrete.com/pdfs/data_sheet-mortar%20mix%201102.pdf",
     checked: CHECKED,
@@ -260,6 +260,20 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/rebar-prices",
     checked: "2026-10-14",
   },
+  biaTn10: {
+    id: "biaTn10",
+    title: "Technical Note 10, Dimensioning and Estimating Brick Masonry (Table 4) — modular brick is 3⅝ × 2¼ × 7⅝ in and takes 6.75 units per sq ft at a 3/8 in joint; queen 5.76, king 4.80 and utility 3.00 per sq ft",
+    publisher: "Brick Industry Association",
+    url: "https://www.gobrick.com/media/file/10-dimensioning-and-estimating-brick-masonry.pdf",
+    checked: "2026-10-15",
+  },
+  homeGuideBrick: {
+    id: "homeGuideBrick",
+    title: "Brick prices (2026) — about $0.35 to $0.90 per brick; a pallet holds about 400 to 525 bricks; a single-layer brick wall needs 6 to 7 bricks per sq ft",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/brick-prices",
+    checked: "2026-10-15",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -282,7 +296,8 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "cinder-block-fill-calculator": ["tccCoreFill", "ncmaTek21a", "quikreteConcrete"],
   "mulch-calculator": ["kstateMulch", "mulchBag2026", "mulchCost2026"],
   "gravel-calculator": ["gravelDensity57", "gravelDriveway", "gravelCost2026"],
-  "sand-calculator": ["inchSand", "sandSupplierWeight", "paverBedBelgard", "sandCost2026"],
+  "sand-calculator": ["sandSupplierWeight", "paverBedBelgard", "sandCost2026"],
+  "brick-calculator": ["biaTn10", "quikreteMortar", "homeGuideBrick"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

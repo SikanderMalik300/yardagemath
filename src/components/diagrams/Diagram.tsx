@@ -370,6 +370,37 @@ function SlabCostDiagram({ title }: { title: string }) {
   );
 }
 
+function BrickDiagram({ title }: { title: string }) {
+  const brick = "#d79a7a";
+  return (
+    <Frame title={title}>
+      {/* Left: running-bond wall elevation with a door opening, labelled L and H */}
+      <rect x="24" y="48" width="118" height="70" fill={brick} stroke={LINE} strokeWidth="1.2" />
+      {/* course lines */}
+      {[65, 82, 99].map((y) => (
+        <line key={y} x1="24" y1={y} x2="142" y2={y} stroke="#fff" strokeWidth="1.1" />
+      ))}
+      {/* head joints, offset each course (running bond) */}
+      {[48, 65, 82, 99].map((y, r) =>
+        [0, 1, 2, 3].map((c) => (
+          <line key={`${y}-${c}`} x1={24 + c * 30 + (r % 2) * 15} y1={y} x2={24 + c * 30 + (r % 2) * 15} y2={y + 17} stroke="#fff" strokeWidth="1.1" />
+        ))
+      )}
+      {/* door opening */}
+      <rect x="34" y="90" width="24" height="28" fill="#fff" stroke={LINE} strokeWidth="1.2" />
+      {/* L and H labels */}
+      <text x="83" y="134" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="15" y="83" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 15 83)">H</text>
+
+      {/* Right: one brick, actual size with a dashed nominal outline (with joint) */}
+      <rect x="196" y="62" width="80" height="30" fill="none" stroke={BRAND} strokeWidth="1.2" strokeDasharray="4 3" />
+      <rect x="200" y="66" width="72" height="22" fill={brick} stroke={LINE} strokeWidth="1.2" />
+      <text x="236" y="58" textAnchor="middle" fill={BRAND} fontSize="10" fontWeight="600">nominal 8 × 2⅔</text>
+      <text x="236" y="104" textAnchor="middle" fill={LINE} fontSize="10">actual 7⅝ × 2¼ in</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -385,6 +416,8 @@ export function Diagram({
     node = <WallCourses title={alt} />;
   } else if (slug === "concrete-slab-cost-calculator") {
     node = <SlabCostDiagram title={alt} />;
+  } else if (slug === "brick-calculator") {
+    node = <BrickDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

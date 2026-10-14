@@ -66,6 +66,7 @@ export const HERO: Photo = p(
 export const TOOL_PHOTOS: Record<string, Photo> = {
   "cubic-yard-calculator": p("9060032", "Brett Sayles", "A large mound of landscaping soil", ["cubic-yard-calculator"]),
   "concrete-block-calculator": p("8180037", "Ian Panelo", "A pile of grey concrete blocks outdoors", ["concrete-block-calculator"]),
+  "brick-calculator": p("8065994", "Sahaban Nayak", "A neat stack of red clay bricks in daylight", ["brick-calculator"]),
   "concrete-slab-cost-calculator": p("13041122", "Perqued", "A poured concrete patio in front of a modern house", ["concrete-slab-cost-calculator"], 0.5, 0.68),
   "topsoil-calculator": p("11573789", "Alfo Medeiros", "A shovel in a pile of dark topsoil", ["topsoil-calculator"]),
   "pea-gravel-calculator": p("26925731", "Dr Photographer 152", "A shovel in a pile of pea gravel", ["pea-gravel-calculator"]),

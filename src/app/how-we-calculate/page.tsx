@@ -207,7 +207,20 @@ export default function HowWeCalculatePage() {
         compacted gravel base. Default prices are 2026 estimates: about $40 per ton and $6 for a 50-lb
         bag.
       </p>
-      <Cite keys={["inchSand", "sandSupplierWeight", "paverBedBelgard", "sandCost2026"]} />
+      <Cite keys={["sandSupplierWeight", "paverBedBelgard", "sandCost2026"]} />
+
+      <h2>Brick</h2>
+      <p>
+        Bricks per square foot of wall face come from the Brick Industry Association, using a 3/8 inch
+        mortar joint: a standard modular brick (3⅝ × 2¼ × 7⅝ in) takes 6.75 per sq ft, queen 5.76, king
+        4.80 and utility 3.00. For a custom brick, bricks per sq ft = 144 ÷ ((length + joint) × (height
+        + joint)). Multiply by the net wall area (after subtracting doors and windows) and by the number
+        of wythes, then add 5% waste for a plain wall or 10% for lots of cuts. Mortar uses the Quikrete
+        Mortar Mix data sheet: one 80-lb bag lays about 37 standard bricks, so bags = bricks ÷ 37,
+        rounded up. Default prices are 2026 estimates: about $0.70 per modular brick and $7.50 for an
+        80-lb bag of mortar.
+      </p>
+      <Cite keys={["biaTn10", "quikreteMortar", "homeGuideBrick"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

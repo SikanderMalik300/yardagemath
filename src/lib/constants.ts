@@ -108,6 +108,24 @@ export const BLOCK_NOMINAL_LENGTH_IN = 16;
 // Quikrete Mortar Mix online calculator: 142 blocks → 12 bags (accessed 9 Oct 2026).
 export const BLOCKS_PER_MORTAR_BAG = 12;
 
+/* =========================================================================
+   Brick constants (batch 2 day 5)
+   ========================================================================= */
+// Bricks per square foot of wall face with a standard 3/8 in mortar joint.
+// VERIFY: Brick Industry Association Technical Note 10, Table 4.
+export const BRICK_PER_SQFT = {
+  modular: 6.75, // 3⅝ × 2¼ × 7⅝
+  queen: 5.76, // 2¾ × 2¾ × 7⅝
+  king: 4.8, // 3 × 2⅝ × 9⅝
+  utility: 3.0, // 3⅝ × 3⅝ × 11⅝
+} as const;
+
+export const BRICK_JOINT_IN = 0.375; // standard 3/8 in mortar joint
+// VERIFY: Quikrete Mortar Mix No. 1102 data sheet — one 80-lb bag lays ~37 standard bricks.
+export const BRICKS_PER_MORTAR_BAG_80 = 37;
+// VERIFY: modular pallet/cube ~500 bricks (HomeGuide 400-525; Acme/Glen-Gery 525-530).
+export const BRICKS_PER_PALLET = 500;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -158,6 +176,7 @@ export const PRICES = {
   concreteLaborPerSqFt: 4.0, // VERIFY: 2026 labor to place+finish a basic 4in slab, midpoint of $3-5/sq ft (HomeGuide)
   rebarMeshPerSqFt: 0.35, // VERIFY: welded wire mesh on a basic slab (HomeGuide rebar/mesh pricing)
   blockEach: 2.0, // VERIFY: standard 8×8×16 CMU
+  brickEach: 0.7, // VERIFY: 2026 modular red brick, within $0.35-0.90 (HomeGuide)
   capBlockEach: 2.5, // VERIFY
   mortarBag: 7.5, // VERIFY: 80 lb mortar mix
   rebar20ftBar: 9.0, // VERIFY: #4 x 20 ft

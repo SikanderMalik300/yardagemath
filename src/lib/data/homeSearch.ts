@@ -7,12 +7,15 @@ import { calculators, type Calculator } from "@/data/calculators";
  */
 export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "cubic-yard-calculator": ["yard", "yards", "gravel", "dirt", "fill", "soil", "sand", "stone", "rock", "mulch"],
-  "concrete-block-calculator": ["cmu", "cinder", "block", "blocks", "wall", "mortar"],
+  "concrete-block-calculator": ["cmu", "cinder", "block", "blocks", "wall"],
   "concrete-slab-cost-calculator": ["slab", "patio", "driveway", "pad", "concrete cost", "sidewalk"],
   "yards-of-concrete-calculator": ["concrete", "ready mix", "truck", "driveway", "patio", "footing", "column", "sonotube"],
   "block-wall-calculator": ["retaining wall", "garden wall", "cmu wall", "grout", "rebar"],
   "concrete-block-weight": ["weight", "heavy", "pallet", "truck", "load"],
   "cmu-block-sizes": ["size", "dimensions", "8x8x16", "nominal", "actual", "course"],
+  // "brick" resolves here first (name starts with it); "mortar" resolves here
+  // first because it is an explicit keyword, beating the block calc's blurb mention.
+  "brick-calculator": ["brick", "bricks", "brick wall", "masonry", "mortar", "veneer", "modular", "queen", "king", "pavers brick"],
   "topsoil-calculator": ["soil", "dirt", "garden", "raised bed", "lawn"],
   "pea-gravel-calculator": ["gravel", "stone", "path", "patio", "rock"],
   // "gravel" resolves to the Gravel Calculator first (its name starts with the
@@ -46,7 +49,8 @@ export function searchCalculators(query: string, limit = 8): Calculator[] {
   if (!q) return [];
   const nameStarts: Calculator[] = [];
   const nameContains: Calculator[] = [];
-  const keywordMatches: Calculator[] = [];
+  const keywordExplicit: Calculator[] = [];
+  const keywordDesc: Calculator[] = [];
   for (const c of calculators) {
     const name = tileName(c).toLowerCase();
     if (name.startsWith(q)) {
@@ -57,13 +61,18 @@ export function searchCalculators(query: string, limit = 8): Calculator[] {
       nameContains.push(c);
       continue;
     }
-    const hay = [c.cardDescription, c.primaryKeyword, ...c.secondaryKeywords, ...(SEARCH_KEYWORDS[c.slug] ?? [])]
+    const explicit = [c.primaryKeyword, ...c.secondaryKeywords, ...(SEARCH_KEYWORDS[c.slug] ?? [])]
       .join(" ")
       .toLowerCase();
-    if (hay.includes(q)) keywordMatches.push(c);
+    if (explicit.includes(q)) {
+      keywordExplicit.push(c);
+      continue;
+    }
+    if (c.cardDescription.toLowerCase().includes(q)) keywordDesc.push(c);
   }
-  // Name matches rank before keyword matches; a name that starts with the query
-  // (e.g. "Gravel Calculator" for "gravel") beats one that only contains it
-  // (e.g. "Pea Gravel Calculator").
-  return [...nameStarts, ...nameContains, ...keywordMatches].slice(0, limit);
+  // Ranking tiers: name-starts-with, name-contains, an explicit keyword match
+  // (primary/secondary/search keywords), then a description-only match. This is
+  // why "mortar" resolves to the Brick Calculator (an explicit keyword) before
+  // the Concrete Block Calculator (which only mentions mortar in its blurb).
+  return [...nameStarts, ...nameContains, ...keywordExplicit, ...keywordDesc].slice(0, limit);
 }

@@ -150,6 +150,12 @@
           "position": 20,
           "url": "https://yardagemath.com/sand-calculator/",
           "name": "Sand Calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "url": "https://yardagemath.com/brick-calculator/",
+          "name": "Brick Calculator"
         }
       ]
     }

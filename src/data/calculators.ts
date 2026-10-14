@@ -89,6 +89,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Pouring a patio, shed base or driveway slab", slug: "concrete-slab-cost-calculator" },
       { project: "How many yards of concrete for a pour", slug: "yards-of-concrete-calculator" },
       { project: "Counting blocks for a wall", slug: "concrete-block-calculator" },
+      { project: "Bricks and mortar for a brick wall or veneer", slug: "brick-calculator" },
       { project: "Full block wall with mortar, grout and rebar", slug: "block-wall-calculator" },
       { project: "How much a load of block weighs", slug: "concrete-block-weight" },
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
@@ -439,6 +440,7 @@ export const calculators: Calculator[] = [
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
     related: [
       "block-wall-calculator",
+      "brick-calculator",
       "cinder-block-fill-calculator",
       "concrete-block-weight",
       "cmu-block-sizes",
@@ -1320,6 +1322,7 @@ export const calculators: Calculator[] = [
       "Retaining walls over about 3–4 feet usually need an engineer and a permit. Always check local codes.",
     related: [
       "concrete-block-calculator",
+      "brick-calculator",
       "cinder-block-fill-calculator",
       "concrete-footing-calculator",
       "concrete-block-weight",
@@ -1890,6 +1893,7 @@ export const calculators: Calculator[] = [
     related: [
       "cmu-block-sizes",
       "concrete-block-calculator",
+      "brick-calculator",
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
@@ -2005,6 +2009,7 @@ export const calculators: Calculator[] = [
       "cinder-block-fill-calculator",
       "concrete-block-weight",
       "concrete-block-calculator",
+      "brick-calculator",
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
@@ -2577,7 +2582,7 @@ export const calculators: Calculator[] = [
         a: "Play sand for sandboxes, coarse concrete sand for paver bedding, mason sand for mortar, and polymeric sand only for filling paver joints.",
       },
     ],
-    sources: ["Dry sand weight (Inch Calculator)", "Sand unit weight (supplier)", "Paver bedding depth (Belgard)", "2026 sand prices"],
+    sources: ["Sand unit weight (supplier)", "Paver bedding depth (Belgard)", "2026 sand prices"],
     related: [
       "gravel-calculator",
       "landscape-materials-calculator",
@@ -2587,6 +2592,118 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-14",
     imageAlt: "Sand calculator diagram: paver bedding layer and a sandbox, the measurements the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 21 (batch 2) */
+  {
+    slug: "brick-calculator",
+    category: "concrete",
+    title: "Brick Calculator – How Many Bricks & Mortar Bags You Need",
+    metaDescription:
+      "Work out how many bricks you need for a wall, veneer or garden wall. Pick the brick size, subtract doors and windows, and get bricks, mortar bags and cost.",
+    h1: "Brick Calculator",
+    primaryKeyword: "brick calculator",
+    secondaryKeywords: [
+      "how many bricks do i need",
+      "brick wall calculator",
+      "bricks per square foot",
+      "brick mortar calculator",
+      "how many bricks in a square foot",
+    ],
+    cardDescription: "How many bricks and mortar bags for a wall or veneer, with cost.",
+    shortAnswer:
+      "A standard modular brick wall takes about 6.75 bricks per square foot, so a 20 by 4 foot wall needs about 540 bricks, or 567 with 5% extra for cuts and breakage. Pick your brick size, subtract doors and windows, and get bricks, mortar bags and cost below.",
+    howTo: [
+      "Enter the wall length and height, or the square feet.",
+      "Add any doors, windows or other openings so they're taken off the area.",
+      "Pick the brick size. Modular is the most common in the US.",
+      "Keep 5% extra, or 10% for walls with lots of cuts, then read the bricks and mortar bags.",
+    ],
+    formula: {
+      plain: [
+        "bricks = net area (sq ft) × bricks per sq ft × wythes",
+        "bricks per sq ft = 144 ÷ ((length + joint) × (height + joint))   (modular ≈ 6.75)",
+        "with waste = ceil(bricks × (1 + waste%))",
+        "mortar bags = ceil(bricks ÷ 37)   (80-lb bag)",
+      ],
+      example: [
+        "A 20 × 4 ft modular brick wall (6.75 per sq ft):",
+        "net area = 80 sq ft",
+        "bricks = 80 × 6.75 = 540, or 567 with 5% waste",
+        "mortar = ceil(567 ÷ 37) = 16 bags",
+      ],
+      example2: [
+        "A 12 × 8 ft wall minus a 3 × 7 ft door:",
+        "net area = 96 - 21 = 75 sq ft",
+        "bricks = 75 × 6.75 = 507, or 532 with 5% waste",
+      ],
+    },
+    notCovered:
+      "It counts bricks and mortar for a flat wall face. It doesn't design the wall, size footings, add wall ties or lintels, or count the extra bricks for corners, piers, arches or patterns. For a load-bearing or tall wall, follow your plans or an engineer.",
+    tables: [
+      {
+        title: "Bricks needed by wall area (before waste)",
+        columns: [
+          { label: "Wall area" },
+          { label: "Modular (6.75)", num: true },
+          { label: "King (4.8)", num: true },
+          { label: "Utility (3.0)", num: true },
+        ],
+        rows: [
+          ["50 sq ft", 338, 240, 150],
+          ["100 sq ft", 675, 480, 300],
+          ["250 sq ft", "1,688", "1,200", 750],
+          ["500 sq ft", "3,375", "2,400", "1,500"],
+        ],
+        footnote: "Bricks exclude waste; add 5% for a plain wall or 10% for lots of cuts. Figures are for a single wythe with a 3/8 inch mortar joint.",
+      },
+    ],
+    tips: [
+      "Buy all your bricks at once, ideally from the same batch. Color can vary between runs.",
+      "Mix bricks from several pallets as you lay them so any color difference is spread across the wall.",
+      "Use Type N mortar for most above-grade veneer and garden walls, and Type S for walls below grade or that hold back soil. Check your local code.",
+      "Keep a few spare bricks after the job for future repairs.",
+    ],
+    faqs: [
+      {
+        q: "How many bricks are in a square foot?",
+        a: "About 6.75 standard modular bricks per square foot of wall, with a 3/8 inch mortar joint. King bricks take about 4.8 per square foot and utility bricks about 3.",
+      },
+      {
+        q: "How many bricks do I need for a wall?",
+        a: "Multiply the wall length by the height to get square feet, subtract doors and windows, then multiply by 6.75 for modular brick. A 20 by 4 foot wall needs about 540 bricks, or 567 with 5% extra.",
+      },
+      {
+        q: "How much mortar do I need for bricks?",
+        a: "One 80-lb bag of premixed mortar lays about 37 standard bricks. So 567 bricks need about 16 bags.",
+      },
+      {
+        q: "How many bricks are in a pallet?",
+        a: "It depends on the brick and the maker, but a pallet of modular brick often holds about 500 bricks. Check with your supplier before you order.",
+      },
+      {
+        q: "How much extra brick should I buy?",
+        a: "About 5% for a plain wall and up to 10% for walls with lots of cuts, corners or a pattern. Bricks chip and break in delivery and cutting.",
+      },
+      {
+        q: "What size is a standard brick?",
+        a: "A US modular brick is 3⅝ by 2¼ by 7⅝ inches. With a 3/8 inch joint it takes up 4 by 2⅔ by 8 inches, which is why three courses equal 8 inches of wall height.",
+      },
+      {
+        q: "What is the difference between brick and block?",
+        a: "Bricks are small, solid or cored clay units laid by hand, at about 6.75 per square foot. Concrete blocks are much larger, at 1.125 per square foot, and are often used for structural walls behind brick.",
+      },
+    ],
+    sources: ["Brick sizes (BIA Technical Note 10)", "Mortar yield (Quikrete)", "2026 brick prices"],
+    related: [
+      "concrete-block-calculator",
+      "block-wall-calculator",
+      "cmu-block-sizes",
+      "concrete-block-weight",
+      "concrete-slab-cost-calculator",
+    ],
+    lastUpdated: "2026-10-15",
+    imageAlt: "Brick calculator diagram: wall length and height with an opening, and a modular brick's actual and nominal size.",
   },
 ];
 
