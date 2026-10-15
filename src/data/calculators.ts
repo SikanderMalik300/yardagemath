@@ -128,6 +128,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
+      { project: "Pavers for a patio or walkway, with base and sand", slug: "paver-calculator" },
       { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
       { project: "Sand for a sandbox, paver base or fill", slug: "sand-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
@@ -612,6 +613,7 @@ export const calculators: Calculator[] = [
     sources: ["2026 installed cost guide (HomeGuide)", "Rebar and mesh prices (HomeGuide)", "Quikrete/Sakrete bag yields"],
     related: [
       "yards-of-concrete-calculator",
+      "paver-calculator",
       "concrete-footing-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
@@ -1075,6 +1077,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["landscape-supply density tables", "USDA references"],
     related: [
+      "paver-calculator",
       "gravel-calculator",
       "sand-calculator",
       "mulch-calculator",
@@ -2468,6 +2471,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["#57 gravel weight (1.4 t/yd)", "Driveway gravel layers (Gravelshop)", "2026 gravel prices"],
     related: [
+      "paver-calculator",
       "sand-calculator",
       "pea-gravel-calculator",
       "cubic-yard-calculator",
@@ -2701,9 +2705,123 @@ export const calculators: Calculator[] = [
       "cmu-block-sizes",
       "concrete-block-weight",
       "concrete-slab-cost-calculator",
+      "paver-calculator",
     ],
     lastUpdated: "2026-10-15",
     imageAlt: "Brick calculator diagram: wall length and height with an opening, and a modular brick's actual and nominal size.",
+  },
+
+  /* ---------------------------------------------------------------- 22 (batch 3) */
+  {
+    slug: "paver-calculator",
+    category: "landscaping",
+    title: "Paver Calculator – How Many Pavers, Base & Sand You Need",
+    metaDescription:
+      "Work out how many pavers you need for a patio or walkway, plus gravel base, bedding sand and edging. Pick the paver size and pattern to get totals and cost.",
+    h1: "Paver Calculator",
+    primaryKeyword: "paver calculator",
+    secondaryKeywords: [
+      "how many pavers do i need",
+      "paver calculator square feet",
+      "how many pavers for a 12x12 patio",
+      "paver patio calculator",
+      "pavers per square foot",
+    ],
+    cardDescription: "How many pavers plus gravel base, bedding sand and edging for a patio or walkway.",
+    shortAnswer:
+      "Standard 4 by 8 inch pavers take 4.5 per square foot, so a 12 by 12 foot patio needs about 648 pavers, or 681 with 5% extra for cuts. Pick your paver size and pattern below to get pavers, gravel base, bedding sand and edging.",
+    howTo: [
+      "Measure the patio or walkway and pick a shape. Add more areas, or subtract a fire pit or planter.",
+      "Choose the paver size. Holland 4 by 8 is the most common.",
+      "Pick the pattern. Herringbone and diagonal layouts need more extra pavers for cuts.",
+      "Read the pavers, base, sand and edging, then round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "pavers = net area (sq ft) × pavers per sq ft",
+        "pavers per sq ft = 144 ÷ (length × width in inches)   (4 × 8 ≈ 4.5)",
+        "with waste = ceil(pavers × (1 + waste%))   (5% bond, 10% herringbone, 15% diagonal)",
+        "base tons = net area × depth ÷ 12 ÷ 27 × 1.5   (4 in default)",
+        "sand bags = ceil(net area × 1 ÷ 12 ÷ 0.5)",
+      ],
+      example: [
+        "A 12 × 12 ft patio with 4 × 8 pavers (4.5 per sq ft):",
+        "net area = 144 sq ft",
+        "pavers = 144 × 4.5 = 648, or 681 with 5% waste",
+        "base = 2.67 tons, sand = 24 bags, edging = 48 ft",
+      ],
+      example2: [
+        "The same patio with 6 × 9 pavers:",
+        "pavers = 144 × 2.67 = 384, or 404 with 5% waste",
+      ],
+    },
+    notCovered:
+      "It estimates materials for a flat patio or walkway on stable ground. It doesn't design a driveway base, plan drainage or slopes, or count steps, walls and borders made from a different paver. Clay soil, heavy traffic or freezing winters may need a deeper base, so follow the paver maker's guide.",
+    tables: [
+      {
+        title: "Pavers needed by area (before waste)",
+        columns: [
+          { label: "Area" },
+          { label: "4 × 8", num: true },
+          { label: "6 × 9", num: true },
+          { label: "12 × 12", num: true },
+          { label: "16 × 16", num: true },
+        ],
+        rows: [
+          ["100 sq ft", 450, 267, 100, 57],
+          ["200 sq ft", 900, 534, 200, 113],
+          ["300 sq ft", "1,350", 800, 300, 169],
+          ["500 sq ft", "2,250", "1,334", 500, 282],
+        ],
+        footnote: "Pavers exclude waste; add 5% for a running bond, 10% for herringbone or up to 15% for a diagonal layout. From 144 ÷ the nominal paver size.",
+      },
+    ],
+    tips: [
+      "Order all your pavers from the same production run. Colors can vary between batches.",
+      "Pull pavers from several pallets as you lay them so color differences blend in.",
+      "Compact the gravel base in layers of about 2 inches with a plate compactor. A soft base is the most common reason pavers sink.",
+      "Leave the bedding sand loose and screeded flat. Don't compact it before you set the pavers.",
+    ],
+    faqs: [
+      {
+        q: "How many pavers do I need?",
+        a: "Multiply length by width to get square feet, then multiply by the pavers per square foot for your size. Standard 4 by 8 inch pavers take 4.5 per square foot, so 100 square feet needs 450 pavers before extra for cuts.",
+      },
+      {
+        q: "How many pavers do I need for a 12x12 patio?",
+        a: "About 648 standard 4 by 8 pavers, or 681 with 5% extra. With 12 by 12 inch slabs, it's 144, or 152 with extra.",
+      },
+      {
+        q: "How many pavers are in a square foot?",
+        a: "4.5 for 4 by 8 inch pavers, 4 for 6 by 6, about 2.7 for 6 by 9, and 1 for 12 by 12 inch slabs.",
+      },
+      {
+        q: "How much extra should I buy for cuts?",
+        a: "About 5% for a simple running bond, around 10% for herringbone, and up to 15% for diagonal layouts or patios with lots of curves.",
+      },
+      {
+        q: "How much gravel base do I need under pavers?",
+        a: "About 4 inches of compacted base for a patio or walkway. A 12 by 12 foot patio needs about 1.8 cubic yards, or 2.7 tons of crusher run. Driveways need a deeper base.",
+      },
+      {
+        q: "How much sand do I need under pavers?",
+        a: "About 1 inch of bedding sand. A 12 by 12 foot patio needs about 12 cubic feet, or 24 bags of 50-lb sand.",
+      },
+      {
+        q: "Do I need edging for pavers?",
+        a: "Yes. Edge restraints hold the pavers in place so they don't spread over time. A 12 by 12 foot patio needs about 48 feet of edging.",
+      },
+    ],
+    sources: ["Paver sizes and coverage (Nicolock)", "Base and bedding (Belgard)", "2026 paver prices"],
+    related: [
+      "sand-calculator",
+      "gravel-calculator",
+      "brick-calculator",
+      "concrete-slab-cost-calculator",
+      "landscape-materials-calculator",
+    ],
+    lastUpdated: "2026-10-16",
+    imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
   },
 ];
 

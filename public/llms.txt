@@ -16,6 +16,7 @@
 - [Mulch Calculator](https://yardagemath.com/mulch-calculator/): How much mulch for beds and tree rings: cubic yards, 2 or 3 cu ft bags, coverage and bulk vs bagged cost.
 - [Gravel Calculator](https://yardagemath.com/gravel-calculator/): How much gravel for a driveway, path or patio: cubic yards, tons, bags, coverage and cost by gravel type.
 - [Sand Calculator](https://yardagemath.com/sand-calculator/): How much sand for a sandbox, paver base or fill: cubic yards, tons, 50-lb bags, coverage and bulk vs bagged cost.
+- [Paver Calculator](https://yardagemath.com/paver-calculator/): How many pavers for a patio or walkway by size and pattern, plus gravel base, bedding sand, edging and cost.
 - [Lawn Mowing Cost Calculator](https://yardagemath.com/lawn-mowing-cost-calculator/): What a cut should cost (homeowner) or what to charge (pro), per cut and per season.
 - [Block Wall Calculator](https://yardagemath.com/block-wall-calculator/): Courses, blocks, cap blocks, mortar, grout, rebar and total material cost.
 - [Concrete Block Weight Chart & Calculator](https://yardagemath.com/concrete-block-weight/): Weights for 4, 6, 8, 10 and 12 inch CMU, normal and lightweight, plus total load, pallet and per-trip weight.

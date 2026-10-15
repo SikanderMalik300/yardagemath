@@ -401,6 +401,39 @@ function BrickDiagram({ title }: { title: string }) {
   );
 }
 
+function PaverDiagram({ title }: { title: string }) {
+  const paver = "#cf9e86";
+  return (
+    <Frame title={title}>
+      {/* Left: patio cross-section (pavers, sand bedding, gravel base, soil) with edging */}
+      {[0, 1, 2, 3, 4].map((c) => (
+        <rect key={c} x={28 + c * 21} y="54" width="19" height="10" fill={paver} stroke={LINE} strokeWidth="0.9" />
+      ))}
+      <rect x="26" y="64" width="107" height="6" fill={SOFT} stroke={LINE} strokeWidth="1" />
+      <rect x="26" y="70" width="107" height="26" fill="#d8d2c4" stroke={LINE} strokeWidth="1.1" />
+      <rect x="26" y="96" width="107" height="14" fill="#efe7d4" stroke={LINE} strokeWidth="1" />
+      {/* edge restraint holding the pavers at the left */}
+      <rect x="21" y="54" width="5" height="42" fill={BRAND} opacity="0.8" />
+      {/* layer labels */}
+      <text x="137" y="61" fill={LINE} fontSize="9">pavers</text>
+      <text x="137" y="70" fill={BRAND} fontSize="9" fontWeight="600">1 in sand</text>
+      <text x="137" y="86" fill={BRAND} fontSize="9" fontWeight="600">4 in base</text>
+      <text x="137" y="106" fill={LINE} fontSize="9">soil</text>
+      <text x="80" y="126" textAnchor="middle" fill={LINE} fontSize="10">edging + patio (side view)</text>
+
+      {/* Right: running-bond top view with L and W */}
+      {[58, 70, 82, 94].map((y, r) =>
+        [0, 1, 2].map((c) => (
+          <rect key={`${y}-${c}`} x={200 + c * 28 + (r % 2) * 14} y={y} width="26" height="10" fill={paver} stroke={LINE} strokeWidth="0.8" />
+        ))
+      )}
+      <text x="241" y="120" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="80" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 80)">W</text>
+      <text x="241" y="134" textAnchor="middle" fill={LINE} fontSize="10">running bond (top)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -418,6 +451,8 @@ export function Diagram({
     node = <SlabCostDiagram title={alt} />;
   } else if (slug === "brick-calculator") {
     node = <BrickDiagram title={alt} />;
+  } else if (slug === "paver-calculator") {
+    node = <PaverDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

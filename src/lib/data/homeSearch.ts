@@ -24,6 +24,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "gravel-calculator": ["gravel", "crushed stone", "rock", "driveway", "#57", "crusher run", "road base", "river rock", "tons", "base"],
   // "sand" resolves to the Sand Calculator first (its name starts with the query).
   "sand-calculator": ["sand", "play sand", "sandbox", "paver sand", "leveling sand", "mason sand", "concrete sand", "bedding", "polymeric"],
+  // "paver" resolves here first (name starts with it); "patio" is forced here first
+  // via QUERY_PRIORITY, ahead of the slab and pea-gravel patio keywords.
+  "paver-calculator": ["paver", "pavers", "patio", "walkway", "brick pavers", "herringbone", "stone pavers", "patio stones", "hardscape"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name
@@ -38,6 +41,15 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
 export function tileName(c: Calculator): string {
   return c.h1.replace(/\s*\(.*\)/, "");
 }
+
+/**
+ * For a few generic queries that several tools legitimately match, force the
+ * best page to the top. ("patio" matches the slab and pea-gravel pages too, but
+ * the Paver Calculator is the intended landing page for a patio search.)
+ */
+const QUERY_PRIORITY: Record<string, string> = {
+  patio: "paver-calculator",
+};
 
 /**
  * Search the calculators by name, description and keywords (case-insensitive,
@@ -74,5 +86,11 @@ export function searchCalculators(query: string, limit = 8): Calculator[] {
   // (primary/secondary/search keywords), then a description-only match. This is
   // why "mortar" resolves to the Brick Calculator (an explicit keyword) before
   // the Concrete Block Calculator (which only mentions mortar in its blurb).
-  return [...nameStarts, ...nameContains, ...keywordExplicit, ...keywordDesc].slice(0, limit);
+  const results = [...nameStarts, ...nameContains, ...keywordExplicit, ...keywordDesc];
+  const preferred = QUERY_PRIORITY[q];
+  if (preferred) {
+    const i = results.findIndex((c) => c.slug === preferred);
+    if (i > 0) results.unshift(results.splice(i, 1)[0]);
+  }
+  return results.slice(0, limit);
 }

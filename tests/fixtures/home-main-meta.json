@@ -156,6 +156,12 @@
           "position": 21,
           "url": "https://yardagemath.com/brick-calculator/",
           "name": "Brick Calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "url": "https://yardagemath.com/paver-calculator/",
+          "name": "Paver Calculator"
         }
       ]
     }

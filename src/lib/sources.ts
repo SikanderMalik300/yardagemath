@@ -234,10 +234,10 @@ export const SOURCES = {
   },
   paverBedBelgard: {
     id: "paverBedBelgard",
-    title: "Paver installation — spread 1 inch of bedding sand over the compacted paver base before laying the pavers",
+    title: "Paver installation — for a walkway or patio add 4 to 6 inches of compacted gravel base, then level 1 inch of bedding sand over the base before laying the pavers",
     publisher: "Belgard (paver manufacturer)",
     url: "https://www.belgard.com/blog/2017/07/18/installing-proper-base-concrete-porcelain-paver-projects/",
-    checked: "2026-10-14",
+    checked: "2026-10-16",
   },
   sandCost2026: {
     id: "sandCost2026",
@@ -274,6 +274,20 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/brick-prices",
     checked: "2026-10-15",
   },
+  nicolockPaver: {
+    id: "nicolockPaver",
+    title: "Getting paver sizes right — a 4 x 8 in paver is about 4.5 pieces per sq ft, 6 x 9 about 2.7 and 12 x 12 exactly 1.0; add about 10% for waste from border cuts, offcuts and breakage",
+    publisher: "Nicolock (paver manufacturer)",
+    url: "https://nicolock.com/2026/05/20/getting-paver-sizes-right-a-hardscape-design-guide-from-the-ground-up/",
+    checked: "2026-10-16",
+  },
+  homeGuidePaver: {
+    id: "homeGuidePaver",
+    title: "Pavers cost per square foot (2026) — brick and concrete pavers run about $0.35 to $0.90 per paver, or $2 to $6 per sq ft for materials before installation",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/pavers-cost-per-square-foot",
+    checked: "2026-10-16",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -298,6 +312,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "gravel-calculator": ["gravelDensity57", "gravelDriveway", "gravelCost2026"],
   "sand-calculator": ["sandSupplierWeight", "paverBedBelgard", "sandCost2026"],
   "brick-calculator": ["biaTn10", "quikreteMortar", "homeGuideBrick"],
+  "paver-calculator": ["nicolockPaver", "paverBedBelgard", "homeGuidePaver"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

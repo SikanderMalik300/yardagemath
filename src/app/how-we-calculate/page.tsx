@@ -222,6 +222,19 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["biaTn10", "quikreteMortar", "homeGuideBrick"]} />
 
+      <h2>Pavers</h2>
+      <p>
+        Pavers per square foot come from the nominal size: pavers per sq ft = 144 ÷ (length × width in
+        inches). A 4 by 8 inch paver takes 4.5 per sq ft, 6 by 6 takes 4, 6 by 9 about 2.67, and a 12
+        by 12 inch slab is 1 per sq ft. Add about 5% for a running bond, 10% for herringbone and up to
+        15% for a 45 degree or curved layout. The base and bedding reuse the gravel and sand math: a
+        patio or walkway uses about 4 inches of compacted crusher run (1.5 tons per cubic yard) and 1
+        inch of bedding sand (1.35 tons per cubic yard, 0.5 cu ft bags), each with about 10% for
+        compaction. Edging is the perimeter of the area. Default prices are 2026 estimates: about $0.65
+        per 4 by 8 concrete paver.
+      </p>
+      <Cite keys={["nicolockPaver", "paverBedBelgard", "homeGuidePaver"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

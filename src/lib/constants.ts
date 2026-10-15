@@ -126,6 +126,34 @@ export const BRICKS_PER_MORTAR_BAG_80 = 37;
 // VERIFY: modular pallet/cube ~500 bricks (HomeGuide 400-525; Acme/Glen-Gery 525-530).
 export const BRICKS_PER_PALLET = 500;
 
+/* =========================================================================
+   Paver constants (batch 3 day 1)
+   ========================================================================= */
+// Common paver nominal sizes (inches); pavers per sq ft = 144 / (length x width).
+// VERIFY: nominal sizes and coverage against a paver manufacturer (Nicolock: 4x8
+// ~ 4.5/sq ft, 6x9 ~ 2.7, 12x12 = 1.0).
+export const PAVER_SIZES = {
+  holland: { label: "Holland / brick paver (4 × 8)", lengthIn: 8, widthIn: 4 },
+  square6: { label: "Square (6 × 6)", lengthIn: 6, widthIn: 6 },
+  rect69: { label: "Rectangle (6 × 9)", lengthIn: 9, widthIn: 6 },
+  slab12: { label: "Square slab (12 × 12)", lengthIn: 12, widthIn: 12 },
+  slab16: { label: "Large slab (16 × 16)", lengthIn: 16, widthIn: 16 },
+  slab24: { label: "Patio slab (24 × 24)", lengthIn: 24, widthIn: 24 },
+} as const;
+
+// Extra for cuts and breakage by laying pattern, percent.
+// VERIFY: Nicolock recommends about 10% for waste; running bond needs less and
+// 45-degree/diagonal layouts need more.
+export const PAVER_WASTE = {
+  runningBond: 5, // running bond or basket weave
+  herringbone: 10,
+  diagonal: 15, // set at 45 degrees or with lots of curves
+} as const;
+
+export const PAVER_BASE_DEPTH_IN = 4; // VERIFY: Belgard 4-6 in compacted base for a patio/walkway
+export const PAVER_SAND_DEPTH_IN = 1; // VERIFY: Belgard 1 in bedding sand
+export const PAVER_BASE_SAND_WASTE_PCT = 10; // compaction / over-dig allowance
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -177,6 +205,8 @@ export const PRICES = {
   rebarMeshPerSqFt: 0.35, // VERIFY: welded wire mesh on a basic slab (HomeGuide rebar/mesh pricing)
   blockEach: 2.0, // VERIFY: standard 8×8×16 CMU
   brickEach: 0.7, // VERIFY: 2026 modular red brick, within $0.35-0.90 (HomeGuide)
+  paverEach: 0.65, // VERIFY: 2026 4x8 concrete paver, within $0.35-0.90 (HomeGuide)
+  paverPerSqFt: 4.0, // VERIFY: 2026 paver material, within $2-6/sq ft (HomeGuide)
   capBlockEach: 2.5, // VERIFY
   mortarBag: 7.5, // VERIFY: 80 lb mortar mix
   rebar20ftBar: 9.0, // VERIFY: #4 x 20 ft

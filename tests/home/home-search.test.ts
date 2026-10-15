@@ -57,6 +57,15 @@ describe("home search", () => {
     expect(m.indexOf("brick-calculator")).toBeLessThan(m.indexOf("concrete-block-calculator"));
   });
 
+  it("'paver' and 'patio' both resolve to the Paver Calculator first", () => {
+    expect(slugs("paver")[0]).toBe("paver-calculator");
+    // "patio" also matches the slab and pea-gravel pages, but the Paver
+    // Calculator is forced to the top.
+    const p = slugs("patio");
+    expect(p[0]).toBe("paver-calculator");
+    expect(p).toContain("concrete-slab-cost-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });
