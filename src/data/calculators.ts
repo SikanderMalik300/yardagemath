@@ -129,6 +129,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
       { project: "Pavers for a patio or walkway, with base and sand", slug: "paver-calculator" },
+      { project: "Gravel base and bedding sand under pavers", slug: "paver-base-calculator" },
       { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
       { project: "Sand for a sandbox, paver base or fill", slug: "sand-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
@@ -2472,6 +2473,7 @@ export const calculators: Calculator[] = [
     sources: ["#57 gravel weight (1.4 t/yd)", "Driveway gravel layers (Gravelshop)", "2026 gravel prices"],
     related: [
       "paver-calculator",
+      "paver-base-calculator",
       "sand-calculator",
       "pea-gravel-calculator",
       "cubic-yard-calculator",
@@ -2588,6 +2590,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["Sand unit weight (supplier)", "Paver bedding depth (Belgard)", "2026 sand prices"],
     related: [
+      "paver-base-calculator",
       "gravel-calculator",
       "landscape-materials-calculator",
       "cubic-yard-calculator",
@@ -2706,6 +2709,7 @@ export const calculators: Calculator[] = [
       "concrete-block-weight",
       "concrete-slab-cost-calculator",
       "paver-calculator",
+      "paver-base-calculator",
     ],
     lastUpdated: "2026-10-15",
     imageAlt: "Brick calculator diagram: wall length and height with an opening, and a modular brick's actual and nominal size.",
@@ -2717,7 +2721,7 @@ export const calculators: Calculator[] = [
     category: "landscaping",
     title: "Paver Calculator – How Many Pavers, Base & Sand You Need",
     metaDescription:
-      "Work out how many pavers you need for a patio or walkway, plus gravel base, bedding sand and edging. Pick the paver size and pattern to get totals and cost.",
+      "Work out how many pavers you need for a patio or walkway, plus gravel base, bedding sand and edging. Pick paver size and pattern to get totals and cost.",
     h1: "Paver Calculator",
     primaryKeyword: "paver calculator",
     secondaryKeywords: [
@@ -2814,6 +2818,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["Paver sizes and coverage (Nicolock)", "Base and bedding (Belgard)", "2026 paver prices"],
     related: [
+      "paver-base-calculator",
       "sand-calculator",
       "gravel-calculator",
       "brick-calculator",
@@ -2822,6 +2827,118 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-16",
     imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 23 (batch 3) */
+  {
+    slug: "paver-base-calculator",
+    category: "landscaping",
+    title: "Paver Base Calculator – Gravel Base & Sand for Pavers",
+    metaDescription:
+      "How much gravel base and bedding sand you need under pavers. Pick patio, walkway or driveway depth to get tons, cubic yards, bags and cost.",
+    h1: "Paver Base Calculator",
+    primaryKeyword: "paver base calculator",
+    secondaryKeywords: [
+      "how much paver base do i need",
+      "paver base depth calculator",
+      "calculate paver base",
+      "how many bags of paver base do i need",
+      "paver base and sand calculator",
+    ],
+    cardDescription: "How much gravel base and bedding sand under pavers: tons, yards, bags and cost.",
+    shortAnswer:
+      "A 12 by 12 foot paver patio needs about 3.2 tons of crusher run for a 4-inch compacted base, plus about 27 bags of bedding sand. Pick your project below to get base tons, yards, bags and cost.",
+    howTo: [
+      "Measure the area and pick a shape. Add more areas if you need to.",
+      "Pick the project. Walkways and patios usually need about 4 inches of base, driveways about 8.",
+      "Keep the compaction allowance. Loose gravel shrinks when you compact it.",
+      "Read the base and bedding sand, then compare bulk and bagged cost.",
+    ],
+    formula: {
+      plain: [
+        "base cu ft = area (sq ft) × depth (in) ÷ 12 × (1 + compaction%)",
+        "cubic yards = base cu ft ÷ 27,  tons = cubic yards × 1.5 (crusher run)",
+        "base bags = ceil(base cu ft ÷ 0.5)",
+        "sand cu ft = area × 1 ÷ 12,  sand bags = ceil(sand cu ft × 1.1 ÷ 0.5)",
+      ],
+      example: [
+        "A 12 × 12 ft patio, 4 in compacted base, 20% compaction:",
+        "base = 144 × 4 ÷ 12 × 1.2 = 57.6 cu ft (2.13 cu yd)",
+        "tons = 2.13 × 1.5 = 3.20, or 116 bags of 0.5 cu ft",
+        "sand = 12 cu ft, 27 bags with 10% extra",
+      ],
+      example2: [
+        "A 12 × 40 ft driveway, 8 in base:",
+        "base = 480 × 8 ÷ 12 × 1.2 = 384 cu ft (14.22 cu yd)",
+        "tons = 14.22 × 1.5 = 21.33",
+      ],
+    },
+    notCovered:
+      "It estimates base and bedding sand for a flat paver area. It doesn't design drainage, account for slopes, or size the base for heavy trucks, poor soil or deep frost. For a driveway or soft ground, follow the paver maker's guide or a local installer.",
+    tables: [
+      {
+        title: "Base tons by area and depth (crusher run, 20% compaction)",
+        columns: [
+          { label: "Area" },
+          { label: "4 in", num: true },
+          { label: "6 in", num: true },
+          { label: "8 in", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "2.2", "3.3", "4.4"],
+          ["200 sq ft", "4.4", "6.7", "8.9"],
+          ["500 sq ft", "11.1", "16.7", "22.2"],
+          ["1,000 sq ft", "22.2", "33.3", "44.4"],
+        ],
+        footnote: "Tons of crusher run (1.5 t/yd) including 20% for compaction. A cubic yard is 27 cu ft; #57 stone is a touch lighter at 1.4 t/yd.",
+      },
+    ],
+    tips: [
+      "Use angular crushed stone with fines, sold as crusher run, road base or paver base. Round pea gravel won't lock together.",
+      "Compact the base in layers of about 2 inches, wetting it lightly, with a plate compactor.",
+      "Dig the area wider than the pavers, about 6 inches past each edge, so the base supports the edge restraint.",
+      "Past about a ton, bulk delivery is almost always cheaper than bags.",
+    ],
+    faqs: [
+      {
+        q: "How much paver base do I need?",
+        a: "Multiply the area in square feet by the base depth in inches, divide by 12, then add about 20% for compaction. Divide by 27 for cubic yards and multiply by 1.5 for tons. A 12 by 12 foot patio at 4 inches needs about 3.2 tons.",
+      },
+      {
+        q: "How deep should paver base be?",
+        a: "About 4 inches for walkways and patios on firm soil, 6 inches on clay or soft ground, and about 8 inches for a residential driveway. Follow your paver maker's guide.",
+      },
+      {
+        q: "How many bags of paver base do I need?",
+        a: "About 116 bags of 0.5 cubic feet for a 12 by 12 foot patio at 4 inches, including compaction. Past a ton, bulk delivery is usually cheaper.",
+      },
+      {
+        q: "Why add extra for compaction?",
+        a: "Loose crushed stone shrinks by roughly a fifth when you compact it, so you need more loose stone than the finished base volume.",
+      },
+      {
+        q: "How much sand do I need under pavers?",
+        a: "About 1 inch of bedding sand. A 12 by 12 foot patio needs about 12 cubic feet, or 27 bags of 50-lb sand with 10% extra.",
+      },
+      {
+        q: "What is the best base for pavers?",
+        a: "Crushed stone with fines, sold as crusher run, road base or paver base, because it packs down hard. Avoid round gravel and plain dirt.",
+      },
+      {
+        q: "How much paver base for a driveway?",
+        a: "A 12 by 40 foot driveway with an 8 inch base needs about 14.2 cubic yards, or about 21.3 tons of crusher run including compaction.",
+      },
+    ],
+    sources: ["Base depth and compaction (Belgard)", "Paver base bag size (Quikrete)", "2026 base prices"],
+    related: [
+      "paver-calculator",
+      "gravel-calculator",
+      "sand-calculator",
+      "brick-calculator",
+      "landscape-materials-calculator",
+    ],
+    lastUpdated: "2026-10-16",
+    imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
   },
 ];
 

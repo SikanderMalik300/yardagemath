@@ -234,7 +234,7 @@ export const SOURCES = {
   },
   paverBedBelgard: {
     id: "paverBedBelgard",
-    title: "Paver installation — for a walkway or patio add 4 to 6 inches of compacted gravel base, then level 1 inch of bedding sand over the base before laying the pavers",
+    title: "Paver installation — add 4 to 6 inches of compacted gravel base for a walkway or patio and 8 to 12 inches for a driveway, compacting in lifts no greater than 4 to 6 inches, then level 1 inch of bedding sand before laying the pavers",
     publisher: "Belgard (paver manufacturer)",
     url: "https://www.belgard.com/blog/2017/07/18/installing-proper-base-concrete-porcelain-paver-projects/",
     checked: "2026-10-16",
@@ -288,6 +288,13 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/pavers-cost-per-square-foot",
     checked: "2026-10-16",
   },
+  quikretePaverBase: {
+    id: "quikretePaverBase",
+    title: "Paver Base — a crushed-stone base for interlocking pavers, flagstone and bricks, sold in 0.5 cu ft (50 lb) bags",
+    publisher: "QUIKRETE (HardScapes)",
+    url: "https://www.quikrete.com/productlines/products-hardscapes.asp",
+    checked: "2026-10-16",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -313,6 +320,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "sand-calculator": ["sandSupplierWeight", "paverBedBelgard", "sandCost2026"],
   "brick-calculator": ["biaTn10", "quikreteMortar", "homeGuideBrick"],
   "paver-calculator": ["nicolockPaver", "paverBedBelgard", "homeGuidePaver"],
+  "paver-base-calculator": ["paverBedBelgard", "quikretePaverBase", "gravelCost2026"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

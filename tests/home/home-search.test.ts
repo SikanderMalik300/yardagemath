@@ -66,6 +66,12 @@ describe("home search", () => {
     expect(p).toContain("concrete-slab-cost-calculator");
   });
 
+  it("'paver base' resolves to the Paver Base Calculator first", () => {
+    // Name starts with "paver base"; plain "paver" still goes to the Paver Calculator.
+    expect(slugs("paver base")[0]).toBe("paver-base-calculator");
+    expect(slugs("paver")[0]).toBe("paver-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

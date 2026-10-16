@@ -27,6 +27,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // "paver" resolves here first (name starts with it); "patio" is forced here first
   // via QUERY_PRIORITY, ahead of the slab and pea-gravel patio keywords.
   "paver-calculator": ["paver", "pavers", "patio", "walkway", "brick pavers", "herringbone", "stone pavers", "patio stones", "hardscape"],
+  // "paver base" resolves here first (the name starts with it); "paver" alone
+  // still goes to the Paver Calculator, which is earlier in the registry.
+  "paver-base-calculator": ["paver base", "base gravel", "crusher run", "road base", "compaction", "patio base", "driveway base", "sub-base"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name

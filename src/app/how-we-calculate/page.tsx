@@ -235,6 +235,20 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["nicolockPaver", "paverBedBelgard", "homeGuidePaver"]} />
 
+      <h2>Paver base</h2>
+      <p>
+        The gravel base reuses the volume and yard math with a compaction allowance: base cu ft = area
+        × depth ÷ 12 × (1 + compaction), then ÷ 27 for cubic yards and × 1.5 for tons of crusher run
+        (1.4 for #57 stone). Loose crushed stone packs down when you compact it, so you order more than
+        the finished volume; we default to about 20%, which sits in the 15 to 20% range for dense-graded
+        crusher run. Base depth follows the install guide: about 4 inches for a walkway or patio, 6
+        inches on clay or soft soil, and 8 inches for a residential driveway, compacted in lifts no
+        greater than 4 to 6 inches. Bedding sand is 1 inch with 10% extra, in 0.5 cu ft bags. Default
+        prices are 2026 estimates: about $45 per ton bulk, $6 for a 0.5 cu ft base bag, and $6 for a
+        bag of bedding sand.
+      </p>
+      <Cite keys={["paverBedBelgard", "quikretePaverBase", "gravelCost2026"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

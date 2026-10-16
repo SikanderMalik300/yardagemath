@@ -14,7 +14,7 @@ const Z: PaverInput = {
   areas: [], cutouts: [], perSqFt: per("holland"), wastePct: 0,
   baseDepthIn: 4, baseDensity: DENSITY_TONS_PER_CUYD.crusherRun, // 1.5
   sandDepthIn: 1, sandDensity: DENSITY_TONS_PER_CUYD.sand, // 1.35
-  sandBagCuFt: 0.5, baseSandWastePct: 10,
+  sandBagCuFt: 0.5, baseCompactionPct: 20, sandWastePct: 10,
   priceMode: "perPaver", pricePerPaver: 0.65, pricePerSqFt: 4,
   basePricePerTon: 45, sandPricePerBag: 6,
 };
@@ -56,11 +56,11 @@ describe("paver — known answers", () => {
     expect(rect(12, 12, { perSqFt: per("slab12"), wastePct: 5 }).paversWithWaste).toBe(152);
   });
 
-  it("example 4: base for 144 sq ft at 4 in = 1.78 cu yd, 2.67 tons (2.93 t with 10%)", () => {
+  it("example 4: base for 144 sq ft at 4 in = 1.78 cu yd, 2.67 tons before compaction (3.20 t with 20%)", () => {
     const r = sqft(144);
     expect(round(r.baseCuYd, 2)).toBe(1.78);
     expect(round(r.baseTons, 2)).toBe(2.67);
-    expect(round(r.baseTonsWithWaste, 2)).toBe(2.93);
+    expect(round(r.baseTonsWithWaste, 2)).toBe(3.2); // 2.67 x 1.2
   });
 
   it("example 5: sand for 144 sq ft at 1 in = 0.44 cu yd, 0.60 tons, 24 bags (27 with 10%)", () => {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { computePaver, paversPerSqFt, type PaverShape, type PaverSizeKey, type PaverInput } from "@/lib/formulas/paver";
 import { round } from "@/lib/formulas/units";
 import { num } from "@/lib/analytics";
-import { PAVER_SIZES, PAVER_WASTE, PAVER_SAND_DEPTH_IN, PAVER_BASE_SAND_WASTE_PCT, DENSITY_TONS_PER_CUYD, PRICES } from "@/lib/constants";
+import { PAVER_SIZES, PAVER_WASTE, PAVER_SAND_DEPTH_IN, PAVER_BASE_SAND_WASTE_PCT, PAVER_BASE_COMPACTION_PCT, DENSITY_TONS_PER_CUYD, PRICES } from "@/lib/constants";
 import { fmtInt, fmtUSD, fmtNumber } from "@/lib/format";
 import { CalculatorShell } from "../CalculatorShell";
 import { Field, NumberInput, Select, GroupLabel, FormGroupDivider } from "../Fields";
@@ -72,7 +72,8 @@ export function PaverCalculator() {
       sandDepthIn: PAVER_SAND_DEPTH_IN,
       sandDensity: DENSITY_TONS_PER_CUYD.sand,
       sandBagCuFt: 0.5,
-      baseSandWastePct: PAVER_BASE_SAND_WASTE_PCT,
+      baseCompactionPct: PAVER_BASE_COMPACTION_PCT,
+      sandWastePct: PAVER_BASE_SAND_WASTE_PCT,
       priceMode,
       pricePerPaver: num(pricePerPaver),
       pricePerSqFt: num(pricePerSqFt),
@@ -203,7 +204,7 @@ export function PaverCalculator() {
             <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
               Base and sand are a summary ({fmtNumber(round(result.baseCuYd, 2))} cu yd base at {baseDepth} in, {PAVER_SAND_DEPTH_IN} in sand).{" "}
               Need the full base breakdown by project?{" "}
-              <Link href="/gravel-calculator/" prefetch={false}>Use the Gravel Calculator.</Link>{" "}
+              <Link href="/paver-base-calculator/" prefetch={false}>Use the Paver Base Calculator.</Link>{" "}
               For bagged bedding sand,{" "}
               <Link href="/sand-calculator/" prefetch={false}>use the Sand Calculator.</Link>
             </p>

@@ -434,6 +434,41 @@ function PaverDiagram({ title }: { title: string }) {
   );
 }
 
+function PaverBaseDiagram({ title }: { title: string }) {
+  const paver = "#cf9e86";
+  return (
+    <Frame title={title}>
+      {/* Pavers (ending before the base edge), bedding sand, compacted base, soil */}
+      {[0, 1, 2, 3].map((c) => (
+        <rect key={c} x={32 + c * 21} y="54" width="19" height="10" fill={paver} stroke={LINE} strokeWidth="0.9" />
+      ))}
+      <rect x="28" y="64" width="90" height="6" fill={SOFT} stroke={LINE} strokeWidth="1" />
+      <rect x="24" y="70" width="120" height="30" fill="#d8d2c4" stroke={LINE} strokeWidth="1.1" />
+      <rect x="24" y="100" width="120" height="13" fill="#efe7d4" stroke={LINE} strokeWidth="1" />
+      {/* base extends past the paver edge + edge restraint */}
+      <rect x="116" y="54" width="5" height="46" fill={BRAND} opacity="0.8" />
+      {/* 4 in patio level (dashed) */}
+      <line x1="24" y1="85" x2="144" y2="85" stroke={BRAND} strokeWidth="1" strokeDasharray="4 3" />
+      {/* stacked depth arrows: top 4 in (patio), full 8 in (driveway) */}
+      <line x1="44" y1="70" x2="44" y2="85" stroke={BRAND} strokeWidth="1.2" />
+      <path d="M44 70 l-2 3.5 h4 z" fill={BRAND} />
+      <path d="M44 85 l-2 -3.5 h4 z" fill={BRAND} />
+      <line x1="44" y1="85" x2="44" y2="100" stroke={BRAND} strokeWidth="1.2" />
+      <path d="M44 100 l-2 -3.5 h4 z" fill={BRAND} />
+      <text x="50" y="81" fill={BRAND} fontSize="8.5" fontWeight="600">4 in patio</text>
+      <text x="50" y="96" fill={BRAND} fontSize="8.5" fontWeight="600">to 8 in drive</text>
+      <text x="123" y="61" fill={LINE} fontSize="8">base past edge</text>
+      <text x="74" y="128" textAnchor="middle" fill={LINE} fontSize="10">pavers, sand &amp; base (side view)</text>
+
+      {/* Right: top view with L and W */}
+      <rect x="200" y="62" width="82" height="44" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="241" y="120" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="84" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 84)">W</text>
+      <text x="241" y="138" textAnchor="middle" fill={LINE} fontSize="10">area (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -453,6 +488,8 @@ export function Diagram({
     node = <BrickDiagram title={alt} />;
   } else if (slug === "paver-calculator") {
     node = <PaverDiagram title={alt} />;
+  } else if (slug === "paver-base-calculator") {
+    node = <PaverBaseDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

@@ -154,6 +154,20 @@ export const PAVER_BASE_DEPTH_IN = 4; // VERIFY: Belgard 4-6 in compacted base f
 export const PAVER_SAND_DEPTH_IN = 1; // VERIFY: Belgard 1 in bedding sand
 export const PAVER_BASE_SAND_WASTE_PCT = 10; // compaction / over-dig allowance
 
+// Base depth by project (inches). VERIFY: Belgard install guide (patio/walkway
+// 4-6 in, driveway 8-12 in).
+export const PAVER_BASE_PROJECTS = {
+  walkway: { label: "Walkway", depthIn: 4 },
+  patio: { label: "Patio", depthIn: 4 },
+  patioClay: { label: "Patio on clay or soft soil", depthIn: 6 },
+  driveway: { label: "Residential driveway", depthIn: 8 },
+} as const;
+// Order this much extra loose stone for compaction. VERIFY: dense-graded crusher
+// run compacts about 15-20% (DOT ABC 21A/21B compaction factor +16-20%).
+export const PAVER_BASE_COMPACTION_PCT = 20;
+// Base and bedding sand bag size. VERIFY: Quikrete Paver Base is a 0.5 cu ft bag.
+export const PAVER_BASE_BAG_CUFT = 0.5;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -215,6 +229,7 @@ export const PRICES = {
   gravelPerTon: 45, // VERIFY: 2026 bulk crushed stone, within $30-60/ton (Gravel Monkey)
   sandPerTon: 40, // VERIFY: 2026 bulk sand, within $40-60 play / $25-45 mason (Yard & Bag)
   sandPerBag: 6, // VERIFY: 2026 price of a 50 lb play sand bag, within $5-8 (Yard & Bag)
+  paverBasePerBag: 6, // VERIFY: 2026 0.5 cu ft paver base bag, within $5.99-7.49 retail
   ripRapPerTon: 70, // VERIFY: varies by class & haul distance
   topsoilPerCuYd: 40, // VERIFY: bulk screened topsoil
   mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)

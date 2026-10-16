@@ -32,7 +32,8 @@ export interface PaverInput {
   sandDepthIn: number;
   sandDensity: number; // tons per cu yd (dry sand 1.35)
   sandBagCuFt: number; // 0.5
-  baseSandWastePct: number; // compaction allowance (10)
+  baseCompactionPct: number; // gravel base compaction allowance (20)
+  sandWastePct: number; // bedding sand extra (10)
   priceMode: "perPaver" | "perSqFt";
   pricePerPaver: number;
   pricePerSqFt: number;
@@ -96,13 +97,13 @@ export function computePaver(input: PaverInput): PaverResult {
   const baseCuFt = volumeCuFt(net, input.baseDepthIn);
   const baseCuYd = cubicYards(baseCuFt);
   const baseTons = tonsFrom(baseCuYd, input.baseDensity);
-  const baseTonsWithWaste = withWaste(baseTons, input.baseSandWastePct);
+  const baseTonsWithWaste = withWaste(baseTons, input.baseCompactionPct);
 
   const sandCuFt = volumeCuFt(net, input.sandDepthIn);
   const sandCuYd = cubicYards(sandCuFt);
   const sandTons = tonsFrom(sandCuYd, input.sandDensity);
   const sandBags = bagsNeeded(sandCuFt, input.sandBagCuFt);
-  const sandBagsWithWaste = bagsNeeded(withWaste(sandCuFt, input.baseSandWastePct), input.sandBagCuFt);
+  const sandBagsWithWaste = bagsNeeded(withWaste(sandCuFt, input.sandWastePct), input.sandBagCuFt);
 
   const edgingLinearFt = input.areas.reduce((s, a) => s + paverPerimeter(a), 0);
 
