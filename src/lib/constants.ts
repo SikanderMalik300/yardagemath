@@ -168,6 +168,26 @@ export const PAVER_BASE_COMPACTION_PCT = 20;
 // Base and bedding sand bag size. VERIFY: Quikrete Paver Base is a 0.5 cu ft bag.
 export const PAVER_BASE_BAG_CUFT = 0.5;
 
+/* =========================================================================
+   Retaining wall (segmental block) constants (batch 3 day 3)
+   ========================================================================= */
+// Segmental block face sizes (height x length, inches). Blocks per sq ft of
+// face = 144 / (H x L). VERIFY: typical maker sizes (Pavestone standard 6 x 16).
+export const RETAINING_BLOCKS = {
+  garden: { label: "Small garden block (4 × 12)", heightIn: 4, lengthIn: 12 },
+  standard: { label: "Standard wall block (6 × 16)", heightIn: 6, lengthIn: 16 },
+  large: { label: "Large wall block (8 × 18)", heightIn: 8, lengthIn: 18 },
+} as const;
+
+// VERIFY (Allan Block install): base leveling pad 24 in wide x 6 in deep crushed
+// stone; drainage stone 12 in wide behind the wall; bury the first course.
+export const RETAINING_PAD_WIDTH_IN = 24;
+export const RETAINING_PAD_DEPTH_IN = 6;
+export const RETAINING_DRAIN_WIDTH_IN = 12;
+export const RETAINING_BURIED_COURSES = 1;
+// VERIFY (CMHA / IBC): walls over 4 ft total height need an engineer and a permit.
+export const RETAINING_MAX_HEIGHT_FT = 4;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -221,6 +241,10 @@ export const PRICES = {
   brickEach: 0.7, // VERIFY: 2026 modular red brick, within $0.35-0.90 (HomeGuide)
   paverEach: 0.65, // VERIFY: 2026 4x8 concrete paver, within $0.35-0.90 (HomeGuide)
   paverPerSqFt: 4.0, // VERIFY: 2026 paver material, within $2-6/sq ft (HomeGuide)
+  retainingBlockEach: 4.0, // VERIFY: 2026 6x16 segmental block, within $2-10 material (HomeGuide)
+  retainingCapEach: 4.0, // VERIFY: 2026 cap block, within $1-5 (HomeGuide)
+  drainPipePerFt: 1.5, // VERIFY: 2026 4 in perforated drain pipe, ~$1.49-1.60/ft retail
+  retainingInstalledPerSqFt: 25, // VERIFY: 2026 segmental wall installed, within $15-35/sq ft (HomeGuide)
   capBlockEach: 2.5, // VERIFY
   mortarBag: 7.5, // VERIFY: 80 lb mortar mix
   rebar20ftBar: 9.0, // VERIFY: #4 x 20 ft

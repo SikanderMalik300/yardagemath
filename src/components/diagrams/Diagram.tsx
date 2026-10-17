@@ -469,6 +469,49 @@ function PaverBaseDiagram({ title }: { title: string }) {
   );
 }
 
+function RetainingWallDiagram({ title }: { title: string }) {
+  const block = "#c7c2b8";
+  const courses = [
+    { x: 30, y: 99 }, // buried
+    { x: 34, y: 88 },
+    { x: 38, y: 77 },
+    { x: 42, y: 66 },
+  ];
+  return (
+    <Frame title={title}>
+      {/* base leveling pad */}
+      <rect x="26" y="110" width="58" height="8" fill="#d8d2c4" stroke={LINE} strokeWidth="1" />
+      {/* soil retained behind */}
+      <polygon points="88,66 150,52 150,118 88,118" fill="#efe7d4" stroke={LINE} strokeWidth="1" />
+      {/* drainage stone behind the blocks */}
+      <rect x="80" y="66" width="10" height="44" fill={SOFT} stroke={LINE} strokeWidth="0.8" strokeDasharray="2 2" />
+      {/* blocks, stepping back */}
+      {courses.map((c, i) => (
+        <rect key={i} x={c.x} y={c.y} width="46" height="11" fill={block} stroke={LINE} strokeWidth="1" />
+      ))}
+      {/* cap */}
+      <rect x="40" y="60" width="50" height="6" fill="#b7b1a6" stroke={LINE} strokeWidth="1" />
+      {/* grade line in front */}
+      <line x1="10" y1="99" x2="30" y2="99" stroke={BRAND} strokeWidth="1" strokeDasharray="3 2" />
+      {/* perforated pipe at base */}
+      <circle cx="86" cy="106" r="3.5" fill="#fff" stroke={BRAND} strokeWidth="1.2" />
+      {/* labels */}
+      <text x="66" y="57" textAnchor="middle" fill={LINE} fontSize="8.5">cap</text>
+      <text x="8" y="96" fill={BRAND} fontSize="8">grade</text>
+      <text x="30" y="128" fill={LINE} fontSize="8">base pad + buried course</text>
+      <text x="96" y="64" fill={LINE} fontSize="8">drainage + pipe</text>
+
+      {/* Right: front view with L and H */}
+      <rect x="204" y="60" width="80" height="50" fill={block} stroke={LINE} strokeWidth="1.2" />
+      <line x1="204" y1="76" x2="284" y2="76" stroke="#fff" strokeWidth="0.9" />
+      <line x1="204" y1="93" x2="284" y2="93" stroke="#fff" strokeWidth="0.9" />
+      <text x="244" y="124" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="194" y="85" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 194 85)">H</text>
+      <text x="244" y="138" textAnchor="middle" fill={LINE} fontSize="10">front view</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -490,6 +533,8 @@ export function Diagram({
     node = <PaverDiagram title={alt} />;
   } else if (slug === "paver-base-calculator") {
     node = <PaverBaseDiagram title={alt} />;
+  } else if (slug === "retaining-wall-calculator") {
+    node = <RetainingWallDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

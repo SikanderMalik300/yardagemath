@@ -30,6 +30,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // "paver base" resolves here first (the name starts with it); "paver" alone
   // still goes to the Paver Calculator, which is earlier in the registry.
   "paver-base-calculator": ["paver base", "base gravel", "crusher run", "road base", "compaction", "patio base", "driveway base", "sub-base"],
+  // "retaining wall" resolves here first (the name starts with it); "block wall"
+  // still goes to the Block Wall Calculator, whose name starts with that.
+  "retaining-wall-calculator": ["retaining wall", "wall blocks", "garden wall", "landscape blocks", "segmental", "cap blocks", "terrace"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name

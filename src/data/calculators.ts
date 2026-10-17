@@ -95,6 +95,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
       { project: "Concrete for strip, pad or pier footings", slug: "concrete-footing-calculator" },
       { project: "Filling block cores with concrete or grout", slug: "cinder-block-fill-calculator" },
+      { project: "Landscape retaining wall blocks", slug: "retaining-wall-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
     faqs: [
@@ -130,6 +131,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
       { project: "Pavers for a patio or walkway, with base and sand", slug: "paver-calculator" },
       { project: "Gravel base and bedding sand under pavers", slug: "paver-base-calculator" },
+      { project: "Dry-stacked block retaining wall", slug: "retaining-wall-calculator" },
       { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
       { project: "Sand for a sandbox, paver base or fill", slug: "sand-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
@@ -442,6 +444,7 @@ export const calculators: Calculator[] = [
     sources: ["CMU nominal-face geometry (144 ÷ 128 = 1.125)", "Quikrete mortar coverage"],
     related: [
       "block-wall-calculator",
+      "retaining-wall-calculator",
       "brick-calculator",
       "cinder-block-fill-calculator",
       "concrete-block-weight",
@@ -1325,6 +1328,7 @@ export const calculators: Calculator[] = [
     warning:
       "Retaining walls over about 3–4 feet usually need an engineer and a permit. Always check local codes.",
     related: [
+      "retaining-wall-calculator",
       "concrete-block-calculator",
       "brick-calculator",
       "cinder-block-fill-calculator",
@@ -2474,6 +2478,7 @@ export const calculators: Calculator[] = [
     related: [
       "paver-calculator",
       "paver-base-calculator",
+      "retaining-wall-calculator",
       "sand-calculator",
       "pea-gravel-calculator",
       "cubic-yard-calculator",
@@ -2752,7 +2757,7 @@ export const calculators: Calculator[] = [
         "A 12 × 12 ft patio with 4 × 8 pavers (4.5 per sq ft):",
         "net area = 144 sq ft",
         "pavers = 144 × 4.5 = 648, or 681 with 5% waste",
-        "base = 2.67 tons, sand = 24 bags, edging = 48 ft",
+        "base = 3.20 tons (2.67 before compaction), sand = 27 bags, edging = 48 ft",
       ],
       example2: [
         "The same patio with 6 × 9 pavers:",
@@ -2819,6 +2824,7 @@ export const calculators: Calculator[] = [
     sources: ["Paver sizes and coverage (Nicolock)", "Base and bedding (Belgard)", "2026 paver prices"],
     related: [
       "paver-base-calculator",
+      "retaining-wall-calculator",
       "sand-calculator",
       "gravel-calculator",
       "brick-calculator",
@@ -2932,6 +2938,7 @@ export const calculators: Calculator[] = [
     sources: ["Base depth and compaction (Belgard)", "Paver base bag size (Quikrete)", "2026 base prices"],
     related: [
       "paver-calculator",
+      "retaining-wall-calculator",
       "gravel-calculator",
       "sand-calculator",
       "brick-calculator",
@@ -2939,6 +2946,118 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-16",
     imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 24 (batch 3) */
+  {
+    slug: "retaining-wall-calculator",
+    category: "landscaping",
+    title: "Retaining Wall Calculator – Blocks, Caps, Gravel & Cost",
+    metaDescription:
+      "Work out how many retaining wall blocks and caps you need, plus base gravel, drainage stone and pipe. Pick your block size to get totals and cost.",
+    h1: "Retaining Wall Calculator",
+    primaryKeyword: "retaining wall calculator",
+    secondaryKeywords: [
+      "retaining wall block calculator",
+      "how many retaining wall blocks do i need",
+      "retaining wall cost calculator",
+      "retaining wall blocks calculator",
+    ],
+    cardDescription: "How many retaining wall blocks and caps, plus base gravel, drainage stone and pipe.",
+    shortAnswer:
+      "A 20 foot retaining wall 2 feet high takes about 75 standard 6 by 16 inch blocks, including one buried course, plus 15 caps. You'll also need about 1.3 tons of base gravel and 2.6 tons of drainage stone. Enter your wall size and block below to get totals and cost.",
+    howTo: [
+      "Enter the wall length and the height above the ground. Add a section for each straight run.",
+      "Pick your block size. Check the face height and length on the block's label.",
+      "Keep the buried course on. Most walls need the first row set below ground.",
+      "Read the blocks, caps, gravel and pipe, then add a few spare blocks for cuts.",
+    ],
+    formula: {
+      plain: [
+        "blocks per course = ceil(length ft ÷ block length ft)",
+        "courses = ceil(height ft ÷ block height ft) + 1 buried course",
+        "blocks = per course × courses,  with waste = ceil(blocks × (1 + waste%))",
+        "base pad tons = length × 2 ft × 0.5 ft × 1.2 ÷ 27 × 1.5",
+        "drainage tons = length × 1 ft × wall height ÷ 27 × 1.4",
+      ],
+      example: [
+        "A 20 ft wall, 2 ft high, 6 × 16 blocks, buried course on:",
+        "blocks per course = ceil(20 ÷ 1.33) = 15; courses = ceil(2 ÷ 0.5) + 1 = 5",
+        "blocks = 15 × 5 = 75, plus 15 caps",
+        "base 1.33 tons, drainage 2.59 tons, 20 ft of pipe",
+      ],
+      example2: [
+        "A 30 ft wall, 3 ft high, 8 × 18 blocks:",
+        "blocks = 20 per course × 6 courses = 120",
+        "base 2.00 tons, drainage 6.22 tons",
+      ],
+    },
+    notCovered:
+      "It estimates materials for a straight, gravity-style block wall on firm ground. It doesn't design the wall, add geogrid, plan curves and corners exactly, or account for slopes, surcharges or poor soil. Walls over about 4 feet, or walls holding back a driveway or building, need an engineer and often a permit.",
+    tables: [
+      {
+        title: "Blocks needed by wall size (buried course included, before waste)",
+        columns: [
+          { label: "Wall" },
+          { label: "4 × 12", num: true },
+          { label: "6 × 16", num: true },
+          { label: "8 × 18", num: true },
+        ],
+        rows: [
+          ["10 ft × 2 ft", 70, 40, 28],
+          ["20 ft × 2 ft", 140, 75, 56],
+          ["20 ft × 3 ft", 200, 105, 84],
+          ["40 ft × 3 ft", 400, 210, 162],
+        ],
+        footnote: "Whole blocks including one buried course, before waste; add about 5% for cuts. Blocks per course = length ÷ block length, rounded up.",
+      },
+    ],
+    tips: [
+      "Set the first course perfectly level on a compacted gravel pad. Every course above it depends on it.",
+      "Backfill behind the wall with clean drainage stone and a perforated pipe so water can't build up pressure.",
+      "Each course steps back slightly into the slope. Use blocks with a built-in lip or setback, and follow the maker's guide.",
+      "Glue the caps on with masonry adhesive so they stay put.",
+    ],
+    faqs: [
+      {
+        q: "How many retaining wall blocks do I need?",
+        a: "Divide the wall length by the block length to get blocks per row, then divide the height by the block height for rows, and add one buried row. A 20 foot wall 2 feet high with 6 by 16 inch blocks needs about 75 blocks.",
+      },
+      {
+        q: "How many retaining wall blocks are in a square foot?",
+        a: "About 1.5 for a 6 by 16 inch block face, 3 for small 4 by 12 inch garden blocks, and 1 for large 8 by 18 inch blocks.",
+      },
+      {
+        q: "How much gravel do I need for a retaining wall?",
+        a: "For the base, about a 24 inch wide by 6 inch deep compacted pad. For drainage, about 12 inches of stone behind the wall. A 20 foot wall 2 feet high needs about 1.3 tons of base and 2.6 tons of drainage stone.",
+      },
+      {
+        q: "Do I need to bury the first row of blocks?",
+        a: "Usually, yes. Most makers recommend burying the first course, or about 1 inch for every 8 inches of wall height, so the wall doesn't slide.",
+      },
+      {
+        q: "How tall can a retaining wall be without an engineer?",
+        a: "Many areas allow about 4 feet before an engineered design and permit are needed, and less if the wall holds back a slope, driveway or building. Check your local code.",
+      },
+      {
+        q: "Do retaining walls need drainage?",
+        a: "Yes. Clean gravel behind the wall and a perforated drain pipe at the base let water out. Trapped water is the most common reason walls lean or fail.",
+      },
+      {
+        q: "How much does a retaining wall cost?",
+        a: "Block walls often run about $15 to $35 per square foot of wall face installed, depending on the block and site. Materials for a small DIY wall cost much less.",
+      },
+    ],
+    sources: ["Block face sizes (Pavestone)", "Base pad and drainage (Allan Block)", "Height limit (CMHA)", "2026 retaining wall costs (HomeGuide)"],
+    related: [
+      "block-wall-calculator",
+      "paver-calculator",
+      "paver-base-calculator",
+      "gravel-calculator",
+      "concrete-block-calculator",
+    ],
+    lastUpdated: "2026-10-17",
+    imageAlt: "Retaining wall diagram: base pad, buried course, setback blocks, cap, drainage stone and pipe, with the length and height the calculator uses.",
   },
 ];
 

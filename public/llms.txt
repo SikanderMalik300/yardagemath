@@ -18,6 +18,7 @@
 - [Sand Calculator](https://yardagemath.com/sand-calculator/): How much sand for a sandbox, paver base or fill: cubic yards, tons, 50-lb bags, coverage and bulk vs bagged cost.
 - [Paver Calculator](https://yardagemath.com/paver-calculator/): How many pavers for a patio or walkway by size and pattern, plus gravel base, bedding sand, edging and cost.
 - [Paver Base Calculator](https://yardagemath.com/paver-base-calculator/): How much gravel base and bedding sand under pavers by project depth: tons, cubic yards, bags and bulk vs bagged cost.
+- [Retaining Wall Calculator](https://yardagemath.com/retaining-wall-calculator/): How many segmental retaining wall blocks and caps, plus base gravel, drainage stone, pipe and cost, by block size.
 - [Lawn Mowing Cost Calculator](https://yardagemath.com/lawn-mowing-cost-calculator/): What a cut should cost (homeowner) or what to charge (pro), per cut and per season.
 - [Block Wall Calculator](https://yardagemath.com/block-wall-calculator/): Courses, blocks, cap blocks, mortar, grout, rebar and total material cost.
 - [Concrete Block Weight Chart & Calculator](https://yardagemath.com/concrete-block-weight/): Weights for 4, 6, 8, 10 and 12 inch CMU, normal and lightweight, plus total load, pallet and per-trip weight.

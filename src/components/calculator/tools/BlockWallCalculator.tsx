@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import {
   computeBlockWall,
   type BlockWidth,
@@ -157,6 +158,13 @@ export function BlockWallCalculator() {
             {result.groutCuYd > 0 && <SecondaryItem label="Grout" value={`${fmtNumber(round(result.groutCuYd, 2))} cu yd`} />}
             {result.rebarBars > 0 && <SecondaryItem label="Rebar bars (20 ft)" value={fmtInt(result.rebarBars)} />}
           </SecondaryResults>
+
+          <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+            Building a dry-stacked landscape wall instead?{" "}
+            <Link href="/retaining-wall-calculator/" prefetch={false}>
+              Use the Retaining Wall Calculator.
+            </Link>
+          </p>
 
           <ShowMath>
             <MathLine>courses = ceil({num(htFt) * 12 + num(htIn)} ÷ 8) = {result.courses}</MathLine>

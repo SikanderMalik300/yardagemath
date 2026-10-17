@@ -295,6 +295,34 @@ export const SOURCES = {
     url: "https://www.quikrete.com/productlines/products-hardscapes.asp",
     checked: "2026-10-16",
   },
+  allanBlockInstall: {
+    id: "allanBlockInstall",
+    title: "How to install a retaining wall — dig a base trench 24 in wide and 6 in deep (plus 1 in per foot of wall height), set and bury the first course, fill the block cores and 12 in behind the wall with drainage rock",
+    publisher: "Allan Block (segmental block maker)",
+    url: "https://allanblock.com/installation/residential-installation/basic-installation",
+    checked: "2026-10-17",
+  },
+  cmhaSrwHeight: {
+    id: "cmhaSrwHeight",
+    title: "Segmental retaining wall height — the IBC requires a permit for earth-retaining walls over 4 ft in total height, measured from the top of the leveling pad to the top of the uppermost unit; walls 4 to 8 ft are evaluated case by case",
+    publisher: "Concrete Masonry & Hardscapes Association (CMHA)",
+    url: "https://www.cmha.org/resource/srw-faq-001/",
+    checked: "2026-10-17",
+  },
+  pavestoneWallBlock: {
+    id: "pavestoneWallBlock",
+    title: "Segmental retaining wall blocks — a common standard block has a 6 in high by 16 in long face (about 1.5 per sq ft of wall); small garden blocks are about 4 x 12 and large blocks about 8 x 18",
+    publisher: "Pavestone (segmental block maker)",
+    url: "https://www.pavestone.com/products/retaining-walls/",
+    checked: "2026-10-17",
+  },
+  homeGuideRetainingWall: {
+    id: "homeGuideRetainingWall",
+    title: "Retaining wall cost (2026) — segmental block walls run about $15 to $35 per sq ft installed (all types average $35 to $65); block materials are about $2 to $10 per block",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/retaining-wall-cost",
+    checked: "2026-10-17",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -321,6 +349,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "brick-calculator": ["biaTn10", "quikreteMortar", "homeGuideBrick"],
   "paver-calculator": ["nicolockPaver", "paverBedBelgard", "homeGuidePaver"],
   "paver-base-calculator": ["paverBedBelgard", "quikretePaverBase", "gravelCost2026"],
+  "retaining-wall-calculator": ["pavestoneWallBlock", "allanBlockInstall", "cmhaSrwHeight", "homeGuideRetainingWall"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

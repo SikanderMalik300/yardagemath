@@ -249,6 +249,22 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["paverBedBelgard", "quikretePaverBase", "gravelCost2026"]} />
 
+      <h2>Retaining wall (segmental block)</h2>
+      <p>
+        Blocks per square foot of face come from the block size: 144 ÷ (face height × length in
+        inches), so a 6 by 16 inch block is 1.5 per sq ft, 4 by 12 is 3 and 8 by 18 is 1. For the count
+        we work whole blocks: blocks per course = ceil(length ÷ block length), courses = ceil(height ÷
+        block height) plus one buried course, and blocks = per course × courses. Makers recommend
+        burying the first course, roughly 1 inch for every 8 inches of height. The base leveling pad is
+        about 24 inches wide and 6 inches deep of crushed stone (with 20% for compaction, 1.5 tons per
+        cubic yard), and drainage stone is about 12 inches wide behind the full wall height in #57
+        stone (1.4 tons per cubic yard), with a perforated pipe at the base. Walls over about 4 feet
+        measured from the base pad need an engineered design and a permit. Default prices are 2026
+        estimates: about $4 per block and cap, $1.50 per foot of pipe, and $15 to $35 per square foot
+        installed.
+      </p>
+      <Cite keys={["pavestoneWallBlock", "allanBlockInstall", "cmhaSrwHeight", "homeGuideRetainingWall"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

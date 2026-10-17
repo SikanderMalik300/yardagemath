@@ -72,6 +72,11 @@ describe("home search", () => {
     expect(slugs("paver")[0]).toBe("paver-calculator");
   });
 
+  it("'retaining wall' and 'block wall' go to their own pages", () => {
+    expect(slugs("retaining wall")[0]).toBe("retaining-wall-calculator");
+    expect(slugs("block wall")[0]).toBe("block-wall-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

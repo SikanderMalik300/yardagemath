@@ -213,8 +213,8 @@ export function PaverCalculator() {
               <MathLine>net area = {fmtNumber(round(result.netAreaSqFt, 1))} sq ft (after cut-outs)</MathLine>
               <MathLine>pavers = {fmtNumber(round(result.netAreaSqFt, 1))} × {fmtNumber(round(perSqFt, 4))} = {fmtNumber(round(result.netAreaSqFt * perSqFt, 1))}</MathLine>
               <MathLine>+ {waste}% waste → {fmtInt(result.paversWithWaste)} pavers</MathLine>
-              <MathLine>base = {fmtNumber(round(result.baseCuYd, 2))} cu yd × 1.5 = {fmtNumber(round(result.baseTons, 2))} tons</MathLine>
-              <MathLine>sand = ceil({fmtNumber(round(result.netAreaSqFt * PAVER_SAND_DEPTH_IN / 12, 1))} ÷ 0.5) = {fmtInt(result.sandBags)} bags</MathLine>
+              <MathLine>base = {fmtNumber(round(result.baseCuYd, 2))} cu yd × 1.5 = {fmtNumber(round(result.baseTons, 2))} tons, + {PAVER_BASE_COMPACTION_PCT}% compaction → {fmtNumber(round(result.baseTonsWithWaste, 2))} tons</MathLine>
+              <MathLine>sand = {fmtNumber(round(result.netAreaSqFt * PAVER_SAND_DEPTH_IN / 12, 1))} cu ft, + {PAVER_BASE_SAND_WASTE_PCT}% → ceil({fmtNumber(round(result.netAreaSqFt * PAVER_SAND_DEPTH_IN / 12 * (1 + PAVER_BASE_SAND_WASTE_PCT / 100), 1))} ÷ 0.5) = {fmtInt(result.sandBagsWithWaste)} bags</MathLine>
             </ShowMath>
 
             <ResultActions
