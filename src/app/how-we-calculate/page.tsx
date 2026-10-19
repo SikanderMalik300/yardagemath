@@ -265,6 +265,19 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["pavestoneWallBlock", "allanBlockInstall", "cmhaSrwHeight", "homeGuideRetainingWall"]} />
 
+      <h2>Fill dirt</h2>
+      <p>
+        Fill dirt uses the shared yard math with a compaction allowance. Cubic feet = area × depth ÷ 12
+        (a hole is length × width × depth, a round hole is π × radius² × depth, and a sloped spot uses
+        the average of the two end depths), then ÷ 27 for cubic yards. Loose fill settles when it is
+        packed, so we add about 20% for compaction, which sits inside the 10 to 25% that common soil
+        shrinks. Typical fill dirt weighs about 1.2 tons per cubic yard (2,400 lb); wet or clay-heavy
+        dirt runs about 1.4 tons. A tandem dump truck carries about 10 cubic yards of dirt (up to 14
+        by volume), so loads = cubic yards with compaction ÷ load size, rounded up. Default prices are
+        2026 estimates: about $15 per cubic yard (within $5 to $25) plus a delivery fee.
+      </p>
+      <Cite keys={["ottrFillDirt", "homeGuideFillDirt"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

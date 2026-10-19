@@ -77,6 +77,14 @@ describe("home search", () => {
     expect(slugs("block wall")[0]).toBe("block-wall-calculator");
   });
 
+  it("'fill dirt', 'fill' and 'dirt' resolve to Fill Dirt first, Topsoil second for 'dirt'", () => {
+    expect(slugs("fill dirt")[0]).toBe("fill-dirt-calculator");
+    expect(slugs("fill")[0]).toBe("fill-dirt-calculator");
+    const d = slugs("dirt");
+    expect(d[0]).toBe("fill-dirt-calculator");
+    expect(d[1]).toBe("topsoil-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

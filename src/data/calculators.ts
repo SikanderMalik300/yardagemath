@@ -127,6 +127,7 @@ export const categories: Record<CategorySlug, Category> = {
       "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture from a tape measure. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount — with a small buffer for waste — instead of a driveway full of extra material or a second trip to the yard. They are made for US homeowners and landscapers working in feet and inches, and they cover the full range of bulk materials: topsoil for lawns and beds, mulch and compost, pea gravel and river rock, decomposed granite, sand and crushed stone, plus square yards for carpet, turf and sod, and riprap for erosion control. Each material carries a sensible default depth and a density you can adjust, and every result shows the formula with your numbers plus a reference table of common sizes. Bulk material is sold by the cubic yard and bagged material by the cubic foot, so each tool shows both. Start with the Cubic Yard Calculator for any loose material, the Topsoil or Landscape Material Calculator for beds, or the Square Yard Calculator for flooring.",
     whichTool: [
       { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
+      { project: "Filling a hole or raising a low spot with fill dirt", slug: "fill-dirt-calculator" },
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
       { project: "Pavers for a patio or walkway, with base and sand", slug: "paver-calculator" },
@@ -312,6 +313,7 @@ export const calculators: Calculator[] = [
     related: [
       "yards-of-concrete-calculator",
       "gravel-calculator",
+      "fill-dirt-calculator",
       "sand-calculator",
       "topsoil-calculator",
       "mulch-calculator",
@@ -730,6 +732,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["USDA topsoil bulk-density references"],
     related: [
+      "fill-dirt-calculator",
       "cubic-yard-calculator",
       "sand-calculator",
       "mulch-calculator",
@@ -2479,6 +2482,7 @@ export const calculators: Calculator[] = [
       "paver-calculator",
       "paver-base-calculator",
       "retaining-wall-calculator",
+      "fill-dirt-calculator",
       "sand-calculator",
       "pea-gravel-calculator",
       "cubic-yard-calculator",
@@ -2597,6 +2601,7 @@ export const calculators: Calculator[] = [
     related: [
       "paver-base-calculator",
       "gravel-calculator",
+      "fill-dirt-calculator",
       "landscape-materials-calculator",
       "cubic-yard-calculator",
       "pea-gravel-calculator",
@@ -3054,10 +3059,124 @@ export const calculators: Calculator[] = [
       "paver-calculator",
       "paver-base-calculator",
       "gravel-calculator",
+      "fill-dirt-calculator",
       "concrete-block-calculator",
     ],
     lastUpdated: "2026-10-17",
     imageAlt: "Retaining wall diagram: base pad, buried course, setback blocks, cap, drainage stone and pipe, with the length and height the calculator uses.",
+  },
+
+  /* ---------------------------------------------------------------- 25 (batch 3) */
+  {
+    slug: "fill-dirt-calculator",
+    category: "landscaping",
+    title: "Fill Dirt Calculator – Cubic Yards, Tons & Truckloads",
+    metaDescription:
+      "Work out how much fill dirt you need to fill a hole, raise a yard or level a low spot. Get cubic yards, tons and dump truck loads, compaction included.",
+    h1: "Fill Dirt Calculator",
+    primaryKeyword: "fill dirt calculator",
+    secondaryKeywords: [
+      "how much fill dirt do i need",
+      "calculate dirt fill",
+      "how much dirt to fill a hole",
+      "how many tons of fill dirt",
+      "how much does a yard of fill dirt weigh",
+    ],
+    cardDescription: "How much fill dirt to fill a hole or raise a yard: cubic yards, tons and truckloads.",
+    shortAnswer:
+      "To raise a 20 by 30 foot area by 6 inches you need about 11 cubic yards of fill dirt, or about 13.3 cubic yards once you allow 20% for compaction. That's roughly 16 tons, or 2 dump truck loads. Enter your area or hole below to get yards, tons and truckloads.",
+    howTo: [
+      "Pick what you're filling: an area to raise, a hole or trench, a round hole, or a sloped spot.",
+      "Enter the size in feet and the depth in inches or feet.",
+      "Keep the compaction allowance. Fill dirt settles once it's packed down.",
+      "Read the cubic yards, tons and truckloads, then round up when you order.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × depth (in) ÷ 12   (hole: L × W × D; round: π × (d ÷ 2)² × D)",
+        "sloped: area × ((depth1 + depth2) ÷ 2) ÷ 12",
+        "cubic yards = cu ft ÷ 27,  with compaction = cu yd × (1 + 20%)",
+        "tons = cu yd × 1.2,  loads = ceil(cu yd ÷ load size)",
+      ],
+      example: [
+        "Raise a 20 × 30 ft area by 6 inches (20% compaction):",
+        "cu ft = 600 × 6 ÷ 12 = 300, cubic yards = 300 ÷ 27 = 11.11",
+        "with 20% = 13.33 cu yd, about 16 tons",
+        "loads = ceil(13.33 ÷ 10) = 2 truckloads",
+      ],
+      example2: [
+        "Fill a 4 × 4 × 3 ft hole:",
+        "cu ft = 48, cubic yards = 1.78, with 20% = 2.13",
+        "about 2.56 tons",
+      ],
+    },
+    notCovered:
+      "It estimates fill dirt volume and weight for a simple fill. It doesn't plan drainage or grading slopes, test soil, or design fill under a house, driveway or pool, which usually needs engineered fill and compaction testing. Weight changes a lot with moisture, so ask your supplier.",
+    tables: [
+      {
+        title: "Fill dirt cubic yards by area and depth (20% compaction)",
+        columns: [
+          { label: "Area" },
+          { label: "2 in", num: true },
+          { label: "4 in", num: true },
+          { label: "6 in", num: true },
+          { label: "12 in", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "0.7", "1.5", "2.2", "4.4"],
+          ["500 sq ft", "3.7", "7.4", "11.1", "22.2"],
+          ["1,000 sq ft", "7.4", "14.8", "22.2", "44.4"],
+          ["2,000 sq ft", "14.8", "29.6", "44.4", "88.9"],
+        ],
+        footnote: "Cubic yards including 20% for compaction. Multiply by about 1.2 for tons; a tandem dump truck holds about 10 cubic yards of dirt.",
+      },
+    ],
+    tips: [
+      "Fill dirt is subsoil with little organic matter, so it packs down well. Use topsoil only for the top few inches where you want grass or plants to grow.",
+      "Spread and compact fill in layers of about 4 to 6 inches, watering lightly, instead of dumping it all at once.",
+      "Ask whether the supplier sells by the yard or the ton, and how big their truck is, before you compare prices.",
+      "Some suppliers and builders give away clean fill. Make sure it's free of trash, roots and large rocks.",
+    ],
+    faqs: [
+      {
+        q: "How much fill dirt do I need?",
+        a: "Multiply the area in square feet by the depth in inches, divide by 12 for cubic feet, then divide by 27 for cubic yards. Add about 20% for compaction. Raising a 20 by 30 foot area by 6 inches takes about 13.3 cubic yards.",
+      },
+      {
+        q: "How much does a yard of fill dirt weigh?",
+        a: "About 1.2 tons, or 2,400 pounds, for typical dry fill. Wet or clay-heavy dirt can weigh 1.4 tons or more per yard.",
+      },
+      {
+        q: "How much fill dirt to fill a hole?",
+        a: "Multiply length, width and depth in feet, then divide by 27 for cubic yards and add about 20%. A 4 by 4 foot hole 3 feet deep takes about 2.1 cubic yards.",
+      },
+      {
+        q: "How many yards of dirt are in a dump truck?",
+        a: "A typical tandem dump truck carries about 10 to 14 cubic yards. Smaller trucks carry about 5. Ask your supplier for their load size.",
+      },
+      {
+        q: "Why add extra for compaction?",
+        a: "Loose fill dirt settles and packs down, often by about a fifth, so you need more loose dirt than the finished space you're filling.",
+      },
+      {
+        q: "What is the difference between fill dirt and topsoil?",
+        a: "Fill dirt is subsoil with little organic matter, used to fill and raise ground. Topsoil is the darker, richer top layer used for lawns and gardens. Use fill below and a few inches of topsoil on top.",
+      },
+      {
+        q: "How much does fill dirt cost?",
+        a: "Fill dirt often costs about $5 to $25 per cubic yard, plus delivery. It's usually much cheaper than topsoil.",
+      },
+    ],
+    sources: ["Fill dirt weight and truck size (Ottr Supply)", "2026 fill dirt prices (HomeGuide)"],
+    related: [
+      "topsoil-calculator",
+      "cubic-yard-calculator",
+      "gravel-calculator",
+      "sand-calculator",
+      "retaining-wall-calculator",
+    ],
+    lastUpdated: "2026-10-18",
+    imageAlt: "Fill dirt diagram: raising a low area in layers and filling a hole, with the measurements the calculator uses.",
   },
 ];
 

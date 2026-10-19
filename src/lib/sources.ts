@@ -323,6 +323,20 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/retaining-wall-cost",
     checked: "2026-10-17",
   },
+  ottrFillDirt: {
+    id: "ottrFillDirt",
+    title: "How much does fill dirt weigh — dry loose fill dirt is about 2,000 lb per cubic yard, ranging 1,800 to 2,700 lb with moisture, compaction and composition; a dump truck holds about 14 cu yd by volume but weight limits mean roughly 10 cu yd of dirt per load",
+    publisher: "Ottr Landscape Supply (bulk soil supplier)",
+    url: "https://ottrsupply.com/blogs/articles/how-much-does-fill-dirt-weigh",
+    checked: "2026-10-18",
+  },
+  homeGuideFillDirt: {
+    id: "homeGuideFillDirt",
+    title: "Fill dirt, sand & topsoil delivery cost (2026) — fill dirt costs about $5 to $25 per cubic yard ($4 to $15 per ton), delivered in 10 to 15 cu yd loads, plus a delivery fee of about $50 to $150 per trip",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/fill-dirt-sand-topsoil-cost",
+    checked: "2026-10-18",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -350,6 +364,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "paver-calculator": ["nicolockPaver", "paverBedBelgard", "homeGuidePaver"],
   "paver-base-calculator": ["paverBedBelgard", "quikretePaverBase", "gravelCost2026"],
   "retaining-wall-calculator": ["pavestoneWallBlock", "allanBlockInstall", "cmhaSrwHeight", "homeGuideRetainingWall"],
+  "fill-dirt-calculator": ["ottrFillDirt", "homeGuideFillDirt"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

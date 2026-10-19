@@ -6,7 +6,7 @@ import { calculators, type Calculator } from "@/data/calculators";
  * are used only by the homepage search and are never shown on the page.
  */
 export const SEARCH_KEYWORDS: Record<string, string[]> = {
-  "cubic-yard-calculator": ["yard", "yards", "gravel", "dirt", "fill", "soil", "sand", "stone", "rock", "mulch"],
+  "cubic-yard-calculator": ["yard", "yards", "gravel", "fill", "soil", "sand", "stone", "rock", "mulch"],
   "concrete-block-calculator": ["cmu", "cinder", "block", "blocks", "wall"],
   "concrete-slab-cost-calculator": ["slab", "patio", "driveway", "pad", "concrete cost", "sidewalk"],
   "yards-of-concrete-calculator": ["concrete", "ready mix", "truck", "driveway", "patio", "footing", "column", "sonotube"],
@@ -17,6 +17,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // first because it is an explicit keyword, beating the block calc's blurb mention.
   "brick-calculator": ["brick", "bricks", "brick wall", "masonry", "mortar", "veneer", "modular", "queen", "king", "pavers brick"],
   "topsoil-calculator": ["soil", "dirt", "garden", "raised bed", "lawn"],
+  // "fill dirt" / "fill" resolve here first (the name starts with them); "dirt"
+  // resolves here first too (name contains it), with Topsoil second via its keyword.
+  "fill-dirt-calculator": ["fill dirt", "fill", "dirt", "dirt fill", "backfill", "grading", "low spot", "hole", "raise yard", "dump truck"],
   "pea-gravel-calculator": ["gravel", "stone", "path", "patio", "rock"],
   // "gravel" resolves to the Gravel Calculator first (its name starts with the
   // query, which beats Pea Gravel's name-contains match), then Pea Gravel, then

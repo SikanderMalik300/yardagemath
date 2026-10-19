@@ -512,6 +512,38 @@ function RetainingWallDiagram({ title }: { title: string }) {
   );
 }
 
+function FillDirtDiagram({ title }: { title: string }) {
+  const fill = "#cdb79a";
+  return (
+    <Frame title={title}>
+      {/* Left: a low area being filled in layers up to the finished grade */}
+      <path d="M24,70 L50,70 L62,100 L98,100 L110,70 L138,70 L138,116 L24,116 Z" fill="#efe7d4" stroke={LINE} strokeWidth="1" />
+      <path d="M50,70 L62,100 L98,100 L110,70 Z" fill={fill} stroke={LINE} strokeWidth="0.8" />
+      {/* fill layers */}
+      <line x1="55" y1="85" x2="105" y2="85" stroke="#fff" strokeWidth="0.8" />
+      <line x1="60" y1="93" x2="100" y2="93" stroke="#fff" strokeWidth="0.8" />
+      {/* finished grade (dashed) */}
+      <line x1="46" y1="70" x2="114" y2="70" stroke={BRAND} strokeWidth="1" strokeDasharray="4 3" />
+      {/* fill depth arrow */}
+      <line x1="68" y1="70" x2="68" y2="99" stroke={BRAND} strokeWidth="1.2" />
+      <path d="M68 70 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M68 99 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="72" y="88" fill={BRAND} fontSize="8.5" fontWeight="600">fill depth</text>
+      <text x="118" y="68" fill={BRAND} fontSize="8">finished grade</text>
+      <text x="26" y="128" fill={LINE} fontSize="8.5">fill a low area in layers</text>
+
+      {/* Right: a hole with L, W and D */}
+      <polygon points="202,66 258,66 272,56 216,56" fill="#d9c7ad" stroke={LINE} strokeWidth="1" />
+      <polygon points="202,66 258,66 258,98 202,98" fill={fill} stroke={LINE} strokeWidth="1" />
+      <polygon points="258,66 272,56 272,88 258,98" fill="#bfa98a" stroke={LINE} strokeWidth="1" />
+      <text x="230" y="112" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">L</text>
+      <text x="270" y="78" textAnchor="start" fill={BRAND} fontSize="11" fontWeight="600">W</text>
+      <text x="196" y="84" textAnchor="end" fill={BRAND} fontSize="11" fontWeight="600">D</text>
+      <text x="236" y="128" textAnchor="middle" fill={LINE} fontSize="8.5">fill a hole</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -535,6 +567,8 @@ export function Diagram({
     node = <PaverBaseDiagram title={alt} />;
   } else if (slug === "retaining-wall-calculator") {
     node = <RetainingWallDiagram title={alt} />;
+  } else if (slug === "fill-dirt-calculator") {
+    node = <FillDirtDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

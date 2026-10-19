@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { computeTopsoil } from "@/lib/formulas/topsoil";
 import { round } from "@/lib/formulas/units";
 import { fmtNumber } from "@/lib/format";
@@ -87,6 +88,12 @@ export function TopsoilCalculator() {
             <SecondaryItem label="Cubic meters" value={`${fmtNumber(round(result.cubicMeters, 2))} m³`} />
             <SecondaryItem label={`Bags (${bagSize} cu ft)`} value={fmtNumber(result.bags, 0)} />
           </SecondaryResults>
+
+          <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+            Filling a hole or raising the grade?{" "}
+            <Link href="/fill-dirt-calculator/" prefetch={false}>Use the Fill Dirt Calculator.</Link>{" "}
+            Save topsoil for the top few inches.
+          </p>
 
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>

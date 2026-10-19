@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { computeCubicYard, type CubicYardMaterial } from "@/lib/formulas/cubicYard";
 import { materialSlug } from "@/lib/constants";
 import { round } from "@/lib/formulas/units";
@@ -105,6 +106,12 @@ export function CubicYardCalculator() {
             <SecondaryItem label="Soil bags (0.75 cu ft)" value={fmtNumber(result.bagsSoil, 0)} />
             <SecondaryItem label="Gravel bags (0.5 cu ft)" value={fmtNumber(result.bagsGravel, 0)} />
           </SecondaryResults>
+
+          <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+            Ordering fill dirt?{" "}
+            <Link href="/fill-dirt-calculator/" prefetch={false}>Use the Fill Dirt Calculator</Link>{" "}
+            for compaction, tons and truckloads.
+          </p>
 
           <ShowMath>
             <MathLine>area = {fmtNumber(round(result.areaSqFt, 2))} sq ft</MathLine>

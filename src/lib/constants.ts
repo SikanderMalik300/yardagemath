@@ -188,6 +188,22 @@ export const RETAINING_BURIED_COURSES = 1;
 // VERIFY (CMHA / IBC): walls over 4 ft total height need an engineer and a permit.
 export const RETAINING_MAX_HEIGHT_FT = 4;
 
+/* =========================================================================
+   Fill dirt constants (batch 3 day 4)
+   ========================================================================= */
+// Fill dirt weight, US tons per cubic yard. VERIFY: supplier range ~1,800-2,700
+// lb/yd (Ottr Supply); typical ~2,400 lb (1.2 t), wet or clay-heavy ~1.4 t.
+export const FILL_DIRT_DENSITY = {
+  typical: 1.2, // ~2,400 lb/yd
+  wet: 1.4, // wet or clay-heavy, ~2,800 lb/yd
+} as const;
+// Order this much extra loose dirt for compaction (loose fill settles when packed).
+// VERIFY: common/moderate soil shrinks about 10-25% when compacted.
+export const FILL_COMPACTION_PCT = 20;
+// Dump truck load sizes (cubic yards). VERIFY: tandem ~14 cu yd by volume but about
+// 10 cu yd of dirt by weight (Ottr Supply); small ~5.
+export const FILL_TRUCKLOADS = { small: 5, tandem: 10, large: 14 } as const;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -256,6 +272,8 @@ export const PRICES = {
   paverBasePerBag: 6, // VERIFY: 2026 0.5 cu ft paver base bag, within $5.99-7.49 retail
   ripRapPerTon: 70, // VERIFY: varies by class & haul distance
   topsoilPerCuYd: 40, // VERIFY: bulk screened topsoil
+  fillDirtPerCuYd: 15, // VERIFY: 2026 bulk fill dirt, within $5-25/cu yd (HomeGuide)
+  fillDeliveryPerLoad: 75, // VERIFY: 2026 delivery fee, within $50-150/trip (HomeGuide)
   mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)
   mulchPerBag: 4, // VERIFY: 2026 price of a 2 cu ft bag, within $3.25-6.50 (LawnStarter)
 } as const;
