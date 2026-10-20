@@ -130,6 +130,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Filling a hole or raising a low spot with fill dirt", slug: "fill-dirt-calculator" },
       { project: "Mulch for beds, borders and tree rings", slug: "mulch-calculator" },
       { project: "Mulch, rock, decomposed granite or compost", slug: "landscape-materials-calculator" },
+      { project: "Decorative rock for beds and borders (river, lava, pebbles)", slug: "landscape-rock-calculator" },
       { project: "Pavers for a patio or walkway, with base and sand", slug: "paver-calculator" },
       { project: "Gravel base and bedding sand under pavers", slug: "paver-base-calculator" },
       { project: "Dry-stacked block retaining wall", slug: "retaining-wall-calculator" },
@@ -847,6 +848,7 @@ export const calculators: Calculator[] = [
     sources: ["landscape-supply gravel density", "CPSC playground surfacing guidance"],
     related: [
       "gravel-calculator",
+      "landscape-rock-calculator",
       "sand-calculator",
       "cubic-yard-calculator",
       "mulch-calculator",
@@ -1084,6 +1086,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["landscape-supply density tables", "USDA references"],
     related: [
+      "landscape-rock-calculator",
       "paver-calculator",
       "gravel-calculator",
       "sand-calculator",
@@ -2365,6 +2368,7 @@ export const calculators: Calculator[] = [
     sources: ["K-State Extension mulch depth", "Vigoro 2 cu ft bag coverage", "2026 mulch cost guide"],
     related: [
       "gravel-calculator",
+      "landscape-rock-calculator",
       "landscape-materials-calculator",
       "cubic-yard-calculator",
       "topsoil-calculator",
@@ -2479,6 +2483,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["#57 gravel weight (1.4 t/yd)", "Driveway gravel layers (Gravelshop)", "2026 gravel prices"],
     related: [
+      "landscape-rock-calculator",
       "paver-calculator",
       "paver-base-calculator",
       "retaining-wall-calculator",
@@ -2832,6 +2837,7 @@ export const calculators: Calculator[] = [
       "retaining-wall-calculator",
       "sand-calculator",
       "gravel-calculator",
+      "landscape-rock-calculator",
       "brick-calculator",
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
@@ -3177,6 +3183,140 @@ export const calculators: Calculator[] = [
     ],
     lastUpdated: "2026-10-18",
     imageAlt: "Fill dirt diagram: raising a low area in layers and filling a hole, with the measurements the calculator uses.",
+  },
+  /* ---------------------------------------------------------------- 26 */
+  {
+    slug: "landscape-rock-calculator",
+    category: "landscaping",
+    title: "Landscape Rock Calculator – Tons, Yards & Bags of Rock",
+    metaDescription:
+      "Find how much landscape rock you need for beds and borders. Pick river rock, lava rock or pebbles and a depth to get tons, cubic yards, bags and cost.",
+    h1: "Landscape Rock Calculator",
+    primaryKeyword: "landscape rock calculator",
+    secondaryKeywords: [
+      "landscaping rock calculator",
+      "how much landscape rock do i need",
+      "river rock calculator",
+      "lava rock calculator",
+      "how much does a ton of river rock cover",
+    ],
+    cardDescription: "How much decorative rock for beds and borders: tons, cubic yards, bags and cost by rock type.",
+    shortAnswer:
+      "A ton of river rock covers about 80 square feet at 3 inches deep, but a ton of lightweight lava rock covers about 196 square feet. A 10 by 20 foot bed at 3 inches needs about 1.85 cubic yards, which is 2.5 tons of river rock or about 1 ton of lava rock. Pick your rock and depth below to get tons, yards, bags and cost.",
+    howTo: [
+      "Measure each bed and pick a shape. Add more beds, or subtract plants and pavers.",
+      "Choose the rock type. Lava rock weighs far less than river rock, so you need fewer tons.",
+      "Pick a depth that suits the rock size: about 2 inches for small rock, 3 for medium, 4 for large.",
+      "Keep 10% extra, then compare bulk and bagged cost.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × depth (in) ÷ 12",
+        "cubic yards = cu ft ÷ 27",
+        "tons = cubic yards × density (river rock 1.35, lava rock 0.55, pebbles or marble 1.40 t/yd)",
+        "bags = ceil(cu ft × (1 + waste) ÷ bag size)",
+        "sq ft per ton = (27 ÷ density) ÷ (depth ÷ 12)",
+      ],
+      example: [
+        "10 × 20 ft bed, 3 in deep, river rock:",
+        "cu ft = 200 × 3 ÷ 12 = 50, cubic yards = 50 ÷ 27 = 1.85",
+        "tons = 1.85 × 1.35 = 2.5 (lava rock 1.02, pebbles or marble 2.59)",
+        "bags = 100 of 0.5 cu ft (110 with 10% waste)",
+      ],
+      example2: [
+        "Tree ring 6 ft across, 3 in, river rock:",
+        "area = π × 3² = 28.3 sq ft, cu ft = 7.07, cubic yards = 0.26",
+        "tons = 0.35, bags = 15",
+      ],
+    },
+    notCovered:
+      "It estimates loose decorative rock for flat beds and borders. It doesn't count boulders, edging, landscape fabric or the base under walkways and driveways. Rock weights vary by size and moisture, so check the supplier's tons-per-yard figure before you order.",
+    tables: [
+      {
+        title: "Landscape rock: cubic yards and tons by area (before waste)",
+        columns: [
+          { label: "Area" },
+          { label: "cu yd at 2 in", num: true },
+          { label: "cu yd at 3 in", num: true },
+          { label: "River rock tons at 3 in", num: true },
+          { label: "Lava rock tons at 3 in", num: true },
+        ],
+        rows: [
+          ["50 sq ft", "0.31", "0.46", "0.6", "0.3"],
+          ["100 sq ft", "0.62", "0.93", "1.3", "0.5"],
+          ["200 sq ft", "1.23", "1.85", "2.5", "1.0"],
+          ["500 sq ft", "3.09", "4.63", "6.3", "2.5"],
+        ],
+        footnote: "Cubic yards before waste. Multiply cubic yards by the density for tons: river rock 1.35, lava rock 0.55, pebbles or marble 1.40 tons per cubic yard. Add about 10% for waste when you order.",
+      },
+      {
+        title: "How much one ton of rock covers (sq ft)",
+        intro: "A ton of light lava rock spreads much further than a ton of river rock or pebbles, because it weighs less per cubic yard.",
+        columns: [
+          { label: "Rock type" },
+          { label: "2 in deep", num: true },
+          { label: "3 in deep", num: true },
+          { label: "4 in deep", num: true },
+        ],
+        rows: [
+          ["River rock (1.35 t/yd)", "120", "80", "60"],
+          ["Lava rock (0.55 t/yd)", "295", "196", "147"],
+          ["Pebbles or marble (1.40 t/yd)", "116", "77", "58"],
+        ],
+        footnote: "Square feet one ton covers at each depth: (27 ÷ density) ÷ (depth ÷ 12).",
+      },
+    ],
+    tips: [
+      "Lay landscape fabric under rock beds to keep weeds down and stop rock sinking into the soil.",
+      "Use edging so rock doesn't spill into the lawn, where it can damage a mower.",
+      "Rock is sold by the ton, but lava rock is often sold by the yard because it's so light. Ask before you compare prices.",
+      "Bags are handy for small beds and accents. Past about half a ton, bulk is usually cheaper.",
+    ],
+    faqs: [
+      {
+        q: "How much landscape rock do I need?",
+        a: "Multiply the bed's square feet by the depth in inches, divide by 12 for cubic feet, then by 27 for cubic yards. Multiply by about 1.35 for tons of river rock. A 10 by 20 foot bed at 3 inches needs about 2.5 tons.",
+      },
+      {
+        q: "How much does a ton of river rock cover?",
+        a: "About 120 square feet at 2 inches deep, 80 square feet at 3 inches and 60 square feet at 4 inches.",
+      },
+      {
+        q: "How much does a ton of lava rock cover?",
+        a: "About 196 square feet at 3 inches, because lava rock weighs only about 0.55 tons per cubic yard, less than half as much as river rock.",
+      },
+      {
+        q: "How deep should landscape rock be?",
+        a: "About 2 inches for small rock up to ¾ inch, 3 inches for 1 to 2 inch rock, and 4 inches for larger rock.",
+      },
+      {
+        q: "How many bags of river rock do I need?",
+        a: "About 100 bags of 0.5 cubic feet for a 10 by 20 foot bed at 3 inches, or 110 with 10% extra. Bulk is usually cheaper past about half a ton.",
+      },
+      {
+        q: "How much does a yard of river rock weigh?",
+        a: "About 1.35 tons, or 2,700 pounds. Larger rock and wet rock can weigh a little more.",
+      },
+      {
+        q: "Should I put landscape fabric under rock?",
+        a: "Usually, yes. It keeps weeds down and stops the rock working into the soil. Skip it in beds where you plan to add plants often.",
+      },
+    ],
+    sources: [
+      "Lava rock weight (Outdoor Warehouse Supply)",
+      "Mexican beach pebble weight (Carroll's Building Materials)",
+      "Depth by rock size (Earth Stone Rock)",
+      "2026 landscape rock prices (HomeGuide)",
+    ],
+    related: [
+      "gravel-calculator",
+      "mulch-calculator",
+      "landscape-materials-calculator",
+      "pea-gravel-calculator",
+      "paver-calculator",
+    ],
+    lastUpdated: "2026-10-20",
+    imageAlt: "Landscape rock diagram: rock depth over landscape fabric, and suggested depth by rock size.",
   },
 ];
 

@@ -337,6 +337,34 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/fill-dirt-sand-topsoil-cost",
     checked: "2026-10-18",
   },
+  owsLavaRock: {
+    id: "owsLavaRock",
+    title: "Black lava rock — a lightweight, porous volcanic rock listed at about 900 lb per cubic yard, far lighter than river rock (which runs about 2,700 lb per yard)",
+    publisher: "Outdoor Warehouse Supply (landscape rock supplier)",
+    url: "https://www.outdoorwarehousesupply.com/product/black-lava-rock-1-2/",
+    checked: "2026-10-20",
+  },
+  carrollsPebbles: {
+    id: "carrollsPebbles",
+    title: "Black Mexican beach pebbles — about 2,400 to 2,900 lb per cubic yard (roughly 1.2 to 1.45 tons); heavy, rounded decorative stone like crushed marble chips",
+    publisher: "Carroll's Building Materials (stone & aggregate supplier)",
+    url: "https://www.carrollsbuildingmaterials.com/product/black-mexican-beach-pebbles/",
+    checked: "2026-10-20",
+  },
+  earthStoneRockSizes: {
+    id: "earthStoneRockSizes",
+    title: "Landscape rock sizes explained — spread smaller decorative rock about 2 to 3 inches deep and larger rock a bit deeper for full coverage",
+    publisher: "Earth Stone Rock (landscape rock supplier)",
+    url: "https://earthstonerock.com/blogs/landscaping-guides/landscape-rock-sizes-explained",
+    checked: "2026-10-20",
+  },
+  homeGuideLandscapeRock: {
+    id: "homeGuideLandscapeRock",
+    title: "Landscaping river rock & stone cost (2026) — river rock $45-130 per ton, decorative lava rock $80-240 per ton, Mexican beach pebbles $475-800 per ton, white stones & pebbles $650-1,300 per ton; one ton of river rock covers about 55 to 135 sq ft",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/landscaping-river-rock-prices",
+    checked: "2026-10-20",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -365,6 +393,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "paver-base-calculator": ["paverBedBelgard", "quikretePaverBase", "gravelCost2026"],
   "retaining-wall-calculator": ["pavestoneWallBlock", "allanBlockInstall", "cmhaSrwHeight", "homeGuideRetainingWall"],
   "fill-dirt-calculator": ["ottrFillDirt", "homeGuideFillDirt"],
+  "landscape-rock-calculator": ["owsLavaRock", "carrollsPebbles", "earthStoneRockSizes", "quikretePaverBase", "homeGuideLandscapeRock"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

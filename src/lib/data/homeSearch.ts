@@ -38,6 +38,10 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "retaining-wall-calculator": ["retaining wall", "wall blocks", "garden wall", "landscape blocks", "segmental", "cap blocks", "terrace"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
+  // "landscape rock" resolves here (name starts with it); "river rock" and "lava
+  // rock" are forced here via QUERY_PRIORITY (ahead of the gravel / materials
+  // pages that also keyword-match). "rock" also lands here first (name contains it).
+  "landscape-rock-calculator": ["landscape rock", "decorative rock", "river rock", "lava rock", "beach pebbles", "marble chips", "rock bed", "rock garden", "xeriscape", "rock"],
   // "mulch" resolves to the Mulch Calculator first because its name matches (name
   // matches rank before keyword matches); these add bed/ring/bag synonyms.
   "mulch-calculator": ["mulch", "bark", "wood chips", "bags", "flower bed", "garden bed", "tree ring", "cover"],
@@ -58,6 +62,11 @@ export function tileName(c: Calculator): string {
  */
 const QUERY_PRIORITY: Record<string, string> = {
   patio: "paver-calculator",
+  // decorative-rock queries land on the Landscape Rock Calculator first, ahead of
+  // the Gravel and Landscape Material pages that also match "river rock".
+  "landscape rock": "landscape-rock-calculator",
+  "river rock": "landscape-rock-calculator",
+  "lava rock": "landscape-rock-calculator",
 };
 
 /**

@@ -278,6 +278,22 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["ottrFillDirt", "homeGuideFillDirt"]} />
 
+      <h2>Landscape rock</h2>
+      <p>
+        Decorative rock uses the shared yard math: cubic feet = area × depth ÷ 12, then ÷ 27 for cubic
+        yards, and tons = cubic yards × density. Bags = cubic feet × (1 + waste) ÷ bag size, rounded up,
+        and the coverage of one ton = (27 ÷ density) ÷ (depth ÷ 12). Rock weight varies a lot by type:
+        river rock about 1.35 tons per cubic yard (2,700 lb, the shared value), heavy Mexican beach
+        pebbles and white marble chips about 1.40 tons (supplier listings run 2,400 to 2,900 lb), and
+        lightweight, porous lava rock only about 0.55 tons (roughly 900 to 1,300 lb), so a ton of lava
+        rock covers more than twice the area of a ton of river rock. We suggest depth by rock size,
+        about 2 inches for small rock, 3 for medium and 4 for larger rock, and a 0.5 cubic foot bag.
+        Default bulk prices are 2026 estimates, per ton by type: river rock about $80 (within $45 to
+        $130), lava rock about $130 ($80 to $240), pebbles about $500 ($475 to $800) and marble about
+        $700, plus about $7 per 0.5 cubic foot bag.
+      </p>
+      <Cite keys={["owsLavaRock", "carrollsPebbles", "earthStoneRockSizes", "quikretePaverBase", "homeGuideLandscapeRock"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

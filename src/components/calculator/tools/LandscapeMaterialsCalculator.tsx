@@ -119,6 +119,16 @@ export function LandscapeMaterialsCalculator() {
             </p>
           )}
 
+          {(material === "riverRock" || material === "gravel" || material === "crushedStone" || material === "decomposedGranite") && (
+            <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+              Choosing decorative rock?{" "}
+              <Link href="/landscape-rock-calculator/" prefetch={false}>
+                Use the Landscape Rock Calculator
+              </Link>{" "}
+              for rock types, depth by size and coverage per ton.
+            </p>
+          )}
+
           {material === "sand" && (
             <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
               Need bags, sandbox or paver bedding sand?{" "}

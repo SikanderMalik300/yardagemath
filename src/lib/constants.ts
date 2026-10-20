@@ -204,6 +204,28 @@ export const FILL_COMPACTION_PCT = 20;
 // 10 cu yd of dirt by weight (Ottr Supply); small ~5.
 export const FILL_TRUCKLOADS = { small: 5, tandem: 10, large: 14 } as const;
 
+/* =========================================================================
+   Landscape rock (batch 3 day 5) — decorative rock weights, US tons per cu yd.
+   VERIFY:
+     - river rock 1.35 (shared value, matches the gravel page);
+     - lava rock ~0.55: very light/porous; supplier listings ~900-1,300 lb/yd
+       (Outdoor Warehouse Supply black lava ~900 lb), 1,100 lb (0.55 t) is a mid value;
+     - Mexican beach pebbles ~1.40: Carroll's Building Materials 2,400-2,900 lb/yd;
+     - white marble chips ~1.40: crushed white marble ~ crushed stone weight.
+   ========================================================================= */
+export const LANDSCAPE_ROCK_DENSITY = {
+  riverRock: DENSITY_TONS_PER_CUYD.riverRock, // 1.35 (shared)
+  lavaRock: 0.55,
+  beachPebbles: 1.4,
+  marbleChips: 1.4,
+} as const;
+// Suggested depth by rock size (inches). VERIFY: supplier guide (Earth Stone Rock —
+// smaller rock about 2-3 in deep, larger rock a bit deeper).
+export const LANDSCAPE_ROCK_DEPTH = { small: 2, medium: 3, large: 4 } as const;
+// Decorative-rock bag size (cu ft). VERIFY: Vigoro 0.5 cu ft river rock / creek stone
+// bag (~40 lb) at The Home Depot; some bags are 0.4 cu ft.
+export const LANDSCAPE_ROCK_BAG_CUFT = 0.5;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -276,6 +298,11 @@ export const PRICES = {
   fillDeliveryPerLoad: 75, // VERIFY: 2026 delivery fee, within $50-150/trip (HomeGuide)
   mulchPerCuYd: 40, // VERIFY: 2026 bulk wood/bark mulch, mid of $30-55 (LawnStarter)
   mulchPerBag: 4, // VERIFY: 2026 price of a 2 cu ft bag, within $3.25-6.50 (LawnStarter)
+  rockRiverPerTon: 80, // VERIFY: 2026 bulk river rock, within $45-130/ton (HomeGuide)
+  rockLavaPerTon: 130, // VERIFY: 2026 bulk lava rock, within $80-240/ton (HomeGuide)
+  rockPebblesPerTon: 500, // VERIFY: 2026 Mexican beach pebbles, within $475-800/ton (HomeGuide)
+  rockMarblePerTon: 700, // VERIFY: 2026 white marble chips, within white-stone $650-1,300/ton (HomeGuide)
+  rockPerBag: 7, // VERIFY: 2026 0.5 cu ft river rock bag, within $6-7 (Vigoro / The Home Depot)
 } as const;
 
 /* =========================================================================

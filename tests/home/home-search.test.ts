@@ -85,6 +85,15 @@ describe("home search", () => {
     expect(d[1]).toBe("topsoil-calculator");
   });
 
+  it("'landscape rock', 'river rock' and 'lava rock' resolve to the Landscape Rock Calculator first; 'rock' shows it and Gravel", () => {
+    expect(slugs("landscape rock")[0]).toBe("landscape-rock-calculator");
+    expect(slugs("river rock")[0]).toBe("landscape-rock-calculator");
+    expect(slugs("lava rock")[0]).toBe("landscape-rock-calculator");
+    const r = slugs("rock");
+    expect(r[0]).toBe("landscape-rock-calculator");
+    expect(r).toContain("gravel-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

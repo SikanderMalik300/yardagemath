@@ -544,6 +544,59 @@ function FillDirtDiagram({ title }: { title: string }) {
   );
 }
 
+/** Landscape rock: a rock bed over fabric with a depth arrow and edging, plus
+    three size swatches labelled with their suggested depth. */
+function LandscapeRockDiagram({ title }: { title: string }) {
+  const rock = "#cbc8bf";
+  return (
+    <Frame title={title}>
+      {/* Left: side view — rock layer over landscape fabric over soil, with edging */}
+      <rect x="30" y="62" width="116" height="26" fill={rock} stroke={LINE} strokeWidth="1.2" />
+      {/* a few pebbles in the rock layer */}
+      {[
+        [44, 72], [58, 80], [72, 70], [86, 79], [100, 72], [114, 80], [128, 71],
+      ].map(([cx, cy], k) => (
+        <circle key={k} cx={cx} cy={cy} r="4.2" fill="#fff" stroke={LINE} strokeWidth="0.8" />
+      ))}
+      {/* landscape fabric (thin) */}
+      <rect x="30" y="88" width="116" height="5" fill={SOFT} stroke={LINE} strokeWidth="1" />
+      {/* soil */}
+      <rect x="30" y="93" width="116" height="20" fill="#efe7d4" stroke={LINE} strokeWidth="1" />
+      {/* edge restraint holding the rock on the left */}
+      <rect x="25" y="58" width="5" height="35" fill={BRAND} opacity="0.8" />
+      {/* depth arrow for the rock layer (right side) */}
+      <line x1="136" y1="62" x2="136" y2="88" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M136 62 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M136 88 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="131" y="78" textAnchor="end" fill={BRAND} fontSize="10" fontWeight="600">3&Prime;</text>
+      <text x="152" y="80" textAnchor="start" fill={LINE} fontSize="8.5">fabric</text>
+      <text x="152" y="102" textAnchor="start" fill={LINE} fontSize="8.5">soil</text>
+      <text x="80" y="128" textAnchor="middle" fill={LINE} fontSize="10.5">rock over fabric (side view)</text>
+
+      {/* Right: three size swatches with suggested depths */}
+      <text x="243" y="48" textAnchor="middle" fill={LINE} fontSize="9.5">depth by rock size</text>
+      {[
+        { x: 196, r: 2.4, label: "small 2″", depth: 2 },
+        { x: 234, r: 3.6, label: "med 3″", depth: 3 },
+        { x: 272, r: 5, label: "large 4″", depth: 4 },
+      ].map((s, k) => {
+        const pts: [number, number][] = [
+          [s.x + 6, 62], [s.x + 18, 68], [s.x + 8, 74], [s.x + 20, 80], [s.x + 7, 86], [s.x + 17, 90],
+        ];
+        return (
+          <g key={k}>
+            <rect x={s.x} y="56" width="30" height="40" rx="3" fill={SOFT} stroke={LINE} strokeWidth="1.1" />
+            {pts.map(([cx, cy], j) => (
+              <circle key={j} cx={cx} cy={cy} r={s.r} fill="#fff" stroke={LINE} strokeWidth="0.7" />
+            ))}
+            <text x={s.x + 15} y="110" textAnchor="middle" fill={BRAND} fontSize="9" fontWeight="600">{s.label}</text>
+          </g>
+        );
+      })}
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -569,6 +622,8 @@ export function Diagram({
     node = <RetainingWallDiagram title={alt} />;
   } else if (slug === "fill-dirt-calculator") {
     node = <FillDirtDiagram title={alt} />;
+  } else if (slug === "landscape-rock-calculator") {
+    node = <LandscapeRockDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {
