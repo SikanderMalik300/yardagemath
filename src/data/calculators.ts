@@ -95,6 +95,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
       { project: "Concrete for strip, pad or pier footings", slug: "concrete-footing-calculator" },
       { project: "Filling block cores with concrete or grout", slug: "cinder-block-fill-calculator" },
+      { project: "Asphalt or blacktop driveway", slug: "asphalt-calculator" },
       { project: "Landscape retaining wall blocks", slug: "retaining-wall-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
     ],
@@ -135,6 +136,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Gravel base and bedding sand under pavers", slug: "paver-base-calculator" },
       { project: "Dry-stacked block retaining wall", slug: "retaining-wall-calculator" },
       { project: "Gravel for a driveway, path or patio", slug: "gravel-calculator" },
+      { project: "Asphalt or blacktop driveway", slug: "asphalt-calculator" },
       { project: "Sand for a sandbox, paver base or fill", slug: "sand-calculator" },
       { project: "Pea gravel for a patio, path or playground", slug: "pea-gravel-calculator" },
       { project: "Any loose material by area and depth", slug: "cubic-yard-calculator" },
@@ -619,6 +621,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["2026 installed cost guide (HomeGuide)", "Rebar and mesh prices (HomeGuide)", "Quikrete/Sakrete bag yields"],
     related: [
+      "asphalt-calculator",
       "yards-of-concrete-calculator",
       "paver-calculator",
       "concrete-footing-calculator",
@@ -627,7 +630,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "square-yard-calculator",
     ],
-    lastUpdated: "2026-10-14",
+    lastUpdated: "2026-10-21",
     imageAlt: "Concrete slab cost diagram: slab thickness, gravel base and rebar, plus the length and width the calculator uses.",
   },
 
@@ -1790,13 +1793,14 @@ export const calculators: Calculator[] = [
     sources: ["Quikrete 80-lb concrete mix yield", "2026 ready-mix cost guide"],
     fromSikander: "I checked this page against Quikrete's own concrete calculator. For a 12 × 12 slab, both say 80 bags of 80-lb mix at 4 inches and 120 at 6 inches. Quikrete's numbers leave out waste, so this page adds 10% on top by default.",
     related: [
+      "asphalt-calculator",
       "concrete-footing-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
       "concrete-block-calculator",
       "block-wall-calculator",
     ],
-    lastUpdated: "2026-10-10",
+    lastUpdated: "2026-10-21",
     imageAlt: "Yards of concrete diagram: slab, strip footing and round column with the dimensions the calculator uses.",
   },
 
@@ -2494,8 +2498,9 @@ export const calculators: Calculator[] = [
       "landscape-materials-calculator",
       "rip-rap-calculator",
       "mulch-calculator",
+      "asphalt-calculator",
     ],
-    lastUpdated: "2026-10-14",
+    lastUpdated: "2026-10-21",
     imageAlt: "Gravel calculator diagram: driveway layers and the length, width and depth the calculator uses.",
   },
 
@@ -2838,11 +2843,12 @@ export const calculators: Calculator[] = [
       "sand-calculator",
       "gravel-calculator",
       "landscape-rock-calculator",
+      "asphalt-calculator",
       "brick-calculator",
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: "2026-10-16",
+    lastUpdated: "2026-10-21",
     imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
   },
 
@@ -2949,13 +2955,14 @@ export const calculators: Calculator[] = [
     sources: ["Base depth and compaction (Belgard)", "Paver base bag size (Quikrete)", "2026 base prices"],
     related: [
       "paver-calculator",
+      "asphalt-calculator",
       "retaining-wall-calculator",
       "gravel-calculator",
       "sand-calculator",
       "brick-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: "2026-10-16",
+    lastUpdated: "2026-10-21",
     imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
   },
 
@@ -3305,6 +3312,7 @@ export const calculators: Calculator[] = [
     sources: [
       "Lava rock weight (Outdoor Warehouse Supply)",
       "Mexican beach pebble weight (Carroll's Building Materials)",
+      "White marble chip weight (Patuxent Nursery)",
       "Depth by rock size (Earth Stone Rock)",
       "2026 landscape rock prices (HomeGuide)",
     ],
@@ -3315,8 +3323,142 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "paver-calculator",
     ],
-    lastUpdated: "2026-10-20",
+    lastUpdated: "2026-10-21",
     imageAlt: "Landscape rock diagram: rock depth over landscape fabric, and suggested depth by rock size.",
+  },
+  /* ---------------------------------------------------------------- 27 */
+  {
+    slug: "asphalt-calculator",
+    category: "concrete",
+    title: "Asphalt Calculator – Tons, Yards, Truckloads & Cost",
+    metaDescription:
+      "Work out how many tons of asphalt you need for a driveway, parking pad or patch. Enter area and thickness to get tons, cubic yards, truckloads and cost.",
+    h1: "Asphalt Calculator",
+    primaryKeyword: "asphalt calculator",
+    secondaryKeywords: [
+      "asphalt tonnage calculator",
+      "blacktop calculator",
+      "asphalt driveway cost calculator",
+      "asphalt millings calculator",
+      "how to calculate asphalt tonnage",
+      "how much does a ton of asphalt cover",
+    ],
+    cardDescription: "How many tons of asphalt for a driveway, pad or patch: tons, cubic yards, truckloads and cost.",
+    shortAnswer:
+      "A 12 by 50 foot driveway paved 3 inches thick takes about 10.9 tons of hot mix asphalt, or about 11.4 tons with 5% extra. Asphalt weighs about 145 pounds per cubic foot, so one ton covers about 55 square feet at 3 inches. Enter your area and thickness below to get tons, yards, truckloads and cost.",
+    howTo: [
+      "Measure the area and pick a shape. Add more areas, or subtract a planter or island.",
+      "Pick the project. Driveways usually get about 3 inches of compacted asphalt, paths about 2.",
+      "Keep 5% extra for edges and uneven ground.",
+      "Read the tons and truckloads. Turn on the gravel base if you're building from scratch.",
+    ],
+    formula: {
+      plain: [
+        "cu ft = area (sq ft) × thickness (in) ÷ 12",
+        "cubic yards = cu ft ÷ 27,  square yards = sq ft ÷ 9",
+        "tons = cu ft × density (lb per cu ft) ÷ 2,000   (hot mix 145, millings 120)",
+        "with waste = tons × (1 + waste),  loads = ceil(tons ÷ truck tons)",
+        "sq ft per ton = (2,000 ÷ density) ÷ (thickness ÷ 12)",
+      ],
+      example: [
+        "Driveway 12 × 50 ft, 3 in of hot mix asphalt:",
+        "cu ft = 600 × 3 ÷ 12 = 150, cubic yards = 150 ÷ 27 = 5.56",
+        "tons = 150 × 145 ÷ 2,000 = 10.88, with 5% = 11.42",
+        "loads = ceil(11.42 ÷ 20) = 1 truckload",
+      ],
+      example2: [
+        "Parking area 2,000 sq ft, 3 in:",
+        "cu ft = 500, tons = 36.25, with 5% = 38.06",
+        "loads = ceil(38.06 ÷ 20) = 2 truckloads",
+      ],
+    },
+    notCovered:
+      "It estimates asphalt for a flat area at one compacted thickness. It doesn't design the pavement for trucks or heavy traffic, plan drainage or slopes, or count sealcoat, tack coat or crack filler. Mix weights vary by plant, so check the supplier's figure before you order.",
+    tables: [
+      {
+        title: "Tons of hot mix asphalt by area (145 lb per cu ft, before waste)",
+        columns: [
+          { label: "Area" },
+          { label: "2 in", num: true },
+          { label: "3 in", num: true },
+          { label: "4 in", num: true },
+        ],
+        rows: [
+          ["100 sq ft", "1.2", "1.8", "2.4"],
+          ["250 sq ft", "3.0", "4.5", "6.0"],
+          ["500 sq ft", "6.0", "9.1", "12.1"],
+          ["1,000 sq ft", "12.1", "18.1", "24.2"],
+        ],
+        footnote: "Tons of hot mix asphalt at 145 lb per cubic foot, before waste. Add about 5% for edges and uneven ground. One tri-axle truck holds roughly 20 tons.",
+      },
+      {
+        title: "How much one ton of asphalt covers (sq ft)",
+        intro: "Coverage falls as the layer gets thicker. Lighter millings cover a little more ground per ton than hot mix.",
+        columns: [
+          { label: "Material" },
+          { label: "2 in", num: true },
+          { label: "3 in", num: true },
+          { label: "4 in", num: true },
+        ],
+        rows: [
+          ["Hot mix asphalt (145 lb)", "82.8", "55.2", "41.4"],
+          ["Asphalt millings (120 lb)", "100", "66.7", "50"],
+        ],
+        footnote: "Square feet one ton covers at each thickness: (2,000 ÷ density) ÷ (thickness ÷ 12).",
+      },
+    ],
+    tips: [
+      "Asphalt is sold by the ton. Order the compacted thickness you want, not the loose thickness, because the paver and roller pack it down.",
+      "A firm, compacted gravel base matters as much as the asphalt. Most driveway failures start with a soft base.",
+      "Many plants have a minimum order, and small jobs often pay a short-load fee. Ask before you compare prices.",
+      "Wait a few months before sealcoating new asphalt, then reseal every few years.",
+    ],
+    faqs: [
+      {
+        q: "How much asphalt do I need?",
+        a: "Multiply the area in square feet by the thickness in inches and divide by 12 for cubic feet. Multiply by 145 and divide by 2,000 for tons. A 12 by 50 foot driveway at 3 inches needs about 10.9 tons, or 11.4 with 5% extra.",
+      },
+      {
+        q: "How do you calculate asphalt tonnage?",
+        a: "Square yards × thickness in inches × about 110 pounds, then divide by 2,000. For 66.7 square yards at 3 inches, that's about 11 tons.",
+      },
+      {
+        q: "How much does a ton of asphalt cover?",
+        a: "About 83 square feet at 2 inches thick and about 55 square feet at 3 inches.",
+      },
+      {
+        q: "How thick should an asphalt driveway be?",
+        a: "Usually about 2 to 3 inches of compacted asphalt over 4 to 8 inches of compacted gravel base. Soft soil or heavy vehicles need more.",
+      },
+      {
+        q: "How much does a cubic yard of asphalt weigh?",
+        a: "About 3,900 pounds, or just under 2 tons, for compacted hot mix asphalt.",
+      },
+      {
+        q: "How much does an asphalt driveway cost?",
+        a: "New asphalt driveways often cost about $5 to $12 per square foot installed, depending on thickness, base work and region. The asphalt alone often runs about $40 to $80 per ton.",
+      },
+      {
+        q: "Asphalt or concrete for a driveway?",
+        a: "Asphalt usually costs less to install and is easy to patch, but it needs sealing every few years. Concrete costs more up front and usually lasts longer. Use the Concrete Slab Cost Calculator to compare.",
+      },
+    ],
+    sources: [
+      "Hot mix unit weight (Asphalt Institute)",
+      "Driveway thickness & base (Illinois Asphalt Pavement Association)",
+      "Millings weight (PennDOT RAP fact sheet)",
+      "Truck size (Gernatt Asphalt Products)",
+      "2026 asphalt prices (HomeGuide)",
+    ],
+    related: [
+      "concrete-slab-cost-calculator",
+      "gravel-calculator",
+      "paver-base-calculator",
+      "yards-of-concrete-calculator",
+      "paver-calculator",
+    ],
+    lastUpdated: "2026-10-21",
+    imageAlt: "Asphalt calculator diagram: compacted asphalt over a gravel base, with the length, width and thickness the calculator uses.",
   },
 ];
 

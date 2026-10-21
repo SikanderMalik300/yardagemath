@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { computeConcreteSlab, type BagSize, type SupplyMode } from "@/lib/formulas/concreteSlab";
 import { feetInchesToFeet, metersToFeet, cmToInches, round } from "@/lib/formulas/units";
 import { num } from "@/lib/analytics";
@@ -209,6 +210,12 @@ export function ConcreteSlabCalculator() {
             {result.rebarCost > 0 && <SecondaryItem label="Rebar / mesh" value={fmtUSD(result.rebarCost)} />}
             {result.gravelBaseCuYd > 0 && <SecondaryItem label="Gravel base" value={`${fmtNumber(round(result.gravelBaseCuYd, 2))} cu yd`} />}
           </SecondaryResults>
+
+          <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+            Comparing with blacktop?{" "}
+            <Link href="/asphalt-calculator/" prefetch={false}>Use the Asphalt Calculator</Link>{" "}
+            for tons and driveway cost.
+          </p>
 
           <ShowMath>
             <MathLine>area = {fmtNumber(result.areaSqFt, 1)} sq ft</MathLine>

@@ -94,6 +94,15 @@ describe("home search", () => {
     expect(r).toContain("gravel-calculator");
   });
 
+  it("'asphalt', 'blacktop' and 'millings' resolve to the Asphalt Calculator first; 'driveway' shows it and Concrete Slab Cost", () => {
+    expect(slugs("asphalt")[0]).toBe("asphalt-calculator");
+    expect(slugs("blacktop")[0]).toBe("asphalt-calculator");
+    expect(slugs("millings")[0]).toBe("asphalt-calculator");
+    const d = slugs("driveway");
+    expect(d).toContain("asphalt-calculator");
+    expect(d).toContain("concrete-slab-cost-calculator");
+  });
+
   it("partial words match (e.g. 'grav' -> gravel)", () => {
     expect(slugs("grav")).toContain("pea-gravel-calculator");
   });

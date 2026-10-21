@@ -36,6 +36,10 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // "retaining wall" resolves here first (the name starts with it); "block wall"
   // still goes to the Block Wall Calculator, whose name starts with that.
   "retaining-wall-calculator": ["retaining wall", "wall blocks", "garden wall", "landscape blocks", "segmental", "cap blocks", "terrace"],
+  // "asphalt" and "blacktop" resolve here (name starts with asphalt; blacktop and
+  // millings are forced here via QUERY_PRIORITY). "driveway" shows this page and the
+  // Concrete Slab Cost Calculator.
+  "asphalt-calculator": ["asphalt", "blacktop", "driveway", "paving", "hot mix", "tonnage", "millings", "parking lot", "patch", "tar"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "landscape rock" resolves here (name starts with it); "river rock" and "lava
@@ -67,6 +71,10 @@ const QUERY_PRIORITY: Record<string, string> = {
   "landscape rock": "landscape-rock-calculator",
   "river rock": "landscape-rock-calculator",
   "lava rock": "landscape-rock-calculator",
+  // decorative-asphalt queries land on the Asphalt Calculator first.
+  asphalt: "asphalt-calculator",
+  blacktop: "asphalt-calculator",
+  millings: "asphalt-calculator",
 };
 
 /**

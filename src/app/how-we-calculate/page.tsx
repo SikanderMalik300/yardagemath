@@ -284,7 +284,8 @@ export default function HowWeCalculatePage() {
         yards, and tons = cubic yards × density. Bags = cubic feet × (1 + waste) ÷ bag size, rounded up,
         and the coverage of one ton = (27 ÷ density) ÷ (depth ÷ 12). Rock weight varies a lot by type:
         river rock about 1.35 tons per cubic yard (2,700 lb, the shared value), heavy Mexican beach
-        pebbles and white marble chips about 1.40 tons (supplier listings run 2,400 to 2,900 lb), and
+        pebbles about 1.40 tons (Carroll&apos;s Building Materials lists 2,400 to 2,900 lb) and white marble
+        chips about 1.40 tons (Patuxent Nursery lists 2,800 lb), and
         lightweight, porous lava rock only about 0.55 tons (roughly 900 to 1,300 lb), so a ton of lava
         rock covers more than twice the area of a ton of river rock. We suggest depth by rock size,
         about 2 inches for small rock, 3 for medium and 4 for larger rock, and a 0.5 cubic foot bag.
@@ -292,7 +293,24 @@ export default function HowWeCalculatePage() {
         $130), lava rock about $130 ($80 to $240), pebbles about $500 ($475 to $800) and marble about
         $700, plus about $7 per 0.5 cubic foot bag.
       </p>
-      <Cite keys={["owsLavaRock", "carrollsPebbles", "earthStoneRockSizes", "quikretePaverBase", "homeGuideLandscapeRock"]} />
+      <Cite keys={["owsLavaRock", "carrollsPebbles", "patuxentMarble", "earthStoneRockSizes", "quikretePaverBase", "homeGuideLandscapeRock"]} />
+
+      <h2>Asphalt</h2>
+      <p>
+        Asphalt uses the shared area math, then weight from a unit weight. Cubic feet = area × thickness
+        ÷ 12; tons = cubic feet × density ÷ 2,000; square yards = sq ft ÷ 9; and one ton covers (2,000 ÷
+        density) ÷ (thickness ÷ 12) square feet. Compacted hot mix asphalt weighs about 145 pounds per
+        cubic foot, which matches the Asphalt Institute rule of thumb of about 110 pounds per square yard
+        per inch of compacted thickness, so a ton covers about 55 square feet at 3 inches. Recycled
+        asphalt millings are lighter, about 120 pounds per cubic foot (PennDOT lists reclaimed asphalt
+        pavement at 120 to 140 lb/ft³, and 100 to 125 compacted). Residential driveways are usually 2 to
+        3 inches of compacted asphalt over 4 to 8 inches of compacted gravel base. We keep 5% for waste
+        and size truckloads at 20 tons for a tri-axle (loads = tons with waste ÷ truck tons, rounded up).
+        An optional gravel base uses crusher run at 1.5 tons per cubic yard with 20% compaction. Default
+        prices are 2026 estimates: hot mix about $60 per ton (within $40 to $80) and an installed
+        estimate about $8 per square foot (within $5 to $12 for a driveway).
+      </p>
+      <Cite keys={["asphaltInstituteWeight", "iapaDriveway", "penndotRap", "gernattTruck", "homeGuideAsphaltDriveway", "homeGuideAsphaltPrices"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

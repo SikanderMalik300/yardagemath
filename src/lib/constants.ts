@@ -226,6 +226,34 @@ export const LANDSCAPE_ROCK_DEPTH = { small: 2, medium: 3, large: 4 } as const;
 // bag (~40 lb) at The Home Depot; some bags are 0.4 cu ft.
 export const LANDSCAPE_ROCK_BAG_CUFT = 0.5;
 
+/* =========================================================================
+   Asphalt (batch 4 day 1) — compacted unit weight, pounds per cubic foot.
+   VERIFY:
+     - hot mix 145 lb/ft3: Asphalt Institute rule of thumb 110 lb of hot mix per
+       sq yd per inch of compacted thickness (= ~145-146 lb/cu ft);
+     - millings (reclaimed asphalt pavement) 120 lb/ft3: PennDOT RAP fact sheet,
+       unit weight 120-140 lb/ft3, compacted 100-125 lb/ft3.
+   ========================================================================= */
+export const ASPHALT_DENSITY_LB_PER_CUFT = {
+  hotMix: 145,
+  millings: 120,
+} as const;
+// Compacted asphalt thickness by project (inches). VERIFY: Illinois Asphalt
+// Pavement Association driveways guide (2-3 in residential, in 1.5 in lifts).
+export const ASPHALT_PROJECTS = {
+  walkway: { label: "Walkway or path", thicknessIn: 2 },
+  driveway: { label: "Residential driveway", thicknessIn: 3 },
+  parking: { label: "Parking lot, light traffic", thicknessIn: 3 },
+  patch: { label: "Patch or overlay", thicknessIn: 1.5 },
+} as const;
+export const ASPHALT_WASTE_PCT = 5;
+// Gravel base depth under a driveway (inches). VERIFY: IAPA 6-8 in compacted
+// aggregate base under 3 in of asphalt. Reuses crusher run 1.5 t/yd + 20% compaction.
+export const ASPHALT_BASE_DEPTH_IN = 6;
+// Default haul truck size (tons). VERIFY: Gernatt Asphalt Products tri-axle
+// delivers about 22 tons; 20 t is a safe default, with 10 and 15 t options.
+export const ASPHALT_TRUCK_TONS = 20;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -303,6 +331,8 @@ export const PRICES = {
   rockPebblesPerTon: 500, // VERIFY: 2026 Mexican beach pebbles, within $475-800/ton (HomeGuide)
   rockMarblePerTon: 700, // VERIFY: 2026 white marble chips, within white-stone $650-1,300/ton (HomeGuide)
   rockPerBag: 7, // VERIFY: 2026 0.5 cu ft river rock bag, within $6-7 (Vigoro / The Home Depot)
+  asphaltPerTon: 60, // VERIFY: 2026 hot mix asphalt material, within $40-80/ton (HomeGuide)
+  asphaltInstalledPerSqFt: 8, // VERIFY: 2026 asphalt driveway installed, within $5-12/sq ft (HomeGuide)
 } as const;
 
 /* =========================================================================

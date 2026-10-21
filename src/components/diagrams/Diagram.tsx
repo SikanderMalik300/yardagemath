@@ -597,6 +597,39 @@ function LandscapeRockDiagram({ title }: { title: string }) {
   );
 }
 
+/** Asphalt: driveway cross-section (soil, compacted gravel base, asphalt layer)
+    with depth arrows, plus a top view with L and W. */
+function AsphaltDiagram({ title }: { title: string }) {
+  const asphalt = "#3a3a3e";
+  return (
+    <Frame title={title}>
+      {/* Side view: asphalt over compacted gravel base over soil */}
+      <rect x="26" y="96" width="120" height="20" fill="#efe7d4" stroke={LINE} strokeWidth="1.1" />
+      <rect x="26" y="74" width="120" height="22" fill="#d8d2c4" stroke={LINE} strokeWidth="1.2" />
+      <rect x="26" y="62" width="120" height="12" fill={asphalt} stroke={LINE} strokeWidth="1.2" />
+      {/* asphalt thickness arrow (right) */}
+      <line x1="134" y1="62" x2="134" y2="74" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M134 62 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M134 74 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="152" y="71" textAnchor="start" fill={BRAND} fontSize="9" fontWeight="600">3&Prime; asphalt</text>
+      {/* base depth arrow (left) */}
+      <line x1="40" y1="74" x2="40" y2="96" stroke={BRAND} strokeWidth="1.3" />
+      <path d="M40 74 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M40 96 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="47" y="89" textAnchor="start" fill={BRAND} fontSize="9" fontWeight="600">base 6&Prime;</text>
+      <text x="152" y="90" textAnchor="start" fill={LINE} fontSize="8.5">gravel</text>
+      <text x="100" y="110" textAnchor="middle" fill={LINE} fontSize="8.5">soil</text>
+      <text x="86" y="130" textAnchor="middle" fill={LINE} fontSize="10.5">driveway (side view)</text>
+
+      {/* Top view: rectangle labelled L and W */}
+      <rect x="200" y="62" width="82" height="44" fill={asphalt} stroke={LINE} strokeWidth="1.3" />
+      <text x="241" y="120" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="190" y="84" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 190 84)">W</text>
+      <text x="241" y="138" textAnchor="middle" fill={LINE} fontSize="11">area (top view)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -624,6 +657,8 @@ export function Diagram({
     node = <FillDirtDiagram title={alt} />;
   } else if (slug === "landscape-rock-calculator") {
     node = <LandscapeRockDiagram title={alt} />;
+  } else if (slug === "asphalt-calculator") {
+    node = <AsphaltDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {
