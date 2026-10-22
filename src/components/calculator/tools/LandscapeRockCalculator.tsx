@@ -130,7 +130,7 @@ export function LandscapeRockCalculator() {
   const cheaperBulk = result.cheaper === "bulk";
   const cheaperBagged = result.cheaper === "bagged";
   const typeLabel = ROCK_TYPES[type].label;
-  const summary = `${typeLabel}: ${fmtNumber(round(result.tons, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste), about ${fmtInt(result.bags)} bags of ${bag} cu ft. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `${typeLabel}: ${fmtNumber(round(result.tons, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste), about ${fmtInt(result.bags)} bags of ${bag} cu ft. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

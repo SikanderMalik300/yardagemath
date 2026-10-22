@@ -72,7 +72,7 @@ export function FillDirtCalculator() {
     setLoad("tandem"); setCustomLoad("12"); setPrice(String(PRICES.fillDirtPerCuYd)); setDelivery(String(PRICES.fillDeliveryPerLoad));
   };
 
-  const summary = `Fill dirt: ${fmtNumber(round(result.cubicYardsCompacted, 2))} cu yd with ${compaction}% compaction (${fmtNumber(round(result.cubicYards, 2))} before), ${fmtNumber(round(result.tons, 2))} tons, ${fmtInt(result.loads)} truckloads. Cost ${fmtUSD(result.cost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Fill dirt: ${fmtNumber(round(result.cubicYardsCompacted, 2))} cu yd with ${compaction}% compaction (${fmtNumber(round(result.cubicYards, 2))} before), ${fmtNumber(round(result.tons, 2))} tons, ${fmtInt(result.loads)} truckloads. Cost ${fmtUSD(result.cost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

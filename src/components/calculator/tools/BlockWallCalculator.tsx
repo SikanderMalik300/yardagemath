@@ -71,7 +71,7 @@ export function BlockWallCalculator() {
     setPMortar(String(PRICES.mortarBag)); setPGrout(String(PRICES.groutPerCuYd)); setPRebar(String(PRICES.rebar20ftBar));
   };
 
-  const summary = `Block wall: ${fmtInt(result.blocks)} blocks, ${result.courses} courses, ${result.mortarBags} mortar bags, total ${fmtUSD(result.cost.total)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Block wall: ${fmtInt(result.blocks)} blocks, ${result.courses} courses, ${result.mortarBags} mortar bags, total ${fmtUSD(result.cost.total)}., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

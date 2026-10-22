@@ -21,7 +21,7 @@ import { ceilCount } from "@/lib/formulas/units";
 export const metadata = buildMetadata({
   title: "How We Calculate",
   description:
-    "The formulas, densities, bag yields, coverage and slope rules behind every YardageMath calculator — each with its source and the date checked.",
+    "The formulas, densities, bag yields, coverage and slope rules behind every YardageMath calculator, each with its source and the date checked.",
   path: "/how-we-calculate/",
 });
 
@@ -40,7 +40,7 @@ function Cite({ keys }: { keys: SourceKey[] }) {
           </a>
         </span>
       ))}{" "}
-      — accessed {CHECKED}.
+      . Accessed {CHECKED}.
     </p>
   );
 }
@@ -113,7 +113,7 @@ export default function HowWeCalculatePage() {
       <h2>Material densities (tons per cubic yard)</h2>
       <p>
         Nominal dry, loose values aggregated from landscape-supply yards and USDA/engineering
-        references. Bulk density changes with moisture and material — confirm tonnage with your
+        references. Bulk density changes with moisture and material; confirm tonnage with your
         supplier. Checked {CHECKED}.
       </p>
       <SimpleTable
@@ -167,7 +167,7 @@ export default function HowWeCalculatePage() {
       <h2>Concrete footings</h2>
       <p>
         Footing concrete uses the same geometry as the slab and column tools: strip = L × W × D, pads
-        = L × W × D × quantity, piers = π × (d ÷ 2)² × D × quantity, then ÷ 27 for cubic yards. Footing
+        = L × W × D × quantity, piers = 3.1416 × (d ÷ 2)² × D × quantity, then ÷ 27 for cubic yards. Footing
         size and depth (commonly about twice the wall width, at least 12 in wide and 6 in thick, and
         below the frost line) follow IRC R403.1 and your local code.
       </p>
@@ -212,7 +212,7 @@ export default function HowWeCalculatePage() {
       <h2>Brick</h2>
       <p>
         Bricks per square foot of wall face come from the Brick Industry Association, using a 3/8 inch
-        mortar joint: a standard modular brick (3⅝ × 2¼ × 7⅝ in) takes 6.75 per sq ft, queen 5.76, king
+        mortar joint: a standard modular brick (3.625 × 2.25 × 7.625 in) takes 6.75 per sq ft, queen 5.76, king
         4.80 and utility 3.00. For a custom brick, bricks per sq ft = 144 ÷ ((length + joint) × (height
         + joint)). Multiply by the net wall area (after subtracting doors and windows) and by the number
         of wythes, then add 5% waste for a plain wall or 10% for lots of cuts. Mortar uses the Quikrete
@@ -268,7 +268,7 @@ export default function HowWeCalculatePage() {
       <h2>Fill dirt</h2>
       <p>
         Fill dirt uses the shared yard math with a compaction allowance. Cubic feet = area × depth ÷ 12
-        (a hole is length × width × depth, a round hole is π × radius² × depth, and a sloped spot uses
+        (a hole is length × width × depth, a round hole is 3.1416 × radius² × depth, and a sloped spot uses
         the average of the two end depths), then ÷ 27 for cubic yards. Loose fill settles when it is
         packed, so we add about 20% for compaction, which sits inside the 10 to 25% that common soil
         shrinks. Typical fill dirt weighs about 1.2 tons per cubic yard (2,400 lb); wet or clay-heavy
@@ -311,6 +311,20 @@ export default function HowWeCalculatePage() {
         estimate about $8 per square foot (within $5 to $12 for a driveway).
       </p>
       <Cite keys={["asphaltInstituteWeight", "iapaDriveway", "penndotRap", "gernattTruck", "homeGuideAsphaltDriveway", "homeGuideAsphaltPrices"]} />
+
+      <h2>Fence post concrete</h2>
+      <p>
+        Concrete for a post fills the hole around it. Concrete depth = hole depth - gravel; the hole
+        volume = 3.1416 × (diameter ÷ 2)² × concrete depth (a round post subtracts 3.1416 × (post
+        diameter ÷ 2)² × depth, a square post subtracts width × length × depth), all in cubic inches,
+        divided by 1,728 for cubic feet per post. Bags = total cubic feet × (1 + waste) ÷ bag yield,
+        rounded up. Fast-setting mix yields about 0.375 cu ft per 50 lb bag and sets in 20 to 40 minutes;
+        the 80, 60 and 40 lb regular bags yield 0.60, 0.45 and 0.30 cu ft. For sizing a hole we use the
+        common rule of about 3 times the post width across, and a depth of about one third of the post
+        height above ground plus 6 inches of gravel for drainage. Go below the local frost line where
+        code requires it.
+      </p>
+      <Cite keys={["quikreteFastSet", "quikreteSettingPosts", "quikreteConcrete"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

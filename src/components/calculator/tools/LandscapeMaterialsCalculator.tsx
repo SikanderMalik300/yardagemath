@@ -69,7 +69,7 @@ export function LandscapeMaterialsCalculator() {
 
   const summary = `${LANDSCAPE_MATERIALS[material].label}: ${fmtNumber(
     round(result.cubicYardsWithWaste, 2)
-  )} cu yd (${fmtNumber(round(result.tons, 2))} tons, ${result.bags} bags). — yardagemath.com/${SLUG}/`;
+  )} cu yd (${fmtNumber(round(result.tons, 2))} tons, ${result.bags} bags)., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

@@ -93,7 +93,7 @@ export function SandCalculator() {
 
   const cheaperBulk = result.cheaper === "bulk";
   const cheaperBagged = result.cheaper === "bagged";
-  const summary = `Sand: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd) with ${waste}% waste, about ${fmtInt(result.bags)} bags of 50 lb. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Sand: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd) with ${waste}% waste, about ${fmtInt(result.bags)} bags of 50 lb. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

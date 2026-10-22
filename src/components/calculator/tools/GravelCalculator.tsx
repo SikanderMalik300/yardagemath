@@ -85,7 +85,7 @@ export function GravelCalculator() {
     setDelivery("0");
   };
 
-  const summary = `Gravel: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd) with ${waste}% waste, about ${fmtInt(result.bags)} bags of ${bag} cu ft. Cost ${fmtUSD(result.cost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Gravel: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd) with ${waste}% waste, about ${fmtInt(result.bags)} bags of ${bag} cu ft. Cost ${fmtUSD(result.cost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

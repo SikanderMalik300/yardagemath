@@ -143,7 +143,7 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
         </section>
       )}
 
-      {/* In-content ad slot (after the formula section — never between inputs and results) */}
+      {/* In-content ad slot (after the formula section, never between inputs and results) */}
       <AdSlot minHeight={120} />
 
       {/* 7. Reference table(s) */}

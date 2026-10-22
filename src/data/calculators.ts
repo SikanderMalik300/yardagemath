@@ -1,5 +1,5 @@
 /**
- * Calculator registry — the single source of truth (build-spec A2).
+ * Calculator registry, the single source of truth (build-spec A2).
  * The homepage, hubs, sitemap, related-tool blocks, breadcrumbs and JSON-LD
  * are all generated from this file. Adding a tool = one entry + one component.
  */
@@ -84,7 +84,7 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free concrete and block calculators: estimate concrete blocks, slab cost, and full block-wall materials with the math shown. US units, 2026 prices.",
     intro:
-      "Planning a slab, footing or block wall? These calculators turn your measurements into the quantities a supplier actually sells — cubic yards of ready-mix, numbers of CMU blocks, bags of mortar, cap blocks, core-fill grout and total material cost. They are built for US homeowners and contractors working in feet and inches, with 2026 price estimates you can edit to match a local quote. Concrete and masonry are unforgiving if you under-order: a slab poured short leaves a cold joint, and running out of block mid-course stops the job. So each tool adds a sensible waste allowance and rounds bags and blocks up. Every result comes with a “Show the math” panel, so you can follow the formula with your own numbers instead of trusting a black box, plus a reference table of common sizes for quick planning. Start with the Concrete Block Calculator for a fast block count, the Concrete Slab Cost Calculator for a pour, or the Block Wall Calculator when you need the full material and cost breakdown including grout and rebar. Always confirm structural work, footings and permits with your local building department.",
+      "Planning a slab, footing or block wall? These calculators turn your measurements into the quantities a supplier actually sells, cubic yards of ready-mix, numbers of CMU blocks, bags of mortar, cap blocks, core-fill grout and total material cost. They are built for US homeowners and contractors working in feet and inches, with 2026 price estimates you can edit to match a local quote. Concrete and masonry are unforgiving if you under-order: a slab poured short leaves a cold joint, and running out of block mid-course stops the job. So each tool adds a sensible waste allowance and rounds bags and blocks up. Every result comes with a “Show the math” panel, so you can follow the formula with your own numbers instead of trusting a black box, plus a reference table of common sizes for quick planning. Start with the Concrete Block Calculator for a fast block count, the Concrete Slab Cost Calculator for a pour, or the Block Wall Calculator when you need the full material and cost breakdown including grout and rebar. Always confirm structural work, footings and permits with your local building department.",
     whichTool: [
       { project: "Pouring a patio, shed base or driveway slab", slug: "concrete-slab-cost-calculator" },
       { project: "How many yards of concrete for a pour", slug: "yards-of-concrete-calculator" },
@@ -95,6 +95,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "Looking up block sizes and dimensions", slug: "cmu-block-sizes" },
       { project: "Concrete for strip, pad or pier footings", slug: "concrete-footing-calculator" },
       { project: "Filling block cores with concrete or grout", slug: "cinder-block-fill-calculator" },
+      { project: "Setting fence, deck or mailbox posts", slug: "fence-post-concrete-calculator" },
       { project: "Asphalt or blacktop driveway", slug: "asphalt-calculator" },
       { project: "Landscape retaining wall blocks", slug: "retaining-wall-calculator" },
       { project: "Ordering ready-mix by the cubic yard", slug: "cubic-yard-calculator" },
@@ -114,7 +115,7 @@ export const categories: Record<CategorySlug, Category> = {
       },
       {
         q: "Do I need a permit for a block wall?",
-        a: "Often yes — especially retaining walls over about 3–4 feet, which usually need an engineer. Freestanding garden walls may not, but footing depth and reinforcement are set by local code. Check with your building department before you build.",
+        a: "Often yes, especially retaining walls over about 3–4 feet, which usually need an engineer. Freestanding garden walls may not, but footing depth and reinforcement are set by local code. Check with your building department before you build.",
       },
     ],
   },
@@ -125,7 +126,7 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free landscaping calculators for cubic yards, topsoil, pea gravel, mulch, rock, square yards and riprap. Get yards, tons and bags from your area and depth.",
     intro:
-      "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture from a tape measure. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount — with a small buffer for waste — instead of a driveway full of extra material or a second trip to the yard. They are made for US homeowners and landscapers working in feet and inches, and they cover the full range of bulk materials: topsoil for lawns and beds, mulch and compost, pea gravel and river rock, decomposed granite, sand and crushed stone, plus square yards for carpet, turf and sod, and riprap for erosion control. Each material carries a sensible default depth and a density you can adjust, and every result shows the formula with your numbers plus a reference table of common sizes. Bulk material is sold by the cubic yard and bagged material by the cubic foot, so each tool shows both. Start with the Cubic Yard Calculator for any loose material, the Topsoil or Landscape Material Calculator for beds, or the Square Yard Calculator for flooring.",
+      "Buying soil, gravel, mulch or stone by the yard or ton is hard to picture from a tape measure. These calculators convert the area and depth of your project into cubic yards, tons and the number of bags, so you order the right amount, with a small buffer for waste, instead of a driveway full of extra material or a second trip to the yard. They are made for US homeowners and landscapers working in feet and inches, and they cover the full range of bulk materials: topsoil for lawns and beds, mulch and compost, pea gravel and river rock, decomposed granite, sand and crushed stone, plus square yards for carpet, turf and sod, and riprap for erosion control. Each material carries a sensible default depth and a density you can adjust, and every result shows the formula with your numbers plus a reference table of common sizes. Bulk material is sold by the cubic yard and bagged material by the cubic foot, so each tool shows both. Start with the Cubic Yard Calculator for any loose material, the Topsoil or Landscape Material Calculator for beds, or the Square Yard Calculator for flooring.",
     whichTool: [
       { project: "Topping up a lawn or filling garden beds", slug: "topsoil-calculator" },
       { project: "Filling a hole or raising a low spot with fill dirt", slug: "fill-dirt-calculator" },
@@ -169,7 +170,7 @@ export const categories: Record<CategorySlug, Category> = {
     metaDescription:
       "Free lawn care calculators: estimate lawn mowing cost per cut and per season, and work out acres per hour for any mower from width, speed and efficiency.",
     intro:
-      "Whether you are a homeowner checking a quote or a lawn-care pro pricing a route, these tools put real numbers behind mowing instead of a guess. Homeowners can estimate what a cut should cost from lawn size using 2026 average rates; pros can price a job from mower deck width, ground speed, field efficiency and an hourly rate, and see the price per cut, per month and per season. The same math tells you how long a lawn or field will take: acres per hour equals working width in inches times speed in mph times efficiency, divided by 99. Field efficiency — the share of time actually spent cutting after turns, overlap and stops — is usually 70–85%, never 100%, so the tools build that in. They are made for US lawns measured in square feet or acres, and every result shows the formula with your numbers plus a reference table of common sizes. Start with the Lawn Mowing Cost Calculator to price a cut either way, or the Acres per Hour Calculator to work out mowing time for any mower or tractor.",
+      "Whether you are a homeowner checking a quote or a lawn-care pro pricing a route, these tools put real numbers behind mowing instead of a guess. Homeowners can estimate what a cut should cost from lawn size using 2026 average rates; pros can price a job from mower deck width, ground speed, field efficiency and an hourly rate, and see the price per cut, per month and per season. The same math tells you how long a lawn or field will take: acres per hour equals working width in inches times speed in mph times efficiency, divided by 99. Field efficiency, the share of time actually spent cutting after turns, overlap and stops, is usually 70–85%, never 100%, so the tools build that in. They are made for US lawns measured in square feet or acres, and every result shows the formula with your numbers plus a reference table of common sizes. Start with the Lawn Mowing Cost Calculator to price a cut either way, or the Acres per Hour Calculator to work out mowing time for any mower or tractor.",
     whichTool: [
       { project: "What a mow should cost (homeowner)", slug: "lawn-mowing-cost-calculator" },
       { project: "What to charge for a job (pro)", slug: "lawn-mowing-cost-calculator" },
@@ -324,8 +325,9 @@ export const calculators: Calculator[] = [
       "landscape-materials-calculator",
       "concrete-slab-cost-calculator",
       "rip-rap-calculator",
+      "fence-post-concrete-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Cubic yard calculator diagram showing length, width and depth of an area",
   },
 
@@ -378,7 +380,7 @@ export const calculators: Calculator[] = [
         "with 5% waste = 180 × 1.05 = 189 blocks",
       ],
     },
-    notCovered: "It assumes standard 8 × 16 inch block faces with ⅜-inch mortar joints. It doesn't count special corner, pilaster or bond-beam blocks, and it doesn't size your footing. Use the Block Wall Calculator for caps, grout and rebar.",
+    notCovered: "It assumes standard 8 × 16 inch block faces with 0.375-inch mortar joints. It doesn't count special corner, pilaster or bond-beam blocks, and it doesn't size your footing. Use the Block Wall Calculator for caps, grout and rebar.",
     tables: [
       {
         title: "Blocks by common wall size (8×8×16, before waste)",
@@ -423,7 +425,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What are the actual dimensions of an 8×8×16 block?",
-        a: "8×8×16 is the nominal size. The real block measures about 7⅝ × 7⅝ × 15⅝ inches. The missing ⅜ inch is left for the mortar joint, so once it's laid, each block takes up a full 8\" × 16\".",
+        a: "8×8×16 is the nominal size. The real block measures about 7.625 × 7.625 × 15.625 inches. The missing 0.375 inch is left for the mortar joint, so once it's laid, each block takes up a full 8\" × 16\".",
       },
       {
         q: "What is the difference between a cinder block and a concrete block?",
@@ -431,7 +433,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How much mortar do I need per block?",
-        a: "Plan on about one 80-lb bag of mortar mix for every 12 standard blocks, laid with a ⅜-inch joint. So 142 blocks needs about 12 bags. Mix small batches so the mortar doesn't set before you use it.",
+        a: "Plan on about one 80-lb bag of mortar mix for every 12 standard blocks, laid with a 0.375-inch joint. So 142 blocks needs about 12 bags. Mix small batches so the mortar doesn't set before you use it.",
       },
       {
         q: "How much does a concrete block weigh?",
@@ -459,7 +461,7 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "rip-rap-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Concrete block calculator diagram of a CMU wall with courses and openings",
   },
 
@@ -630,7 +632,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "square-yard-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Concrete slab cost diagram: slab thickness, gravel base and rebar, plus the length and width the calculator uses.",
   },
 
@@ -649,7 +651,7 @@ export const calculators: Calculator[] = [
       "A 20 × 10 ft bed at 4 inches deep needs about 2.47 cubic yards of topsoil, which is roughly 2.7 tons. For a new lawn, spread 4–6 inches. For top-dressing an existing lawn, ¼–½ inch is plenty. Enter your area and depth below to get cubic yards, tons and bags.",
     howTo: [
       "Choose your shape and enter the area dimensions, or use raised-bed mode (length × width × height).",
-      "Set the depth — 4 inches is a common default for beds.",
+      "Set the depth, 4 inches is a common default for beds.",
       "Add a small waste allowance for settling.",
       "Pick a bag size (0.75 or 1 cubic foot) to see bag counts.",
       "Read your cubic yards, tons and bags.",
@@ -744,7 +746,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "lawn-mowing-cost-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
 
@@ -763,7 +765,7 @@ export const calculators: Calculator[] = [
       "A 12 × 12 ft area at 3 inches deep needs about 1.33 cubic yards of pea gravel. That's roughly 1.87 tons, or 72 bags of 0.5 cu ft. Go 2–3 inches deep for paths and 3–4 inches for patios. Enter your measurements below for the exact amount.",
     howTo: [
       "Choose the shape and enter your area dimensions.",
-      "Set the depth — use a preset for a path, patio or playground.",
+      "Set the depth, use a preset for a path, patio or playground.",
       "Add 5–10% waste for raking and settling.",
       "Optionally enter a price per ton or per yard.",
       "Read cubic yards, tons and the number of bags.",
@@ -859,7 +861,7 @@ export const calculators: Calculator[] = [
       "rip-rap-calculator",
       "topsoil-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Pea gravel calculator diagram of a patio area with gravel depth labelled",
   },
 
@@ -879,7 +881,7 @@ export const calculators: Calculator[] = [
     howTo: [
       "Enter each room or area as length × width in feet, or type a square-foot value directly.",
       'Use "Add another area" for multiple rooms.',
-      "Add a waste allowance — 10% is typical for carpet.",
+      "Add a waste allowance, 10% is typical for carpet.",
       "Optionally enter a price per square yard.",
       "Read the total in square yards.",
     ],
@@ -971,7 +973,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
 
@@ -1099,7 +1101,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "rip-rap-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Landscape material calculator diagram with material depth over an area",
   },
 
@@ -1215,7 +1217,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
     related: ["acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
 
@@ -1346,8 +1348,9 @@ export const calculators: Calculator[] = [
       "cmu-block-sizes",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
+      "fence-post-concrete-calculator",
     ],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Block wall calculator diagram showing courses, cap blocks and rebar",
   },
 
@@ -1367,7 +1370,7 @@ export const calculators: Calculator[] = [
     howTo: [
       "Enter the working width in inches or feet.",
       "Enter the ground speed in mph.",
-      "Set a field efficiency — pick a preset for your equipment.",
+      "Set a field efficiency, pick a preset for your equipment.",
       "Enter the total area in acres or square feet.",
       "Read acres per hour and the time to finish.",
     ],
@@ -1458,7 +1461,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["ASABE D497 machinery management data"],
     related: ["lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
 
@@ -1477,7 +1480,7 @@ export const calculators: Calculator[] = [
       "Gutters should slope at least ¼ inch for every 10 feet toward a downspout. On a 40-foot run, that means a 1-inch total drop from the high end to the low end. Enter your run length and downspout layout below to get the exact start and end heights.",
     howTo: [
       "Enter the gutter run length in feet.",
-      "Choose a slope — ¼ inch per 10 feet is the common minimum.",
+      "Choose a slope, ¼ inch per 10 feet is the common minimum.",
       "Select where the downspouts are (one end, both ends, or the middle).",
       "Optionally enter the roof area draining to size downspouts.",
       "Read the total drop and the high and low end heights.",
@@ -1569,7 +1572,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["gutter manufacturer installation guides", "SMACNA downspout sizing"],
     related: ["square-yard-calculator", "concrete-slab-cost-calculator", "cubic-yard-calculator"],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Gutter slope calculator diagram showing the high end, low end and total drop",
   },
 
@@ -1680,7 +1683,7 @@ export const calculators: Calculator[] = [
     warning:
       "For shoreline or channel work, follow your engineer or local permit requirements.",
     related: ["gravel-calculator", "cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
-    lastUpdated: "2026-10-09",
+    lastUpdated: "2026-10-22",
     imageAlt: "Rip rap calculator diagram of a stone layer on a slope with thickness labelled",
   },
 
@@ -1702,7 +1705,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "How many cubic yards of concrete for a slab, strip or column.",
     shortAnswer:
-      "One cubic yard of concrete is 27 cubic feet. That fills a 10 × 10 ft slab about 3¼ inches thick, or about 81 sq ft at 4 inches. Pick your shape below, enter the size, and you'll get the cubic yards, the bag count and the cost.",
+      "One cubic yard of concrete is 27 cubic feet. That fills a 10 × 10 ft slab about 3.25 inches thick, or about 81 sq ft at 4 inches. Pick your shape below, enter the size, and you'll get the cubic yards, the bag count and the cost.",
     howTo: [
       "Pick the shape: slab, wall or footing strip, or round column.",
       "Enter the size in feet and inches. Thickness is in inches.",
@@ -1714,7 +1717,7 @@ export const calculators: Calculator[] = [
       plain: [
         "slab cu ft = L × W × (thickness ÷ 12)",
         "strip cu ft = L × W × D   (all in feet)",
-        "column cu ft = π × (diameter ÷ 2)² × height × quantity",
+        "column cu ft = 3.1416 × (diameter ÷ 2)² × height × quantity",
         "cubic yards = cu ft ÷ 27",
         "bags = ceil(cu ft × (1 + waste%) ÷ yield)   (80 lb = 0.60, 60 lb = 0.45)",
       ],
@@ -1726,7 +1729,7 @@ export const calculators: Calculator[] = [
       ],
       example2: [
         "Four 12-inch round columns, 4 ft tall:",
-        "cu ft = π × 0.5² × 4 × 4 = 12.57",
+        "cu ft = 3.1416 × 0.5² × 4 × 4 = 12.57",
         "cubic yards = 12.57 ÷ 27 = 0.47",
         "+ 10% waste = 0.51 cu yd",
       ],
@@ -1799,8 +1802,9 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "concrete-block-calculator",
       "block-wall-calculator",
+      "fence-post-concrete-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Yards of concrete diagram: slab, strip footing and round column with the dimensions the calculator uses.",
   },
 
@@ -1915,7 +1919,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
-    lastUpdated: "2026-10-10",
+    lastUpdated: "2026-10-22",
     imageAlt: "Concrete block weight: a standard 8×8×16 block and a 90-block pallet.",
   },
 
@@ -1937,7 +1941,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Nominal vs actual CMU sizes, half and half-high units, plus a course converter.",
     shortAnswer:
-      "A standard CMU is 8 × 8 × 16 inches nominal, but the block itself measures 7⅝ × 7⅝ × 15⅝ inches. The missing ⅜ inch is the mortar joint, so every laid block takes up exactly 8 × 16 inches of wall. The chart below covers 4, 6, 8, 10 and 12-inch blocks, half blocks and half-high units.",
+      "A standard CMU is 8 × 8 × 16 inches nominal, but the block itself measures 7.625 × 7.625 × 15.625 inches. The missing 0.375 inch is the mortar joint, so every laid block takes up exactly 8 × 16 inches of wall. The chart below covers 4, 6, 8, 10 and 12-inch blocks, half blocks and half-high units.",
     howTo: [
       "Read the chart for the nominal and actual size of each block.",
       "For a wall, enter the height in feet and inches.",
@@ -1947,7 +1951,7 @@ export const calculators: Calculator[] = [
     ],
     formula: {
       plain: [
-        "actual size = nominal size − ⅜ inch (the mortar joint)",
+        "actual size = nominal size − 0.375 inch (the mortar joint)",
         "courses = ceil(wall height in inches ÷ 8)",
         "built height = courses × 8 inches",
         "blocks per course = ceil(wall length in inches ÷ 16)",
@@ -1974,13 +1978,13 @@ export const calculators: Calculator[] = [
           { label: "Common use" },
         ],
         rows: [
-          ["4 × 8 × 16", "3⅝ × 7⅝ × 15⅝", "veneers, partitions"],
-          ["6 × 8 × 16", "5⅝ × 7⅝ × 15⅝", "interior walls"],
-          ["8 × 8 × 16", "7⅝ × 7⅝ × 15⅝", "standard walls, foundations"],
-          ["10 × 8 × 16", "9⅝ × 7⅝ × 15⅝", "taller or loaded walls"],
-          ["12 × 8 × 16", "11⅝ × 7⅝ × 15⅝", "retaining, heavy loads"],
-          ["8 × 8 × 8 (half)", "7⅝ × 7⅝ × 7⅝", "wall ends, openings"],
-          ["8 × 4 × 16 (half-high)", "7⅝ × 3⅝ × 15⅝", "adjusting course height"],
+          ["4 × 8 × 16", "3.625 × 7.625 × 15.625", "veneers, partitions"],
+          ["6 × 8 × 16", "5.625 × 7.625 × 15.625", "interior walls"],
+          ["8 × 8 × 16", "7.625 × 7.625 × 15.625", "standard walls, foundations"],
+          ["10 × 8 × 16", "9.625 × 7.625 × 15.625", "taller or loaded walls"],
+          ["12 × 8 × 16", "11.625 × 7.625 × 15.625", "retaining, heavy loads"],
+          ["8 × 8 × 8 (half)", "7.625 × 7.625 × 7.625", "wall ends, openings"],
+          ["8 × 4 × 16 (half-high)", "7.625 × 3.625 × 15.625", "adjusting course height"],
         ],
         footnote:
           "Actual (specified) size is 3/8 in. less than nominal in each direction, leaving room for a 3/8-in. mortar joint. Verified against NCMA TEK 2-1A and a manufacturer spec.",
@@ -1999,11 +2003,11 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What are the actual dimensions of an 8x8x16 block?",
-        a: "7⅝ × 7⅝ × 15⅝ inches. The ⅜-inch difference is left for the mortar joint.",
+        a: "7.625 × 7.625 × 15.625 inches. The 0.375-inch difference is left for the mortar joint.",
       },
       {
         q: "Why are CMU blocks smaller than their nominal size?",
-        a: "So the math works once they're laid. A 7⅝-inch block plus a ⅜-inch mortar joint equals 8 inches, which makes walls easy to plan in clean 8-inch and 16-inch units.",
+        a: "So the math works once they're laid. A 7.625-inch block plus a 0.375-inch mortar joint equals 8 inches, which makes walls easy to plan in clean 8-inch and 16-inch units.",
       },
       {
         q: "How tall is a concrete block course?",
@@ -2011,7 +2015,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What size is a cinder block?",
-        a: "Same as a concrete block. A standard \"cinder block\" is 8 × 8 × 16 nominal, or 7⅝ × 7⅝ × 15⅝ actual.",
+        a: "Same as a concrete block. A standard \"cinder block\" is 8 × 8 × 16 nominal, or 7.625 × 7.625 × 15.625 actual.",
       },
       {
         q: "What is a half block?",
@@ -2031,8 +2035,8 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
-    lastUpdated: "2026-10-10",
-    imageAlt: "CMU nominal vs actual size: a 15⅝ × 7⅝ in block plus a ⅜ in joint fills 16 × 8 in.",
+    lastUpdated: "2026-10-22",
+    imageAlt: "CMU nominal vs actual size: a 15.625 × 7.625 in block plus a 0.375 in joint fills 16 × 8 in.",
   },
 
   /* ---------------------------------------------------------------- 16 */
@@ -2063,7 +2067,7 @@ export const calculators: Calculator[] = [
       plain: [
         "strip cu ft = L × W × D",
         "pads cu ft = L × W × D × quantity",
-        "piers cu ft = π × (d ÷ 2)² × D × quantity",
+        "piers cu ft = 3.1416 × (d ÷ 2)² × D × quantity",
         "cubic yards = cu ft ÷ 27",
         "bags = ceil(cu ft × (1 + waste%) ÷ yield)   (80 lb = 0.60, 60 lb = 0.45)",
       ],
@@ -2146,8 +2150,9 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "concrete-slab-cost-calculator",
       "cubic-yard-calculator",
+      "fence-post-concrete-calculator",
     ],
-    lastUpdated: "2026-10-12",
+    lastUpdated: "2026-10-22",
     imageAlt: "Concrete footing diagram: strip, pad and round pier footings with the dimensions the calculator uses.",
   },
 
@@ -2169,7 +2174,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Concrete or grout to fill cinder block cores, by blocks or wall size.",
     shortAnswer:
-      "Filling every core of an 8-inch concrete block wall takes about 0.26 cubic feet of concrete per square foot of wall. That's roughly 0.23 cubic feet per block, so one 80-lb bag fills about 2½ blocks. Enter your blocks or wall size below to get cubic feet, yards and bags.",
+      "Filling every core of an 8-inch concrete block wall takes about 0.26 cubic feet of concrete per square foot of wall. That's roughly 0.23 cubic feet per block, so one 80-lb bag fills about 2.5 blocks. Enter your blocks or wall size below to get cubic feet, yards and bags.",
     howTo: [
       "Enter the number of blocks, or the wall length and height.",
       "Pick the block width: 6, 8 or 12 inches.",
@@ -2228,7 +2233,7 @@ export const calculators: Calculator[] = [
     faqs: [
       {
         q: "How much concrete does it take to fill a cinder block?",
-        a: "About 0.23 cubic feet for a standard 8-inch block, based on 0.26 cubic feet per square foot of wall. One 80-lb bag fills about 2½ blocks.",
+        a: "About 0.23 cubic feet for a standard 8-inch block, based on 0.26 cubic feet per square foot of wall. One 80-lb bag fills about 2.5 blocks.",
       },
       {
         q: "How many bags of concrete to fill 100 cinder blocks?",
@@ -2262,7 +2267,7 @@ export const calculators: Calculator[] = [
       "cmu-block-sizes",
       "concrete-block-weight",
     ],
-    lastUpdated: "2026-10-12",
+    lastUpdated: "2026-10-22",
     imageAlt: "Cinder block fill diagram: a block's two cores and a wall with every other core filled.",
   },
 
@@ -2307,7 +2312,7 @@ export const calculators: Calculator[] = [
       ],
       example2: [
         "A tree ring 6 ft across, 3 inches deep:",
-        "cu ft = π × 3² × 0.25 = 7.07",
+        "cu ft = 3.1416 × 3² × 0.25 = 7.07",
         "cubic yards = 7.07 ÷ 27 = 0.26",
         "4 bags of 2 cu ft",
       ],
@@ -2378,7 +2383,7 @@ export const calculators: Calculator[] = [
       "topsoil-calculator",
       "pea-gravel-calculator",
     ],
-    lastUpdated: "2026-10-12",
+    lastUpdated: "2026-10-22",
     imageAlt: "Mulch calculator diagram: bed depth and a tree ring, the measurements the calculator uses.",
   },
 
@@ -2499,8 +2504,9 @@ export const calculators: Calculator[] = [
       "rip-rap-calculator",
       "mulch-calculator",
       "asphalt-calculator",
+      "fence-post-concrete-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Gravel calculator diagram: driveway layers and the length, width and depth the calculator uses.",
   },
 
@@ -2617,7 +2623,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "topsoil-calculator",
     ],
-    lastUpdated: "2026-10-14",
+    lastUpdated: "2026-10-22",
     imageAlt: "Sand calculator diagram: paver bedding layer and a sandbox, the measurements the calculator uses.",
   },
 
@@ -2714,7 +2720,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "What size is a standard brick?",
-        a: "A US modular brick is 3⅝ by 2¼ by 7⅝ inches. With a 3/8 inch joint it takes up 4 by 2⅔ by 8 inches, which is why three courses equal 8 inches of wall height.",
+        a: "A US modular brick is 3.625 by 2.25 by 7.625 inches. With a 3/8 inch joint it takes up 4 by 2.667 by 8 inches, which is why three courses equal 8 inches of wall height.",
       },
       {
         q: "What is the difference between brick and block?",
@@ -2731,7 +2737,7 @@ export const calculators: Calculator[] = [
       "paver-calculator",
       "paver-base-calculator",
     ],
-    lastUpdated: "2026-10-15",
+    lastUpdated: "2026-10-22",
     imageAlt: "Brick calculator diagram: wall length and height with an opening, and a modular brick's actual and nominal size.",
   },
 
@@ -2848,7 +2854,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
   },
 
@@ -2962,7 +2968,7 @@ export const calculators: Calculator[] = [
       "brick-calculator",
       "landscape-materials-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
   },
 
@@ -3075,7 +3081,7 @@ export const calculators: Calculator[] = [
       "fill-dirt-calculator",
       "concrete-block-calculator",
     ],
-    lastUpdated: "2026-10-17",
+    lastUpdated: "2026-10-22",
     imageAlt: "Retaining wall diagram: base pad, buried course, setback blocks, cap, drainage stone and pipe, with the length and height the calculator uses.",
   },
 
@@ -3106,7 +3112,7 @@ export const calculators: Calculator[] = [
     ],
     formula: {
       plain: [
-        "cu ft = area (sq ft) × depth (in) ÷ 12   (hole: L × W × D; round: π × (d ÷ 2)² × D)",
+        "cu ft = area (sq ft) × depth (in) ÷ 12   (hole: L × W × D; round: 3.1416 × (d ÷ 2)² × D)",
         "sloped: area × ((depth1 + depth2) ÷ 2) ÷ 12",
         "cubic yards = cu ft ÷ 27,  with compaction = cu yd × (1 + 20%)",
         "tons = cu yd × 1.2,  loads = ceil(cu yd ÷ load size)",
@@ -3188,7 +3194,7 @@ export const calculators: Calculator[] = [
       "sand-calculator",
       "retaining-wall-calculator",
     ],
-    lastUpdated: "2026-10-18",
+    lastUpdated: "2026-10-22",
     imageAlt: "Fill dirt diagram: raising a low area in layers and filling a hole, with the measurements the calculator uses.",
   },
   /* ---------------------------------------------------------------- 26 */
@@ -3232,7 +3238,7 @@ export const calculators: Calculator[] = [
       ],
       example2: [
         "Tree ring 6 ft across, 3 in, river rock:",
-        "area = π × 3² = 28.3 sq ft, cu ft = 7.07, cubic yards = 0.26",
+        "area = 3.1416 × 3² = 28.3 sq ft, cu ft = 7.07, cubic yards = 0.26",
         "tons = 0.35, bags = 15",
       ],
     },
@@ -3323,7 +3329,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "paver-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Landscape rock diagram: rock depth over landscape fabric, and suggested depth by rock size.",
   },
   /* ---------------------------------------------------------------- 27 */
@@ -3457,8 +3463,126 @@ export const calculators: Calculator[] = [
       "yards-of-concrete-calculator",
       "paver-calculator",
     ],
-    lastUpdated: "2026-10-21",
+    lastUpdated: "2026-10-22",
     imageAlt: "Asphalt calculator diagram: compacted asphalt over a gravel base, with the length, width and thickness the calculator uses.",
+  },
+  /* ---------------------------------------------------------------- 28 */
+  {
+    slug: "fence-post-concrete-calculator",
+    category: "concrete",
+    title: "Fence Post Concrete Calculator – Bags per Post & Total",
+    metaDescription:
+      "Work out how many bags of concrete you need for fence posts. Enter post size, hole size and number of posts to get bags per post, total bags and cost.",
+    h1: "Fence Post Concrete Calculator",
+    primaryKeyword: "fence post concrete calculator",
+    secondaryKeywords: [
+      "concrete for fence posts",
+      "post hole concrete calculator",
+      "how many bags of concrete per fence post",
+      "how much concrete for a 4x4 post",
+      "how much concrete for a 6x6 post",
+    ],
+    cardDescription: "How many bags of concrete per fence post and in total, with gravel and cost.",
+    shortAnswer:
+      "A 4 by 4 fence post in a 10 inch hole with 2 feet of concrete takes about 0.9 cubic feet of concrete. That's about 2.5 bags of 50 lb fast-setting mix, or 1.5 bags of 80 lb regular mix, per post. Enter your post size, hole size and number of posts below to get total bags and cost.",
+    howTo: [
+      "Pick the post size. Wood posts are smaller than their name, so a 4 by 4 is 3.5 inches square.",
+      "Enter the hole diameter and depth. Not sure? Use the hole helper.",
+      "Keep about 6 inches of gravel at the bottom for drainage.",
+      "Enter the number of posts and pick a bag type, then read the total bags.",
+    ],
+    formula: {
+      plain: [
+        "concrete depth = hole depth - gravel",
+        "hole cu in = 3.1416 × (d ÷ 2)² × concrete depth",
+        "post cu in = W × L × concrete depth   (round post: 3.1416 × (pd ÷ 2)² × concrete depth)",
+        "per post cu ft = (hole - post) ÷ 1,728,  total = per post × posts",
+        "bags = ceil(total cu ft × (1 + waste) ÷ bag yield)",
+      ],
+      example: [
+        "One 4 by 4 post, 10 in hole, 30 in deep, 6 in gravel (24 in of concrete):",
+        "hole = 3.1416 × 5² × 24 = 1,885 cu in, post = 3.5 × 3.5 × 24 = 294 cu in",
+        "per post = (1,885 - 294) ÷ 1,728 = 0.92 cu ft",
+        "bags = 2.46 of 50 lb fast-setting (3 with 10%), or 1.53 of 80 lb (2 with waste)",
+      ],
+      example2: [
+        "10 of those posts: 9.21 cu ft (0.34 cu yd), 10.13 with 10% waste",
+        "28 bags of 50 lb fast-setting, or 17 of 80 lb; gravel 2.73 cu ft = 6 bags",
+      ],
+    },
+    notCovered:
+      "It estimates concrete and gravel for posts set in round holes. It doesn't design footings for decks, pergolas or buildings, which may need engineered sizes and inspections, and it doesn't count fence panels, rails or hardware. Check your local code for the required depth and frost line.",
+    tables: [
+      {
+        title: "Concrete per post (before waste)",
+        columns: [
+          { label: "Post" },
+          { label: "Hole" },
+          { label: "Concrete depth" },
+          { label: "cu ft", num: true },
+          { label: "50 lb fast-setting bags", num: true },
+          { label: "80 lb bags", num: true },
+        ],
+        rows: [
+          ["4 × 4", "8 in", "24 in", "0.53", "1.4", "0.9"],
+          ["4 × 4", "10 in", "24 in", "0.92", "2.5", "1.5"],
+          ["4 × 4", "12 in", "24 in", "1.40", "3.7", "2.3"],
+          ["6 × 6", "12 in", "30 in", "1.44", "3.8", "2.4"],
+          ["6 × 6", "16 in", "30 in", "2.97", "7.9", "4.9"],
+        ],
+        footnote: "Concrete to fill the hole around the post, before waste. Fast-setting bags yield 0.375 cu ft; 80 lb bags yield 0.60 cu ft. Add about 10% extra and round up.",
+      },
+    ],
+    tips: [
+      "Dig holes about three times as wide as the post. A wider hole holds the post better than a deeper, narrow one.",
+      "Set and brace the post plumb before the concrete sets.",
+      "Slope the top of the concrete away from the post so rain runs off.",
+      "Buy a spare bag. Holes are rarely perfect, and a short bag means a second trip.",
+    ],
+    faqs: [
+      {
+        q: "How many bags of concrete per fence post?",
+        a: "For a 4 by 4 post in a 10 inch hole with 2 feet of concrete, about 2.5 bags of 50 lb fast-setting mix or 1.5 bags of 80 lb regular mix. Bigger holes and 6 by 6 posts need more.",
+      },
+      {
+        q: "How much concrete do I need for a fence post?",
+        a: "Work out the volume of the hole above the gravel, then subtract the post. A 4 by 4 post in a 10 inch hole with 24 inches of concrete needs about 0.92 cubic feet.",
+      },
+      {
+        q: "How deep should a fence post hole be?",
+        a: "About one third of the post's height above ground, plus about 6 inches for gravel. For a 6 foot fence, that's about 30 inches. Go below the frost line where your local code requires it.",
+      },
+      {
+        q: "How wide should a fence post hole be?",
+        a: "About three times the post width: roughly 10 to 12 inches for a 4 by 4 and 16 to 18 inches for a 6 by 6.",
+      },
+      {
+        q: "Fast-setting or regular concrete for fence posts?",
+        a: "Fast-setting mix is poured dry into the hole and then watered, and it sets in about 20 to 40 minutes. Regular mix is stirred first and takes longer, but it's often cheaper per cubic foot.",
+      },
+      {
+        q: "Should I put gravel under a fence post?",
+        a: "Yes. About 6 inches of gravel at the bottom lets water drain away from the end of the post.",
+      },
+      {
+        q: "How many 80 lb bags of concrete for 10 fence posts?",
+        a: "About 17 bags for 4 by 4 posts in 10 inch holes with 24 inches of concrete, including 10% extra.",
+      },
+    ],
+    sources: [
+      "Fast-setting yield and set time (QUIKRETE)",
+      "Hole width, depth and gravel (QUIKRETE Setting Posts)",
+      "80, 60 and 40 lb bag yields (QUIKRETE)",
+    ],
+    related: [
+      "concrete-footing-calculator",
+      "yards-of-concrete-calculator",
+      "cubic-yard-calculator",
+      "gravel-calculator",
+      "block-wall-calculator",
+    ],
+    lastUpdated: "2026-10-22",
+    imageAlt: "Fence post concrete diagram: post set in concrete over a gravel base, with the hole diameter and depths the calculator uses.",
   },
 ];
 

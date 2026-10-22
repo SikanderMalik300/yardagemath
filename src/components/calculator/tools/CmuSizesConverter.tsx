@@ -43,7 +43,7 @@ export function CmuSizesConverter() {
   };
 
   const builtFt = result.builtHeightIn / 12;
-  const summary = `CMU wall: ${fmtInt(result.courses)} courses (${fmtInt(result.builtHeightIn)} in / ${fmtNumber(builtFt, 2)} ft built) and ${fmtInt(result.blocksPerCourse)} blocks per course. — yardagemath.com/${SLUG}/`;
+  const summary = `CMU wall: ${fmtInt(result.courses)} courses (${fmtInt(result.builtHeightIn)} in / ${fmtNumber(builtFt, 2)} ft built) and ${fmtInt(result.blocksPerCourse)} blocks per course., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

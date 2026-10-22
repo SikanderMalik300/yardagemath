@@ -75,7 +75,7 @@ export function RetainingWallCalculator() {
   };
 
   const overHeight = result.maxHeightFt > RETAINING_MAX_HEIGHT_FT;
-  const summary = `Retaining wall: ${fmtInt(result.blocksWithWaste)} blocks with ${waste}% waste (${fmtInt(result.blocks)} before) over ${fmtInt(result.courses)} courses, ${fmtInt(result.caps)} caps. Base ${fmtNumber(round(result.padTons, 2))} t, drainage ${fmtNumber(round(result.drainTons, 2))} t, ${fmtInt(Math.ceil(result.pipeLinearFt))} ft pipe. Material ${fmtUSD(result.materialCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Retaining wall: ${fmtInt(result.blocksWithWaste)} blocks with ${waste}% waste (${fmtInt(result.blocks)} before) over ${fmtInt(result.courses)} courses, ${fmtInt(result.caps)} caps. Base ${fmtNumber(round(result.padTons, 2))} t, drainage ${fmtNumber(round(result.drainTons, 2))} t, ${fmtInt(Math.ceil(result.pipeLinearFt))} ft pipe. Material ${fmtUSD(result.materialCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

@@ -114,10 +114,10 @@ export const BLOCKS_PER_MORTAR_BAG = 12;
 // Bricks per square foot of wall face with a standard 3/8 in mortar joint.
 // VERIFY: Brick Industry Association Technical Note 10, Table 4.
 export const BRICK_PER_SQFT = {
-  modular: 6.75, // 3⅝ × 2¼ × 7⅝
-  queen: 5.76, // 2¾ × 2¾ × 7⅝
-  king: 4.8, // 3 × 2⅝ × 9⅝
-  utility: 3.0, // 3⅝ × 3⅝ × 11⅝
+  modular: 6.75, // 3.625 × 2.25 × 7.625
+  queen: 5.76, // 2.75 × 2.75 × 7.625
+  king: 4.8, // 3 × 2.625 × 9.625
+  utility: 3.0, // 3.625 × 3.625 × 11.625
 } as const;
 
 export const BRICK_JOINT_IN = 0.375; // standard 3/8 in mortar joint
@@ -254,6 +254,20 @@ export const ASPHALT_BASE_DEPTH_IN = 6;
 // delivers about 22 tons; 20 t is a safe default, with 10 and 15 t options.
 export const ASPHALT_TRUCK_TONS = 20;
 
+/* =========================================================================
+   Fence post concrete (batch 4 day 2)
+   ========================================================================= */
+// Fast-setting concrete 50 lb bag yield (cu ft). VERIFY: Quikrete Fast-Setting
+// Concrete Mix No. 1004 data sheet (50 lb bag yields ~0.375 cu ft; final set 20
+// to 40 minutes). The 80/60/40 lb yields reuse CONCRETE_BAG_YIELD_CUFT.
+export const FAST_SET_50_YIELD_CUFT = 0.375;
+export const FAST_SET_MINUTES = "20 to 40";
+// Default fence post hole depth and gravel base (inches). VERIFY: Quikrete Setting
+// Posts guide (hole diameter 3x the post; depth = 1/3 of the post length above
+// ground plus 6 in for the gravel base).
+export const FENCE_HOLE_DEPTH_IN = 30;
+export const FENCE_GRAVEL_IN = 6;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -333,6 +347,7 @@ export const PRICES = {
   rockPerBag: 7, // VERIFY: 2026 0.5 cu ft river rock bag, within $6-7 (Vigoro / The Home Depot)
   asphaltPerTon: 60, // VERIFY: 2026 hot mix asphalt material, within $40-80/ton (HomeGuide)
   asphaltInstalledPerSqFt: 8, // VERIFY: 2026 asphalt driveway installed, within $5-12/sq ft (HomeGuide)
+  concreteBagFastSet50: 8, // VERIFY: Quikrete 50 lb fast-setting, ~$7.97 at The Home Depot (2026)
 } as const;
 
 /* =========================================================================

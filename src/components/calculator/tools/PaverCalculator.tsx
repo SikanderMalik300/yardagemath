@@ -96,7 +96,7 @@ export function PaverCalculator() {
     setBasePrice(String(PRICES.gravelPerTon)); setSandBagPrice(String(PRICES.sandPerBag));
   };
 
-  const summary = `Pavers: ${fmtInt(result.paversWithWaste)} with ${waste}% waste (${fmtInt(result.pavers)} before). Base ${fmtNumber(round(result.baseTonsWithWaste, 2))} t, sand ${fmtInt(result.sandBagsWithWaste)} bags, edging ${fmtInt(Math.ceil(result.edgingLinearFt))} ft. Total ${fmtUSD(result.totalCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Pavers: ${fmtInt(result.paversWithWaste)} with ${waste}% waste (${fmtInt(result.pavers)} before). Base ${fmtNumber(round(result.baseTonsWithWaste, 2))} t, sand ${fmtInt(result.sandBagsWithWaste)} bags, edging ${fmtInt(Math.ceil(result.edgingLinearFt))} ft. Total ${fmtUSD(result.totalCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

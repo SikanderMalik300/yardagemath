@@ -57,7 +57,7 @@ export function PeaGravelCalculator() {
 
   const summary = `Pea gravel: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd ≈ ${fmtNumber(
     round(result.tons, 2)
-  )} tons (${result.bags} bags of 0.5 cu ft). — yardagemath.com/${SLUG}/`;
+  )} tons (${result.bags} bags of 0.5 cu ft)., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell
@@ -70,11 +70,11 @@ export function PeaGravelCalculator() {
               value={state.depthIn}
               onChange={(v) => set("depthIn", v)}
               options={[
-                { value: "2", label: 'Path — 2"' },
-                { value: "3", label: 'Patio — 3"' },
-                { value: "4", label: 'Patio (deep) — 4"' },
-                { value: "9", label: 'Playground — 9"' },
-                { value: "12", label: 'Playground (deep) — 12"' },
+                { value: "2", label: 'Path, 2"' },
+                { value: "3", label: 'Patio, 3"' },
+                { value: "4", label: 'Patio (deep), 4"' },
+                { value: "9", label: 'Playground, 9"' },
+                { value: "12", label: 'Playground (deep), 12"' },
               ]}
             />
           </Field>

@@ -13,16 +13,17 @@ function url(path: string): string {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Honest per-page lastmod: pages whose content changed on 2026-10-08 carry that
-  // date; untouched pages keep 2026-10-07.
+  // Honest per-page lastmod. Pages touched by the 2026-10-22 sitewide fixes
+  // (formula pi -> 3.1416, fraction glyphs, em-dash cleanup) carry that date;
+  // untouched boilerplate keeps its earlier date.
   const staticPages: { path: string; lastmod: string }[] = [
-    { path: "/", lastmod: "2026-10-08" },
-    { path: "/about/", lastmod: "2026-10-09" },
+    { path: "/", lastmod: "2026-10-22" },
+    { path: "/about/", lastmod: "2026-10-22" },
     { path: "/authors/sikander-mushtaq/", lastmod: "2026-10-09" },
-    { path: "/sitemap/", lastmod: "2026-10-09" },
+    { path: "/sitemap/", lastmod: "2026-10-22" },
     { path: "/editorial-policy/", lastmod: "2026-10-10" },
-    { path: "/how-we-calculate/", lastmod: "2026-10-09" },
-    { path: "/contact/", lastmod: "2026-10-07" },
+    { path: "/how-we-calculate/", lastmod: "2026-10-22" },
+    { path: "/contact/", lastmod: "2026-10-22" },
     { path: "/privacy-policy/", lastmod: "2026-10-09" },
     { path: "/terms/", lastmod: "2026-10-07" },
     { path: "/disclaimer/", lastmod: "2026-10-07" },
@@ -38,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...categoryList.map((c) => ({
       url: url(`/${c.slug}/`),
-      lastModified: "2026-10-08",
+      lastModified: "2026-10-22",
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

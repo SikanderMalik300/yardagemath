@@ -8,7 +8,7 @@ import { SITE } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Free, carefully checked construction and yard calculators — why the site exists, how the tools are made, and how to send corrections.",
+    "Free, carefully checked construction and yard calculators, why the site exists, how the tools are made, and how to send corrections.",
   path: "/about/",
 });
 
@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <ContentPage
       title={`About ${SITE.name}`}
-      intro="Free, accurate calculators for construction and yard projects — built by one person who got tired of guessing material quantities."
+      intro="Free, accurate calculators for construction and yard projects, built by one person who got tired of guessing material quantities."
     >
       <JsonLd data={aboutPageJsonLd()} />
 
@@ -78,23 +78,23 @@ export default function AboutPage() {
         </li>
       </ol>
       <p>
-        I review every page before it goes live. When a figure can vary — like material weight or
-        local prices — the calculator lets you edit it, and I say so plainly rather than pretending
+        I review every page before it goes live. When a figure can vary, like material weight or
+        local prices, the calculator lets you edit it, and I say so plainly rather than pretending
         there&apos;s a single right answer.
       </p>
 
-      <h2>My experience — honestly</h2>
+      <h2>My experience, honestly</h2>
       <p>
         I&apos;m not a licensed contractor or engineer, and I don&apos;t claim to be. What I do is
         check every formula against manufacturer and industry sources, test the math, and keep the
-        pages current. For anything structural or permitted — retaining walls, footings, channel
-        work — please confirm with a professional and your local building department.
+        pages current. For anything structural or permitted, retaining walls, footings, channel
+        work, please confirm with a professional and your local building department.
       </p>
 
       <h2>Corrections</h2>
       <p>
         Found an error? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and I&apos;ll fix it
-        and note the update date on the page. Corrections are genuinely welcome — accurate numbers
+        and note the update date on the page. Corrections are genuinely welcome, accurate numbers
         matter more than being right the first time.
       </p>
 

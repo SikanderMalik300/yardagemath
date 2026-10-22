@@ -17,7 +17,7 @@ import { useFirstCalculate } from "../useCalcEvent";
 const SLUG = "brick-calculator";
 
 const SIZE_OPTS = [
-  { value: "modular", label: "Modular — 3⅝ × 2¼ × 7⅝ (6.75/sq ft)" },
+  { value: "modular", label: "Modular, 3.625 × 2.25 × 7.625 (6.75/sq ft)" },
   { value: "queen", label: "Queen (5.76/sq ft)" },
   { value: "king", label: "King (4.8/sq ft)" },
   { value: "utility", label: "Utility (3.0/sq ft)" },
@@ -73,7 +73,7 @@ export function BrickCalculator() {
     setOpenings([]);
   };
 
-  const summary = `Brick: ${fmtInt(result.bricksWithWaste)} bricks with ${waste}% waste (${fmtInt(result.bricks)} before), ${fmtInt(result.bags)} bags of mortar. Total ${fmtUSD(result.totalCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Brick: ${fmtInt(result.bricksWithWaste)} bricks with ${waste}% waste (${fmtInt(result.bricks)} before), ${fmtInt(result.bags)} bags of mortar. Total ${fmtUSD(result.totalCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

@@ -26,7 +26,7 @@ export function ResultActions({
       setCopied(which);
       window.setTimeout(() => setCopied("none"), 1800);
     } catch {
-      // Clipboard unavailable (e.g. insecure context) — fail quietly.
+      // Clipboard unavailable (e.g. insecure context), fail quietly.
     }
   }
 

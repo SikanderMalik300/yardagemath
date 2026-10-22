@@ -66,7 +66,7 @@ export function CubicYardCalculator() {
       : `${fmtNumber(round(result.areaSqFt, 1))} sq ft × ${state.depthIn} in`;
   const summary = `${dimsStr} = ${fmtNumber(round(result.cubicYards, 2))} cu yd (${fmtNumber(
     round(result.cubicYardsWithWaste, 2)
-  )} with ${dims.wastePct}% waste) — yardagemath.com/${SLUG}/`;
+  )} with ${dims.wastePct}% waste), yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

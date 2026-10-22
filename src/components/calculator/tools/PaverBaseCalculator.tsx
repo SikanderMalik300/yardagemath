@@ -87,7 +87,7 @@ export function PaverBaseCalculator() {
 
   const cheaperBulk = result.cheaper === "bulk";
   const cheaperBagged = result.cheaper === "bagged";
-  const summary = `Paver base: ${fmtNumber(round(result.baseTons, 2))} tons (${fmtNumber(round(result.baseCuYd, 2))} cu yd / ${fmtInt(result.baseBags)} bags), plus ${fmtInt(result.sandBags)} bags of bedding sand. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Paver base: ${fmtNumber(round(result.baseTons, 2))} tons (${fmtNumber(round(result.baseCuYd, 2))} cu yd / ${fmtInt(result.baseBags)} bags), plus ${fmtInt(result.sandBags)} bags of bedding sand. Bulk ${fmtUSD(result.bulkCost)} vs bagged ${fmtUSD(result.baggedCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

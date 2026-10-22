@@ -46,7 +46,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <p className="notice" style={{ borderColor: "#cfe1d6", background: "var(--brand-soft)", color: "var(--success)" }}>
-        Thanks — your message was sent. I&apos;ll reply within 2–3 business days.
+        Thanks, your message was sent. I&apos;ll reply within 2–3 business days.
       </p>
     );
   }
@@ -55,7 +55,7 @@ export function ContactForm() {
     <form onSubmit={onSubmit} style={{ maxWidth: 520 }}>
       <input type="hidden" name="access_key" value={accessKey} />
       <input type="hidden" name="subject" value="YardageMath contact form" />
-      {/* Honeypot — bots fill this; humans never see it */}
+      {/* Honeypot, bots fill this; humans never see it */}
       <input
         type="checkbox"
         name="botcheck"

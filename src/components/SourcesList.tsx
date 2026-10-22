@@ -12,7 +12,7 @@ export function SourcesList({ sources, compact = false }: { sources: Source[]; c
           <OutboundLink href={s.url} style={{ textDecoration: "underline" }}>
             {s.publisher}: {s.title}
           </OutboundLink>
-          <span style={{ color: "var(--text-muted)" }}> — accessed {fmtDate(s.checked)}</span>
+          <span style={{ color: "var(--text-muted)" }}>. Accessed {fmtDate(s.checked)}.</span>
         </li>
       ))}
     </ul>

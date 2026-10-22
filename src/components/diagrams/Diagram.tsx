@@ -179,14 +179,14 @@ function CmuSizeDiagram({ title }: { title: string }) {
       <rect x="80" y="62" width="62" height="40" rx="3" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
       <rect x="150" y="62" width="62" height="40" rx="3" fill={SOFT} stroke={LINE} strokeWidth="1.2" />
       {/* Actual dimensions (brand) */}
-      <text x="146" y="130" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">actual 15⅝ in</text>
-      <text x="49" y="82" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 49 82)">7⅝ in</text>
+      <text x="146" y="130" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600">actual 15.625 in</text>
+      <text x="49" y="82" textAnchor="middle" fill={BRAND} fontSize="11" fontWeight="600" transform="rotate(-90 49 82)">7.625 in</text>
       {/* Nominal label (gray) */}
       <text x="150" y="44" textAnchor="middle" fill={LINE} fontSize="10">nominal 16 × 8 in</text>
       {/* Mortar-joint callout, pointing at the gap on the right */}
       <line x1="236" y1="88" x2="256" y2="88" stroke={LINE} strokeWidth="1" />
-      <text x="258" y="91" textAnchor="start" fill={LINE} fontSize="9.5">⅜ in</text>
-      <text x="146" y="150" textAnchor="middle" fill={LINE} fontSize="10">dashed = nominal · gap = ⅜ in mortar joint</text>
+      <text x="258" y="91" textAnchor="start" fill={LINE} fontSize="9.5">0.375 in</text>
+      <text x="146" y="150" textAnchor="middle" fill={LINE} fontSize="10">dashed = nominal · gap = 0.375 in mortar joint</text>
     </Frame>
   );
 }
@@ -395,8 +395,8 @@ function BrickDiagram({ title }: { title: string }) {
       {/* Right: one brick, actual size with a dashed nominal outline (with joint) */}
       <rect x="196" y="62" width="80" height="30" fill="none" stroke={BRAND} strokeWidth="1.2" strokeDasharray="4 3" />
       <rect x="200" y="66" width="72" height="22" fill={brick} stroke={LINE} strokeWidth="1.2" />
-      <text x="236" y="58" textAnchor="middle" fill={BRAND} fontSize="10" fontWeight="600">nominal 8 × 2⅔</text>
-      <text x="236" y="104" textAnchor="middle" fill={LINE} fontSize="10">actual 7⅝ × 2¼ in</text>
+      <text x="236" y="58" textAnchor="middle" fill={BRAND} fontSize="10" fontWeight="600">nominal 8 × 2.667</text>
+      <text x="236" y="104" textAnchor="middle" fill={LINE} fontSize="10">actual 7.625 × 2.25 in</text>
     </Frame>
   );
 }
@@ -550,7 +550,7 @@ function LandscapeRockDiagram({ title }: { title: string }) {
   const rock = "#cbc8bf";
   return (
     <Frame title={title}>
-      {/* Left: side view — rock layer over landscape fabric over soil, with edging */}
+      {/* Left: side view, rock layer over landscape fabric over soil, with edging */}
       <rect x="30" y="62" width="116" height="26" fill={rock} stroke={LINE} strokeWidth="1.2" />
       {/* a few pebbles in the rock layer */}
       {[
@@ -630,6 +630,58 @@ function AsphaltDiagram({ title }: { title: string }) {
   );
 }
 
+/** Fence post: side view of a post set in concrete over a gravel base, plus a
+    top view of the round hole with the square post centered. */
+function FencePostDiagram({ title }: { title: string }) {
+  const wood = "#b98a52";
+  const concrete = "#d8d2c4";
+  const gravelFill = "#cfc7b6";
+  return (
+    <Frame title={title}>
+      {/* ground line */}
+      <line x1="20" y1="66" x2="150" y2="66" stroke={LINE} strokeWidth="1.2" />
+      <text x="24" y="60" fill={LINE} fontSize="8.5">ground</text>
+      {/* concrete collar around the post */}
+      <rect x="44" y="70" width="72" height="42" fill={concrete} stroke={LINE} strokeWidth="1.2" />
+      {/* sloped top of the concrete away from the post */}
+      <polygon points="44,70 72,66 88,66 116,70 116,74 44,74" fill={concrete} stroke={LINE} strokeWidth="1" />
+      {/* gravel base */}
+      <rect x="44" y="112" width="72" height="12" fill={gravelFill} stroke={LINE} strokeWidth="1.2" />
+      {[50, 62, 74, 86, 98, 110].map((cx, i) => (
+        <circle key={i} cx={cx} cy={118} r="2.2" fill="#fff" stroke={LINE} strokeWidth="0.6" />
+      ))}
+      {/* post */}
+      <rect x="72" y="40" width="16" height="72" fill={wood} stroke={LINE} strokeWidth="1.2" />
+      {/* hole diameter arrow (d) along the top */}
+      <line x1="44" y1="48" x2="116" y2="48" stroke={BRAND} strokeWidth="1.2" />
+      <path d="M44 48 l4 -2.5 v5 z" fill={BRAND} />
+      <path d="M116 48 l-4 -2.5 v5 z" fill={BRAND} />
+      <text x="62" y="45" fill={BRAND} fontSize="9" fontWeight="600">d</text>
+      {/* concrete depth arrow (left) */}
+      <line x1="34" y1="70" x2="34" y2="112" stroke={BRAND} strokeWidth="1.2" />
+      <path d="M34 70 l-2.5 4 h5 z" fill={BRAND} />
+      <path d="M34 112 l-2.5 -4 h5 z" fill={BRAND} />
+      <text x="20" y="94" fill={BRAND} fontSize="8.5" fontWeight="600">concrete</text>
+      {/* total depth arrow (far right) */}
+      <line x1="126" y1="66" x2="126" y2="124" stroke={LINE} strokeWidth="1.1" />
+      <path d="M126 66 l-2.5 4 h5 z" fill={LINE} />
+      <path d="M126 124 l-2.5 -4 h5 z" fill={LINE} />
+      <text x="130" y="98" fill={LINE} fontSize="9" fontWeight="600">D</text>
+      <text x="80" y="138" textAnchor="middle" fill={LINE} fontSize="10">post set in concrete (side)</text>
+
+      {/* Top view: round hole with square post centered */}
+      <circle cx="244" cy="80" r="40" fill={concrete} stroke={LINE} strokeWidth="1.3" />
+      <rect x="232" y="68" width="24" height="24" fill={wood} stroke={LINE} strokeWidth="1.2" />
+      <line x1="204" y1="80" x2="284" y2="80" stroke={BRAND} strokeWidth="1.1" strokeDasharray="3 3" />
+      <path d="M204 80 l4 -2.5 v5 z" fill={BRAND} />
+      <path d="M284 80 l-4 -2.5 v5 z" fill={BRAND} />
+      <text x="218" y="76" fill={BRAND} fontSize="9" fontWeight="600">d</text>
+      <text x="244" y="84" textAnchor="middle" fill={BRAND} fontSize="9" fontWeight="600">W</text>
+      <text x="244" y="138" textAnchor="middle" fill={LINE} fontSize="10">hole + post (top)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -659,6 +711,8 @@ export function Diagram({
     node = <LandscapeRockDiagram title={alt} />;
   } else if (slug === "asphalt-calculator") {
     node = <AsphaltDiagram title={alt} />;
+  } else if (slug === "fence-post-concrete-calculator") {
+    node = <FencePostDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

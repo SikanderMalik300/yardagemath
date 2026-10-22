@@ -115,7 +115,7 @@ export function AsphaltCalculator() {
     setInstalled(String(PRICES.asphaltInstalledPerSqFt));
   };
 
-  const summary = `Asphalt: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYards, 2))} cu yd) with ${waste}% waste, ${fmtInt(result.truckloads)} truckload${result.truckloads === 1 ? "" : "s"}. Material ${fmtUSD(result.materialCost)}. — yardagemath.com/${SLUG}/`;
+  const summary = `Asphalt: ${fmtNumber(round(result.tonsWithWaste, 2))} tons (${fmtNumber(round(result.cubicYards, 2))} cu yd) with ${waste}% waste, ${fmtInt(result.truckloads)} truckload${result.truckloads === 1 ? "" : "s"}. Material ${fmtUSD(result.materialCost)}., yardagemath.com/${SLUG}/`;
 
   return (
     <div>

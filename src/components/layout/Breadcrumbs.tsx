@@ -5,7 +5,7 @@ export interface Crumb {
   href?: string; // omit for the current page
 }
 
-/** Breadcrumbs — small, muted, above the H1 (design.md §6). */
+/** Breadcrumbs, small, muted, above the H1 (design.md §6). */
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <nav aria-label="Breadcrumb" style={{ marginBottom: "0.75rem" }}>

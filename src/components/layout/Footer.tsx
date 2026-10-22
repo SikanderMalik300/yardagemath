@@ -36,7 +36,7 @@ export function Footer() {
             </div>
             <p style={{ fontSize: "0.875rem", maxWidth: 260 }}>
               Free, accurate construction and yard calculators with the math shown. Estimates
-              for planning — always confirm with your supplier.
+              for planning, always confirm with your supplier.
             </p>
           </div>
 

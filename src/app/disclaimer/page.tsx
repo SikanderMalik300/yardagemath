@@ -6,7 +6,7 @@ import { SITE } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Disclaimer",
   description:
-    "YardageMath results are planning estimates only — not professional engineering, construction, legal or financial advice. Confirm with professionals.",
+    "YardageMath results are planning estimates only, not professional engineering, construction, legal or financial advice. Confirm with professionals.",
   path: "/disclaimer/",
 });
 

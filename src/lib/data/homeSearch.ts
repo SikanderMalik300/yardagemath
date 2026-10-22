@@ -40,6 +40,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // millings are forced here via QUERY_PRIORITY). "driveway" shows this page and the
   // Concrete Slab Cost Calculator.
   "asphalt-calculator": ["asphalt", "blacktop", "driveway", "paving", "hot mix", "tonnage", "millings", "parking lot", "patch", "tar"],
+  // "fence post" and "fence" resolve here (name starts with them); "post hole" is
+  // forced here via QUERY_PRIORITY.
+  "fence-post-concrete-calculator": ["fence post", "post hole", "posts", "fence", "deck post", "mailbox post", "fast setting", "post concrete", "set a post"],
   "square-yard-calculator": ["carpet", "flooring", "sod", "turf", "square feet"],
   "landscape-materials-calculator": ["mulch", "rock", "stone", "sand", "bark", "gravel", "river rock"],
   // "landscape rock" resolves here (name starts with it); "river rock" and "lava
@@ -75,6 +78,10 @@ const QUERY_PRIORITY: Record<string, string> = {
   asphalt: "asphalt-calculator",
   blacktop: "asphalt-calculator",
   millings: "asphalt-calculator",
+  // post-setting queries land on the Fence Post Concrete Calculator first.
+  "fence post": "fence-post-concrete-calculator",
+  "post hole": "fence-post-concrete-calculator",
+  fence: "fence-post-concrete-calculator",
 };
 
 /**

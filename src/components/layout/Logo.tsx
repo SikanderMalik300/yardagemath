@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /**
- * Inline-SVG brand wordmark (audit P1 #4). No image request — the mark ships in
+ * Inline-SVG brand wordmark (audit P1 #4). No image request, the mark ships in
  * the HTML, so it never blocks LCP and can never serve a stale (orange) cache.
  * A simple geometric cube + wordmark (design.md §5): no sparkle/robot/gradient.
  */

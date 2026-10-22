@@ -2,7 +2,7 @@ import type { Faq as FaqItem } from "@/data/calculators";
 
 /**
  * FAQ accordion (build-spec A5 step 9, design.md §12).
- * Native <details> — keyboard accessible and the answer text is in the static
+ * Native <details>, keyboard accessible and the answer text is in the static
  * HTML word-for-word, matching the FAQPage JSON-LD.
  */
 export function FaqSection({ faqs }: { faqs: FaqItem[] }) {

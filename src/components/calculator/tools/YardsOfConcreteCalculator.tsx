@@ -88,7 +88,7 @@ export function YardsOfConcreteCalculator() {
     setWaste("10"); setPrice(String(PRICES.concretePerCuYd)); setBagSize("lb80");
   };
 
-  const summary = `Concrete: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste (${fmtInt(result.bags)} bags of 80 lb, ${fmtUSD(result.cost)}). — yardagemath.com/${SLUG}/`;
+  const summary = `Concrete: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste (${fmtInt(result.bags)} bags of 80 lb, ${fmtUSD(result.cost)})., yardagemath.com/${SLUG}/`;
 
   const bagLabel = bagSize === "lb80" ? "80-lb bags" : "60-lb bags";
 
@@ -203,7 +203,7 @@ export function YardsOfConcreteCalculator() {
               )}
               {shape === "column" && (
                 <MathLine>
-                  cu ft = π × (d ÷ 2)² × h × {qty} = {fmtNumber(round(result.cubicFeet, 2))}
+                  cu ft = 3.1416 × (d ÷ 2)² × h × {qty} = {fmtNumber(round(result.cubicFeet, 2))}
                 </MathLine>
               )}
               <MathLine>

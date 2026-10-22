@@ -15,7 +15,7 @@ type AdSlotProps = {
 export function AdSlot({ minHeight = 280, label = "Advertisement" }: AdSlotProps) {
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
 
-  // Until AdSense is enabled, render nothing — no empty reserved gap (audit Task 3).
+  // Until AdSense is enabled, render nothing, no empty reserved gap (audit Task 3).
   // Space is reserved only once ads are actually present, which is when CLS matters.
   if (!adsenseId) return null;
 

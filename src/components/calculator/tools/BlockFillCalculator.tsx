@@ -64,7 +64,7 @@ export function BlockFillCalculator() {
   };
 
   const bagLabel = bagSize === "lb80" ? "80-lb bags" : "60-lb bags";
-  const summary = `Block fill: ${fmtNumber(round(result.cubicFeet, 1))} cu ft (${fmtNumber(round(result.cubicYards, 2))} cu yd, ${fmtInt(result.bags)} bags of 80 lb). — yardagemath.com/${SLUG}/`;
+  const summary = `Block fill: ${fmtNumber(round(result.cubicFeet, 1))} cu ft (${fmtNumber(round(result.cubicYards, 2))} cu yd, ${fmtInt(result.bags)} bags of 80 lb)., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

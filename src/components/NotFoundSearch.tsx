@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { calculators } from "@/data/calculators";
 
-/** Client-side filter over the calculator list — a static site has no search backend. */
+/** Client-side filter over the calculator list, a static site has no search backend. */
 export function NotFoundSearch() {
   const [q, setQ] = useState("");
   const query = q.trim().toLowerCase();
@@ -37,7 +37,7 @@ export function NotFoundSearch() {
             <Link href={`/${c.slug}/`}>{c.h1.replace(/\s*\(.*\)/, "")}</Link>
           </li>
         ))}
-        {matches.length === 0 && <li style={{ color: "var(--text-muted)" }}>No matching calculator — try another word.</li>}
+        {matches.length === 0 && <li style={{ color: "var(--text-muted)" }}>No matching calculator, try another word.</li>}
       </ul>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { computeFooting, type FootingType, type FootingInput } from "@/lib/formulas/footing";
 import { feetInchesToFeet, round } from "@/lib/formulas/units";
 import { num } from "@/lib/analytics";
@@ -87,7 +88,7 @@ export function FootingCalculator() {
     setWaste("10"); setPrice(String(PRICES.concretePerCuYd)); setBagSize("lb80");
   };
 
-  const summary = `Footing concrete: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste (${fmtInt(result.bags)} bags of 80 lb, ${fmtUSD(result.cost)}). — yardagemath.com/${SLUG}/`;
+  const summary = `Footing concrete: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd with ${waste}% waste (${fmtInt(result.bags)} bags of 80 lb, ${fmtUSD(result.cost)})., yardagemath.com/${SLUG}/`;
   const bagLabel = bagSize === "lb80" ? "80-lb bags" : "60-lb bags";
 
   return (
@@ -188,10 +189,16 @@ export function FootingCalculator() {
               <SecondaryItem label="Estimated cost" value={fmtUSD(result.cost)} />
             </SecondaryResults>
 
+            <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
+              Setting fence or deck posts?{" "}
+              <Link href="/fence-post-concrete-calculator/" prefetch={false}>Use the Fence Post Concrete Calculator.</Link>{" "}
+              It subtracts the post and counts bags per post.
+            </p>
+
             <ShowMath>
               {type === "strip" && <MathLine>cu ft = L × W × D = {fmtNumber(round(result.cubicFeet, 2))}</MathLine>}
               {type === "pad" && <MathLine>cu ft = L × W × D × {pQty} = {fmtNumber(round(result.cubicFeet, 2))}</MathLine>}
-              {type === "pier" && <MathLine>cu ft = π × (d ÷ 2)² × D × {piQty} = {fmtNumber(round(result.cubicFeet, 2))}</MathLine>}
+              {type === "pier" && <MathLine>cu ft = 3.1416 × (d ÷ 2)² × D × {piQty} = {fmtNumber(round(result.cubicFeet, 2))}</MathLine>}
               <MathLine>
                 cubic yards = {fmtNumber(round(result.cubicFeet, 2))} ÷ 27 = {fmtNumber(round(result.cubicYards, 2))}
               </MathLine>

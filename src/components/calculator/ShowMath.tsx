@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 /**
  * "Show the math" disclosure (build-spec A5 step 4, design.md §8).
- * Native <details> — closed by default, keyboard accessible, zero JS, and the
+ * Native <details>, closed by default, keyboard accessible, zero JS, and the
  * content is present in the static HTML for crawlers.
  */
 export function ShowMath({ children }: { children: ReactNode }) {

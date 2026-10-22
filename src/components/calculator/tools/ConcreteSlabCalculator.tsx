@@ -88,7 +88,7 @@ export function ConcreteSlabCalculator() {
 
   const summary = `Concrete slab: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd, total ${fmtUSD(
     result.totalCost
-  )} (${fmtUSD(result.costPerSqFt)}/sq ft). — yardagemath.com/${SLUG}/`;
+  )} (${fmtUSD(result.costPerSqFt)}/sq ft)., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

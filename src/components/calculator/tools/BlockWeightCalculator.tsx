@@ -62,7 +62,7 @@ export function BlockWeightCalculator() {
     setPayload(String(PICKUP_PAYLOAD_LB_DEFAULT));
   };
 
-  const summary = `${fmtInt(num(quantity))} × ${CMU_WEIGHTS[block].label} block (${hasLight ? weightClass : "normal"}): ${fmtInt(result.totalLb)} lb (${fmtNumber(round(result.tons, 2))} tons), about ${fmtInt(result.blocksPerTrip)} per trip. — yardagemath.com/${SLUG}/`;
+  const summary = `${fmtInt(num(quantity))} × ${CMU_WEIGHTS[block].label} block (${hasLight ? weightClass : "normal"}): ${fmtInt(result.totalLb)} lb (${fmtNumber(round(result.tons, 2))} tons), about ${fmtInt(result.blocksPerTrip)} per trip., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell

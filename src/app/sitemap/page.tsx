@@ -6,7 +6,7 @@ import { categoryList, calculatorsInCategory } from "@/data/calculators";
 export const metadata = buildMetadata({
   title: "All Calculators & Pages",
   description:
-    "A complete list of every calculator and page on YardageMath, organized by category — concrete and block, landscaping, and lawn care tools.",
+    "A complete list of every calculator and page on YardageMath, organized by category, concrete and block, landscaping, and lawn care tools.",
   path: "/sitemap/",
 });
 

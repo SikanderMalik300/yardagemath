@@ -51,7 +51,7 @@ export function TopsoilCalculator() {
 
   const summary = `Topsoil: ${fmtNumber(round(result.cubicYardsWithWaste, 2))} cu yd (${fmtNumber(
     round(result.tons, 2)
-  )} tons, ${result.bags} bags). — yardagemath.com/${SLUG}/`;
+  )} tons, ${result.bags} bags)., yardagemath.com/${SLUG}/`;
 
   return (
     <CalculatorShell
