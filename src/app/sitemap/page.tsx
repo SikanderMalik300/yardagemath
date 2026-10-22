@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { categoryList, calculatorsInCategory } from "@/data/calculators";
 
@@ -42,6 +43,7 @@ function LinkList({ items }: { items: { label: string; href: string; desc: strin
 export default function SitemapPage() {
   return (
     <div className="container-content" style={{ paddingTop: "1.5rem", paddingBottom: "2rem" }}>
+      <JsonLd data={utilityWebPageJsonLd({ path: "/sitemap/", name: "All Calculators & Pages", datePublished: "2026-10-07", dateModified: "2026-10-22", withAuthor: true })} />
       <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "All calculators" }]} />
       <h1 className="page-h1" style={{ marginBottom: "0.75rem" }}>
         All calculators &amp; pages

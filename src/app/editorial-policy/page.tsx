@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buildMetadata, breadcrumbJsonLd, absUrl } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, absUrl, AUTHOR_ID } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
@@ -14,8 +14,13 @@ export const metadata = buildMetadata({
 const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": `${absUrl("/editorial-policy/")}#webpage`,
   name: "Editorial Policy",
   url: absUrl("/editorial-policy/"),
+  isPartOf: { "@id": `${SITE.url}/#website` },
+  author: { "@id": AUTHOR_ID },
+  datePublished: "2026-10-09",
+  dateModified: "2026-10-22",
   description:
     "How YardageMath calculators and pages are written, checked, sourced and corrected, including how AI tools are used and how to report an error.",
   publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
@@ -23,7 +28,7 @@ const webPageJsonLd = {
 
 export default function EditorialPolicyPage() {
   return (
-    <ContentPage title="Editorial Policy" updated="2026-10-10">
+    <ContentPage title="Editorial Policy" updated="2026-10-22">
       <JsonLd
         data={[
           webPageJsonLd,

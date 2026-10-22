@@ -16,7 +16,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import {
   breadcrumbJsonLd,
   webApplicationJsonLd,
+  webPageJsonLd,
   faqJsonLd,
+  absUrl,
 } from "@/lib/seo";
 
 /**
@@ -37,12 +39,16 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
       <JsonLd
         data={[
           webApplicationJsonLd(cal),
+          webPageJsonLd(cal),
           // Names match the visible breadcrumb text exactly (audit Task 6).
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: category.title.replace(" Calculators", ""), path: `/${category.slug}/` },
-            { name: cal.h1.replace(/\s*\(.*\)/, ""), path: `/${cal.slug}/` },
-          ]),
+          breadcrumbJsonLd(
+            [
+              { name: "Home", path: "/" },
+              { name: category.title.replace(" Calculators", ""), path: `/${category.slug}/` },
+              { name: cal.h1.replace(/\s*\(.*\)/, ""), path: `/${cal.slug}/` },
+            ],
+            `${absUrl(`/${cal.slug}/`)}#breadcrumb`
+          ),
           faqJsonLd(cal),
         ]}
       />

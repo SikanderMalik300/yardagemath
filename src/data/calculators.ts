@@ -59,6 +59,8 @@ export interface Calculator {
   /** Optional extra warning note shown above the disclaimer. */
   warning?: string;
   related: string[]; // slugs
+  /** ISO date the page first went live (from git). */
+  datePublished: string;
   lastUpdated: string; // ISO date
   /** Alt text for the page's diagram / image (primary keyword goes here). */
   imageAlt: string;
@@ -74,11 +76,16 @@ export interface Category {
   /** "Which calculator do I need?" table: project → tool slug. */
   whichTool: { project: string; slug: string }[];
   faqs: Faq[];
+  /** ISO date the hub first went live (from git). */
+  datePublished: string;
+  lastUpdated: string;
 }
 
 export const categories: Record<CategorySlug, Category> = {
   concrete: {
     slug: "concrete",
+    datePublished: "2026-10-07",
+    lastUpdated: "2026-10-22",
     title: "Concrete & Block Calculators",
     h1: "Concrete & Block Calculators",
     metaDescription:
@@ -121,6 +128,8 @@ export const categories: Record<CategorySlug, Category> = {
   },
   landscaping: {
     slug: "landscaping",
+    datePublished: "2026-10-07",
+    lastUpdated: "2026-10-22",
     title: "Landscaping Material Calculators",
     h1: "Landscaping & Yardage Calculators",
     metaDescription:
@@ -165,6 +174,8 @@ export const categories: Record<CategorySlug, Category> = {
   },
   lawn: {
     slug: "lawn",
+    datePublished: "2026-10-07",
+    lastUpdated: "2026-10-22",
     title: "Lawn Care Calculators",
     h1: "Lawn Care Calculators",
     metaDescription:
@@ -327,6 +338,7 @@ export const calculators: Calculator[] = [
       "rip-rap-calculator",
       "fence-post-concrete-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Cubic yard calculator diagram showing length, width and depth of an area",
   },
@@ -461,6 +473,7 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "rip-rap-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Concrete block calculator diagram of a CMU wall with courses and openings",
   },
@@ -632,6 +645,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "square-yard-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Concrete slab cost diagram: slab thickness, gravel base and rebar, plus the length and width the calculator uses.",
   },
@@ -746,6 +760,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "lawn-mowing-cost-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
@@ -861,6 +876,7 @@ export const calculators: Calculator[] = [
       "rip-rap-calculator",
       "topsoil-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Pea gravel calculator diagram of a patio area with gravel depth labelled",
   },
@@ -973,6 +989,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
@@ -1101,6 +1118,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "rip-rap-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Landscape material calculator diagram with material depth over an area",
   },
@@ -1217,6 +1235,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
     related: ["acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
@@ -1350,6 +1369,7 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "fence-post-concrete-calculator",
     ],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Block wall calculator diagram showing courses, cap blocks and rebar",
   },
@@ -1461,6 +1481,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["ASABE D497 machinery management data"],
     related: ["lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
@@ -1572,6 +1593,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["gutter manufacturer installation guides", "SMACNA downspout sizing"],
     related: ["square-yard-calculator", "concrete-slab-cost-calculator", "cubic-yard-calculator"],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Gutter slope calculator diagram showing the high end, low end and total drop",
   },
@@ -1683,6 +1705,7 @@ export const calculators: Calculator[] = [
     warning:
       "For shoreline or channel work, follow your engineer or local permit requirements.",
     related: ["gravel-calculator", "cubic-yard-calculator", "pea-gravel-calculator", "landscape-materials-calculator"],
+    datePublished: "2026-10-07",
     lastUpdated: "2026-10-22",
     imageAlt: "Rip rap calculator diagram of a stone layer on a slope with thickness labelled",
   },
@@ -1804,6 +1827,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "fence-post-concrete-calculator",
     ],
+    datePublished: "2026-10-09",
     lastUpdated: "2026-10-22",
     imageAlt: "Yards of concrete diagram: slab, strip footing and round column with the dimensions the calculator uses.",
   },
@@ -1919,6 +1943,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
+    datePublished: "2026-10-10",
     lastUpdated: "2026-10-22",
     imageAlt: "Concrete block weight: a standard 8×8×16 block and a 90-block pallet.",
   },
@@ -2035,6 +2060,7 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
       "yards-of-concrete-calculator",
     ],
+    datePublished: "2026-10-10",
     lastUpdated: "2026-10-22",
     imageAlt: "CMU nominal vs actual size: a 15.625 × 7.625 in block plus a 0.375 in joint fills 16 × 8 in.",
   },
@@ -2152,6 +2178,7 @@ export const calculators: Calculator[] = [
       "cubic-yard-calculator",
       "fence-post-concrete-calculator",
     ],
+    datePublished: "2026-10-12",
     lastUpdated: "2026-10-22",
     imageAlt: "Concrete footing diagram: strip, pad and round pier footings with the dimensions the calculator uses.",
   },
@@ -2267,6 +2294,7 @@ export const calculators: Calculator[] = [
       "cmu-block-sizes",
       "concrete-block-weight",
     ],
+    datePublished: "2026-10-12",
     lastUpdated: "2026-10-22",
     imageAlt: "Cinder block fill diagram: a block's two cores and a wall with every other core filled.",
   },
@@ -2383,6 +2411,7 @@ export const calculators: Calculator[] = [
       "topsoil-calculator",
       "pea-gravel-calculator",
     ],
+    datePublished: "2026-10-12",
     lastUpdated: "2026-10-22",
     imageAlt: "Mulch calculator diagram: bed depth and a tree ring, the measurements the calculator uses.",
   },
@@ -2506,6 +2535,7 @@ export const calculators: Calculator[] = [
       "asphalt-calculator",
       "fence-post-concrete-calculator",
     ],
+    datePublished: "2026-10-14",
     lastUpdated: "2026-10-22",
     imageAlt: "Gravel calculator diagram: driveway layers and the length, width and depth the calculator uses.",
   },
@@ -2623,6 +2653,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "topsoil-calculator",
     ],
+    datePublished: "2026-10-14",
     lastUpdated: "2026-10-22",
     imageAlt: "Sand calculator diagram: paver bedding layer and a sandbox, the measurements the calculator uses.",
   },
@@ -2737,6 +2768,7 @@ export const calculators: Calculator[] = [
       "paver-calculator",
       "paver-base-calculator",
     ],
+    datePublished: "2026-10-15",
     lastUpdated: "2026-10-22",
     imageAlt: "Brick calculator diagram: wall length and height with an opening, and a modular brick's actual and nominal size.",
   },
@@ -2854,6 +2886,7 @@ export const calculators: Calculator[] = [
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
+    datePublished: "2026-10-16",
     lastUpdated: "2026-10-22",
     imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
   },
@@ -2968,6 +3001,7 @@ export const calculators: Calculator[] = [
       "brick-calculator",
       "landscape-materials-calculator",
     ],
+    datePublished: "2026-10-17",
     lastUpdated: "2026-10-22",
     imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
   },
@@ -3081,6 +3115,7 @@ export const calculators: Calculator[] = [
       "fill-dirt-calculator",
       "concrete-block-calculator",
     ],
+    datePublished: "2026-10-18",
     lastUpdated: "2026-10-22",
     imageAlt: "Retaining wall diagram: base pad, buried course, setback blocks, cap, drainage stone and pipe, with the length and height the calculator uses.",
   },
@@ -3194,6 +3229,7 @@ export const calculators: Calculator[] = [
       "sand-calculator",
       "retaining-wall-calculator",
     ],
+    datePublished: "2026-10-19",
     lastUpdated: "2026-10-22",
     imageAlt: "Fill dirt diagram: raising a low area in layers and filling a hole, with the measurements the calculator uses.",
   },
@@ -3329,6 +3365,7 @@ export const calculators: Calculator[] = [
       "pea-gravel-calculator",
       "paver-calculator",
     ],
+    datePublished: "2026-10-20",
     lastUpdated: "2026-10-22",
     imageAlt: "Landscape rock diagram: rock depth over landscape fabric, and suggested depth by rock size.",
   },
@@ -3463,6 +3500,7 @@ export const calculators: Calculator[] = [
       "yards-of-concrete-calculator",
       "paver-calculator",
     ],
+    datePublished: "2026-10-21",
     lastUpdated: "2026-10-22",
     imageAlt: "Asphalt calculator diagram: compacted asphalt over a gravel base, with the length, width and thickness the calculator uses.",
   },
@@ -3581,6 +3619,7 @@ export const calculators: Calculator[] = [
       "gravel-calculator",
       "block-wall-calculator",
     ],
+    datePublished: "2026-10-22",
     lastUpdated: "2026-10-22",
     imageAlt: "Fence post concrete diagram: post set in concrete over a gravel base, with the hole diameter and depths the calculator uses.",
   },

@@ -351,6 +351,18 @@ describe("gutter slope calculator", () => {
     });
     expect(b.totalDropIn).toBe(0.5);
   });
+  it("start and outlet heights measured down from the fascia (0.5 in start gap)", () => {
+    const g = computeGutterSlope({
+      runLengthFt: 40,
+      slopeInPer10ft: 0.25,
+      downspoutPosition: "one-end",
+      roofAreaSqFt: null,
+      fasciaGapIn: 0.5,
+    });
+    expect(g.totalDropIn).toBe(1);
+    expect(g.highEndIn).toBe(0.5);
+    expect(g.lowEndIn).toBe(1.5);
+  });
 });
 
 /* 12. Rip rap — 50×6×12in → 11.1 cu yd ≈ 16.7 tons (spec #12) */

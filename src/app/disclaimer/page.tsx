@@ -1,18 +1,23 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
 
 export const metadata = buildMetadata({
-  title: "Disclaimer",
+  title: "Disclaimer – YardageMath Estimates and Limits",
   description:
     "YardageMath results are planning estimates only, not professional engineering, construction, legal or financial advice. Confirm with professionals.",
   path: "/disclaimer/",
+  absoluteTitle: true,
 });
 
 export default function DisclaimerPage() {
   return (
-    <ContentPage title="Disclaimer" updated="2026-10-07">
+    <ContentPage
+      title="Disclaimer"
+      updated="2026-10-22"
+      jsonLd={utilityWebPageJsonLd({ path: "/disclaimer/", name: "Disclaimer", datePublished: "2026-10-07", dateModified: "2026-10-22" })}
+    >
       <p>
         <strong>
           All results on {SITE.name} are estimates for planning. They are not professional

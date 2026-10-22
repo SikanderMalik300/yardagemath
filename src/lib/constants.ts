@@ -407,6 +407,10 @@ export const DOWNSPOUT_CAPACITY_SQFT = {
   size3x4: 1200, // VERIFY
 };
 export const DOWNSPOUT_SPACING_FT = 35; // one per ~30–40 ft of run (VERIFY)
+// Gap below the fascia top at the high (start) end, inches. VERIFY: gutter
+// installer guides hang the back edge about 1/2 in below the fascia top so the
+// front stays below the roof line; heights are measured down from the fascia.
+export const GUTTER_FASCIA_GAP_IN = 0.5;
 
 /* =========================================================================
    Rip rap stone classes — representative D50 ranges + layer thickness

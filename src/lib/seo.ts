@@ -83,15 +83,17 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${BASE}/#website`,
     name: SITE.name,
     url: BASE,
   };
 }
 
-export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+export function breadcrumbJsonLd(items: { name: string; path: string }[], id?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    ...(id ? { "@id": id } : {}),
     itemListElement: items.map((it, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -102,18 +104,78 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
 }
 
 export function webApplicationJsonLd(cal: Calculator) {
+  const u = absUrl(`/${cal.slug}/`);
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": `${u}#app`,
     name: cal.h1,
-    url: absUrl(`/${cal.slug}/`),
+    url: u,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: cal.metaDescription,
+    datePublished: cal.datePublished,
     dateModified: cal.lastUpdated,
     author: { "@type": "Person", "@id": AUTHOR_ID, name: SITE.founder, url: AUTHOR_URL },
     publisher: { "@type": "Organization", name: SITE.name, url: BASE },
+  };
+}
+
+/** WebPage node for a tool page, tying together the app, breadcrumb and author (AEO/GEO Fix 1). */
+export function webPageJsonLd(cal: Calculator) {
+  const u = absUrl(`/${cal.slug}/`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${u}#webpage`,
+    url: u,
+    name: cal.title,
+    isPartOf: { "@id": `${BASE}/#website` },
+    author: { "@id": AUTHOR_ID },
+    datePublished: cal.datePublished,
+    dateModified: cal.lastUpdated,
+    mainEntity: { "@id": `${u}#app` },
+    breadcrumb: { "@id": `${u}#breadcrumb` },
+  };
+}
+
+/** WebPage node for a category hub. */
+export function hubWebPageJsonLd(category: Category) {
+  const u = absUrl(`/${category.slug}/`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${u}#webpage`,
+    url: u,
+    name: category.title,
+    isPartOf: { "@id": `${BASE}/#website` },
+    author: { "@id": AUTHOR_ID },
+    datePublished: category.datePublished,
+    dateModified: category.lastUpdated,
+    mainEntity: { "@id": `${u}#collection` },
+  };
+}
+
+/** Plain WebPage node for a utility/legal page (author omitted on legal pages). */
+export function utilityWebPageJsonLd(o: {
+  path: string;
+  name: string;
+  datePublished: string;
+  dateModified: string;
+  withAuthor?: boolean;
+}) {
+  const u = absUrl(o.path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${u}#webpage`,
+    url: u,
+    name: o.name,
+    isPartOf: { "@id": `${BASE}/#website` },
+    ...(o.withAuthor ? { author: { "@id": AUTHOR_ID } } : {}),
+    datePublished: o.datePublished,
+    dateModified: o.dateModified,
   };
 }
 
@@ -133,6 +195,7 @@ export function collectionPageJsonLd(category: Category, tools: Calculator[]) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${absUrl(`/${category.slug}/`)}#collection`,
     name: category.h1,
     url: absUrl(`/${category.slug}/`),
     description: category.metaDescription,

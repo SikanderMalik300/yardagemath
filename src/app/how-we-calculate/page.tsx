@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
 import { SourcesList } from "@/components/SourcesList";
 import { SOURCES, type SourceKey } from "@/lib/sources";
@@ -63,10 +63,13 @@ const ALL_SOURCE_KEYS: SourceKey[] = [
   "lawnCost2026",
 ];
 
-function SimpleTable({ head, rows }: { head: string[]; rows: (string | number)[][] }) {
+function SimpleTable({ head, rows, caption }: { head: string[]; rows: (string | number)[][]; caption: string }) {
   return (
     <div className="table-wrapper" style={{ marginBottom: "1.5rem" }}>
       <table>
+        <caption style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}>
+          {caption}
+        </caption>
         <thead>
           <tr>
             {head.map((h, i) => (
@@ -97,7 +100,8 @@ export default function HowWeCalculatePage() {
     <ContentPage
       title="How We Calculate"
       intro="Every number our calculators show comes from the sources below. Values are checked against the sources listed. Materials vary, so every value is editable in the calculator. Confirm final quantities with your supplier."
-      updated="2026-10-09"
+      updated="2026-10-22"
+      jsonLd={utilityWebPageJsonLd({ path: "/how-we-calculate/", name: "How We Calculate", datePublished: "2026-10-07", dateModified: "2026-10-22", withAuthor: true })}
     >
       <h2>Core formulas</h2>
       <p>All volume tools share the same geometry, done in feet and converted at the end:</p>
@@ -117,6 +121,7 @@ export default function HowWeCalculatePage() {
         supplier. Checked {CHECKED}.
       </p>
       <SimpleTable
+        caption="Material densities in tons per cubic yard"
         head={["Material", "Tons / cu yd"]}
         rows={Object.entries(DENSITY_TONS_PER_CUYD).map(([k, v]) => [
           MATERIAL_LABELS[k as keyof typeof MATERIAL_LABELS],
@@ -127,6 +132,7 @@ export default function HowWeCalculatePage() {
 
       <h2>Bag sizes (cubic feet per bag)</h2>
       <SimpleTable
+        caption="Bag sizes in cubic feet per bag"
         head={["Material", "Cu ft / bag"]}
         rows={[
           ["Mulch", BAG_SIZE_CUFT.mulch],
@@ -140,6 +146,7 @@ export default function HowWeCalculatePage() {
       <h2>Concrete bag yields</h2>
       <p>Mixed-concrete yield per bag, per the manufacturer data sheet (Quikrete). Checked {CHECKED}.</p>
       <SimpleTable
+        caption="Concrete bag yields in cubic feet"
         head={["Bag", "Cu ft yield", "Bags per cu yd"]}
         rows={[
           ["80 lb", CONCRETE_BAG_YIELD_CUFT.lb80, ceilCount(27 / CONCRETE_BAG_YIELD_CUFT.lb80)],
@@ -333,6 +340,7 @@ export default function HowWeCalculatePage() {
         presets follow ASABE field-efficiency ranges:
       </p>
       <SimpleTable
+        caption="Mower field-efficiency presets"
         head={["Equipment", "Efficiency"]}
         rows={FIELD_EFFICIENCY_PRESETS.map((p) => [p.label, `${Math.round(p.eff * 100)}%`])}
       />
@@ -340,12 +348,13 @@ export default function HowWeCalculatePage() {
 
       <h2>Gutter slope</h2>
       <p>Drop (in) = (run length ÷ 10) × slope per 10 ft. Presets follow manufacturer install guides:</p>
-      <SimpleTable head={["Preset", "Inches per 10 ft"]} rows={GUTTER_SLOPE_PRESETS.map((p) => [p.label, p.inchPer10ft])} />
+      <SimpleTable caption="Gutter slope presets" head={["Preset", "Inches per 10 ft"]} rows={GUTTER_SLOPE_PRESETS.map((p) => [p.label, p.inchPer10ft])} />
       <Cite keys={["pnnlGutters", "englertGutters"]} />
 
       <h2>Riprap stone classes</h2>
       <p>Representative gradations and layer thicknesses, per FHWA HEC-11 and NCHRP 568; your state DOT tables govern.</p>
       <SimpleTable
+        caption="Riprap stone classes"
         head={["Class", "D50 size", "Layer thickness"]}
         rows={RIPRAP_CLASSES.map((c) => [c.label, c.d50In, `${c.thicknessIn}"`])}
       />

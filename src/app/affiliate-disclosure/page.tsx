@@ -1,4 +1,4 @@
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
 
@@ -11,7 +11,11 @@ export const metadata = buildMetadata({
 
 export default function AffiliateDisclosurePage() {
   return (
-    <ContentPage title="Affiliate Disclosure" updated="2026-10-07">
+    <ContentPage
+      title="Affiliate Disclosure"
+      updated="2026-10-22"
+      jsonLd={utilityWebPageJsonLd({ path: "/affiliate-disclosure/", name: "Affiliate Disclosure", datePublished: "2026-10-07", dateModified: "2026-10-22" })}
+    >
       <p>
         Some links on {SITE.name} are affiliate links. If you click one and make a purchase, we may
         earn a commission at no additional cost to you. This helps keep the calculators free.

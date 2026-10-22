@@ -32,7 +32,7 @@ const profileJsonLd = {
 
 export default function AuthorPage() {
   return (
-    <ContentPage title="Sikander Mushtaq">
+    <ContentPage title="Sikander Mushtaq" updated="2026-10-22">
       <JsonLd
         data={[
           profileJsonLd,

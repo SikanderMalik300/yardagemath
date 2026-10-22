@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { buildMetadata, aboutPageJsonLd } from "@/lib/seo";
+import { buildMetadata, aboutPageJsonLd, utilityWebPageJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
 
 export const metadata = buildMetadata({
-  title: "About",
+  title: "About YardageMath – Who Builds These Calculators",
   description:
     "Free, carefully checked construction and yard calculators, why the site exists, how the tools are made, and how to send corrections.",
   path: "/about/",
+  absoluteTitle: true,
 });
 
 export default function AboutPage() {
@@ -17,8 +18,14 @@ export default function AboutPage() {
     <ContentPage
       title={`About ${SITE.name}`}
       intro="Free, accurate calculators for construction and yard projects, built by one person who got tired of guessing material quantities."
+      updated="2026-10-22"
     >
-      <JsonLd data={aboutPageJsonLd()} />
+      <JsonLd
+        data={[
+          aboutPageJsonLd(),
+          utilityWebPageJsonLd({ path: "/about/", name: "About YardageMath", datePublished: "2026-10-07", dateModified: "2026-10-22", withAuthor: true }),
+        ]}
+      />
 
       <figure
         style={{

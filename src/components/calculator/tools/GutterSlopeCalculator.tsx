@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { computeGutterSlope, type DownspoutPosition } from "@/lib/formulas/gutterSlope";
 import { round } from "@/lib/formulas/units";
 import { num } from "@/lib/analytics";
-import { GUTTER_SLOPE_PRESETS } from "@/lib/constants";
+import { GUTTER_SLOPE_PRESETS, GUTTER_FASCIA_GAP_IN } from "@/lib/constants";
 import { fmtNumber } from "@/lib/format";
 import { CalculatorShell } from "../CalculatorShell";
 import { Field, NumberInput, Select, GroupLabel } from "../Fields";
@@ -19,6 +19,7 @@ export function GutterSlopeCalculator() {
   const [runLength, setRunLength] = useState("40");
   const [slope, setSlope] = useState("0.25");
   const [position, setPosition] = useState<DownspoutPosition>("one-end");
+  const [fascia, setFascia] = useState(String(GUTTER_FASCIA_GAP_IN));
   const [roofArea, setRoofArea] = useState("");
 
   const result = useMemo(
@@ -28,14 +29,15 @@ export function GutterSlopeCalculator() {
         slopeInPer10ft: num(slope),
         downspoutPosition: position,
         roofAreaSqFt: roofArea === "" ? null : num(roofArea),
+        fasciaGapIn: num(fascia),
       }),
-    [runLength, slope, position, roofArea]
+    [runLength, slope, position, roofArea, fascia]
   );
 
-  useFirstCalculate(SLUG, JSON.stringify({ runLength, slope, position, roofArea }));
+  useFirstCalculate(SLUG, JSON.stringify({ runLength, slope, position, roofArea, fascia }));
 
   const reset = () => {
-    setRunLength("40"); setSlope("0.25"); setPosition("one-end"); setRoofArea("");
+    setRunLength("40"); setSlope("0.25"); setPosition("one-end"); setRoofArea(""); setFascia(String(GUTTER_FASCIA_GAP_IN));
   };
 
   const summary = `Gutter: ${fmtNumber(round(result.totalDropIn, 2))}" total drop over a ${runLength} ft run., yardagemath.com/${SLUG}/`;
@@ -68,6 +70,9 @@ export function GutterSlopeCalculator() {
               ]}
             />
           </Field>
+          <Field label="Gap below fascia at the high end (in)" htmlFor="fascia" hint="How far the high (start) end sits below the fascia top. About 0.5 in is common.">
+            <NumberInput id="fascia" value={fascia} onChange={setFascia} suffix="in" />
+          </Field>
           <GroupLabel>Downspout sizing (optional)</GroupLabel>
           <Field label="Roof area draining (sq ft)" htmlFor="roof">
             <NumberInput id="roof" value={roofArea} onChange={setRoofArea} suffix="sq ft" placeholder="e.g. 800" />
@@ -82,6 +87,8 @@ export function GutterSlopeCalculator() {
             sub={`High end sits ${fmtNumber(round(result.totalDropIn, 2))}" above the outlet over a ${fmtNumber(round(result.slopeRunFt, 1))} ft slope run.`}
           />
           <SecondaryResults>
+            <SecondaryItem label="High end (start) height" value={`${fmtNumber(round(result.highEndIn, 2))}" below fascia`} />
+            <SecondaryItem label="Low end (outlet) height" value={`${fmtNumber(round(result.lowEndIn, 2))}" below fascia`} />
             <SecondaryItem label="Slope run" value={`${fmtNumber(round(result.slopeRunFt, 1))} ft`} />
             <SecondaryItem label="Downspouts (by spacing)" value={String(result.downspoutsBySpacing)} />
             {result.downspoutsByArea2x3 !== null && <SecondaryItem label="2×3″ downspouts" value={String(result.downspoutsByArea2x3)} />}

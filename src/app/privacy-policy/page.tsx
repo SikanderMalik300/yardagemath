@@ -1,18 +1,23 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy – YardageMath Calculators",
   description:
     "How YardageMath handles data: analytics, the contact form, cookies, advertising, your rights under GDPR and CCPA, and how to contact us.",
   path: "/privacy-policy/",
+  absoluteTitle: true,
 });
 
 export default function PrivacyPage() {
   return (
-    <ContentPage title="Privacy Policy" updated="2026-10-09">
+    <ContentPage
+      title="Privacy Policy"
+      updated="2026-10-22"
+      jsonLd={utilityWebPageJsonLd({ path: "/privacy-policy/", name: "Privacy Policy", datePublished: "2026-10-07", dateModified: "2026-10-22" })}
+    >
       <p>
         This Privacy Policy explains what information {SITE.name} (&ldquo;we&rdquo;,
         &ldquo;us&rdquo;) collects when you visit {SITE.domain}, and how we use it. We aim to

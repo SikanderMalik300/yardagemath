@@ -19,6 +19,17 @@
 /og/*
   Cache-Control: public, max-age=86400
 
+# RSC payload files (*.index.txt) are for client navigation, not pages. Keep them
+# out of search indexes (they must stay crawlable, so this is noindex, not a block).
+/index.txt
+  X-Robots-Tag: noindex
+
+/*/index.txt
+  X-Robots-Tag: noindex
+
+/authors/sikander-mushtaq/index.txt
+  X-Robots-Tag: noindex
+
 # Keep the *.pages.dev preview copy out of search indexes (only the apex domain should rank)
 https://yardagemath.pages.dev/*
   X-Robots-Tag: noindex

@@ -12,13 +12,15 @@ export interface GutterSlopeInput {
   slopeInPer10ft: number;
   downspoutPosition: DownspoutPosition;
   roofAreaSqFt: number | null;
+  /** Gap below the fascia top at the high (start) end, inches (default 0). */
+  fasciaGapIn?: number;
 }
 
 export interface GutterSlopeResult {
   /** Effective slope length — halved when water runs from the centre to two ends. */
   slopeRunFt: number;
   totalDropIn: number;
-  /** Drop expressed as a start (high) and end (low) relative height. */
+  /** Heights measured down from the fascia top: high (start) end and low (outlet) end. */
   highEndIn: number;
   lowEndIn: number;
   downspoutsBySpacing: number;
@@ -38,11 +40,12 @@ export function computeGutterSlope(input: GutterSlopeInput): GutterSlopeResult {
   const byArea = (cap: number) =>
     input.roofAreaSqFt === null ? null : Math.max(1, ceilCount(input.roofAreaSqFt / cap));
 
+  const highEndIn = Math.max(0, input.fasciaGapIn ?? 0);
   return {
     slopeRunFt,
     totalDropIn,
-    highEndIn: totalDropIn,
-    lowEndIn: 0,
+    highEndIn,
+    lowEndIn: highEndIn + totalDropIn,
     downspoutsBySpacing,
     downspoutsByArea2x3: byArea(DOWNSPOUT_CAPACITY_SQFT.size2x3),
     downspoutsByArea3x4: byArea(DOWNSPOUT_CAPACITY_SQFT.size3x4),

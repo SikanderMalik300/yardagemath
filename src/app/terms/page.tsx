@@ -1,18 +1,23 @@
 import Link from "next/link";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, utilityWebPageJsonLd } from "@/lib/seo";
 import { ContentPage } from "@/components/ContentPage";
 import { SITE } from "@/lib/constants";
 
 export const metadata = buildMetadata({
-  title: "Terms of Use",
+  title: "Terms of Use – YardageMath Calculators",
   description:
     "The terms governing your use of YardageMath: no warranty, limitation of liability, intellectual property, external links and governing law.",
   path: "/terms/",
+  absoluteTitle: true,
 });
 
 export default function TermsPage() {
   return (
-    <ContentPage title="Terms of Use" updated="2026-10-07">
+    <ContentPage
+      title="Terms of Use"
+      updated="2026-10-22"
+      jsonLd={utilityWebPageJsonLd({ path: "/terms/", name: "Terms of Use", datePublished: "2026-10-07", dateModified: "2026-10-22" })}
+    >
       <p>
         By using {SITE.domain} (the &ldquo;Site&rdquo;) you agree to these Terms. If you do not
         agree, please do not use the Site.

@@ -4,9 +4,6 @@ import type { RefTable } from "@/data/calculators";
 export function RefTableView({ table }: { table: RefTable }) {
   return (
     <figure style={{ margin: "0 0 1.5rem" }}>
-      <h3 style={{ fontSize: "1.0625rem", fontWeight: 600, margin: "0 0 0.5rem", color: "var(--text-primary)" }}>
-        {table.title}
-      </h3>
       {table.intro && (
         <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", marginTop: 0, marginBottom: "0.75rem", maxWidth: "var(--reading-max-width)" }}>
           {table.intro}
@@ -14,6 +11,9 @@ export function RefTableView({ table }: { table: RefTable }) {
       )}
       <div className="table-wrapper">
         <table>
+          <caption style={{ captionSide: "top", textAlign: "left", fontSize: "1.0625rem", fontWeight: 600, margin: "0 0 0.5rem", color: "var(--text-primary)" }}>
+            {table.title}
+          </caption>
           <thead>
             <tr>
               {table.columns.map((col, i) => (

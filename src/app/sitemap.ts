@@ -19,15 +19,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: { path: string; lastmod: string }[] = [
     { path: "/", lastmod: "2026-10-22" },
     { path: "/about/", lastmod: "2026-10-22" },
-    { path: "/authors/sikander-mushtaq/", lastmod: "2026-10-09" },
+    { path: "/authors/sikander-mushtaq/", lastmod: "2026-10-22" },
     { path: "/sitemap/", lastmod: "2026-10-22" },
-    { path: "/editorial-policy/", lastmod: "2026-10-10" },
+    { path: "/editorial-policy/", lastmod: "2026-10-22" },
     { path: "/how-we-calculate/", lastmod: "2026-10-22" },
     { path: "/contact/", lastmod: "2026-10-22" },
-    { path: "/privacy-policy/", lastmod: "2026-10-09" },
-    { path: "/terms/", lastmod: "2026-10-07" },
-    { path: "/disclaimer/", lastmod: "2026-10-07" },
-    { path: "/affiliate-disclosure/", lastmod: "2026-10-07" },
+    { path: "/privacy-policy/", lastmod: "2026-10-22" },
+    { path: "/terms/", lastmod: "2026-10-22" },
+    { path: "/disclaimer/", lastmod: "2026-10-22" },
+    { path: "/affiliate-disclosure/", lastmod: "2026-10-22" },
   ];
 
   return [

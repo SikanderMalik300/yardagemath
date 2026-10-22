@@ -5,8 +5,9 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ToolCard } from "@/components/layout/ToolCard";
 import { FaqSection } from "@/components/calculator/Faq";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { collectionPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { collectionPageJsonLd, breadcrumbJsonLd, hubWebPageJsonLd, absUrl } from "@/lib/seo";
 import { SITE } from "@/lib/constants";
+import { fmtDate } from "@/lib/format";
 
 export function HubPage({ slug }: { slug: CategorySlug }) {
   const category = categories[slug];
@@ -27,10 +28,14 @@ export function HubPage({ slug }: { slug: CategorySlug }) {
       <JsonLd
         data={[
           collectionPageJsonLd(category, tools),
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: category.title, path: `/${slug}/` },
-          ]),
+          hubWebPageJsonLd(category),
+          breadcrumbJsonLd(
+            [
+              { name: "Home", path: "/" },
+              { name: category.title, path: `/${slug}/` },
+            ],
+            `${absUrl(`/${slug}/`)}#breadcrumb`
+          ),
           faqJsonLd,
         ]}
       />
@@ -50,9 +55,11 @@ export function HubPage({ slug }: { slug: CategorySlug }) {
       </div>
 
       <section style={{ marginBottom: "1rem" }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Which calculator do I need?</h2>
         <div className="table-wrapper">
           <table>
+            <caption style={{ captionSide: "top", textAlign: "left", fontSize: "1.5rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+              Which calculator do I need?
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Your project</th>
@@ -81,7 +88,7 @@ export function HubPage({ slug }: { slug: CategorySlug }) {
       <FaqSection faqs={category.faqs} />
 
       <p style={{ marginTop: "1.5rem", fontSize: "0.8125rem", color: "var(--text-muted)" }}>
-        Estimates for planning. Built and maintained by{" "}
+        Last updated {fmtDate(category.lastUpdated)}. Estimates for planning. Built and maintained by{" "}
         <Link href="/about/" prefetch={false}>{SITE.founder}</Link>.
       </p>
     </div>

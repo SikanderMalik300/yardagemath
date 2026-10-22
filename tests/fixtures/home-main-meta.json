@@ -24,6 +24,7 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://yardagemath.com/#website",
       "name": "YardageMath",
       "url": "https://yardagemath.com"
     },
