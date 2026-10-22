@@ -12,6 +12,8 @@ import { RefTableView } from "./RefTableView";
 import { Diagram } from "@/components/diagrams/Diagram";
 import { ToolSources } from "@/components/SourcesList";
 import { sourcesForTool } from "@/lib/sources";
+import { EmbedBox } from "@/components/embed/EmbedBox";
+import { isEmbeddable, embedTool } from "@/lib/embed";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   breadcrumbJsonLd,
@@ -216,6 +218,9 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
 
       {/* 9. FAQ */}
       <FaqSection faqs={cal.faqs} />
+
+      {/* Add this calculator to your site (embeddable tools only), collapsed by default */}
+      {isEmbeddable(cal.slug) && embedTool(cal.slug) && <EmbedBox tool={embedTool(cal.slug)!} />}
 
       {/* 10. Related calculators */}
       <RelatedTools cal={cal} />

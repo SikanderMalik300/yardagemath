@@ -8,7 +8,7 @@ import path from "node:path";
  */
 
 const FILES = [
-  "src/app/page.tsx",
+  "src/app/(site)/page.tsx",
   "src/components/home/Hero.tsx",
   "src/components/home/HomeTile.tsx",
   "src/components/home/HomeSearch.tsx",

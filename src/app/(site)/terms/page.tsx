@@ -52,6 +52,12 @@ export default function TermsPage() {
         Site wholesale.
       </p>
 
+      <h2>Embedding our calculators</h2>
+      <p>
+        You may embed our calculators on your website for free, provided the credit link stays in
+        place. See <Link href="/free-calculators-for-your-website/">free calculators for your website</Link>.
+      </p>
+
       <h2>External links</h2>
       <p>
         The Site links to third-party websites for reference. We are not responsible for their

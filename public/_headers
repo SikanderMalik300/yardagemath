@@ -19,6 +19,12 @@
 /og/*
   Cache-Control: public, max-age=86400
 
+# Embeddable calculators must load inside an iframe on any site. CSP
+# frame-ancestors supersedes the global X-Frame-Options for these paths.
+/embed/*
+  Content-Security-Policy: frame-ancestors *
+  X-Robots-Tag: noindex
+
 # RSC payload files (*.index.txt) are for client navigation, not pages. Keep them
 # out of search indexes (they must stay crawlable, so this is noindex, not a block).
 /index.txt

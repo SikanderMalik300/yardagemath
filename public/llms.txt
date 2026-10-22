@@ -43,5 +43,6 @@
 
 - [How We Calculate](https://yardagemath.com/how-we-calculate/): Every formula, density, bag yield and slope rule with its source and date checked.
 - [Editorial Policy](https://yardagemath.com/editorial-policy/): How figures are sourced, checked and corrected.
+- [Free Calculators for Your Website](https://yardagemath.com/free-calculators-for-your-website/): Embed our mulch, gravel, topsoil and concrete calculators free, with one line of code.
 - [Sikander Mushtaq](https://yardagemath.com/authors/sikander-mushtaq/): Who builds and maintains the calculators.
 - [About](https://yardagemath.com/about/): Who builds and maintains the site.

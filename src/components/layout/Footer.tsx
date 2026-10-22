@@ -14,6 +14,7 @@ const SITE_LINKS = [
   { label: "Contact", href: "/contact/" },
   { label: "How We Calculate", href: "/how-we-calculate/" },
   { label: "Editorial Policy", href: "/editorial-policy/" },
+  { label: "Free calculators for your site", href: "/free-calculators-for-your-website/" },
   { label: "All Calculators", href: "/sitemap/" },
 ] as const;
 
