@@ -682,6 +682,45 @@ function FencePostDiagram({ title }: { title: string }) {
   );
 }
 
+/** Sod: top view of a lawn with a patio cut-out and staggered sod strips, plus a pallet. */
+function SodDiagram({ title }: { title: string }) {
+  const grass = "#cfe3cf";
+  return (
+    <Frame title={title}>
+      {/* Lawn outline */}
+      <rect x="26" y="48" width="118" height="74" fill={grass} stroke={LINE} strokeWidth="1.3" />
+      {/* staggered sod seams (brick pattern): horizontal course lines + offset head joints */}
+      {[0, 1, 2, 3].map((r) => (
+        <line key={`c${r}`} x1="26" y1={48 + (r + 1) * 14.8} x2="144" y2={48 + (r + 1) * 14.8} stroke={LINE} strokeWidth="0.7" opacity="0.5" />
+      ))}
+      {[0, 1, 2, 3, 4].map((r) =>
+        [0, 1, 2, 3].map((c) => {
+          const x = 26 + c * 30 + (r % 2) * 15;
+          if (x <= 26 || x >= 144) return null;
+          return <line key={`h${r}-${c}`} x1={x} y1={48 + r * 14.8} x2={x} y2={48 + (r + 1) * 14.8} stroke={LINE} strokeWidth="0.7" opacity="0.5" />;
+        })
+      )}
+      {/* patio cut-out */}
+      <rect x="104" y="96" width="40" height="26" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="124" y="112" textAnchor="middle" fill={LINE} fontSize="8">patio</text>
+      {/* L and W labels */}
+      <text x="85" y="136" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600">L</text>
+      <text x="17" y="85" textAnchor="middle" fill={BRAND} fontSize="12" fontWeight="600" transform="rotate(-90 17 85)">W</text>
+      <text x="85" y="150" textAnchor="middle" fill={LINE} fontSize="9">lawn (top view)</text>
+
+      {/* Pallet of sod on the right */}
+      <rect x="212" y="92" width="56" height="30" fill="#efe7d4" stroke={LINE} strokeWidth="1.2" />
+      <polygon points="212,92 268,92 282,82 226,82" fill={grass} stroke={LINE} strokeWidth="1.2" />
+      <polygon points="268,92 282,82 282,112 268,122" fill="#e0d6c2" stroke={LINE} strokeWidth="1.2" />
+      {[100, 108, 116].map((y) => (
+        <line key={y} x1="212" y1={y} x2="268" y2={y} stroke={LINE} strokeWidth="0.6" opacity="0.5" />
+      ))}
+      <text x="247" y="140" textAnchor="middle" fill={LINE} fontSize="9">about 450 sq ft</text>
+      <text x="247" y="151" textAnchor="middle" fill={LINE} fontSize="9">per pallet</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -713,6 +752,8 @@ export function Diagram({
     node = <AsphaltDiagram title={alt} />;
   } else if (slug === "fence-post-concrete-calculator") {
     node = <FencePostDiagram title={alt} />;
+  } else if (slug === "sod-calculator") {
+    node = <SodDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

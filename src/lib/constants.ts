@@ -268,6 +268,16 @@ export const FAST_SET_MINUTES = "20 to 40";
 export const FENCE_HOLE_DEPTH_IN = 30;
 export const FENCE_GRAVEL_IN = 6;
 
+/* =========================================================================
+   Sod (batch 4 day 3)
+   ========================================================================= */
+// Sod pallet coverage (sq ft). VERIFY: The Grass Outlet about 450 (400-500 by
+// region); CT Sod warm-season 400, cool-season 500. Varies by farm; editable.
+export const SOD_PALLET_SQFT = 450;
+// Order this much extra for cuts. VERIFY: Mississippi State Extension about 5%
+// (up to 10% for curvy yards).
+export const SOD_WASTE_PCT = 5;
+
 // Core-fill grout per sq ft of fully grouted wall (cu ft), by block width.
 // VERIFY with NCMA TEK grout-quantity tables.
 export const GROUT_CUFT_PER_SQFT = {
@@ -348,6 +358,8 @@ export const PRICES = {
   asphaltPerTon: 60, // VERIFY: 2026 hot mix asphalt material, within $40-80/ton (HomeGuide)
   asphaltInstalledPerSqFt: 8, // VERIFY: 2026 asphalt driveway installed, within $5-12/sq ft (HomeGuide)
   concreteBagFastSet50: 8, // VERIFY: Quikrete 50 lb fast-setting, ~$7.97 at The Home Depot (2026)
+  sodPerSqFt: 0.5, // VERIFY: 2026 sod material, within $0.30-0.80/sq ft (HomeGuide)
+  sodInstalledPerSqFt: 1.5, // VERIFY: 2026 sod installed, within $1-2/sq ft (HomeGuide)
 } as const;
 
 /* =========================================================================

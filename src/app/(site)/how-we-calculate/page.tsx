@@ -327,11 +327,23 @@ export default function HowWeCalculatePage() {
         divided by 1,728 for cubic feet per post. Bags = total cubic feet × (1 + waste) ÷ bag yield,
         rounded up. Fast-setting mix yields about 0.375 cu ft per 50 lb bag and sets in 20 to 40 minutes;
         the 80, 60 and 40 lb regular bags yield 0.60, 0.45 and 0.30 cu ft. For sizing a hole we use the
-        common rule of about 3 times the post width across, and a depth of about one third of the post
-        height above ground plus 6 inches of gravel for drainage. Go below the local frost line where
+        common rule of about 3 times the post width across, and a depth of about one third of the post&apos;s
+        total length plus 6 inches of gravel for drainage. Go below the local frost line where
         code requires it.
       </p>
       <Cite keys={["quikreteFastSet", "quikreteSettingPosts", "quikreteConcrete"]} />
+
+      <h2>Sod</h2>
+      <p>
+        Sod uses the shared area math. Net area = sum of the areas minus any cut-outs; order = net ×
+        (1 + waste); pallets = net-with-waste ÷ pallet coverage, rounded up; and pieces = net-with-waste
+        ÷ piece area, rounded up, where a 16 by 24 inch slab is 2.67 sq ft and a 2 by 5 ft roll is 10 sq
+        ft. We default to 5% waste (extension guides suggest about 5%, up to 10% for curvy yards) and a
+        450 sq ft pallet, though pallet coverage runs about 400 to 500 sq ft and varies by farm. Default
+        prices are 2026 estimates: about $0.50 per sq ft for the grass (within $0.30 to $0.80) and an
+        installed estimate about $1.50 per sq ft (within $1 to $2).
+      </p>
+      <Cite keys={["grassOutletPallet", "ctSodPallet", "msuSod", "homeGuideSod"]} />
 
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>

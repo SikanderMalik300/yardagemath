@@ -3,6 +3,7 @@ import { buildMetadata, breadcrumbJsonLd, utilityWebPageJsonLd, absUrl } from "@
 import { ContentPage } from "@/components/ContentPage";
 import { FaqSection } from "@/components/calculator/Faq";
 import { EMBED_TOOLS, embedUrl, embedSnippet } from "@/lib/embed";
+import { EmbedPreview } from "@/components/embed/EmbedPreview";
 import { SITE } from "@/lib/constants";
 
 const PATH = "/free-calculators-for-your-website/";
@@ -32,9 +33,9 @@ export default function FreeCalculatorsPage() {
     <ContentPage
       title="Free Calculators for Your Website"
       intro="Garden centers, landscape suppliers, contractors and bloggers can add our calculators to their own pages for free. Each one runs in a small frame, loads fast, has no ads and no tracking, and uses the same sourced math as our full calculators."
-      updated="2026-10-22"
+      updated="2026-10-23"
       jsonLd={[
-        utilityWebPageJsonLd({ path: PATH, name: "Free Calculators for Your Website", datePublished: "2026-10-22", dateModified: "2026-10-22", withAuthor: true }),
+        utilityWebPageJsonLd({ path: PATH, name: "Free Calculators for Your Website", datePublished: "2026-10-22", dateModified: "2026-10-23", withAuthor: true }),
         breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Free calculators for your website", path: PATH }], `${absUrl(PATH)}#breadcrumb`),
         faqJsonLd,
       ]}
@@ -43,20 +44,13 @@ export default function FreeCalculatorsPage() {
         <section key={t.slug} style={{ marginTop: i === 0 ? "1rem" : "2.5rem" }}>
           <h2>{t.title}</h2>
           <p>{t.blurb}</p>
-          <iframe
-            src={embedUrl(t.slug)}
-            title={`${t.title} by YardageMath`}
-            width="100%"
-            height={620}
-            style={{ border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", maxWidth: 700, display: "block" }}
-            loading={i === 0 ? "eager" : "lazy"}
-          />
+          <EmbedPreview src={embedUrl(t.slug)} title={`${t.title} by YardageMath`} />
           <p style={{ fontWeight: 600, margin: "1rem 0 0.25rem" }}>Copy this code</p>
           <textarea
             readOnly
             rows={4}
             value={embedSnippet(t)}
-            style={{ width: "100%", maxWidth: 700, boxSizing: "border-box", fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: "0.75rem", lineHeight: 1.5, padding: "0.5rem", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", resize: "vertical", background: "var(--surface-muted)" }}
+            style={{ width: "100%", maxWidth: 700, boxSizing: "border-box", fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", fontSize: "0.75rem", lineHeight: 1.5, padding: "0.5rem", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", resize: "vertical", background: "var(--surface-muted)" }}
           />
           <p style={{ marginTop: "0.5rem" }}>
             <Link href={`/${t.slug}/`} prefetch={false}>Open the full {t.credit}</Link>

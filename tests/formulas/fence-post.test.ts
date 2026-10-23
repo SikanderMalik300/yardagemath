@@ -80,8 +80,9 @@ describe("fence post concrete — known answers", () => {
     expect(run({ ...o, bagYieldCuFt: LB80 }).totalBags).toBe(24);
   });
 
-  it("example 5: hole helper, 6 ft fence (72 in above ground) = 72 / 3 + 6 = 30 in", () => {
-    expect(suggestedDepthIn(72, 6)).toBe(30);
+  it("example 5: hole helper uses total post length - 8 ft post (96 in) = 96 / 3 + 6 = 38 in, 64 in (5 ft 4 in) above ground", () => {
+    expect(suggestedDepthIn(96, 6)).toBe(38);
+    expect(96 - 96 / 3).toBe(64);
   });
 
   it("reference table: concrete per post (before waste), fast-set and 80 lb bags per post", () => {

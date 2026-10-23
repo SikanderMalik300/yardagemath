@@ -428,6 +428,34 @@ export const SOURCES = {
     url: "https://www.quikrete.com/pdfs/projects/settingposts.pdf",
     checked: "2026-10-22",
   },
+  grassOutletPallet: {
+    id: "grassOutletPallet",
+    title: "How big is a pallet of sod. A pallet covers about 450 sq ft (400 to 500 by region) and holds around 165 pieces; each piece is about 16 by 24 inches, roughly 2.67 sq ft",
+    publisher: "The Grass Outlet (sod farm)",
+    url: "https://thegrassoutlet.com/how-big-is-a-pallet-of-sod/",
+    checked: "2026-10-23",
+  },
+  ctSodPallet: {
+    id: "ctSodPallet",
+    title: "How many square feet of sod on a pallet. Cool-season pallets hold 50 rolls of 2 by 5 ft (10 sq ft each) covering about 500 sq ft; warm-season pallets hold 150 to 170 slabs of 16 by 24 in covering about 400 sq ft",
+    publisher: "CT Sod (sod farm)",
+    url: "https://ctsod.com/everything-sod-blog/f/how-many-square-feet-of-sod-comes-on-a-pallet/",
+    checked: "2026-10-23",
+  },
+  msuSod: {
+    id: "msuSod",
+    title: "Sod Installation and Maintenance. Order about 5 percent more sod than you think you need; prepare and test the soil first, and begin watering immediately after laying",
+    publisher: "Mississippi State University Extension",
+    url: "https://extension.msstate.edu/publications/sod-installation-and-maintenance",
+    checked: "2026-10-23",
+  },
+  homeGuideSod: {
+    id: "homeGuideSod",
+    title: "Sod cost (2026). Sod runs about $0.30 to $0.80 per sq ft for the grass; professional installation is about $1 to $2 per sq ft; a pallet is $130 to $360 wholesale and covers about 450 sq ft",
+    publisher: "HomeGuide (2026 cost guide)",
+    url: "https://homeguide.com/costs/sod-prices",
+    checked: "2026-10-23",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -459,6 +487,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "landscape-rock-calculator": ["owsLavaRock", "carrollsPebbles", "patuxentMarble", "earthStoneRockSizes", "quikretePaverBase", "homeGuideLandscapeRock"],
   "asphalt-calculator": ["asphaltInstituteWeight", "iapaDriveway", "penndotRap", "gernattTruck", "homeGuideAsphaltDriveway", "homeGuideAsphaltPrices"],
   "fence-post-concrete-calculator": ["quikreteFastSet", "quikreteSettingPosts", "quikreteConcrete"],
+  "sod-calculator": ["grassOutletPallet", "ctSodPallet", "msuSod", "homeGuideSod"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

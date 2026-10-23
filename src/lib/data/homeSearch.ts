@@ -56,6 +56,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   "rip-rap-calculator": ["riprap", "boulders", "erosion", "shoreline", "creek"],
   "lawn-mowing-cost-calculator": ["mow", "mowing", "grass", "lawn care", "price"],
   "acres-per-hour-calculator": ["mower", "acres", "field", "riding mower", "time"],
+  // "sod" resolves here (name starts with it); "turf" is forced here via QUERY_PRIORITY
+  // (ahead of the square-yard page that also keyword-matches turf).
+  "sod-calculator": ["sod", "turf", "new lawn", "sod pallet", "sod rolls", "grass", "lawn install"],
 };
 
 export function tileName(c: Calculator): string {
@@ -82,6 +85,9 @@ const QUERY_PRIORITY: Record<string, string> = {
   "fence post": "fence-post-concrete-calculator",
   "post hole": "fence-post-concrete-calculator",
   fence: "fence-post-concrete-calculator",
+  // new-lawn queries land on the Sod Calculator first.
+  sod: "sod-calculator",
+  turf: "sod-calculator",
 };
 
 /**

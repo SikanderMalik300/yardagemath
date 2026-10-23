@@ -64,3 +64,24 @@ describe("AEO/GEO: every data table has a caption", () => {
     expect(offenders, `tables missing caption: ${offenders.join(", ")}`).toEqual([]);
   });
 });
+
+describe("AEO/GEO: Sources lines have no double periods (Fix 2)", () => {
+  it("no Sources list item contains '..' (ellipsis '...' allowed)", () => {
+    if (!existsSync(OUT)) return; // build not present
+    const dbl = /(?<!\.)\.\.(?!\.)/;
+    const offenders: string[] = [];
+    for (const file of walk(OUT, [".html"])) {
+      const html = readFileSync(file, "utf8");
+      const section = html.match(/aria-labelledby="sources-heading"[\s\S]*?<\/section>/i);
+      if (!section) continue;
+      for (const li of section[0].matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
+        const text = li[1].replace(/<[^>]+>/g, "");
+        if (dbl.test(text)) {
+          offenders.push(`${file.replace(ROOT, ".")}: ${text.slice(0, 90)}`);
+          break;
+        }
+      }
+    }
+    expect(offenders, `Sources with '..': ${offenders.join(" | ")}`).toEqual([]);
+  });
+});

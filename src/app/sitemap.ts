@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sitemap/", lastmod: "2026-10-22" },
     { path: "/editorial-policy/", lastmod: "2026-10-22" },
     { path: "/how-we-calculate/", lastmod: "2026-10-22" },
-    { path: "/free-calculators-for-your-website/", lastmod: "2026-10-22" },
+    { path: "/free-calculators-for-your-website/", lastmod: "2026-10-23" },
     { path: "/contact/", lastmod: "2026-10-22" },
     { path: "/privacy-policy/", lastmod: "2026-10-22" },
     { path: "/terms/", lastmod: "2026-10-22" },

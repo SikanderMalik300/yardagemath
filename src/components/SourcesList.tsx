@@ -7,14 +7,20 @@ export function SourcesList({ sources, compact = false }: { sources: Source[]; c
   if (sources.length === 0) return null;
   return (
     <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: compact ? "0.375rem" : "0.5rem" }}>
-      {sources.map((s) => (
-        <li key={s.id} style={{ fontSize: compact ? "0.8125rem" : "0.875rem", color: "var(--text-secondary)" }}>
-          <OutboundLink href={s.url} style={{ textDecoration: "underline" }}>
-            {s.publisher}: {s.title}
-          </OutboundLink>
-          <span style={{ color: "var(--text-muted)" }}>. Accessed {fmtDate(s.checked)}.</span>
-        </li>
-      ))}
+      {sources.map((s) => {
+        // Capitalize the first letter after a sentence break inside the title, and
+        // avoid a double period before "Accessed" when the title already ends in .?!.
+        const title = s.title.replace(/([.?!]) ([a-z])/g, (_, p, c) => `${p} ${c.toUpperCase()}`);
+        const sep = /[.?!]$/.test(title) ? " " : ". ";
+        return (
+          <li key={s.id} style={{ fontSize: compact ? "0.8125rem" : "0.875rem", color: "var(--text-secondary)" }}>
+            <OutboundLink href={s.url} style={{ textDecoration: "underline" }}>
+              {s.publisher}: {title}
+            </OutboundLink>
+            <span style={{ color: "var(--text-muted)" }}>{sep}Accessed {fmtDate(s.checked)}.</span>
+          </li>
+        );
+      })}
     </ul>
   );
 }

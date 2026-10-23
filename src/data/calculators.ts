@@ -185,6 +185,7 @@ export const categories: Record<CategorySlug, Category> = {
     whichTool: [
       { project: "What a mow should cost (homeowner)", slug: "lawn-mowing-cost-calculator" },
       { project: "What to charge for a job (pro)", slug: "lawn-mowing-cost-calculator" },
+      { project: "Laying a new lawn with sod", slug: "sod-calculator" },
       { project: "How long a lawn or field takes to mow", slug: "acres-per-hour-calculator" },
     ],
     faqs: [
@@ -752,6 +753,7 @@ export const calculators: Calculator[] = [
     ],
     sources: ["USDA topsoil bulk-density references"],
     related: [
+      "sod-calculator",
       "fill-dirt-calculator",
       "cubic-yard-calculator",
       "sand-calculator",
@@ -761,7 +763,7 @@ export const calculators: Calculator[] = [
       "lawn-mowing-cost-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
 
@@ -985,12 +987,13 @@ export const calculators: Calculator[] = [
     ],
     sources: ["standard unit conversions (1 sq yd = 9 sq ft)"],
     related: [
+      "sod-calculator",
       "cubic-yard-calculator",
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
 
@@ -1117,9 +1120,10 @@ export const calculators: Calculator[] = [
       "topsoil-calculator",
       "pea-gravel-calculator",
       "rip-rap-calculator",
+      "sod-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Landscape material calculator diagram with material depth over an area",
   },
 
@@ -1234,9 +1238,9 @@ export const calculators: Calculator[] = [
       },
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
-    related: ["acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
+    related: ["sod-calculator", "acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
 
@@ -1480,9 +1484,9 @@ export const calculators: Calculator[] = [
       },
     ],
     sources: ["ASABE D497 machinery management data"],
-    related: ["lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
+    related: ["sod-calculator", "lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
 
@@ -3588,7 +3592,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How deep should a fence post hole be?",
-        a: "About one third of the post's height above ground, plus about 6 inches for gravel. For a 6 foot fence, that's about 30 inches. Go below the frost line where your local code requires it.",
+        a: "About one third of the post's total length, plus about 6 inches for gravel. An 8 foot post goes about 32 inches into the ground, so dig about 38 inches. Go below the frost line where your local code requires it.",
       },
       {
         q: "How wide should a fence post hole be?",
@@ -3620,8 +3624,128 @@ export const calculators: Calculator[] = [
       "block-wall-calculator",
     ],
     datePublished: "2026-10-22",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-23",
     imageAlt: "Fence post concrete diagram: post set in concrete over a gravel base, with the hole diameter and depths the calculator uses.",
+  },
+  /* ---------------------------------------------------------------- 29 */
+  {
+    slug: "sod-calculator",
+    category: "lawn",
+    title: "Sod Calculator – Square Feet, Pallets, Rolls & Cost",
+    metaDescription:
+      "Work out how much sod you need for a new lawn. Enter your yard size to get square feet, pallets, slabs or rolls and cost, with extra for cuts included.",
+    h1: "Sod Calculator",
+    primaryKeyword: "sod calculator",
+    secondaryKeywords: [
+      "how much sod do i need",
+      "how many square feet in a pallet of sod",
+      "how many pallets of sod do i need",
+      "sod cost calculator",
+      "how many rolls of sod do i need",
+    ],
+    cardDescription: "How much sod for a new lawn: square feet, pallets, slabs or rolls and cost.",
+    shortAnswer:
+      "A 1,000 square foot lawn needs about 1,050 square feet of sod once you add 5% for cuts. That's 3 pallets at 450 square feet each, or about 394 standard 16 by 24 inch slabs. Enter your yard size below to get square feet, pallets, pieces and cost.",
+    howTo: [
+      "Measure each area and pick a shape. Add more areas, or subtract a patio, beds or the house.",
+      "Keep 5% extra for cuts around edges and curves. Use 10% for lots of curves.",
+      "Check how many square feet your supplier's pallet holds and set it.",
+      "Read the square feet, pallets and pieces, then compare the material and installed cost.",
+    ],
+    formula: {
+      plain: [
+        "net = sum of areas - cut-outs",
+        "order = net × (1 + waste)",
+        "pallets = ceil(order ÷ pallet sq ft)",
+        "pieces = ceil(order ÷ piece sq ft)",
+        "slab = 16 × 24 in ÷ 144 = 2.67 sq ft,  roll = 2 × 5 ft = 10 sq ft",
+      ],
+      example: [
+        "1,000 sq ft lawn, 5% extra, 450 sq ft pallets:",
+        "order = 1,000 × 1.05 = 1,050 sq ft",
+        "pallets = ceil(1,050 ÷ 450) = 3",
+        "slabs = ceil(1,050 ÷ 2.67) = 394, or rolls = ceil(1,050 ÷ 10) = 105",
+      ],
+      example2: [
+        "50 × 30 ft yard minus a 10 × 12 ft patio:",
+        "net = 1,500 - 120 = 1,380, order = 1,449 sq ft",
+        "4 pallets, 544 slabs or 145 rolls",
+      ],
+    },
+    notCovered:
+      "It estimates sod for a flat lawn area. It doesn't plan grading, irrigation or soil testing, and it doesn't count topsoil or starter fertilizer. Sod is perishable, so plan to lay it the day it's delivered.",
+    tables: [
+      {
+        title: "What to order, with 5% extra",
+        columns: [
+          { label: "Lawn area" },
+          { label: "Pallets (400 sq ft)", num: true },
+          { label: "Pallets (450 sq ft)", num: true },
+          { label: "Pallets (500 sq ft)", num: true },
+          { label: "16 × 24 in slabs", num: true },
+          { label: "2 × 5 ft rolls", num: true },
+        ],
+        rows: [
+          ["500 sq ft", "2", "2", "2", "197", "53"],
+          ["1,000 sq ft", "3", "3", "3", "394", "105"],
+          ["2,000 sq ft", "6", "5", "5", "788", "210"],
+          ["5,000 sq ft", "14", "12", "11", "1,969", "525"],
+        ],
+        footnote: "Pallets and pieces to order including 5% for cuts, rounded up. Pallet size varies by farm, so confirm it before you order.",
+      },
+    ],
+    tips: [
+      "Prepare the soil first: remove old grass and weeds, loosen the top few inches and rake it level.",
+      "Lay sod the day it arrives. Rolled sod heats up and dies on the pallet in hot weather.",
+      "Stagger the seams like brickwork and butt the edges tight, without overlapping.",
+      "Water right after laying, deep enough to wet the soil under the sod, then keep it moist until it roots.",
+    ],
+    faqs: [
+      {
+        q: "How much sod do I need?",
+        a: "Measure the lawn area in square feet, subtract patios and beds, then add about 5% for cuts. A 1,000 square foot lawn needs about 1,050 square feet of sod.",
+      },
+      {
+        q: "How many square feet are in a pallet of sod?",
+        a: "Most pallets hold about 400 to 500 square feet, depending on the farm and the piece size. Ask your supplier before you order.",
+      },
+      {
+        q: "How many pallets of sod do I need?",
+        a: "Divide the square feet you need, including extra, by the pallet size, then round up. A 1,000 square foot lawn needs 3 pallets of 450 square feet.",
+      },
+      {
+        q: "How many pieces of sod are in a pallet?",
+        a: "At 450 square feet, a pallet holds about 169 slabs of 16 by 24 inches, or 45 rolls of 2 by 5 feet.",
+      },
+      {
+        q: "How much does sod cost?",
+        a: "Sod often costs about $0.30 to $0.80 per square foot for the grass alone, and about $1 to $2 per square foot installed.",
+      },
+      {
+        q: "How much extra sod should I order?",
+        a: "About 5% for simple shapes and up to 10% for yards with lots of curves, beds or trees to cut around.",
+      },
+      {
+        q: "Should I put topsoil down before sod?",
+        a: "Often, yes. About 1 to 2 inches of good topsoil over loosened ground helps the roots take. Use the Topsoil Calculator to work out how much.",
+      },
+    ],
+    sources: [
+      "Pallet coverage and piece sizes (The Grass Outlet)",
+      "Rolls and slabs per pallet (CT Sod)",
+      "5% extra and soil prep (Mississippi State Extension)",
+      "2026 sod prices (HomeGuide)",
+    ],
+    related: [
+      "topsoil-calculator",
+      "lawn-mowing-cost-calculator",
+      "square-yard-calculator",
+      "landscape-materials-calculator",
+      "acres-per-hour-calculator",
+    ],
+    datePublished: "2026-10-23",
+    lastUpdated: "2026-10-23",
+    imageAlt: "Sod calculator diagram: lawn area with a cut-out, staggered sod pieces, and pallet coverage.",
   },
 ];
 

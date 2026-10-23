@@ -40,7 +40,7 @@ export function FencePostCalculator() {
   const [waste, setWaste] = useState("10");
   const [price, setPrice] = useState(String(FENCE_BAG_TYPES.fastSet50.price));
   const [gravelPrice, setGravelPrice] = useState(String(PRICES.paverBasePerBag));
-  const [helperHeight, setHelperHeight] = useState("72");
+  const [helperLenFt, setHelperLenFt] = useState("8");
 
   const post = FENCE_POSTS[postKey];
   const round_ = postKey === "custom" ? customRound : post.round;
@@ -80,8 +80,12 @@ export function FencePostCalculator() {
 
   useFirstCalculate(SLUG, JSON.stringify({ postKey, holeDiameter, holeDepth, gravel, posts, bagKey, waste }));
 
-  // Hole helper (suggestion only).
-  const suggDepth = Math.round(suggestedDepthIn(num(helperHeight), num(gravel)));
+  // Hole helper (suggestion only). Depth = total post length / 3 + gravel (QUIKRETE).
+  const helperLenIn = num(helperLenFt) * 12;
+  const suggDepth = Math.round(suggestedDepthIn(helperLenIn, num(gravel)));
+  const heightAboveIn = Math.round(helperLenIn - helperLenIn / 3);
+  const heightAboveFt = Math.floor(heightAboveIn / 12);
+  const heightAboveRem = heightAboveIn % 12;
   const suggLow = 2 * Math.floor(1.5 * Math.max(0, postWidthForHelper));
   const suggHigh = suggLow + 2;
   const useSuggestions = () => {
@@ -97,7 +101,7 @@ export function FencePostCalculator() {
     setBagKey("fastSet50"); setWaste("10");
     setPrice(String(FENCE_BAG_TYPES.fastSet50.price));
     setGravelPrice(String(PRICES.paverBasePerBag));
-    setHelperHeight("72");
+    setHelperLenFt("8");
   };
 
   const bagLabel = FENCE_BAG_TYPES[bagKey].label;
@@ -138,11 +142,12 @@ export function FencePostCalculator() {
 
             <details style={{ marginBottom: "0.875rem", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", padding: "0.5rem 0.75rem" }}>
               <summary style={{ cursor: "pointer", fontSize: "0.875rem", fontWeight: 600, color: "var(--text-secondary)" }}>Hole helper</summary>
-              <Field label="Post height above ground (in)" htmlFor="hh" hint="A 6 ft fence post stands about 72 in above ground.">
-                <NumberInput id="hh" value={helperHeight} onChange={setHelperHeight} suffix="in" />
+              <Field label="Total post length (ft)" htmlFor="hh" hint="The whole post, including the part in the ground. An 8 ft post is common for a 6 ft fence.">
+                <NumberInput id="hh" value={helperLenFt} onChange={setHelperLenFt} suffix="ft" />
               </Field>
               <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", margin: "0.25rem 0" }}>
-                Suggested depth: <strong>{suggDepth} in</strong> (one third of the height above ground, plus gravel).
+                Suggested depth: <strong>{suggDepth} in</strong> (post length ÷ 3, plus gravel).
+                Height above ground: <strong>{heightAboveFt} ft {heightAboveRem} in</strong> (post length − post length ÷ 3).
                 Suggested diameter: <strong>{suggLow} to {suggHigh} in</strong> (about 3 times the post width).
               </p>
               <button type="button" className="button-secondary" onClick={useSuggestions} style={{ minHeight: 40 }}>Use these</button>
