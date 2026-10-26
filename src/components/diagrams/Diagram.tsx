@@ -721,6 +721,57 @@ function SodDiagram({ title }: { title: string }) {
   );
 }
 
+function GrassSeedDiagram({ title }: { title: string }) {
+  const grass = "#cfe3cf";
+  // New-lawn seeding rates (lb per 1,000 sq ft), low to high, for the bar chart.
+  const bars: [string, number][] = [
+    ["centipede", 0.5],
+    ["zoysia", 1],
+    ["bermuda", 1.5],
+    ["KBG", 2.5],
+    ["fescue, fine", 4],
+    ["fescue, tall", 7],
+    ["bahia", 8],
+  ];
+  const maxRate = 8;
+  const chartX = 168, chartBase = 128, chartTop = 44, barW = 12, gap = 9;
+  return (
+    <Frame title={title}>
+      {/* Lawn outline with a crosshatch spreading pattern */}
+      <rect x="26" y="48" width="116" height="74" fill={grass} stroke={LINE} strokeWidth="1.3" />
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((k) => (
+        <line key={`d1-${k}`} x1={26 + k * 22} y1="48" x2={26 + k * 22 - 74} y2="122" stroke={LINE} strokeWidth="0.6" opacity="0.45" />
+      ))}
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((k) => (
+        <line key={`d2-${k}`} x1={26 + k * 22 - 74} y1="48" x2={26 + k * 22} y2="122" stroke={LINE} strokeWidth="0.6" opacity="0.45" />
+      ))}
+      {/* seed specks */}
+      {[[44, 60], [70, 74], [96, 64], [120, 86], [58, 100], [104, 108], [82, 56], [36, 84]].map(([cx, cy], k) => (
+        <circle key={`s${k}`} cx={cx} cy={cy} r="1.5" fill={BRAND} />
+      ))}
+      {/* bed cut-out */}
+      <rect x="104" y="98" width="38" height="24" fill="#fff" stroke={LINE} strokeWidth="1.3" />
+      <text x="123" y="113" textAnchor="middle" fill={LINE} fontSize="7.5">bed</text>
+      <text x="84" y="138" textAnchor="middle" fill={LINE} fontSize="9">lawn (top view)</text>
+
+      {/* Bar chart of new-lawn rates */}
+      {bars.map(([label, rate], k) => {
+        const h = ((chartBase - chartTop) * rate) / maxRate;
+        const x = chartX + k * (barW + gap);
+        return (
+          <g key={label}>
+            <rect x={x} y={chartBase - h} width={barW} height={h} fill={k === 5 ? BRAND : grass} stroke={LINE} strokeWidth="0.9" />
+            <text x={x + barW / 2} y={chartBase - h - 3} textAnchor="middle" fill={LINE} fontSize="6.5">{rate}</text>
+            <text x={x + barW / 2} y={chartBase + 8} textAnchor="end" fill={LINE} fontSize="6" transform={`rotate(-60 ${x + barW / 2} ${chartBase + 8})`}>{label}</text>
+          </g>
+        );
+      })}
+      <line x1={chartX - 4} y1={chartBase} x2={chartX + bars.length * (barW + gap)} y2={chartBase} stroke={LINE} strokeWidth="1" />
+      <text x={chartX + bars.length * (barW + gap) / 2 - 4} y="40" textAnchor="middle" fill={BRAND} fontSize="8.5" fontWeight="600">lb per 1,000 sq ft (new lawn)</text>
+    </Frame>
+  );
+}
+
 /** Pick a diagram appropriate to the tool. */
 export function Diagram({
   slug,
@@ -754,6 +805,8 @@ export function Diagram({
     node = <FencePostDiagram title={alt} />;
   } else if (slug === "sod-calculator") {
     node = <SodDiagram title={alt} />;
+  } else if (slug === "grass-seed-calculator") {
+    node = <GrassSeedDiagram title={alt} />;
   } else if (slug === "yards-of-concrete-calculator") {
     node = <ConcreteShapes title={alt} />;
   } else if (slug === "concrete-block-weight") {

@@ -345,6 +345,18 @@ export default function HowWeCalculatePage() {
       </p>
       <Cite keys={["grassOutletPallet", "ctSodPallet", "msuSod", "homeGuideSod"]} />
 
+      <h2>Grass seed</h2>
+      <p>
+        Seed uses the same area math (acres convert at 43,560 sq ft). Pounds = area ÷ 1,000 × the
+        seeding rate for your grass; bags = pounds ÷ bag size, rounded up; and leftover = bags × bag
+        size - pounds. Rates are pounds per 1,000 sq ft for a new lawn, with overseeding at about half
+        that. New-lawn defaults follow university extension ranges: Kentucky bluegrass 2 to 3, turf-type
+        tall fescue and perennial ryegrass 6 to 8, fine fescue 4 to 5, hulled bermudagrass 1 to 2,
+        zoysiagrass 1 to 3, centipedegrass 0.25 to 1, and bahiagrass 3 to 8. A 20 lb bag of tall fescue
+        runs about $67 (2026). If your seed bag lists its own rate, use the custom setting.
+      </p>
+      <Cite keys={["pennStateSeed", "ncStateLawns", "ugaLawns", "scottsSeed"]} />
+
       <h2>Acres per hour &amp; field efficiency</h2>
       <p>
         Acres per hour = (width in inches × mph × efficiency) ÷ 99 (equivalently width ft × mph ×

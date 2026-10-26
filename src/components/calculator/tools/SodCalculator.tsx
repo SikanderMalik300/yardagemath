@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { computeSod, SOD_PIECES, pieceSqFtFromDims, type SodShape, type SodPieceKey, type SodInput } from "@/lib/formulas/sod";
 import { round } from "@/lib/formulas/units";
@@ -201,7 +202,6 @@ export function SodCalculator() {
               <SecondaryItem label="Net area" value={`${fmtNumber(round(result.netSqFt, 0))} sq ft`} />
               <SecondaryItem label="Pallets" value={fmtInt(result.pallets)} />
               <SecondaryItem label={pieceWord} value={fmtInt(result.pieces)} />
-              <SecondaryItem label="Material cost" value={fmtUSD(result.materialCost)} />
             </SecondaryResults>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginTop: "1rem" }}>
@@ -214,6 +214,20 @@ export function SodCalculator() {
                 <div style={{ fontSize: "1.125rem", fontWeight: 600 }}>{fmtUSD(result.installedCost)}</div>
               </div>
             </div>
+
+            {result.deliveryFee > 0 && (
+              <div style={{ border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", padding: "0.75rem", background: "var(--surface)", marginTop: "0.75rem" }}>
+                <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Total material + delivery</div>
+                <div style={{ fontSize: "1.125rem", fontWeight: 600 }}>{fmtUSD(result.totalCost)}</div>
+                <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.125rem" }}>{fmtUSD(result.materialCost)} material + {fmtUSD(result.deliveryFee)} delivery</div>
+              </div>
+            )}
+
+            <p style={{ fontSize: "0.875rem", marginTop: "0.75rem" }}>
+              Seeding instead?{" "}
+              <Link href="/grass-seed-calculator/" prefetch={false}>Use the Grass Seed Calculator</Link>{" "}
+              for pounds and bags by grass type.
+            </p>
 
             <ShowMath>
               <MathLine>net = {fmtNumber(round(result.netSqFt, 2))} sq ft (areas minus cut-outs)</MathLine>

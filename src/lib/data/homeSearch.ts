@@ -59,6 +59,9 @@ export const SEARCH_KEYWORDS: Record<string, string[]> = {
   // "sod" resolves here (name starts with it); "turf" is forced here via QUERY_PRIORITY
   // (ahead of the square-yard page that also keyword-matches turf).
   "sod-calculator": ["sod", "turf", "new lawn", "sod pallet", "sod rolls", "grass", "lawn install"],
+  // "grass seed" / "seed" resolve here (name starts with / contains them); "seed" and
+  // "overseed" are forced here via QUERY_PRIORITY ahead of the sod page's "grass".
+  "grass-seed-calculator": ["grass seed", "seed", "overseed", "overseeding", "new lawn", "fescue", "bluegrass", "bermuda", "ryegrass"],
 };
 
 export function tileName(c: Calculator): string {
@@ -88,6 +91,12 @@ const QUERY_PRIORITY: Record<string, string> = {
   // new-lawn queries land on the Sod Calculator first.
   sod: "sod-calculator",
   turf: "sod-calculator",
+  // seeding queries land on the Grass Seed Calculator first (ahead of the Sod
+  // page's "grass" keyword and the Lawn Mowing page).
+  "grass seed": "grass-seed-calculator",
+  seed: "grass-seed-calculator",
+  overseed: "grass-seed-calculator",
+  overseeding: "grass-seed-calculator",
 };
 
 /**

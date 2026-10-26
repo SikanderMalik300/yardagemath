@@ -50,7 +50,9 @@ export interface SodResult {
   orderSqFt: number; // net + waste
   pallets: number;
   pieces: number;
-  materialCost: number;
+  materialCost: number; // sod only, no delivery
+  deliveryFee: number;
+  totalCost: number; // material + delivery
   installedCost: number;
 }
 
@@ -91,13 +93,16 @@ export function computeSod(input: SodInput): SodResult {
   const pallets = input.palletSqFt > 0 ? ceilCount(order / input.palletSqFt) : 0;
   const pieces = input.pieceSqFt > 0 ? ceilCount(order / input.pieceSqFt) : 0;
   const materialCost =
-    input.pricePerPallet > 0 ? pallets * input.pricePerPallet + input.deliveryFee : order * input.pricePerSqFt + input.deliveryFee;
+    input.pricePerPallet > 0 ? pallets * input.pricePerPallet : order * input.pricePerSqFt;
+  const deliveryFee = Math.max(0, input.deliveryFee);
   return {
     netSqFt: net,
     orderSqFt: order,
     pallets,
     pieces,
     materialCost,
+    deliveryFee,
+    totalCost: materialCost + deliveryFee,
     installedCost: order * input.installedPerSqFt,
   };
 }

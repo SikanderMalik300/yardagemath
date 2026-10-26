@@ -89,6 +89,7 @@ export const TOOL_PHOTOS: Record<string, Photo> = {
   "asphalt-calculator": p("19394246", "Tom Shamberger", "Fresh asphalt being laid and resurfaced by a paving crew in daylight", ["asphalt-calculator"]),
   "fence-post-concrete-calculator": p("5126304", "Anastasia Shuraeva", "A wooden fence line along a garden in natural light", ["fence-post-concrete-calculator"]),
   "sod-calculator": p("5231236", "Anna Shvets", "A worker rolling out fresh sod over prepared soil for a new lawn", ["sod-calculator"]),
+  "grass-seed-calculator": p("35366710", "Dr Photographer 152", "A person broadcasting grass seed by hand across a lush green field", ["grass-seed-calculator"]),
   "gutter-slope-calculator": p("20113440", "Zeynep Sude Emek", "A rain gutter along a house roof edge", ["gutter-slope-calculator"], 0.5, 0.4),
   "rip-rap-calculator": p("11845363", "Henry Chau", "Large angular rip rap rock along a shoreline", ["rip-rap-calculator"], 0.5, 0.62),
   "lawn-mowing-cost-calculator": p("17151642", "Vanda Bako", "A lawn mower on a freshly cut striped lawn", ["lawn-mowing-cost-calculator"]),

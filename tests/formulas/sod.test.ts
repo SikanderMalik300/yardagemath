@@ -88,11 +88,15 @@ describe("sod - known answers", () => {
     expect(net).toBe(1380);
   });
 
-  it("material cost: per sq ft, or per pallet when a pallet price is given", () => {
+  it("material cost: per sq ft, or per pallet when a pallet price is given (delivery kept separate)", () => {
     const perSqFt = sqft(1000, { pricePerSqFt: 0.5 });
     expect(perSqFt.materialCost).toBeCloseTo(1050 * 0.5, 4); // 525
+    expect(perSqFt.deliveryFee).toBe(0);
+    expect(perSqFt.totalCost).toBeCloseTo(525, 4);
     const perPallet = sqft(1000, { pricePerPallet: 300, deliveryFee: 80 });
-    expect(perPallet.materialCost).toBe(3 * 300 + 80); // 980
+    expect(perPallet.materialCost).toBe(3 * 300); // 900, no delivery
+    expect(perPallet.deliveryFee).toBe(80);
+    expect(perPallet.totalCost).toBe(3 * 300 + 80); // 980
   });
 
   it("installed estimate = order sq ft x installed price", () => {

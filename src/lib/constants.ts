@@ -360,6 +360,7 @@ export const PRICES = {
   concreteBagFastSet50: 8, // VERIFY: Quikrete 50 lb fast-setting, ~$7.97 at The Home Depot (2026)
   sodPerSqFt: 0.5, // VERIFY: 2026 sod material, within $0.30-0.80/sq ft (HomeGuide)
   sodInstalledPerSqFt: 1.5, // VERIFY: 2026 sod installed, within $1-2/sq ft (HomeGuide)
+  grassSeedBag20: 70, // VERIFY: 2026 20 lb tall fescue bag, ~$67 (Scotts Turf Builder, The Home Depot)
 } as const;
 
 /* =========================================================================

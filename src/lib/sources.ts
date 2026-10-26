@@ -456,6 +456,34 @@ export const SOURCES = {
     url: "https://homeguide.com/costs/sod-prices",
     checked: "2026-10-23",
   },
+  pennStateSeed: {
+    id: "pennStateSeed",
+    title: "Turfgrass Seed and Seed Mixtures. New-lawn seeding rates per 1,000 sq ft: Kentucky bluegrass 2 to 3, turf-type tall fescue 6 to 8, perennial ryegrass 4 to 5, fine fescue 4 to 5",
+    publisher: "Penn State Extension",
+    url: "https://extension.psu.edu/turfgrass-seed-and-seed-mixtures",
+    checked: "2026-10-24",
+  },
+  ncStateLawns: {
+    id: "ncStateLawns",
+    title: "Lawns (Extension Gardener Handbook, chapter 9). Cool-season lawns are seeded at roughly 6 pounds per 1,000 sq ft for tall fescue; overseed at a reduced rate, and do not assume more seed is better, since high rates give weak, thin stands",
+    publisher: "NC State Extension",
+    url: "https://content.ces.ncsu.edu/extension-gardener-handbook/9-lawns",
+    checked: "2026-10-24",
+  },
+  ugaLawns: {
+    id: "ugaLawns",
+    title: "Lawns in Georgia: Establishment (Bulletin 1533). Warm-season new-lawn seeding per 1,000 sq ft: bermudagrass 1 to 2 (hulled), zoysiagrass 1 to 3, centipedegrass 0.25 to 1, bahiagrass 3 to 8",
+    publisher: "University of Georgia Extension",
+    url: "https://fieldreport.caes.uga.edu/publications/B1533-2/lawns-in-georgia-establishment/",
+    checked: "2026-10-24",
+  },
+  scottsSeed: {
+    id: "scottsSeed",
+    title: "Turf Builder Tall Fescue grass seed. Sold in 3, 7, 20 and 40 lb bags; a 20 lb bag is about $67 at The Home Depot (2026)",
+    publisher: "Scotts",
+    url: "https://www.homedepot.com/p/Scotts-20-lb-Turf-Builder-Tall-Fescue-Grass-Seed-Mix-18232/100665139",
+    checked: "2026-10-24",
+  },
 } as const;
 
 export type SourceKey = keyof typeof SOURCES;
@@ -488,6 +516,7 @@ export const CALCULATOR_SOURCES: Record<string, SourceKey[]> = {
   "asphalt-calculator": ["asphaltInstituteWeight", "iapaDriveway", "penndotRap", "gernattTruck", "homeGuideAsphaltDriveway", "homeGuideAsphaltPrices"],
   "fence-post-concrete-calculator": ["quikreteFastSet", "quikreteSettingPosts", "quikreteConcrete"],
   "sod-calculator": ["grassOutletPallet", "ctSodPallet", "msuSod", "homeGuideSod"],
+  "grass-seed-calculator": ["pennStateSeed", "ncStateLawns", "ugaLawns", "scottsSeed"],
   "acres-per-hour-calculator": ["asabeD497", "isuFieldCapacity"],
   "gutter-slope-calculator": ["pnnlGutters", "englertGutters"],
   "rip-rap-calculator": ["fhwaHec11", "nchrp568"],

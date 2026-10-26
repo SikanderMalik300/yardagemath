@@ -31,6 +31,7 @@
 - [Cinder Block Fill Calculator](https://yardagemath.com/cinder-block-fill-calculator/): Concrete or grout to fill cinder block cores by blocks or wall size, with cubic feet, yards and 80-lb bags.
 - [Acres per Hour Calculator](https://yardagemath.com/acres-per-hour-calculator/): Acres per hour from working width, speed and field efficiency, and time to finish.
 - [Sod Calculator](https://yardagemath.com/sod-calculator/): How much sod for a new lawn: square feet, pallets, slabs or rolls and cost, with extra for cuts.
+- [Grass Seed Calculator](https://yardagemath.com/grass-seed-calculator/): How much grass seed for a new lawn or overseeding: pounds, bags and cost by grass type.
 - [Gutter Slope Calculator](https://yardagemath.com/gutter-slope-calculator/): Gutter drop, pitch and downspout count for any run length.
 - [Rip Rap Calculator](https://yardagemath.com/rip-rap-calculator/): Riprap cubic yards and tons by area and layer thickness, with stone classes.
 

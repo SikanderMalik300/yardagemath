@@ -186,6 +186,7 @@ export const categories: Record<CategorySlug, Category> = {
       { project: "What a mow should cost (homeowner)", slug: "lawn-mowing-cost-calculator" },
       { project: "What to charge for a job (pro)", slug: "lawn-mowing-cost-calculator" },
       { project: "Laying a new lawn with sod", slug: "sod-calculator" },
+      { project: "Seeding a new lawn or overseeding", slug: "grass-seed-calculator" },
       { project: "How long a lawn or field takes to mow", slug: "acres-per-hour-calculator" },
     ],
     faqs: [
@@ -754,6 +755,7 @@ export const calculators: Calculator[] = [
     sources: ["USDA topsoil bulk-density references"],
     related: [
       "sod-calculator",
+      "grass-seed-calculator",
       "fill-dirt-calculator",
       "cubic-yard-calculator",
       "sand-calculator",
@@ -763,7 +765,7 @@ export const calculators: Calculator[] = [
       "lawn-mowing-cost-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-23",
+    lastUpdated: "2026-10-24",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
 
@@ -988,12 +990,13 @@ export const calculators: Calculator[] = [
     sources: ["standard unit conversions (1 sq yd = 9 sq ft)"],
     related: [
       "sod-calculator",
+      "grass-seed-calculator",
       "cubic-yard-calculator",
       "concrete-slab-cost-calculator",
       "landscape-materials-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-23",
+    lastUpdated: "2026-10-24",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
 
@@ -1238,9 +1241,9 @@ export const calculators: Calculator[] = [
       },
     ],
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
-    related: ["sod-calculator", "acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
+    related: ["sod-calculator", "grass-seed-calculator", "acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-23",
+    lastUpdated: "2026-10-24",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
 
@@ -1484,9 +1487,9 @@ export const calculators: Calculator[] = [
       },
     ],
     sources: ["ASABE D497 machinery management data"],
-    related: ["sod-calculator", "lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
+    related: ["sod-calculator", "grass-seed-calculator", "lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-23",
+    lastUpdated: "2026-10-24",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
 
@@ -3737,6 +3740,7 @@ export const calculators: Calculator[] = [
       "2026 sod prices (HomeGuide)",
     ],
     related: [
+      "grass-seed-calculator",
       "topsoil-calculator",
       "lawn-mowing-cost-calculator",
       "square-yard-calculator",
@@ -3744,8 +3748,127 @@ export const calculators: Calculator[] = [
       "acres-per-hour-calculator",
     ],
     datePublished: "2026-10-23",
-    lastUpdated: "2026-10-23",
+    lastUpdated: "2026-10-24",
     imageAlt: "Sod calculator diagram: lawn area with a cut-out, staggered sod pieces, and pallet coverage.",
+  },
+  /* ---------------------------------------------------------------- 30 */
+  {
+    slug: "grass-seed-calculator",
+    category: "lawn",
+    title: "Grass Seed Calculator – Pounds & Bags by Grass Type",
+    metaDescription:
+      "Find how much grass seed you need for a new lawn or overseeding. Pick your grass type and lawn size to get pounds of seed, bags and cost, by species.",
+    h1: "Grass Seed Calculator",
+    primaryKeyword: "grass seed calculator",
+    secondaryKeywords: [
+      "how much grass seed do i need",
+      "grass seed per 1000 sq ft",
+      "how much grass seed for an acre",
+      "overseeding rate",
+      "how many pounds of grass seed",
+    ],
+    cardDescription: "How much grass seed for a new lawn or overseeding: pounds, bags and cost by grass type.",
+    shortAnswer:
+      "A new tall fescue lawn needs about 7 pounds of seed per 1,000 square feet, so a 5,000 square foot yard takes about 35 pounds. Overseeding uses about half as much. Pick your grass type and lawn size below to get pounds, bags and cost.",
+    howTo: [
+      "Measure each area and pick a shape, or enter acres. Subtract patios, beds and the house.",
+      "Choose new lawn or overseeding. Overseeding thickens an existing lawn and uses less seed.",
+      "Pick your grass type. Seeding rates differ a lot because seed sizes differ.",
+      "Read the pounds and bags, then buy the next bag size up.",
+    ],
+    formula: {
+      plain: [
+        "area = sum of areas - cut-outs   (acres × 43,560)",
+        "pounds = area ÷ 1,000 × rate (lb per 1,000 sq ft)",
+        "bags = ceil(pounds ÷ bag lb)",
+        "leftover = bags × bag lb - pounds",
+      ],
+      example: [
+        "5,000 sq ft new lawn, tall fescue (7 lb per 1,000 sq ft):",
+        "pounds = 5,000 ÷ 1,000 × 7 = 35 lb",
+        "bags = ceil(35 ÷ 20) = 2 bags of 20 lb (5 lb left over), or 1 bag of 50 lb",
+      ],
+      example2: [
+        "1 acre new bermudagrass (1.5):",
+        "43,560 sq ft → 65.34 lb → 2 bags of 50 lb",
+      ],
+    },
+    notCovered:
+      "It estimates seed for a lawn at standard seeding rates. It doesn't choose the right grass for your climate, test your soil, or plan fertilizer, watering or weed control. Seed mixes vary, so if your bag lists its own rate, use that rate in the custom setting.",
+    tables: [
+      {
+        title: "Seeding rates (lb per 1,000 sq ft)",
+        columns: [
+          { label: "Grass" },
+          { label: "New lawn", num: true },
+          { label: "Overseeding", num: true },
+          { label: "New lawn, 5,000 sq ft", num: true },
+        ],
+        rows: [
+          ["Kentucky bluegrass", "2.5", "1.5", "12.5 lb"],
+          ["Tall fescue", "7", "4", "35 lb"],
+          ["Perennial ryegrass", "7", "4", "35 lb"],
+          ["Fine fescue", "4", "2", "20 lb"],
+          ["Bermudagrass (hulled)", "1.5", "n/a", "7.5 lb"],
+          ["Zoysiagrass", "1", "n/a", "5 lb"],
+          ["Centipedegrass", "0.5", "n/a", "2.5 lb"],
+          ["Bahiagrass", "8", "n/a", "40 lb"],
+        ],
+        footnote: "Pounds per 1,000 sq ft for a new lawn and for overseeding. Warm-season grasses are usually not overseeded with the same grass. Rates vary by seed quality and region; see the sources.",
+      },
+    ],
+    tips: [
+      "Seed cool-season grasses in early fall, and warm-season grasses in late spring or early summer.",
+      "Rake the soil lightly so seed touches the soil, then keep the top inch moist until it sprouts.",
+      "Spread half the seed in one direction and half across it for even coverage.",
+      "More seed isn't better. Seeding too heavily makes crowded, weak grass.",
+    ],
+    faqs: [
+      {
+        q: "How much grass seed do I need?",
+        a: "Multiply your lawn area by the seeding rate for your grass and divide by 1,000. A 5,000 square foot new lawn of tall fescue needs about 35 pounds.",
+      },
+      {
+        q: "How much grass seed per 1,000 square feet?",
+        a: "About 2 to 3 pounds for Kentucky bluegrass, 6 to 8 for tall fescue and perennial ryegrass, and 1 to 2 for hulled bermudagrass for a new lawn.",
+      },
+      {
+        q: "How much grass seed for an acre?",
+        a: "An acre is 43,560 square feet. At 7 pounds per 1,000 square feet for tall fescue, that's about 305 pounds. Bermudagrass needs only about 65 pounds.",
+      },
+      {
+        q: "How much seed do I need to overseed?",
+        a: "Usually about half the new lawn rate. For tall fescue, that's about 4 pounds per 1,000 square feet.",
+      },
+      {
+        q: "When is the best time to plant grass seed?",
+        a: "Early fall for cool-season grasses like fescue and bluegrass. Late spring to early summer for warm-season grasses like bermuda and zoysia.",
+      },
+      {
+        q: "Can I put down too much grass seed?",
+        a: "Yes. Seeding far above the recommended rate makes seedlings compete for light and water, which leads to thin, weak grass.",
+      },
+      {
+        q: "Should I use grass seed or sod?",
+        a: "Seed costs much less but takes weeks to fill in. Sod gives an instant lawn at a higher price. Use the Sod Calculator to compare.",
+      },
+    ],
+    sources: [
+      "Cool-season rates (Penn State Extension)",
+      "Lawn seeding and overseeding (NC State Extension)",
+      "Warm-season rates (UGA Extension)",
+      "Bag sizes and price (Scotts, The Home Depot)",
+    ],
+    related: [
+      "sod-calculator",
+      "topsoil-calculator",
+      "lawn-mowing-cost-calculator",
+      "square-yard-calculator",
+      "acres-per-hour-calculator",
+    ],
+    datePublished: "2026-10-24",
+    lastUpdated: "2026-10-24",
+    imageAlt: "Grass seed diagram: lawn area with a cut-out, a crosshatch spreading pattern, and seeding rate by grass type.",
   },
 ];
 
