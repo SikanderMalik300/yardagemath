@@ -725,15 +725,15 @@ function GrassSeedDiagram({ title }: { title: string }) {
   const grass = "#cfe3cf";
   // New-lawn seeding rates (lb per 1,000 sq ft), low to high, for the bar chart.
   const bars: [string, number][] = [
-    ["centipede", 0.5],
-    ["zoysia", 1],
+    ["centipede", 0.6],
     ["bermuda", 1.5],
+    ["zoysia", 2],
     ["KBG", 2.5],
-    ["fescue, fine", 4],
+    ["fescue, fine", 4.5],
+    ["bahia", 5.5],
     ["fescue, tall", 7],
-    ["bahia", 8],
   ];
-  const maxRate = 8;
+  const maxRate = 7;
   const chartX = 168, chartBase = 128, chartTop = 44, barW = 12, gap = 9;
   return (
     <Frame title={title}>
@@ -760,7 +760,7 @@ function GrassSeedDiagram({ title }: { title: string }) {
         const x = chartX + k * (barW + gap);
         return (
           <g key={label}>
-            <rect x={x} y={chartBase - h} width={barW} height={h} fill={k === 5 ? BRAND : grass} stroke={LINE} strokeWidth="0.9" />
+            <rect x={x} y={chartBase - h} width={barW} height={h} fill={k === 6 ? BRAND : grass} stroke={LINE} strokeWidth="0.9" />
             <text x={x + barW / 2} y={chartBase - h - 3} textAnchor="middle" fill={LINE} fontSize="6.5">{rate}</text>
             <text x={x + barW / 2} y={chartBase + 8} textAnchor="end" fill={LINE} fontSize="6" transform={`rotate(-60 ${x + barW / 2} ${chartBase + 8})`}>{label}</text>
           </g>

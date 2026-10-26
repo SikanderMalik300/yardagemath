@@ -23,24 +23,24 @@ const run = (sqft: number, ratePer1000: number, bagLb: number, pricePerBag = 70)
   computeGrassSeed({ areas: [{ shape: "area", directSqFt: sqft }], ratePer1000, bagLb, pricePerBag });
 
 describe("grass seed - known answers", () => {
-  it("rates: tall fescue 7/4, KBG 2.5/1.5, ryegrass 7/4, fine fescue 4/2, bermuda 1.5, zoysia 1, centipede 0.5, bahia 8", () => {
+  it("rates (midpoint of cited range): tall fescue 7/4, KBG 2.5/1.5, ryegrass 4.5/2.5, fine fescue 4.5/2.5, bermuda 1.5, zoysia 2, centipede 0.6, bahia 5.5", () => {
     expect([R.tallFescue.newLawn, R.tallFescue.overseed]).toEqual([7, 4]);
     expect([R.bluegrass.newLawn, R.bluegrass.overseed]).toEqual([2.5, 1.5]);
-    expect([R.ryegrass.newLawn, R.ryegrass.overseed]).toEqual([7, 4]);
-    expect([R.fineFescue.newLawn, R.fineFescue.overseed]).toEqual([4, 2]);
+    expect([R.ryegrass.newLawn, R.ryegrass.overseed]).toEqual([4.5, 2.5]);
+    expect([R.fineFescue.newLawn, R.fineFescue.overseed]).toEqual([4.5, 2.5]);
     expect(R.bermuda.newLawn).toBe(1.5);
-    expect(R.zoysia.newLawn).toBe(1);
-    expect(R.centipede.newLawn).toBe(0.5);
-    expect(R.bahia.newLawn).toBe(8);
+    expect(R.zoysia.newLawn).toBe(2);
+    expect(R.centipede.newLawn).toBe(0.6);
+    expect(R.bahia.newLawn).toBe(5.5);
     expect(R.bermuda.overseed).toBeNull();
   });
 
-  it("example 1: 5,000 sq ft new tall fescue (7) = 35 lb -> 2 bags of 20 (5 lb left) or 1 bag of 50", () => {
-    const r = run(5000, 7, 20);
+  it("example 1: 5,000 sq ft new tall fescue (7) = 35 lb -> 1 bag of 40 (5 lb left) or 2 bags of 20", () => {
+    const r = run(5000, 7, 40);
     expect(r.pounds).toBe(35);
-    expect(r.bags).toBe(2);
+    expect(r.bags).toBe(1);
     expect(r.leftoverLb).toBe(5);
-    expect(run(5000, 7, 50).bags).toBe(1);
+    expect(run(5000, 7, 20).bags).toBe(2);
   });
 
   it("example 2: 5,000 sq ft overseed tall fescue (4) = 20 lb -> 1 bag of 20", () => {
@@ -55,14 +55,14 @@ describe("grass seed - known answers", () => {
     expect(r.bags).toBe(1);
   });
 
-  it("example 4: bare patch 10 x 20 ft, perennial ryegrass (7) = 200 sq ft -> 1.4 lb -> 1 bag of 3", () => {
-    const r = computeGrassSeed({ areas: [{ shape: "rectangle", lengthFt: 10, widthFt: 20 }], ratePer1000: 7, bagLb: 3, pricePerBag: 18 });
-    expect(round(r.pounds, 2)).toBe(1.4);
+  it("example 4: bare patch 10 x 20 ft, perennial ryegrass (4.5) = 200 sq ft -> 0.9 lb -> 1 bag of 3", () => {
+    const r = computeGrassSeed({ areas: [{ shape: "rectangle", lengthFt: 10, widthFt: 20 }], ratePer1000: 4.5, bagLb: 3, pricePerBag: 18 });
+    expect(round(r.pounds, 2)).toBe(0.9);
     expect(r.bags).toBe(1);
   });
 
-  it("example 5: 1 acre new bermudagrass (1.5) = 43,560 sq ft -> 65.34 lb -> 2 bags of 50", () => {
-    const r = computeGrassSeed({ areas: [{ shape: "acres", acres: 1 }], ratePer1000: 1.5, bagLb: 50, pricePerBag: 130 });
+  it("example 5: 1 acre new bermudagrass (1.5) = 43,560 sq ft -> 65.34 lb -> 2 bags of 40", () => {
+    const r = computeGrassSeed({ areas: [{ shape: "acres", acres: 1 }], ratePer1000: 1.5, bagLb: 40, pricePerBag: 110 });
     expect(r.netSqFt).toBe(43560);
     expect(round(r.pounds, 2)).toBe(65.34);
     expect(r.bags).toBe(2);
@@ -77,12 +77,12 @@ describe("grass seed - known answers", () => {
     const rows: [number, number][] = [
       [R.bluegrass.newLawn, 12.5],
       [R.tallFescue.newLawn, 35],
-      [R.ryegrass.newLawn, 35],
-      [R.fineFescue.newLawn, 20],
+      [R.ryegrass.newLawn, 22.5],
+      [R.fineFescue.newLawn, 22.5],
       [R.bermuda.newLawn, 7.5],
-      [R.zoysia.newLawn, 5],
-      [R.centipede.newLawn, 2.5],
-      [R.bahia.newLawn, 40],
+      [R.zoysia.newLawn, 10],
+      [R.centipede.newLawn, 3],
+      [R.bahia.newLawn, 27.5],
     ];
     for (const [rate, lb] of rows) {
       expect(round(run(5000, rate, 20).pounds, 2), `rate ${rate}`).toBe(lb);

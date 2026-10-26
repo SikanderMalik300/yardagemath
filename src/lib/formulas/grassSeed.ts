@@ -5,28 +5,30 @@ import { ceilCount, SQFT_PER_ACRE } from "./units";
 export type GrassShape = Shape | "area" | "acres";
 
 /**
- * Seeding rates, pounds per 1,000 sq ft. VERIFY against university extension pages:
- *  - cool-season new lawn: Penn State (KBG 2-3, tall fescue 6-8, fine fescue 4-5);
- *    perennial ryegrass ~6-9 (Penn State lists 4-5 for a pure stand);
- *  - overseeding: about half the new-lawn rate (NC State / Maryland Extension);
- *  - warm-season new lawn: UGA (bermuda hulled 1-2, zoysia 1-3, centipede 0.25-1, bahia 3-8).
+ * Seeding rates, pounds per 1,000 sq ft. Each default is the MIDPOINT of the
+ * cited extension range; the FAQ gives the full range.
+ *  - cool-season new lawn (Penn State): KBG 2-3 -> 2.5, tall fescue 6-8 -> 7,
+ *    perennial ryegrass 4-5 -> 4.5, fine fescue 4-5 -> 4.5;
+ *  - overseeding: about half the new-lawn rate (NC State);
+ *  - warm-season new lawn (UGA): bermuda hulled 1-2 -> 1.5, zoysia 1-3 -> 2,
+ *    centipede 0.25-1 -> 0.625 (shown as 0.6), bahia 3-8 -> 5.5.
  */
 export const GRASS_SEED_TYPES = {
   tallFescue: { label: "Tall fescue", season: "cool", newLawn: 7, overseed: 4 },
   bluegrass: { label: "Kentucky bluegrass", season: "cool", newLawn: 2.5, overseed: 1.5 },
-  ryegrass: { label: "Perennial ryegrass", season: "cool", newLawn: 7, overseed: 4 },
-  fineFescue: { label: "Fine fescue", season: "cool", newLawn: 4, overseed: 2 },
+  ryegrass: { label: "Perennial ryegrass", season: "cool", newLawn: 4.5, overseed: 2.5 },
+  fineFescue: { label: "Fine fescue", season: "cool", newLawn: 4.5, overseed: 2.5 },
   bermuda: { label: "Bermudagrass (hulled)", season: "warm", newLawn: 1.5, overseed: null },
-  zoysia: { label: "Zoysiagrass", season: "warm", newLawn: 1, overseed: null },
-  centipede: { label: "Centipedegrass", season: "warm", newLawn: 0.5, overseed: null },
-  bahia: { label: "Bahiagrass", season: "warm", newLawn: 8, overseed: null },
+  zoysia: { label: "Zoysiagrass", season: "warm", newLawn: 2, overseed: null },
+  centipede: { label: "Centipedegrass", season: "warm", newLawn: 0.6, overseed: null },
+  bahia: { label: "Bahiagrass", season: "warm", newLawn: 5.5, overseed: null },
   custom: { label: "Custom (lb per 1,000 sq ft)", season: "cool", newLawn: 5, overseed: 3 },
 } as const;
 export type GrassTypeKey = keyof typeof GRASS_SEED_TYPES;
 
 export type SeedJob = "new" | "overseed";
 
-export const SEED_BAG_LB = [3, 7, 20, 50] as const;
+export const SEED_BAG_LB = [3, 7, 20, 40] as const;
 
 export interface GrassCutout {
   shape: "rectangle" | "circle" | "area";

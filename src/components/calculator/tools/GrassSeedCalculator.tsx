@@ -47,7 +47,7 @@ const BAG_OPTS = [
   { value: "3", label: "3 lb box" },
   { value: "7", label: "7 lb bag" },
   { value: "20", label: "20 lb bag" },
-  { value: "50", label: "50 lb bag" },
+  { value: "40", label: "40 lb bag" },
   { value: "custom", label: "Custom size" },
 ];
 

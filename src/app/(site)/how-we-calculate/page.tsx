@@ -101,7 +101,7 @@ export default function HowWeCalculatePage() {
       title="How We Calculate"
       intro="Every number our calculators show comes from the sources below. Values are checked against the sources listed. Materials vary, so every value is editable in the calculator. Confirm final quantities with your supplier."
       updated="2026-10-22"
-      jsonLd={utilityWebPageJsonLd({ path: "/how-we-calculate/", name: "How We Calculate", datePublished: "2026-10-07", dateModified: "2026-10-22", withAuthor: true })}
+      jsonLd={utilityWebPageJsonLd({ path: "/how-we-calculate/", name: "How We Calculate", datePublished: "2026-10-07", dateModified: "2026-10-26", withAuthor: true })}
     >
       <h2>Core formulas</h2>
       <p>All volume tools share the same geometry, done in feet and converted at the end:</p>
@@ -350,10 +350,11 @@ export default function HowWeCalculatePage() {
         Seed uses the same area math (acres convert at 43,560 sq ft). Pounds = area ÷ 1,000 × the
         seeding rate for your grass; bags = pounds ÷ bag size, rounded up; and leftover = bags × bag
         size - pounds. Rates are pounds per 1,000 sq ft for a new lawn, with overseeding at about half
-        that. New-lawn defaults follow university extension ranges: Kentucky bluegrass 2 to 3, turf-type
-        tall fescue and perennial ryegrass 6 to 8, fine fescue 4 to 5, hulled bermudagrass 1 to 2,
-        zoysiagrass 1 to 3, centipedegrass 0.25 to 1, and bahiagrass 3 to 8. A 20 lb bag of tall fescue
-        runs about $67 (2026). If your seed bag lists its own rate, use the custom setting.
+        that. Each default is the midpoint of the cited extension range. New-lawn ranges: Kentucky
+        bluegrass 2 to 3, turf-type tall fescue 6 to 8, perennial ryegrass and fine fescue 4 to 5,
+        hulled bermudagrass 1 to 2, zoysiagrass 1 to 3, centipedegrass 0.25 to 1, and bahiagrass 3 to 8.
+        Seed is sold in 3, 7, 20 and 40 lb bags, and a 20 lb bag of tall fescue runs about $67 (2026).
+        If your seed bag lists its own rate, use the custom setting.
       </p>
       <Cite keys={["pennStateSeed", "ncStateLawns", "ugaLawns", "scottsSeed"]} />
 

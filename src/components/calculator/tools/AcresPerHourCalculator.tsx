@@ -89,8 +89,9 @@ export function AcresPerHourCalculator() {
       }
       right={
         <div>
-          <PrimaryResult label="Acres per hour" value={fmtNumber(round(result.acresPerHour, 2))} unit="ac/hr" sub={`${fmtNumber(round(result.areaAcres, 2))} acres takes about ${timeStr}.`} />
+          <PrimaryResult label="Acres per hour" value={fmtNumber(round(result.acresPerHour, 2))} unit="ac/hr" sub={`${fmtNumber(round(result.hectaresPerHour, 2))} hectares/hour · ${fmtNumber(round(result.areaAcres, 2))} acres takes about ${timeStr}.`} />
           <SecondaryResults>
+            <SecondaryItem label="Hectares per hour" value={`${fmtNumber(round(result.hectaresPerHour, 2))} ha/hr`} />
             <SecondaryItem label="Area" value={`${fmtNumber(round(result.areaAcres, 2))} acres`} />
             <SecondaryItem label="Time to finish" value={timeStr} />
             <SecondaryItem label="Total hours" value={fmtNumber(round(result.hours, 2))} />

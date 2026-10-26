@@ -156,7 +156,7 @@ export function CalculatorPage({ cal, children }: { cal: Calculator; children: R
 
       {/* 7. Reference table(s) */}
       <section style={{ marginTop: "1.5rem" }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Reference tables</h2>
+        <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>{cal.tablesH2 ?? "Reference tables"}</h2>
         {cal.tables.map((t, i) => (
           <RefTableView key={i} table={t} />
         ))}

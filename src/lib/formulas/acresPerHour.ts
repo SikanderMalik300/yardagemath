@@ -1,5 +1,5 @@
 /** Acres per Hour Calculator formula (build-spec #10). */
-import { ACRES_PER_HOUR_CONST_IN } from "../constants";
+import { ACRES_PER_HOUR_CONST_IN, HECTARES_PER_ACRE } from "../constants";
 import { SQFT_PER_ACRE } from "./units";
 
 export type WidthUnit = "in" | "ft";
@@ -16,6 +16,7 @@ export interface AcresPerHourInput {
 
 export interface AcresPerHourResult {
   acresPerHour: number;
+  hectaresPerHour: number;
   areaAcres: number;
   hours: number;
   hoursWhole: number;
@@ -41,6 +42,7 @@ export function computeAcresPerHour(input: AcresPerHourInput): AcresPerHourResul
 
   return {
     acresPerHour: aph,
+    hectaresPerHour: aph * HECTARES_PER_ACRE,
     areaAcres,
     hours,
     hoursWhole: Math.floor(hours),

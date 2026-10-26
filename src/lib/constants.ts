@@ -397,13 +397,20 @@ export const LAWN_SEASON_WEEKS_DEFAULT = 28; // US mowing season ≈ 26–30 wee
    VERIFY with ASABE D497 machinery management data.
    acresPerHour = (width_in × mph × eff) / 99  (eff as a fraction)
    ========================================================================= */
+// Efficiency presets. VERIFY ranges against ASABE D497 field-efficiency tables
+// (also summarized by Purdue, Iowa State and K-State extension): rotary mower
+// about 75-85%, boom sprayer about 50-80%. Each preset uses the midpoint.
 export const FIELD_EFFICIENCY_PRESETS: { label: string; eff: number }[] = [
   { label: "Zero-turn mower (80–85%)", eff: 0.82 },
   { label: "Push mower (70–80%)", eff: 0.75 },
   { label: "Tractor + implement (70–85%)", eff: 0.78 },
+  { label: "Bush hog / rotary cutter (75–85%)", eff: 0.8 },
+  { label: "Sprayer (50–80%)", eff: 0.65 },
 ];
 export const ACRES_PER_HOUR_CONST_IN = 99; // (5280 ÷ 43560) × 12 × 60 ⁻¹ factor → width_in·mph·eff / 99
 export const ACRES_PER_HOUR_CONST_FT = 8.25;
+/** Hectares in one acre, for the acres-per-hour metric output. */
+export const HECTARES_PER_ACRE = 0.4047;
 
 /* =========================================================================
    Gutter slope — manufacturer install guidance

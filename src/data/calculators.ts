@@ -46,6 +46,8 @@ export interface Calculator {
   /** "What this calculator doesn't cover" note, shown after the worked examples. */
   notCovered?: string;
   tables: RefTable[];
+  /** Optional heading for the reference-tables section (defaults to "Reference tables"). */
+  tablesH2?: string;
   /** Precomputed "common sizes" table, shown in addition to the reference tables (audit Task 1). */
   commonSizes?: RefTable;
   tips: string[];
@@ -765,7 +767,7 @@ export const calculators: Calculator[] = [
       "lawn-mowing-cost-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Topsoil calculator diagram showing a garden bed with depth labelled",
   },
 
@@ -996,7 +998,7 @@ export const calculators: Calculator[] = [
       "landscape-materials-calculator",
     ],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Square yard calculator diagram converting a room in feet to square yards",
   },
 
@@ -1136,7 +1138,7 @@ export const calculators: Calculator[] = [
     category: "lawn",
     title: "Lawn Mowing Cost Calculator – Price per Cut & per Acre",
     metaDescription:
-      "Estimate lawn mowing prices by lawn size, or price your mowing jobs as a pro using hourly rate, mower width and travel time. Includes 2026 average rates.",
+      "Get a lawn mowing estimate by lawn size, with the average price per cut in 2026. Homeowners check a fair price; pros price jobs by width, speed and rate.",
     h1: "Lawn Mowing Cost Calculator",
     primaryKeyword: "lawn mowing cost calculator",
     secondaryKeywords: [
@@ -1149,7 +1151,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "What a cut should cost, or what to charge as a pro.",
     shortAnswer:
-      "In 2026, a typical lawn mowing visit in the US costs about $40–$55 for a quarter-acre lot and $90 or more for a full acre. Homeowners can check a fair price by lawn size, and pros can price a job from mower width, speed and hourly rate. Both tabs are below.",
+      "Get a lawn mowing estimate in seconds. In 2026, a typical mowing visit in the US costs about $40 to $55 per cut for a quarter-acre lot and $90 or more for a full acre. Homeowners can check a fair price by lawn size, and pros can price a job from mower width, speed and hourly rate. Both tabs are below.",
     howTo: [
       'Homeowners: pick the "What should I pay?" tab and enter your lawn size and mowing frequency.',
       "Add extras like edging, trimming or bagging.",
@@ -1220,6 +1222,10 @@ export const calculators: Calculator[] = [
         a: "Work out the mowing time from your acres per hour, then add time for trimming and driving. Multiply by your hourly rate and add a bit for fuel and wear on the equipment. The pro tab above does the math for you.",
       },
       {
+        q: "How do I estimate lawn mowing cost?",
+        a: "Find the mowing time from your lawn's acres and your acres per hour (width in inches × mph × efficiency ÷ 99), then add trimming and travel. Multiply the total hours by your hourly rate and add overhead. For example, a 0.25 acre lawn with a 21-inch mower at 3 mph works out to about $45 at $60 an hour. The pro tab does this for you.",
+      },
+      {
         q: "How long does it take to mow an acre?",
         a: "With a 21-inch push mower, about 1.5–2 hours. With a 42–60 inch riding or zero-turn mower, roughly 30–60 minutes. Your speed and the number of obstacles make a big difference.",
       },
@@ -1243,7 +1249,7 @@ export const calculators: Calculator[] = [
     sources: ["2026 US lawn-care cost guides", "ASABE field-efficiency ranges"],
     related: ["sod-calculator", "grass-seed-calculator", "acres-per-hour-calculator", "topsoil-calculator", "landscape-materials-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Lawn mowing cost calculator showing price per cut by lawn size",
   },
 
@@ -1421,20 +1427,23 @@ export const calculators: Calculator[] = [
     notCovered: "It assumes a steady speed and a fixed efficiency. Hills, trees, tight turns and wet grass all slow you down, so treat the result as a best case for open ground.",
     tables: [
       {
-        title: "Acres per hour by deck width and speed (80% efficiency)",
+        title: "Acres per hour by mower deck width (80% efficiency)",
+        intro: "Coverage at 80% field efficiency, using acres per hour = width (in) × mph × efficiency ÷ 99.",
         columns: [
           { label: "Deck width" },
           { label: "3 mph", num: true },
           { label: "5 mph", num: true },
           { label: "7 mph", num: true },
+          { label: "9 mph", num: true },
         ],
         rows: [
-          ['21"', "0.51", "0.85", "1.19"],
-          ['42"', "1.02", "1.70", "2.38"],
-          ['48"', "1.16", "1.94", "2.72"],
-          ['54"', "1.31", "2.18", "3.05"],
-          ['60"', "1.45", "2.42", "3.39"],
-          ['72"', "1.75", "2.91", "4.07"],
+          ['36"', "0.87", "1.45", "2.04", "2.62"],
+          ['42"', "1.02", "1.70", "2.38", "3.05"],
+          ['48"', "1.16", "1.94", "2.72", "3.49"],
+          ['52"', "1.26", "2.10", "2.94", "3.78"],
+          ['54"', "1.31", "2.18", "3.05", "3.93"],
+          ['60"', "1.45", "2.42", "3.39", "4.36"],
+          ['72"', "1.75", "2.91", "4.07", "5.24"],
         ],
         footnote: "Theoretical coverage × field efficiency. Real output is lower with obstacles and overlap.",
       },
@@ -1478,6 +1487,14 @@ export const calculators: Calculator[] = [
         a: "About 1.0–1.4 acres an hour. At 4 mph and 80% efficiency, a 42-inch deck covers 1.36 acres per hour. Going faster raises it, while obstacles and trimming lower it. The formula is width (in) × mph × efficiency ÷ 99.",
       },
       {
+        q: "How many acres can a 60 inch mower cut in an hour?",
+        a: "At 80% efficiency, a 60-inch mower cuts about 2.42 acres an hour at 5 mph and 3.39 acres an hour at 7 mph. Turns, overlap and trimming bring the real number down. The formula is width (in) × mph × efficiency ÷ 99.",
+      },
+      {
+        q: "How many acres can a 72 inch mower cut in an hour?",
+        a: "At 80% efficiency, a 72-inch mower cuts about 2.91 acres an hour at 5 mph and 4.07 acres an hour at 7 mph. A wider deck or higher speed raises that, while obstacles lower it.",
+      },
+      {
         q: "How long does it take to mow 5 acres?",
         a: "Roughly 1.5–3.5 hours, depending on the mower. A 60-inch zero-turn at 6 mph (about 2.9 acres an hour) finishes 5 acres in around 1 hour 45 minutes. A 42-inch deck at 4 mph takes closer to 3.5 hours.",
       },
@@ -1489,7 +1506,7 @@ export const calculators: Calculator[] = [
     sources: ["ASABE D497 machinery management data"],
     related: ["sod-calculator", "grass-seed-calculator", "lawn-mowing-cost-calculator", "topsoil-calculator", "square-yard-calculator"],
     datePublished: "2026-10-07",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Acres per hour calculator diagram of a mower width and travel path",
   },
 
@@ -1857,7 +1874,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "Weights for 4, 6, 8, 10 and 12 inch CMU, plus total load and pallet weight.",
     shortAnswer:
-      "A standard 8×8×16 concrete block weighs about 38 lb in normal-weight concrete and about 28 lb as a lightweight block. A pallet of 90 standard blocks is around 3,400 lb. Use the chart for other sizes, or the calculator to get the total weight of your order.",
+      "A standard 8 by 8 by 16 inch cinder block, also called a concrete block or CMU, weighs about 38 pounds. A standard 8×8×16 concrete block weighs about 38 lb in normal-weight concrete and about 28 lb as a lightweight block. A pallet of 90 standard blocks is around 3,400 lb. Use the chart for other sizes, or the calculator to get the total weight of your order.",
     howTo: [
       "Pick your block size and whether it's normal-weight or lightweight.",
       "Enter how many blocks you have.",
@@ -1885,9 +1902,11 @@ export const calculators: Calculator[] = [
     },
     notCovered:
       "Weights are typical ranges for dry blocks. Real weight depends on the aggregate, the plant and how wet the blocks are, so check the supplier's spec sheet before you plan a load for a truck, trailer or floor.",
+    tablesH2: "How much does a cinder block weigh?",
     tables: [
       {
         title: "Concrete block weight chart (typical, dry)",
+        intro: "The chart below gives typical dry weights for every common block size, in normal-weight and lightweight concrete.",
         columns: [
           { label: "Block (nominal)" },
           { label: "Normal weight" },
@@ -1922,8 +1941,12 @@ export const calculators: Calculator[] = [
         a: "Most blocks sold as \"cinder blocks\" today are regular concrete blocks, so a standard 8×8×16 weighs about 28–38 lb. True old-style cinder blocks were lighter, closer to the lightweight numbers.",
       },
       {
-        q: "How much does a pallet of concrete blocks weigh?",
-        a: "A pallet of 90 standard 8-inch blocks weighs roughly 3,400 lb, plus about 40–50 lb for the pallet itself. Pallets with more or bigger blocks can top 4,000 lb.",
+        q: "How much does a 6 inch cinder block weigh?",
+        a: "About 32 lb for a normal-weight 6 by 8 by 16 inch block and about 24 lb for a lightweight one, going by the chart above.",
+      },
+      {
+        q: "How much does a pallet of cinder blocks weigh?",
+        a: "A pallet of 90 standard 8-inch cinder (concrete) blocks weighs roughly 3,400 lb, plus about 40–50 lb for the pallet itself. Pallets with more or bigger blocks can top 4,000 lb.",
       },
       {
         q: "How many concrete blocks can a pickup truck carry?",
@@ -1951,7 +1974,7 @@ export const calculators: Calculator[] = [
       "yards-of-concrete-calculator",
     ],
     datePublished: "2026-10-10",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-26",
     imageAlt: "Concrete block weight: a standard 8×8×16 block and a 90-block pallet.",
   },
 
@@ -2894,7 +2917,7 @@ export const calculators: Calculator[] = [
       "landscape-materials-calculator",
     ],
     datePublished: "2026-10-16",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-26",
     imageAlt: "Paver calculator diagram: pavers, sand bedding, gravel base and edging, with the length and width the calculator uses.",
   },
 
@@ -2916,7 +2939,7 @@ export const calculators: Calculator[] = [
     ],
     cardDescription: "How much gravel base and bedding sand under pavers: tons, yards, bags and cost.",
     shortAnswer:
-      "A 12 by 12 foot paver patio needs about 3.2 tons of crusher run for a 4-inch compacted base, plus about 27 bags of bedding sand. Pick your project below to get base tons, yards, bags and cost.",
+      "How much paver base do I need? A 12 by 12 foot paver patio needs about 3.2 tons of crusher run for a 4-inch compacted base, plus about 27 bags of bedding sand. Pick your project below to get base tons, yards, bags and cost.",
     howTo: [
       "Measure the area and pick a shape. Add more areas if you need to.",
       "Pick the project. Walkways and patios usually need about 4 inches of base, driveways about 8.",
@@ -3009,7 +3032,7 @@ export const calculators: Calculator[] = [
       "landscape-materials-calculator",
     ],
     datePublished: "2026-10-17",
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-10-26",
     imageAlt: "Paver base diagram: compacted gravel base and bedding sand under pavers, with the length and width the calculator uses.",
   },
 
@@ -3748,7 +3771,7 @@ export const calculators: Calculator[] = [
       "acres-per-hour-calculator",
     ],
     datePublished: "2026-10-23",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Sod calculator diagram: lawn area with a cut-out, staggered sod pieces, and pallet coverage.",
   },
   /* ---------------------------------------------------------------- 30 */
@@ -3786,11 +3809,11 @@ export const calculators: Calculator[] = [
       example: [
         "5,000 sq ft new lawn, tall fescue (7 lb per 1,000 sq ft):",
         "pounds = 5,000 ÷ 1,000 × 7 = 35 lb",
-        "bags = ceil(35 ÷ 20) = 2 bags of 20 lb (5 lb left over), or 1 bag of 50 lb",
+        "bags = ceil(35 ÷ 40) = 1 bag of 40 lb (5 lb left over), or 2 bags of 20 lb",
       ],
       example2: [
         "1 acre new bermudagrass (1.5):",
-        "43,560 sq ft → 65.34 lb → 2 bags of 50 lb",
+        "43,560 sq ft → 65.34 lb → 2 bags of 40 lb",
       ],
     },
     notCovered:
@@ -3807,12 +3830,12 @@ export const calculators: Calculator[] = [
         rows: [
           ["Kentucky bluegrass", "2.5", "1.5", "12.5 lb"],
           ["Tall fescue", "7", "4", "35 lb"],
-          ["Perennial ryegrass", "7", "4", "35 lb"],
-          ["Fine fescue", "4", "2", "20 lb"],
+          ["Perennial ryegrass", "4.5", "2.5", "22.5 lb"],
+          ["Fine fescue", "4.5", "2.5", "22.5 lb"],
           ["Bermudagrass (hulled)", "1.5", "n/a", "7.5 lb"],
-          ["Zoysiagrass", "1", "n/a", "5 lb"],
-          ["Centipedegrass", "0.5", "n/a", "2.5 lb"],
-          ["Bahiagrass", "8", "n/a", "40 lb"],
+          ["Zoysiagrass", "2", "n/a", "10 lb"],
+          ["Centipedegrass", "0.6", "n/a", "3 lb"],
+          ["Bahiagrass", "5.5", "n/a", "27.5 lb"],
         ],
         footnote: "Pounds per 1,000 sq ft for a new lawn and for overseeding. Warm-season grasses are usually not overseeded with the same grass. Rates vary by seed quality and region; see the sources.",
       },
@@ -3830,7 +3853,7 @@ export const calculators: Calculator[] = [
       },
       {
         q: "How much grass seed per 1,000 square feet?",
-        a: "About 2 to 3 pounds for Kentucky bluegrass, 6 to 8 for tall fescue and perennial ryegrass, and 1 to 2 for hulled bermudagrass for a new lawn.",
+        a: "For a new lawn, about 2 to 3 pounds for Kentucky bluegrass, 6 to 8 for tall fescue, 4 to 5 for perennial ryegrass and fine fescue, and 1 to 2 for hulled bermudagrass.",
       },
       {
         q: "How much grass seed for an acre?",
@@ -3867,7 +3890,7 @@ export const calculators: Calculator[] = [
       "acres-per-hour-calculator",
     ],
     datePublished: "2026-10-24",
-    lastUpdated: "2026-10-24",
+    lastUpdated: "2026-10-26",
     imageAlt: "Grass seed diagram: lawn area with a cut-out, a crosshatch spreading pattern, and seeding rate by grass type.",
   },
 ];

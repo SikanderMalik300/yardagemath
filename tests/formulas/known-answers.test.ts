@@ -601,6 +601,38 @@ describe("acres per hour — known answers", () => {
   it("table: 72in, 5mph, 80% = 2.91 ac/hr", () => {
     expect(round(ah(72, "in", 5, 80, 1, "acres").acresPerHour, 2)).toBe(2.91);
   });
+
+  // Every cell of the "Acres per hour by mower deck width (80% efficiency)" table.
+  it("deck-width table at 80%: every cell matches the tested function", () => {
+    const speeds = [3, 5, 7, 9];
+    const table: [number, [number, number, number, number]][] = [
+      [36, [0.87, 1.45, 2.04, 2.62]],
+      [42, [1.02, 1.7, 2.38, 3.05]],
+      [48, [1.16, 1.94, 2.72, 3.49]],
+      [52, [1.26, 2.1, 2.94, 3.78]],
+      [54, [1.31, 2.18, 3.05, 3.93]],
+      [60, [1.45, 2.42, 3.39, 4.36]],
+      [72, [1.75, 2.91, 4.07, 5.24]],
+    ];
+    for (const [width, expected] of table) {
+      speeds.forEach((mph, i) => {
+        expect(round(ah(width, "in", mph, 80, 1, "acres").acresPerHour, 2), `${width}" @ ${mph} mph`).toBe(expected[i]);
+      });
+    }
+  });
+
+  it("FAQ values: 60in and 72in at 5 and 7 mph, 80%", () => {
+    expect(round(ah(60, "in", 5, 80, 1, "acres").acresPerHour, 2)).toBe(2.42);
+    expect(round(ah(60, "in", 7, 80, 1, "acres").acresPerHour, 2)).toBe(3.39);
+    expect(round(ah(72, "in", 5, 80, 1, "acres").acresPerHour, 2)).toBe(2.91);
+    expect(round(ah(72, "in", 7, 80, 1, "acres").acresPerHour, 2)).toBe(4.07);
+  });
+
+  it("hectares per hour = acres per hour × 0.4047", () => {
+    const r = ah(60, "in", 6, 80, 5, "acres");
+    expect(r.hectaresPerHour).toBeCloseTo(r.acresPerHour * 0.4047, 6);
+    expect(round(r.hectaresPerHour, 2)).toBe(round(2.909 * 0.4047, 2));
+  });
 });
 
 /* ============================ 11. Gutter Slope ============================ */

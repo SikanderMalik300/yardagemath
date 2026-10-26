@@ -203,8 +203,8 @@ export function PaverCalculator() {
 
             <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
               Base and sand are a summary ({fmtNumber(round(result.baseCuYd, 2))} cu yd base at {baseDepth} in, {PAVER_SAND_DEPTH_IN} in sand).{" "}
-              Need the full base breakdown by project?{" "}
-              <Link href="/paver-base-calculator/" prefetch={false}>Use the Paver Base Calculator.</Link>{" "}
+              For base depth by project and bags vs bulk, use the{" "}
+              <Link href="/paver-base-calculator/" prefetch={false}>Paver Base Calculator</Link>.{" "}
               For bagged bedding sand,{" "}
               <Link href="/sand-calculator/" prefetch={false}>use the Sand Calculator.</Link>
             </p>
